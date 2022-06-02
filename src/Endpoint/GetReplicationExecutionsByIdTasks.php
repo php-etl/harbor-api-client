@@ -1,0 +1,70 @@
+<?php
+
+namespace Harbor\Api\Endpoint;
+
+class GetReplicationExecutionsByIdTasks extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+{
+    protected $id;
+    /**
+     * This endpoint is for user to get the task list of one execution.
+     *
+     * @param int $id The execution ID.
+     */
+    public function __construct(int $id)
+    {
+        $this->id = $id;
+    }
+    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    public function getMethod() : string
+    {
+        return 'GET';
+    }
+    public function getUri() : string
+    {
+        return str_replace(array('{id}'), array($this->id), '/replication/executions/{id}/tasks');
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    {
+        return array(array(), null);
+    }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksBadRequestException
+     * @throws \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksUnauthorizedException
+     * @throws \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksForbiddenException
+     * @throws \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksNotFoundException
+     * @throws \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksInternalServerErrorException
+     *
+     * @return null|\Harbor\Api\Model\ReplicationTask[]
+     */
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        if (200 === $status) {
+            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\ReplicationTask[]', 'json');
+        }
+        if (400 === $status) {
+            throw new \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksBadRequestException();
+        }
+        if (401 === $status) {
+            throw new \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksUnauthorizedException();
+        }
+        if (403 === $status) {
+            throw new \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksForbiddenException();
+        }
+        if (404 === $status) {
+            throw new \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksNotFoundException();
+        }
+        if (500 === $status) {
+            throw new \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksInternalServerErrorException();
+        }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('basicAuth');
+    }
+}

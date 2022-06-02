@@ -1,0 +1,11 @@
+<?php
+
+namespace Harbor\Api\Exception;
+
+class PutUsersByUserIdCliSecretPreconditionFailedException extends PreconditionFailedException
+{
+    public function __construct()
+    {
+        parent::__construct('The auth mode of the system is not "oidc_auth", or the user is not onboarded via OIDC AuthN.');
+    }
+}

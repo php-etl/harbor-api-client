@@ -1,0 +1,38 @@
+{
+    "name": "php-etl/harbor-api-client",
+    "description": "This package provides Jane-PHP generated API models and client based on the OpenAPI specification for Harbor.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Gyroscops\\Harbor\\Api\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kiboko SAS",
+            "homepage": "http://kiboko.fr"
+        },
+        {
+            "name": "Grégory Planchat",
+            "email": "gregory@kiboko.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.0",
+        "jane-php/open-api-runtime": "^7.2"
+    },
+    "require-dev": {
+        "jane-php/open-api-2": "^7.2"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1.x-dev"
+        }
+    }
+}

@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutConfiguration extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutConfiguration extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint is for modifying system configurations that only provides for admin user.
      *
-     * @param \Harbor\Api\Model\Configurations $configurations The configuration map can contain a subset of the attributes of the schema, which are to be updated.
+     * @param \Gyroscops\Harbor\Api\Model\Configurations $configurations The configuration map can contain a subset of the attributes of the schema, which are to be updated.
      */
-    public function __construct(\Harbor\Api\Model\Configurations $configurations)
+    public function __construct(\Gyroscops\Harbor\Api\Model\Configurations $configurations)
     {
         $this->body = $configurations;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -33,9 +33,9 @@ class PutConfiguration extends \Harbor\Api\Runtime\Client\BaseEndpoint implement
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutConfigurationUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutConfigurationForbiddenException
-     * @throws \Harbor\Api\Exception\PutConfigurationInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationInternalServerErrorException
      *
      * @return null
      */
@@ -45,13 +45,13 @@ class PutConfiguration extends \Harbor\Api\Runtime\Client\BaseEndpoint implement
             return null;
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutConfigurationUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutConfigurationUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutConfigurationForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutConfigurationForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutConfigurationInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutConfigurationInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

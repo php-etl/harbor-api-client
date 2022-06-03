@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class DeleteProjectsByProjectIdMemberByMid extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class DeleteProjectsByProjectIdMemberByMid extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     protected $mid;
@@ -17,7 +17,7 @@ class DeleteProjectsByProjectIdMemberByMid extends \Harbor\Api\Runtime\Client\Ba
         $this->project_id = $projectId;
         $this->mid = $mid;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -37,10 +37,10 @@ class DeleteProjectsByProjectIdMemberByMid extends \Harbor\Api\Runtime\Client\Ba
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidBadRequestException
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidUnauthorizedException
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidForbiddenException
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidInternalServerErrorException
      *
      * @return null
      */
@@ -50,16 +50,16 @@ class DeleteProjectsByProjectIdMemberByMid extends \Harbor\Api\Runtime\Client\Ba
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class ScannerAdapterMetadataNormalizer implements DenormalizerInterface, Normali
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\ScannerAdapterMetadata';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\ScannerAdapterMetadata';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\ScannerAdapterMetadata';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\ScannerAdapterMetadata';
     }
     /**
      * @return mixed
@@ -38,17 +38,17 @@ class ScannerAdapterMetadataNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\ScannerAdapterMetadata();
+        $object = new \Gyroscops\Harbor\Api\Model\ScannerAdapterMetadata();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($this->denormalizer->denormalize($data['name'], 'Harbor\\Api\\Model\\Scanner', 'json', $context));
+            $object->setName($this->denormalizer->denormalize($data['name'], 'Gyroscops\\Harbor\\Api\\Model\\Scanner', 'json', $context));
         }
         if (\array_key_exists('capabilities', $data)) {
             $values = array();
             foreach ($data['capabilities'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Harbor\\Api\\Model\\ScannerCapability', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\ScannerCapability', 'json', $context);
             }
             $object->setCapabilities($values);
         }

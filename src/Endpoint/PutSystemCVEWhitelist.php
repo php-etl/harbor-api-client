@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutSystemCVEWhitelist extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutSystemCVEWhitelist extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This API overwrites the system level whitelist of CVE with the list in request body.  Only system Admin has permission to call this API.
      *
-     * @param \Harbor\Api\Model\CVEWhitelist $whitelist The whitelist with new content
+     * @param \Gyroscops\Harbor\Api\Model\CVEWhitelist $whitelist The whitelist with new content
      */
-    public function __construct(\Harbor\Api\Model\CVEWhitelist $whitelist)
+    public function __construct(\Gyroscops\Harbor\Api\Model\CVEWhitelist $whitelist)
     {
         $this->body = $whitelist;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -33,9 +33,9 @@ class PutSystemCVEWhitelist extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutSystemCVEWhitelistUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutSystemCVEWhitelistForbiddenException
-     * @throws \Harbor\Api\Exception\PutSystemCVEWhitelistInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistInternalServerErrorException
      *
      * @return null
      */
@@ -45,13 +45,13 @@ class PutSystemCVEWhitelist extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
             return null;
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutSystemCVEWhitelistUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutSystemCVEWhitelistForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutSystemCVEWhitelistInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

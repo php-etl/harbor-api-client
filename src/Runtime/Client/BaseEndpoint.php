@@ -1,6 +1,6 @@
 <?php
 
-namespace Harbor\Api\Runtime\Client;
+namespace Gyroscops\Harbor\Api\Runtime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;

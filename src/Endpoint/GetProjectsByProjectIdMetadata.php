@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetProjectsByProjectIdMetadata extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetProjectsByProjectIdMetadata extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
@@ -14,7 +14,7 @@ class GetProjectsByProjectIdMetadata extends \Harbor\Api\Runtime\Client\BaseEndp
     {
         $this->project_id = $projectId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,21 +34,21 @@ class GetProjectsByProjectIdMetadata extends \Harbor\Api\Runtime\Client\BaseEndp
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdMetadataUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdMetadataInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMetadataUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMetadataInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\ProjectMetadata
+     * @return null|\Gyroscops\Harbor\Api\Model\ProjectMetadata
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\ProjectMetadata', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ProjectMetadata', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdMetadataUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMetadataUnauthorizedException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdMetadataInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMetadataInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

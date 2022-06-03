@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetSystemGcByIdLog extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetSystemGcByIdLog extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class GetSystemGcByIdLog extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
     {
         $this->id = $id;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,11 +34,11 @@ class GetSystemGcByIdLog extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException
-     * @throws \Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException
-     * @throws \Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException
-     * @throws \Harbor\Api\Exception\GetSystemGcByIdLogInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogInternalServerErrorException
      *
      * @return null
      */
@@ -48,19 +48,19 @@ class GetSystemGcByIdLog extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
             return json_decode($body);
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcByIdLogInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

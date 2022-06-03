@@ -1,22 +1,22 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutProjectByProjectId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutProjectByProjectId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
      * This endpoint is aimed to update the properties of a project.
      *
      * @param int $projectId Selected project ID.
-     * @param \Harbor\Api\Model\ProjectReq $project Updates of project.
+     * @param \Gyroscops\Harbor\Api\Model\ProjectReq $project Updates of project.
      */
-    public function __construct(int $projectId, \Harbor\Api\Model\ProjectReq $project)
+    public function __construct(int $projectId, \Gyroscops\Harbor\Api\Model\ProjectReq $project)
     {
         $this->project_id = $projectId;
         $this->body = $project;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -36,11 +36,11 @@ class PutProjectByProjectId extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutProjectByProjectIdBadRequestException
-     * @throws \Harbor\Api\Exception\PutProjectByProjectIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutProjectByProjectIdForbiddenException
-     * @throws \Harbor\Api\Exception\PutProjectByProjectIdNotFoundException
-     * @throws \Harbor\Api\Exception\PutProjectByProjectIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdInternalServerErrorException
      *
      * @return null
      */
@@ -50,19 +50,19 @@ class PutProjectByProjectId extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectByProjectIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectByProjectIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectByProjectIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectByProjectIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectByProjectIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

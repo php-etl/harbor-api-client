@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetRegistries extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetRegistries extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint let user list filtered registries by name, if name is nil, list returns all registries.
@@ -15,7 +15,7 @@ class GetRegistries extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -44,21 +44,21 @@ class GetRegistries extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetRegistriesUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetRegistriesInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\Registry[]
+     * @return null|\Gyroscops\Harbor\Api\Model\Registry[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\Registry[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Registry[]', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistriesUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesUnauthorizedException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistriesInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

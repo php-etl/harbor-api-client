@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetReplicationAdapters extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetReplicationAdapters extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,9 +24,9 @@ class GetReplicationAdapters extends \Harbor\Api\Runtime\Client\BaseEndpoint imp
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetReplicationAdaptersUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetReplicationAdaptersForbiddenException
-     * @throws \Harbor\Api\Exception\GetReplicationAdaptersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersInternalServerErrorException
      *
      * @return null
      */
@@ -36,13 +36,13 @@ class GetReplicationAdapters extends \Harbor\Api\Runtime\Client\BaseEndpoint imp
             return json_decode($body);
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationAdaptersUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationAdaptersForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationAdaptersInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

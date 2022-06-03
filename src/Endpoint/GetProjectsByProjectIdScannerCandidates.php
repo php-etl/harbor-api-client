@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetProjectsByProjectIdScannerCandidates extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetProjectsByProjectIdScannerCandidates extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
@@ -14,7 +14,7 @@ class GetProjectsByProjectIdScannerCandidates extends \Harbor\Api\Runtime\Client
     {
         $this->project_id = $projectId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,29 +34,29 @@ class GetProjectsByProjectIdScannerCandidates extends \Harbor\Api\Runtime\Client
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesBadRequestException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesForbiddenException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\ScannerRegistration[]
+     * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\ScannerRegistration[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ScannerRegistration[]', 'json');
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

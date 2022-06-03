@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class ConfigurationsNormalizer implements DenormalizerInterface, NormalizerInter
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\Configurations';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\Configurations';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\Configurations';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\Configurations';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class ConfigurationsNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\Configurations();
+        $object = new \Gyroscops\Harbor\Api\Model\Configurations();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -67,7 +67,7 @@ class ConfigurationsNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setStoragePerProject($data['storage_per_project']);
         }
         if (\array_key_exists('scan_all_policy', $data)) {
-            $object->setScanAllPolicy($this->denormalizer->denormalize($data['scan_all_policy'], 'Harbor\\Api\\Model\\ConfigurationsScanAllPolicy', 'json', $context));
+            $object->setScanAllPolicy($this->denormalizer->denormalize($data['scan_all_policy'], 'Gyroscops\\Harbor\\Api\\Model\\ConfigurationsScanAllPolicy', 'json', $context));
         }
         if (\array_key_exists('verify_remote_cert', $data)) {
             $object->setVerifyRemoteCert($data['verify_remote_cert']);

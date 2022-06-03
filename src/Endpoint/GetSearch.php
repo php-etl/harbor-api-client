@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetSearch extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * The Search endpoint returns information about the projects ,repositories  and helm charts offered at public status or related to the current logged in user. The response includes the project, repository list and charts in a proper display order.
@@ -15,7 +15,7 @@ class GetSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harb
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -44,17 +44,17 @@ class GetSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harb
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetSearchInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSearchInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\Search[]
+     * @return null|\Gyroscops\Harbor\Api\Model\Search[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\Search[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Search[]', 'json');
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetSearchInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSearchInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

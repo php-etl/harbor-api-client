@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetSystemGcSchedule extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,25 +24,25 @@ class GetSystemGcSchedule extends \Harbor\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetSystemGcScheduleUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetSystemGcScheduleForbiddenException
-     * @throws \Harbor\Api\Exception\GetSystemGcScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\AdminJobSchedule
+     * @return null|\Gyroscops\Harbor\Api\Model\AdminJobSchedule
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\AdminJobSchedule', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\AdminJobSchedule', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcScheduleUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcScheduleForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcScheduleInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

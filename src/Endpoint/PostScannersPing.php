@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostScannersPing extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostScannersPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * Pings scanner adapter to test endpoint URL and authorization settings.
      *
-     * @param \Harbor\Api\Model\ScannerRegistrationSettings $settings A scanner registration settings to be tested.
+     * @param \Gyroscops\Harbor\Api\Model\ScannerRegistrationSettings $settings A scanner registration settings to be tested.
      */
-    public function __construct(\Harbor\Api\Model\ScannerRegistrationSettings $settings)
+    public function __construct(\Gyroscops\Harbor\Api\Model\ScannerRegistrationSettings $settings)
     {
         $this->body = $settings;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,10 +33,10 @@ class PostScannersPing extends \Harbor\Api\Runtime\Client\BaseEndpoint implement
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostScannersPingBadRequestException
-     * @throws \Harbor\Api\Exception\PostScannersPingUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostScannersPingForbiddenException
-     * @throws \Harbor\Api\Exception\PostScannersPingInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannersPingBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannersPingUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannersPingForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannersPingInternalServerErrorException
      *
      * @return null
      */
@@ -46,16 +46,16 @@ class PostScannersPing extends \Harbor\Api\Runtime\Client\BaseEndpoint implement
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostScannersPingBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostScannersPingBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostScannersPingUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostScannersPingUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostScannersPingForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostScannersPingForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostScannersPingInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostScannersPingInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

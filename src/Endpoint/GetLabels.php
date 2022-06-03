@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetLabels extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetLabels extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint let user list labels by name, scope and project_id
@@ -19,7 +19,7 @@ class GetLabels extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harb
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -52,25 +52,25 @@ class GetLabels extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harb
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetLabelsBadRequestException
-     * @throws \Harbor\Api\Exception\GetLabelsUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetLabelsInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\Label[]
+     * @return null|\Gyroscops\Harbor\Api\Model\Label[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\Label[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Label[]', 'json');
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetLabelsBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetLabelsUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLabelsUnauthorizedException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetLabelsInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLabelsInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

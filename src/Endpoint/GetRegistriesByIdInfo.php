@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetRegistriesByIdInfo extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetRegistriesByIdInfo extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class GetRegistriesByIdInfo extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
     {
         $this->id = $id;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,25 +34,25 @@ class GetRegistriesByIdInfo extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetRegistriesByIdInfoUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetRegistriesByIdInfoNotFoundException
-     * @throws \Harbor\Api\Exception\GetRegistriesByIdInfoInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\RegistryInfo
+     * @return null|\Gyroscops\Harbor\Api\Model\RegistryInfo
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\RegistryInfo', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RegistryInfo', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistriesByIdInfoUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoUnauthorizedException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistriesByIdInfoNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistriesByIdInfoInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

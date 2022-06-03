@@ -1,6 +1,6 @@
 <?php
 
-namespace Harbor\Api\Exception;
+namespace Gyroscops\Harbor\Api\Exception;
 
 class GetReplicationExecutionByIdForbiddenException extends ForbiddenException
 {

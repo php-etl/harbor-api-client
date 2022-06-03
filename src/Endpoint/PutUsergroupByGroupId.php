@@ -1,22 +1,22 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutUsergroupByGroupId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutUsergroupByGroupId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $group_id;
     /**
      * Update user group information
      *
      * @param int $groupId Group ID
-     * @param \Harbor\Api\Model\UserGroup $usergroup 
+     * @param \Gyroscops\Harbor\Api\Model\UserGroup $usergroup 
      */
-    public function __construct(int $groupId, \Harbor\Api\Model\UserGroup $usergroup)
+    public function __construct(int $groupId, \Gyroscops\Harbor\Api\Model\UserGroup $usergroup)
     {
         $this->group_id = $groupId;
         $this->body = $usergroup;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -36,11 +36,11 @@ class PutUsergroupByGroupId extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutUsergroupByGroupIdBadRequestException
-     * @throws \Harbor\Api\Exception\PutUsergroupByGroupIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutUsergroupByGroupIdForbiddenException
-     * @throws \Harbor\Api\Exception\PutUsergroupByGroupIdNotFoundException
-     * @throws \Harbor\Api\Exception\PutUsergroupByGroupIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdInternalServerErrorException
      *
      * @return null
      */
@@ -50,19 +50,19 @@ class PutUsergroupByGroupId extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutUsergroupByGroupIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutUsergroupByGroupIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutUsergroupByGroupIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PutUsergroupByGroupIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutUsergroupByGroupIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

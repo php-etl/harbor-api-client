@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetRetentionsByIdExecutionsByEidTasks extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetRetentionsByIdExecutionsByEidTasks extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     protected $eid;
@@ -17,7 +17,7 @@ class GetRetentionsByIdExecutionsByEidTasks extends \Harbor\Api\Runtime\Client\B
         $this->id = $id;
         $this->eid = $eid;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -37,25 +37,25 @@ class GetRetentionsByIdExecutionsByEidTasks extends \Harbor\Api\Runtime\Client\B
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksForbiddenException
-     * @throws \Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\RetentionExecutionTask[]
+     * @return null|\Gyroscops\Harbor\Api\Model\RetentionExecutionTask[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\RetentionExecutionTask[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RetentionExecutionTask[]', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

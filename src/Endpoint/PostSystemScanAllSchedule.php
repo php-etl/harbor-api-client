@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostSystemScanAllSchedule extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint is for creating a schedule or a manual trigger for the scan all job, which scans all of images in Harbor.
      *
-     * @param \Harbor\Api\Model\AdminJobSchedule $schedule Create a schedule or a manual trigger for the scan all job.
+     * @param \Gyroscops\Harbor\Api\Model\AdminJobSchedule $schedule Create a schedule or a manual trigger for the scan all job.
      */
-    public function __construct(\Harbor\Api\Model\AdminJobSchedule $schedule)
+    public function __construct(\Gyroscops\Harbor\Api\Model\AdminJobSchedule $schedule)
     {
         $this->body = $schedule;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,12 +33,12 @@ class PostSystemScanAllSchedule extends \Harbor\Api\Runtime\Client\BaseEndpoint 
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException
-     * @throws \Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException
-     * @throws \Harbor\Api\Exception\PostSystemScanAllScheduleConflictException
-     * @throws \Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException
-     * @throws \Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException
      *
      * @return null
      */
@@ -48,22 +48,22 @@ class PostSystemScanAllSchedule extends \Harbor\Api\Runtime\Client\BaseEndpoint 
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException();
         }
         if (409 === $status) {
-            throw new \Harbor\Api\Exception\PostSystemScanAllScheduleConflictException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleConflictException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException();
         }
         if (503 === $status) {
-            throw new \Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException();
         }
     }
     public function getAuthenticationScopes() : array

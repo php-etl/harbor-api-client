@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetProjects extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetProjects extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint returns all projects created by Harbor, and can be filtered by project name.
@@ -19,7 +19,7 @@ class GetProjects extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Ha
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -52,21 +52,21 @@ class GetProjects extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Ha
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetProjectsUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetProjectsInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\Project[]
+     * @return null|\Gyroscops\Harbor\Api\Model\Project[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\Project[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Project[]', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsUnauthorizedException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

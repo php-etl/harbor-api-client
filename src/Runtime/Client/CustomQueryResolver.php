@@ -1,6 +1,6 @@
 <?php
 
-namespace Harbor\Api\Runtime\Client;
+namespace Gyroscops\Harbor\Api\Runtime\Client;
 
 use Symfony\Component\OptionsResolver\Options;
 interface CustomQueryResolver

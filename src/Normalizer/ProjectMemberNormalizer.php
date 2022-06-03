@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class ProjectMemberNormalizer implements DenormalizerInterface, NormalizerInterf
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\ProjectMember';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\ProjectMember';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\ProjectMember';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\ProjectMember';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class ProjectMemberNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\ProjectMember();
+        $object = new \Gyroscops\Harbor\Api\Model\ProjectMember();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -46,10 +46,10 @@ class ProjectMemberNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setRoleId($data['role_id']);
         }
         if (\array_key_exists('member_group', $data)) {
-            $object->setMemberGroup($this->denormalizer->denormalize($data['member_group'], 'Harbor\\Api\\Model\\UserGroup', 'json', $context));
+            $object->setMemberGroup($this->denormalizer->denormalize($data['member_group'], 'Gyroscops\\Harbor\\Api\\Model\\UserGroup', 'json', $context));
         }
         if (\array_key_exists('member_user', $data)) {
-            $object->setMemberUser($this->denormalizer->denormalize($data['member_user'], 'Harbor\\Api\\Model\\UserEntity', 'json', $context));
+            $object->setMemberUser($this->denormalizer->denormalize($data['member_user'], 'Gyroscops\\Harbor\\Api\\Model\\UserEntity', 'json', $context));
         }
         return $object;
     }

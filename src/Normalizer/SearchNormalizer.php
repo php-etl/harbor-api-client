@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class SearchNormalizer implements DenormalizerInterface, NormalizerInterface, De
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\Search';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\Search';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\Search';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\Search';
     }
     /**
      * @return mixed
@@ -38,28 +38,28 @@ class SearchNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\Search();
+        $object = new \Gyroscops\Harbor\Api\Model\Search();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('project', $data)) {
             $values = array();
             foreach ($data['project'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Harbor\\Api\\Model\\Project', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\Project', 'json', $context);
             }
             $object->setProject($values);
         }
         if (\array_key_exists('chart', $data)) {
             $values_1 = array();
             foreach ($data['chart'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Harbor\\Api\\Model\\SearchResult', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Gyroscops\\Harbor\\Api\\Model\\SearchResult', 'json', $context);
             }
             $object->setChart($values_1);
         }
         if (\array_key_exists('repository', $data)) {
             $values_2 = array();
             foreach ($data['repository'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Harbor\\Api\\Model\\SearchRepository', 'json', $context);
+                $values_2[] = $this->denormalizer->denormalize($value_2, 'Gyroscops\\Harbor\\Api\\Model\\SearchRepository', 'json', $context);
             }
             $object->setRepository($values_2);
         }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class CVEWhitelistNormalizer implements DenormalizerInterface, NormalizerInterfa
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\CVEWhitelist';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\CVEWhitelist';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\CVEWhitelist';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\CVEWhitelist';
     }
     /**
      * @return mixed
@@ -38,14 +38,14 @@ class CVEWhitelistNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\CVEWhitelist();
+        $object = new \Gyroscops\Harbor\Api\Model\CVEWhitelist();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('items', $data)) {
             $values = array();
             foreach ($data['items'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Harbor\\Api\\Model\\CVEWhitelistItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\CVEWhitelistItem', 'json', $context);
             }
             $object->setItems($values);
         }

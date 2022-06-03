@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetReplicationExecutionById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetReplicationExecutionById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class GetReplicationExecutionById extends \Harbor\Api\Runtime\Client\BaseEndpoin
     {
         $this->id = $id;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,37 +34,37 @@ class GetReplicationExecutionById extends \Harbor\Api\Runtime\Client\BaseEndpoin
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionByIdBadRequestException
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionByIdForbiddenException
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionByIdNotFoundException
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionByIdUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\ReplicationExecution
+     * @return null|\Gyroscops\Harbor\Api\Model\ReplicationExecution
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\ReplicationExecution', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ReplicationExecution', 'json');
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionByIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionByIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionByIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdNotFoundException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionByIdUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

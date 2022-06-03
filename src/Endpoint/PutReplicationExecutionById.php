@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutReplicationExecutionById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutReplicationExecutionById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class PutReplicationExecutionById extends \Harbor\Api\Runtime\Client\BaseEndpoin
     {
         $this->id = $id;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -34,12 +34,12 @@ class PutReplicationExecutionById extends \Harbor\Api\Runtime\Client\BaseEndpoin
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutReplicationExecutionByIdBadRequestException
-     * @throws \Harbor\Api\Exception\PutReplicationExecutionByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutReplicationExecutionByIdForbiddenException
-     * @throws \Harbor\Api\Exception\PutReplicationExecutionByIdNotFoundException
-     * @throws \Harbor\Api\Exception\PutReplicationExecutionByIdUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\PutReplicationExecutionByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdInternalServerErrorException
      *
      * @return null
      */
@@ -49,22 +49,22 @@ class PutReplicationExecutionById extends \Harbor\Api\Runtime\Client\BaseEndpoin
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutReplicationExecutionByIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutReplicationExecutionByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutReplicationExecutionByIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PutReplicationExecutionByIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdNotFoundException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PutReplicationExecutionByIdUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutReplicationExecutionByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

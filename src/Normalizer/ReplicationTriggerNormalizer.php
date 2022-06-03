@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class ReplicationTriggerNormalizer implements DenormalizerInterface, NormalizerI
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\ReplicationTrigger';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\ReplicationTrigger';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\ReplicationTrigger';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\ReplicationTrigger';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class ReplicationTriggerNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\ReplicationTrigger();
+        $object = new \Gyroscops\Harbor\Api\Model\ReplicationTrigger();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -46,7 +46,7 @@ class ReplicationTriggerNormalizer implements DenormalizerInterface, NormalizerI
             $object->setType($data['type']);
         }
         if (\array_key_exists('trigger_settings', $data)) {
-            $object->setTriggerSettings($this->denormalizer->denormalize($data['trigger_settings'], 'Harbor\\Api\\Model\\TriggerSettings', 'json', $context));
+            $object->setTriggerSettings($this->denormalizer->denormalize($data['trigger_settings'], 'Gyroscops\\Harbor\\Api\\Model\\TriggerSettings', 'json', $context));
         }
         return $object;
     }

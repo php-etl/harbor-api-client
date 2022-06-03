@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetUsersSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetUsersSearch extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint is to search the users by username.
@@ -17,7 +17,7 @@ class GetUsersSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint implements 
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -48,17 +48,17 @@ class GetUsersSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint implements 
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetUsersSearchInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersSearchInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\UserSearch[]
+     * @return null|\Gyroscops\Harbor\Api\Model\UserSearch[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\UserSearch[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UserSearch[]', 'json');
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetUsersSearchInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsersSearchInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

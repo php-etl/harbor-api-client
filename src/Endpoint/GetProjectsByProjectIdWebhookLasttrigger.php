@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetProjectsByProjectIdWebhookLasttrigger extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetProjectsByProjectIdWebhookLasttrigger extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
@@ -14,7 +14,7 @@ class GetProjectsByProjectIdWebhookLasttrigger extends \Harbor\Api\Runtime\Clien
     {
         $this->project_id = $projectId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,29 +34,29 @@ class GetProjectsByProjectIdWebhookLasttrigger extends \Harbor\Api\Runtime\Clien
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerBadRequestException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerForbiddenException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\WebhookLastTrigger[]
+     * @return null|\Gyroscops\Harbor\Api\Model\WebhookLastTrigger[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\WebhookLastTrigger[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\WebhookLastTrigger[]', 'json');
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

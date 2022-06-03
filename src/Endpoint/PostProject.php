@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostProject extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint is for user to create a new project.
      *
-     * @param \Harbor\Api\Model\ProjectReq $project New created project.
+     * @param \Gyroscops\Harbor\Api\Model\ProjectReq $project New created project.
      */
-    public function __construct(\Harbor\Api\Model\ProjectReq $project)
+    public function __construct(\Gyroscops\Harbor\Api\Model\ProjectReq $project)
     {
         $this->body = $project;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,11 +33,11 @@ class PostProject extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Ha
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostProjectBadRequestException
-     * @throws \Harbor\Api\Exception\PostProjectUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostProjectConflictException
-     * @throws \Harbor\Api\Exception\PostProjectUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\PostProjectInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectInternalServerErrorException
      *
      * @return null
      */
@@ -47,19 +47,19 @@ class PostProject extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Ha
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectUnauthorizedException();
         }
         if (409 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectConflictException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectConflictException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

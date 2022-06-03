@@ -1,11 +1,11 @@
 <?php
 
-namespace Harbor\Api\Exception;
+namespace Gyroscops\Harbor\Api\Exception;
 
 class PostLdapUsersImportNotFoundException extends NotFoundException
 {
     /**
-     * @var \Harbor\Api\Model\LdapFailedImportUsers[][]
+     * @var \Gyroscops\Harbor\Api\Model\LdapFailedImportUsers[][]
      */
     private $ldapFailedImportUsersList;
     public function __construct($ldapFailedImportUsersList)

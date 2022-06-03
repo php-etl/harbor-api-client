@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetQuotas extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetQuotas extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
     * List quotas
@@ -22,7 +22,7 @@ class GetQuotas extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harb
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -55,25 +55,25 @@ class GetQuotas extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harb
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetQuotasUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetQuotasForbiddenException
-     * @throws \Harbor\Api\Exception\GetQuotasInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\Quota[]
+     * @return null|\Gyroscops\Harbor\Api\Model\Quota[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\Quota[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Quota[]', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetQuotasUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotasUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetQuotasForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotasForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetQuotasInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotasInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

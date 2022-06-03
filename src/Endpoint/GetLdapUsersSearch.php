@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetLdapUsersSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetLdapUsersSearch extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint searches the available ldap users based on related configuration parameters. Support searched by input ladp configuration, load configuration from the system and specific filter.
@@ -15,7 +15,7 @@ class GetLdapUsersSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -44,25 +44,25 @@ class GetLdapUsersSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetLdapUsersSearchUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetLdapUsersSearchForbiddenException
-     * @throws \Harbor\Api\Exception\GetLdapUsersSearchInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\LdapUsers[]
+     * @return null|\Gyroscops\Harbor\Api\Model\LdapUsers[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\LdapUsers[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\LdapUsers[]', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetLdapUsersSearchUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetLdapUsersSearchForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetLdapUsersSearchInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

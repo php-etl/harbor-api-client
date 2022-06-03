@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutProjectsByProjectIdRobotByRobotId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     protected $robot_id;
@@ -11,15 +11,15 @@ class PutProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client\Ba
      *
      * @param int $projectId Relevant project ID.
      * @param int $robotId The ID of robot account.
-     * @param \Harbor\Api\Model\RobotAccountUpdate $robot Request body of enable/disable a robot account.
+     * @param \Gyroscops\Harbor\Api\Model\RobotAccountUpdate $robot Request body of enable/disable a robot account.
      */
-    public function __construct(int $projectId, int $robotId, \Harbor\Api\Model\RobotAccountUpdate $robot)
+    public function __construct(int $projectId, int $robotId, \Gyroscops\Harbor\Api\Model\RobotAccountUpdate $robot)
     {
         $this->project_id = $projectId;
         $this->robot_id = $robotId;
         $this->body = $robot;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -39,7 +39,7 @@ class PutProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client\Ba
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutProjectsByProjectIdRobotByRobotIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdRobotByRobotIdInternalServerErrorException
      *
      * @return null
      */
@@ -49,7 +49,7 @@ class PutProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client\Ba
             return null;
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectsByProjectIdRobotByRobotIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdRobotByRobotIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -1,22 +1,22 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostProjectsByProjectIdImmutabletagrule extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostProjectsByProjectIdImmutabletagrule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
      * This endpoint add an immutable tag rule to the project
      *
      * @param int $projectId Relevant project ID.
-     * @param \Harbor\Api\Model\RetentionRule $retentionRule 
+     * @param \Gyroscops\Harbor\Api\Model\RetentionRule $retentionRule 
      */
-    public function __construct(int $projectId, \Harbor\Api\Model\RetentionRule $retentionRule)
+    public function __construct(int $projectId, \Gyroscops\Harbor\Api\Model\RetentionRule $retentionRule)
     {
         $this->project_id = $projectId;
         $this->body = $retentionRule;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -36,10 +36,10 @@ class PostProjectsByProjectIdImmutabletagrule extends \Harbor\Api\Runtime\Client
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleBadRequestException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleForbiddenException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleInternalServerErrorException
      *
      * @return null
      */
@@ -49,16 +49,16 @@ class PostProjectsByProjectIdImmutabletagrule extends \Harbor\Api\Runtime\Client
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

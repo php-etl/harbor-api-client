@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\Label';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\Label';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\Label';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\Label';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\Label();
+        $object = new \Gyroscops\Harbor\Api\Model\Label();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetUsers extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetUsers extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint is for user to search registered users, support for filtering results with username.Notice, by now this operation is only for administrator.
@@ -18,7 +18,7 @@ class GetUsers extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbo
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -50,29 +50,29 @@ class GetUsers extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbo
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetUsersBadRequestException
-     * @throws \Harbor\Api\Exception\GetUsersUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetUsersForbiddenException
-     * @throws \Harbor\Api\Exception\GetUsersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\User[]
+     * @return null|\Gyroscops\Harbor\Api\Model\User[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\User[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\User[]', 'json');
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetUsersBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsersBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetUsersUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsersUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetUsersForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsersForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetUsersInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsersInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

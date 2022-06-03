@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetSysteminfoVolume extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetSysteminfoVolume extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,25 +24,25 @@ class GetSysteminfoVolume extends \Harbor\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetSysteminfoVolumeUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetSysteminfoVolumeForbiddenException
-     * @throws \Harbor\Api\Exception\GetSysteminfoVolumeInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\SystemInfo
+     * @return null|\Gyroscops\Harbor\Api\Model\SystemInfo
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\SystemInfo', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\SystemInfo', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetSysteminfoVolumeUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetSysteminfoVolumeForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetSysteminfoVolumeInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

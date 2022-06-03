@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class DeleteProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class DeleteProjectsByProjectIdRobotByRobotId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     protected $robot_id;
@@ -17,7 +17,7 @@ class DeleteProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client
         $this->project_id = $projectId;
         $this->robot_id = $robotId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -37,10 +37,10 @@ class DeleteProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdForbiddenException
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdNotFoundException
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdInternalServerErrorException
      *
      * @return null
      */
@@ -50,16 +50,16 @@ class DeleteProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client
             return null;
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

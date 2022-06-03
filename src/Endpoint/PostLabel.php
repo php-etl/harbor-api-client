@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostLabel extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostLabel extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint let user creates a label.
      *
-     * @param \Harbor\Api\Model\Label $label The json object of label.
+     * @param \Gyroscops\Harbor\Api\Model\Label $label The json object of label.
      */
-    public function __construct(\Harbor\Api\Model\Label $label)
+    public function __construct(\Gyroscops\Harbor\Api\Model\Label $label)
     {
         $this->body = $label;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,11 +33,11 @@ class PostLabel extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harb
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostLabelBadRequestException
-     * @throws \Harbor\Api\Exception\PostLabelUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostLabelConflictException
-     * @throws \Harbor\Api\Exception\PostLabelUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\PostLabelInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelInternalServerErrorException
      *
      * @return null
      */
@@ -47,19 +47,19 @@ class PostLabel extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harb
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostLabelBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostLabelUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException();
         }
         if (409 === $status) {
-            throw new \Harbor\Api\Exception\PostLabelConflictException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelConflictException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PostLabelUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostLabelInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

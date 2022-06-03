@@ -1,6 +1,6 @@
 <?php
 
-namespace Harbor\Api\Runtime\Client;
+namespace Gyroscops\Harbor\Api\Runtime\Client;
 
 use Jane\Component\OpenApiRuntime\Client\Exception\InvalidFetchModeException;
 use Psr\Http\Message\ResponseInterface;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class RetentionRuleNormalizer implements DenormalizerInterface, NormalizerInterf
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\RetentionRule';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\RetentionRule';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\RetentionRule';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\RetentionRule';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class RetentionRuleNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\RetentionRule();
+        $object = new \Gyroscops\Harbor\Api\Model\RetentionRule();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -50,7 +50,7 @@ class RetentionRuleNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['scope_selectors'] as $key => $value) {
                 $values_1 = array();
                 foreach ($value as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Harbor\\Api\\Model\\RetentionSelector', 'json', $context);
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Gyroscops\\Harbor\\Api\\Model\\RetentionSelector', 'json', $context);
                 }
                 $values[$key] = $values_1;
             }
@@ -75,7 +75,7 @@ class RetentionRuleNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('tag_selectors', $data)) {
             $values_3 = array();
             foreach ($data['tag_selectors'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Harbor\\Api\\Model\\RetentionSelector', 'json', $context);
+                $values_3[] = $this->denormalizer->denormalize($value_3, 'Gyroscops\\Harbor\\Api\\Model\\RetentionSelector', 'json', $context);
             }
             $object->setTagSelectors($values_3);
         }

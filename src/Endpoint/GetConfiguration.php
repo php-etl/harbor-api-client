@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetConfiguration extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetConfiguration extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,25 +24,25 @@ class GetConfiguration extends \Harbor\Api\Runtime\Client\BaseEndpoint implement
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetConfigurationUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetConfigurationForbiddenException
-     * @throws \Harbor\Api\Exception\GetConfigurationInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetConfigurationUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetConfigurationForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetConfigurationInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\ConfigurationsResponse
+     * @return null|\Gyroscops\Harbor\Api\Model\ConfigurationsResponse
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\ConfigurationsResponse', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ConfigurationsResponse', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetConfigurationUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetConfigurationUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetConfigurationForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetConfigurationForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetConfigurationInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetConfigurationInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

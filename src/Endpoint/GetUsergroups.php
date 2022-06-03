@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetUsergroups extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetUsergroups extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,25 +24,25 @@ class GetUsergroups extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetUsergroupsUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetUsergroupsForbiddenException
-     * @throws \Harbor\Api\Exception\GetUsergroupsInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\UserGroup[]
+     * @return null|\Gyroscops\Harbor\Api\Model\UserGroup[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\UserGroup[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UserGroup[]', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetUsergroupsUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupsUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetUsergroupsForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupsForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetUsergroupsInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupsInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

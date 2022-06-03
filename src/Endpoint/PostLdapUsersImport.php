@@ -1,21 +1,21 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostLdapUsersImport extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostLdapUsersImport extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
     * This endpoint adds the selected available ldap users to harbor based on related configuration parameters from the system. System will try to guess the user email address and realname, add to harbor user information.
     If have errors when import user, will return the list of importing failed uid and the failed reason.
     
     *
-    * @param \Harbor\Api\Model\LdapImportUsers $uidList The uid listed for importing. This list will check users validity of ldap service based on configuration from the system.
+    * @param \Gyroscops\Harbor\Api\Model\LdapImportUsers $uidList The uid listed for importing. This list will check users validity of ldap service based on configuration from the system.
     */
-    public function __construct(\Harbor\Api\Model\LdapImportUsers $uidList)
+    public function __construct(\Gyroscops\Harbor\Api\Model\LdapImportUsers $uidList)
     {
         $this->body = $uidList;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -35,10 +35,10 @@ class PostLdapUsersImport extends \Harbor\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostLdapUsersImportUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostLdapUsersImportForbiddenException
-     * @throws \Harbor\Api\Exception\PostLdapUsersImportNotFoundException
-     * @throws \Harbor\Api\Exception\PostLdapUsersImportUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnsupportedMediaTypeException
      *
      * @return null
      */
@@ -48,16 +48,16 @@ class PostLdapUsersImport extends \Harbor\Api\Runtime\Client\BaseEndpoint implem
             return null;
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostLdapUsersImportUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostLdapUsersImportForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PostLdapUsersImportNotFoundException($serializer->deserialize($body, 'Harbor\\Api\\Model\\LdapFailedImportUsers[]', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\LdapFailedImportUsers[]', 'json'));
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PostLdapUsersImportUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnsupportedMediaTypeException();
         }
     }
     public function getAuthenticationScopes() : array

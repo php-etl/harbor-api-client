@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class PasswordNormalizer implements DenormalizerInterface, NormalizerInterface, 
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\Password';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\Password';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\Password';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\Password';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class PasswordNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\Password();
+        $object = new \Gyroscops\Harbor\Api\Model\Password();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

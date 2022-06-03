@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostEmailPing extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostEmailPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * Test connection and authentication with email server.
      *
-     * @param \Harbor\Api\Model\EmailServerSetting $settings Email server settings, if some of the settings are not assigned, they will be read from system configuration.
+     * @param \Gyroscops\Harbor\Api\Model\EmailServerSetting $settings Email server settings, if some of the settings are not assigned, they will be read from system configuration.
      */
-    public function __construct(\Harbor\Api\Model\EmailServerSetting $settings)
+    public function __construct(\Gyroscops\Harbor\Api\Model\EmailServerSetting $settings)
     {
         $this->body = $settings;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,11 +33,11 @@ class PostEmailPing extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostEmailPingBadRequestException
-     * @throws \Harbor\Api\Exception\PostEmailPingUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostEmailPingForbiddenException
-     * @throws \Harbor\Api\Exception\PostEmailPingUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\PostEmailPingInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingInternalServerErrorException
      *
      * @return null
      */
@@ -47,19 +47,19 @@ class PostEmailPing extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostEmailPingBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostEmailPingUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostEmailPingForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingForbiddenException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PostEmailPingUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostEmailPingInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

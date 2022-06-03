@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetUserByUserId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $user_id;
     /**
@@ -14,7 +14,7 @@ class GetUserByUserId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
     {
         $this->user_id = $userId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,33 +34,33 @@ class GetUserByUserId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetUserByUserIdBadRequestException
-     * @throws \Harbor\Api\Exception\GetUserByUserIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetUserByUserIdForbiddenException
-     * @throws \Harbor\Api\Exception\GetUserByUserIdNotFoundException
-     * @throws \Harbor\Api\Exception\GetUserByUserIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\User
+     * @return null|\Gyroscops\Harbor\Api\Model\User
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\User', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\User', 'json');
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetUserByUserIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetUserByUserIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetUserByUserIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetUserByUserIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetUserByUserIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

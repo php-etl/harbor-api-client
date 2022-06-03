@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetProjectsByProjectIdSummary extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetProjectsByProjectIdSummary extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
@@ -14,7 +14,7 @@ class GetProjectsByProjectIdSummary extends \Harbor\Api\Runtime\Client\BaseEndpo
     {
         $this->project_id = $projectId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,33 +34,33 @@ class GetProjectsByProjectIdSummary extends \Harbor\Api\Runtime\Client\BaseEndpo
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdSummaryBadRequestException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdSummaryUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdSummaryForbiddenException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdSummaryNotFoundException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdSummaryInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\ProjectSummary
+     * @return null|\Gyroscops\Harbor\Api\Model\ProjectSummary
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\ProjectSummary', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ProjectSummary', 'json');
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdSummaryBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdSummaryUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdSummaryForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdSummaryNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdSummaryInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

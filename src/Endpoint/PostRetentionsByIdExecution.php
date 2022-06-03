@@ -1,22 +1,22 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostRetentionsByIdExecution extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostRetentionsByIdExecution extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
      * Trigger a Retention job, if dry_run is True, nothing would be deleted actually.
      *
      * @param int $id Retention ID.
-     * @param \Harbor\Api\Model\RetentionsIdExecutionsPostBody $action 
+     * @param \Gyroscops\Harbor\Api\Model\RetentionsIdExecutionsPostBody $action 
      */
-    public function __construct(int $id, \Harbor\Api\Model\RetentionsIdExecutionsPostBody $action)
+    public function __construct(int $id, \Gyroscops\Harbor\Api\Model\RetentionsIdExecutionsPostBody $action)
     {
         $this->id = $id;
         $this->body = $action;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -36,9 +36,9 @@ class PostRetentionsByIdExecution extends \Harbor\Api\Runtime\Client\BaseEndpoin
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostRetentionsByIdExecutionUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostRetentionsByIdExecutionForbiddenException
-     * @throws \Harbor\Api\Exception\PostRetentionsByIdExecutionInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionInternalServerErrorException
      *
      * @return null
      */
@@ -48,13 +48,13 @@ class PostRetentionsByIdExecution extends \Harbor\Api\Runtime\Client\BaseEndpoin
             return null;
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostRetentionsByIdExecutionUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostRetentionsByIdExecutionForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostRetentionsByIdExecutionInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetLdapGroupsSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetLdapGroupsSearch extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint searches the available ldap groups based on related configuration parameters. support to search by groupname or groupdn.
@@ -16,7 +16,7 @@ class GetLdapGroupsSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint implem
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -46,25 +46,25 @@ class GetLdapGroupsSearch extends \Harbor\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetLdapGroupsSearchBadRequestException
-     * @throws \Harbor\Api\Exception\GetLdapGroupsSearchNotFoundException
-     * @throws \Harbor\Api\Exception\GetLdapGroupsSearchInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\UserGroup[]
+     * @return null|\Gyroscops\Harbor\Api\Model\UserGroup[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\UserGroup[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UserGroup[]', 'json');
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetLdapGroupsSearchBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchBadRequestException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetLdapGroupsSearchNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetLdapGroupsSearchInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

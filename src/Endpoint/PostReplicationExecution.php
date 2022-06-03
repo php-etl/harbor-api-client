@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostReplicationExecution extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostReplicationExecution extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint is for user to start one execution of the replication.
      *
-     * @param \Harbor\Api\Model\ReplicationExecution $execution The execution that needs to be started, only the property "policy_id" is needed.
+     * @param \Gyroscops\Harbor\Api\Model\ReplicationExecution $execution The execution that needs to be started, only the property "policy_id" is needed.
      */
-    public function __construct(\Harbor\Api\Model\ReplicationExecution $execution)
+    public function __construct(\Gyroscops\Harbor\Api\Model\ReplicationExecution $execution)
     {
         $this->body = $execution;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,11 +33,11 @@ class PostReplicationExecution extends \Harbor\Api\Runtime\Client\BaseEndpoint i
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostReplicationExecutionBadRequestException
-     * @throws \Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostReplicationExecutionForbiddenException
-     * @throws \Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\PostReplicationExecutionInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionInternalServerErrorException
      *
      * @return null
      */
@@ -47,19 +47,19 @@ class PostReplicationExecution extends \Harbor\Api\Runtime\Client\BaseEndpoint i
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationExecutionBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationExecutionForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationExecutionInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

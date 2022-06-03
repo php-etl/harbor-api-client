@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetUsersCurrent extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetUsersCurrent extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,17 +24,17 @@ class GetUsersCurrent extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetUsersCurrentUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersCurrentUnauthorizedException
      *
-     * @return null|\Harbor\Api\Model\User
+     * @return null|\Gyroscops\Harbor\Api\Model\User
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\User', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\User', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetUsersCurrentUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsersCurrentUnauthorizedException();
         }
     }
     public function getAuthenticationScopes() : array

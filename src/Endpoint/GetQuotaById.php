@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetQuotaById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetQuotaById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class GetQuotaById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
     {
         $this->id = $id;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,29 +34,29 @@ class GetQuotaById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetQuotaByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetQuotaByIdForbiddenException
-     * @throws \Harbor\Api\Exception\GetQuotaByIdNotFoundException
-     * @throws \Harbor\Api\Exception\GetQuotaByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\Quota
+     * @return null|\Gyroscops\Harbor\Api\Model\Quota
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\Quota', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Quota', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetQuotaByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotaByIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetQuotaByIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotaByIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetQuotaByIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotaByIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetQuotaByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotaByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

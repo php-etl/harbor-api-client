@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetRegistriesByIdNamespace extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetRegistriesByIdNamespace extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -18,7 +18,7 @@ class GetRegistriesByIdNamespace extends \Harbor\Api\Runtime\Client\BaseEndpoint
         $this->id = $id;
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -47,29 +47,29 @@ class GetRegistriesByIdNamespace extends \Harbor\Api\Runtime\Client\BaseEndpoint
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetRegistriesByIdNamespaceUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetRegistriesByIdNamespaceForbiddenException
-     * @throws \Harbor\Api\Exception\GetRegistriesByIdNamespaceNotFoundException
-     * @throws \Harbor\Api\Exception\GetRegistriesByIdNamespaceInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\_Namespace[]
+     * @return null|\Gyroscops\Harbor\Api\Model\_Namespace[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\_Namespace[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\_Namespace[]', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistriesByIdNamespaceUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistriesByIdNamespaceForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistriesByIdNamespaceNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistriesByIdNamespaceInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

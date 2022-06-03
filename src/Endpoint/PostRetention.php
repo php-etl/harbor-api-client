@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostRetention extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostRetention extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
     * Create Retention Policy, you can reference metadatas API for the policy model.
@@ -10,13 +10,13 @@ class PostRetention extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
     This method should only be called when no retention policy binded to project yet.
     
     *
-    * @param \Harbor\Api\Model\RetentionPolicy $policy Create Retention Policy successfully.
+    * @param \Gyroscops\Harbor\Api\Model\RetentionPolicy $policy Create Retention Policy successfully.
     */
-    public function __construct(\Harbor\Api\Model\RetentionPolicy $policy)
+    public function __construct(\Gyroscops\Harbor\Api\Model\RetentionPolicy $policy)
     {
         $this->body = $policy;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -36,10 +36,10 @@ class PostRetention extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostRetentionBadRequestException
-     * @throws \Harbor\Api\Exception\PostRetentionUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostRetentionForbiddenException
-     * @throws \Harbor\Api\Exception\PostRetentionInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionInternalServerErrorException
      *
      * @return null
      */
@@ -49,16 +49,16 @@ class PostRetention extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostRetentionBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostRetentionUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostRetentionForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostRetentionInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

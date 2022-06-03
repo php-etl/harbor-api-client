@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetSysteminfoGetcert extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetSysteminfoGetcert extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,8 +24,8 @@ class GetSysteminfoGetcert extends \Harbor\Api\Runtime\Client\BaseEndpoint imple
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetSysteminfoGetcertNotFoundException
-     * @throws \Harbor\Api\Exception\GetSysteminfoGetcertInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoGetcertNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoGetcertInternalServerErrorException
      *
      * @return null
      */
@@ -35,10 +35,10 @@ class GetSysteminfoGetcert extends \Harbor\Api\Runtime\Client\BaseEndpoint imple
             return null;
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetSysteminfoGetcertNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSysteminfoGetcertNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetSysteminfoGetcertInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSysteminfoGetcertInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

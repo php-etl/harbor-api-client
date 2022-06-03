@@ -1,22 +1,22 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutRegistryById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
      * This endpoint is for update a given registry.
      *
      * @param int $id The registry's ID.
-     * @param \Harbor\Api\Model\PutRegistry $repoTarget Updates registry.
+     * @param \Gyroscops\Harbor\Api\Model\PutRegistry $repoTarget Updates registry.
      */
-    public function __construct(int $id, \Harbor\Api\Model\PutRegistry $repoTarget)
+    public function __construct(int $id, \Gyroscops\Harbor\Api\Model\PutRegistry $repoTarget)
     {
         $this->id = $id;
         $this->body = $repoTarget;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -36,11 +36,11 @@ class PutRegistryById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutRegistryByIdBadRequestException
-     * @throws \Harbor\Api\Exception\PutRegistryByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutRegistryByIdNotFoundException
-     * @throws \Harbor\Api\Exception\PutRegistryByIdConflictException
-     * @throws \Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException
      *
      * @return null
      */
@@ -50,19 +50,19 @@ class PutRegistryById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutRegistryByIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutRegistryByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdUnauthorizedException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PutRegistryByIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdNotFoundException();
         }
         if (409 === $status) {
-            throw new \Harbor\Api\Exception\PutRegistryByIdConflictException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdConflictException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class RetentionPolicyNormalizer implements DenormalizerInterface, NormalizerInte
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\RetentionPolicy';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\RetentionPolicy';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\RetentionPolicy';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\RetentionPolicy';
     }
     /**
      * @return mixed
@@ -38,22 +38,22 @@ class RetentionPolicyNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\RetentionPolicy();
+        $object = new \Gyroscops\Harbor\Api\Model\RetentionPolicy();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('rules', $data)) {
             $values = array();
             foreach ($data['rules'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Harbor\\Api\\Model\\RetentionRule', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\RetentionRule', 'json', $context);
             }
             $object->setRules($values);
         }
         if (\array_key_exists('scope', $data)) {
-            $object->setScope($this->denormalizer->denormalize($data['scope'], 'Harbor\\Api\\Model\\RetentionPolicyScope', 'json', $context));
+            $object->setScope($this->denormalizer->denormalize($data['scope'], 'Gyroscops\\Harbor\\Api\\Model\\RetentionPolicyScope', 'json', $context));
         }
         if (\array_key_exists('trigger', $data)) {
-            $object->setTrigger($this->denormalizer->denormalize($data['trigger'], 'Harbor\\Api\\Model\\RetentionRuleTrigger', 'json', $context));
+            $object->setTrigger($this->denormalizer->denormalize($data['trigger'], 'Gyroscops\\Harbor\\Api\\Model\\RetentionRuleTrigger', 'json', $context));
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

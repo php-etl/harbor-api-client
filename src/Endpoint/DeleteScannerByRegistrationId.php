@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class DeleteScannerByRegistrationId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class DeleteScannerByRegistrationId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $registration_id;
     /**
@@ -14,7 +14,7 @@ class DeleteScannerByRegistrationId extends \Harbor\Api\Runtime\Client\BaseEndpo
     {
         $this->registration_id = $registrationId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -34,29 +34,29 @@ class DeleteScannerByRegistrationId extends \Harbor\Api\Runtime\Client\BaseEndpo
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\DeleteScannerByRegistrationIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\DeleteScannerByRegistrationIdForbiddenException
-     * @throws \Harbor\Api\Exception\DeleteScannerByRegistrationIdNotFoundException
-     * @throws \Harbor\Api\Exception\DeleteScannerByRegistrationIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\ScannerRegistration
+     * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\ScannerRegistration', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ScannerRegistration', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\DeleteScannerByRegistrationIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\DeleteScannerByRegistrationIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\DeleteScannerByRegistrationIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\DeleteScannerByRegistrationIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

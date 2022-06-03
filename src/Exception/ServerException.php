@@ -1,6 +1,6 @@
 <?php
 
-namespace Harbor\Api\Exception;
+namespace Gyroscops\Harbor\Api\Exception;
 
 interface ServerException extends ApiException
 {

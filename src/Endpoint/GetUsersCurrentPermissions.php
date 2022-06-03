@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetUsersCurrentPermissions extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetUsersCurrentPermissions extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
     * This endpoint is to get the current user permissions.
@@ -19,7 +19,7 @@ class GetUsersCurrentPermissions extends \Harbor\Api\Runtime\Client\BaseEndpoint
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -49,21 +49,21 @@ class GetUsersCurrentPermissions extends \Harbor\Api\Runtime\Client\BaseEndpoint
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetUsersCurrentPermissionsUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetUsersCurrentPermissionsInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersCurrentPermissionsUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersCurrentPermissionsInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\Permission[]
+     * @return null|\Gyroscops\Harbor\Api\Model\Permission[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\Permission[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Permission[]', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetUsersCurrentPermissionsUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsersCurrentPermissionsUnauthorizedException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetUsersCurrentPermissionsInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsersCurrentPermissionsInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

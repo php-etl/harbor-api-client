@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PatchRetentionsByIdExecutionByEid extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PatchRetentionsByIdExecutionByEid extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     protected $eid;
@@ -11,15 +11,15 @@ class PatchRetentionsByIdExecutionByEid extends \Harbor\Api\Runtime\Client\BaseE
      *
      * @param int $id Retention ID.
      * @param int $eid Retention execution ID.
-     * @param \Harbor\Api\Model\RetentionsIdExecutionsEidPatchBody $action The action, only support "stop" now.
+     * @param \Gyroscops\Harbor\Api\Model\RetentionsIdExecutionsEidPatchBody $action The action, only support "stop" now.
      */
-    public function __construct(int $id, int $eid, \Harbor\Api\Model\RetentionsIdExecutionsEidPatchBody $action)
+    public function __construct(int $id, int $eid, \Gyroscops\Harbor\Api\Model\RetentionsIdExecutionsEidPatchBody $action)
     {
         $this->id = $id;
         $this->eid = $eid;
         $this->body = $action;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';
@@ -39,9 +39,9 @@ class PatchRetentionsByIdExecutionByEid extends \Harbor\Api\Runtime\Client\BaseE
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidUnauthorizedException
-     * @throws \Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidForbiddenException
-     * @throws \Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidInternalServerErrorException
      *
      * @return null
      */
@@ -51,13 +51,13 @@ class PatchRetentionsByIdExecutionByEid extends \Harbor\Api\Runtime\Client\BaseE
             return null;
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

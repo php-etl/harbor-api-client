@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class DeleteProjectsByProjectIdWebhookPolicyByPolicyId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class DeleteProjectsByProjectIdWebhookPolicyByPolicyId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     protected $policy_id;
@@ -17,7 +17,7 @@ class DeleteProjectsByProjectIdWebhookPolicyByPolicyId extends \Harbor\Api\Runti
         $this->project_id = $projectId;
         $this->policy_id = $policyId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -37,11 +37,11 @@ class DeleteProjectsByProjectIdWebhookPolicyByPolicyId extends \Harbor\Api\Runti
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException
-     * @throws \Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException
      *
      * @return null
      */
@@ -51,19 +51,19 @@ class DeleteProjectsByProjectIdWebhookPolicyByPolicyId extends \Harbor\Api\Runti
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

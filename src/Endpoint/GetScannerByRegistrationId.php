@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetScannerByRegistrationId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetScannerByRegistrationId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $registration_id;
     /**
@@ -14,7 +14,7 @@ class GetScannerByRegistrationId extends \Harbor\Api\Runtime\Client\BaseEndpoint
     {
         $this->registration_id = $registrationId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,29 +34,29 @@ class GetScannerByRegistrationId extends \Harbor\Api\Runtime\Client\BaseEndpoint
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetScannerByRegistrationIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetScannerByRegistrationIdForbiddenException
-     * @throws \Harbor\Api\Exception\GetScannerByRegistrationIdNotFoundException
-     * @throws \Harbor\Api\Exception\GetScannerByRegistrationIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\ScannerRegistration
+     * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\ScannerRegistration', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ScannerRegistration', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetScannerByRegistrationIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetScannerByRegistrationIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetScannerByRegistrationIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetScannerByRegistrationIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class DeleteUserByUserId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class DeleteUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $user_id;
     /**
@@ -16,7 +16,7 @@ class DeleteUserByUserId extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
     {
         $this->user_id = $userId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -36,11 +36,11 @@ class DeleteUserByUserId extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\DeleteUserByUserIdBadRequestException
-     * @throws \Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\DeleteUserByUserIdForbiddenException
-     * @throws \Harbor\Api\Exception\DeleteUserByUserIdNotFoundException
-     * @throws \Harbor\Api\Exception\DeleteUserByUserIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdInternalServerErrorException
      *
      * @return null
      */
@@ -50,19 +50,19 @@ class DeleteUserByUserId extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\DeleteUserByUserIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\DeleteUserByUserIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\DeleteUserByUserIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\DeleteUserByUserIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetProjectsByProjectIdRobotByRobotId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     protected $robot_id;
@@ -17,7 +17,7 @@ class GetProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client\Ba
         $this->project_id = $projectId;
         $this->robot_id = $robotId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -37,29 +37,29 @@ class GetProjectsByProjectIdRobotByRobotId extends \Harbor\Api\Runtime\Client\Ba
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdForbiddenException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdNotFoundException
-     * @throws \Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\RobotAccount
+     * @return null|\Gyroscops\Harbor\Api\Model\RobotAccount
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\RobotAccount', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RobotAccount', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class DeleteLabelById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class DeleteLabelById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class DeleteLabelById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
     {
         $this->id = $id;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -34,10 +34,10 @@ class DeleteLabelById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\DeleteLabelByIdBadRequestException
-     * @throws \Harbor\Api\Exception\DeleteLabelByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\DeleteLabelByIdNotFoundException
-     * @throws \Harbor\Api\Exception\DeleteLabelByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdInternalServerErrorException
      *
      * @return null
      */
@@ -47,16 +47,16 @@ class DeleteLabelById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\DeleteLabelByIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\DeleteLabelByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdUnauthorizedException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\DeleteLabelByIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\DeleteLabelByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

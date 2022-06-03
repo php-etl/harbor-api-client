@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetSystemScanAllSchedule extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,25 +24,25 @@ class GetSystemScanAllSchedule extends \Harbor\Api\Runtime\Client\BaseEndpoint i
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetSystemScanAllScheduleUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetSystemScanAllScheduleForbiddenException
-     * @throws \Harbor\Api\Exception\GetSystemScanAllScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\AdminJobSchedule
+     * @return null|\Gyroscops\Harbor\Api\Model\AdminJobSchedule
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\AdminJobSchedule', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\AdminJobSchedule', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemScanAllScheduleUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemScanAllScheduleForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemScanAllScheduleInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

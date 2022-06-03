@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostScanner extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostScanner extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * Creats a new scanner registration with the given data.
      *
-     * @param \Harbor\Api\Model\ScannerRegistrationReq $registration A scanner registration to be created.
+     * @param \Gyroscops\Harbor\Api\Model\ScannerRegistrationReq $registration A scanner registration to be created.
      */
-    public function __construct(\Harbor\Api\Model\ScannerRegistrationReq $registration)
+    public function __construct(\Gyroscops\Harbor\Api\Model\ScannerRegistrationReq $registration)
     {
         $this->body = $registration;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,10 +33,10 @@ class PostScanner extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Ha
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostScannerBadRequestException
-     * @throws \Harbor\Api\Exception\PostScannerUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostScannerForbiddenException
-     * @throws \Harbor\Api\Exception\PostScannerInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerInternalServerErrorException
      *
      * @return null
      */
@@ -46,16 +46,16 @@ class PostScanner extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Ha
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostScannerBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostScannerBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostScannerUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostScannerUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostScannerForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostScannerForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostScannerInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostScannerInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

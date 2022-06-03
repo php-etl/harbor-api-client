@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetReplicationExecutionsByIdTasksByTaskIdLog extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetReplicationExecutionsByIdTasksByTaskIdLog extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     protected $task_id;
@@ -17,7 +17,7 @@ class GetReplicationExecutionsByIdTasksByTaskIdLog extends \Harbor\Api\Runtime\C
         $this->id = $id;
         $this->task_id = $taskId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -37,11 +37,11 @@ class GetReplicationExecutionsByIdTasksByTaskIdLog extends \Harbor\Api\Runtime\C
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogBadRequestException
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogForbiddenException
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogNotFoundException
-     * @throws \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogInternalServerErrorException
      *
      * @return null
      */
@@ -51,19 +51,19 @@ class GetReplicationExecutionsByIdTasksByTaskIdLog extends \Harbor\Api\Runtime\C
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

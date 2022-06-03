@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutProjectsByProjectIdImmutabletagruleById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutProjectsByProjectIdImmutabletagruleById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     protected $id;
@@ -11,15 +11,15 @@ class PutProjectsByProjectIdImmutabletagruleById extends \Harbor\Api\Runtime\Cli
      *
      * @param int $projectId Relevant project ID.
      * @param int $id Immutable tag rule ID.
-     * @param \Harbor\Api\Model\RetentionRule $retentionRule 
+     * @param \Gyroscops\Harbor\Api\Model\RetentionRule $retentionRule 
      */
-    public function __construct(int $projectId, int $id, \Harbor\Api\Model\RetentionRule $retentionRule)
+    public function __construct(int $projectId, int $id, \Gyroscops\Harbor\Api\Model\RetentionRule $retentionRule)
     {
         $this->project_id = $projectId;
         $this->id = $id;
         $this->body = $retentionRule;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -39,10 +39,10 @@ class PutProjectsByProjectIdImmutabletagruleById extends \Harbor\Api\Runtime\Cli
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdBadRequestException
-     * @throws \Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdForbiddenException
-     * @throws \Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdInternalServerErrorException
      *
      * @return null
      */
@@ -52,16 +52,16 @@ class PutProjectsByProjectIdImmutabletagruleById extends \Harbor\Api\Runtime\Cli
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

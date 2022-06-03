@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class ChartVersionNormalizer implements DenormalizerInterface, NormalizerInterfa
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\ChartVersion';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\ChartVersion';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\ChartVersion';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\ChartVersion';
     }
     /**
      * @return mixed
@@ -38,14 +38,14 @@ class ChartVersionNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\ChartVersion();
+        $object = new \Gyroscops\Harbor\Api\Model\ChartVersion();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('labels', $data)) {
             $values = array();
             foreach ($data['labels'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Harbor\\Api\\Model\\Label', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\Label', 'json', $context);
             }
             $object->setLabels($values);
         }

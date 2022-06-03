@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostUsergroup extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostUsergroup extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * Create user group information
      *
-     * @param \Harbor\Api\Model\UserGroup $usergroup 
+     * @param \Gyroscops\Harbor\Api\Model\UserGroup $usergroup 
      */
-    public function __construct(\Harbor\Api\Model\UserGroup $usergroup)
+    public function __construct(\Gyroscops\Harbor\Api\Model\UserGroup $usergroup)
     {
         $this->body = $usergroup;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,11 +33,11 @@ class PostUsergroup extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostUsergroupBadRequestException
-     * @throws \Harbor\Api\Exception\PostUsergroupUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostUsergroupForbiddenException
-     * @throws \Harbor\Api\Exception\PostUsergroupConflictException
-     * @throws \Harbor\Api\Exception\PostUsergroupInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupInternalServerErrorException
      *
      * @return null
      */
@@ -47,19 +47,19 @@ class PostUsergroup extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostUsergroupBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostUsergroupUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostUsergroupForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupForbiddenException();
         }
         if (409 === $status) {
-            throw new \Harbor\Api\Exception\PostUsergroupConflictException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupConflictException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostUsergroupInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

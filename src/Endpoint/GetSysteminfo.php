@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetSysteminfo extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetSysteminfo extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,17 +24,17 @@ class GetSysteminfo extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetSysteminfoInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\GeneralInfo
+     * @return null|\Gyroscops\Harbor\Api\Model\GeneralInfo
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\GeneralInfo', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\GeneralInfo', 'json');
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetSysteminfoInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSysteminfoInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

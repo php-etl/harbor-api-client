@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class GCResultNormalizer implements DenormalizerInterface, NormalizerInterface, 
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\GCResult';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\GCResult';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\GCResult';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\GCResult';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class GCResultNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\GCResult();
+        $object = new \Gyroscops\Harbor\Api\Model\GCResult();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -52,7 +52,7 @@ class GCResultNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setJobParameters($data['job_parameters']);
         }
         if (\array_key_exists('schedule', $data)) {
-            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Harbor\\Api\\Model\\AdminJobScheduleObj', 'json', $context));
+            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Gyroscops\\Harbor\\Api\\Model\\AdminJobScheduleObj', 'json', $context));
         }
         if (\array_key_exists('deleted', $data)) {
             $object->setDeleted($data['deleted']);

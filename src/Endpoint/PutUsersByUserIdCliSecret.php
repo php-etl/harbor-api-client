@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutUsersByUserIdCliSecret extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutUsersByUserIdCliSecret extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $user_id;
     /**
@@ -12,14 +12,14 @@ class PutUsersByUserIdCliSecret extends \Harbor\Api\Runtime\Client\BaseEndpoint 
     
     *
     * @param int $userId User ID
-    * @param \Harbor\Api\Model\UsersUserIdCliSecretPutBody $inputSecret JSON object that includes the new secret
+    * @param \Gyroscops\Harbor\Api\Model\UsersUserIdCliSecretPutBody $inputSecret JSON object that includes the new secret
     */
-    public function __construct(int $userId, \Harbor\Api\Model\UsersUserIdCliSecretPutBody $inputSecret)
+    public function __construct(int $userId, \Gyroscops\Harbor\Api\Model\UsersUserIdCliSecretPutBody $inputSecret)
     {
         $this->user_id = $userId;
         $this->body = $inputSecret;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -39,12 +39,12 @@ class PutUsersByUserIdCliSecret extends \Harbor\Api\Runtime\Client\BaseEndpoint 
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdCliSecretBadRequestException
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdCliSecretUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdCliSecretForbiddenException
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdCliSecretNotFoundException
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdCliSecretPreconditionFailedException
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdCliSecretInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretPreconditionFailedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretInternalServerErrorException
      *
      * @return null
      */
@@ -54,22 +54,22 @@ class PutUsersByUserIdCliSecret extends \Harbor\Api\Runtime\Client\BaseEndpoint 
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdCliSecretBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdCliSecretUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdCliSecretForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdCliSecretNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretNotFoundException();
         }
         if (412 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdCliSecretPreconditionFailedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretPreconditionFailedException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdCliSecretInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

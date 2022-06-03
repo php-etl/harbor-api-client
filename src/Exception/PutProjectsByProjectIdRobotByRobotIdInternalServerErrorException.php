@@ -1,6 +1,6 @@
 <?php
 
-namespace Harbor\Api\Exception;
+namespace Gyroscops\Harbor\Api\Exception;
 
 class PutProjectsByProjectIdRobotByRobotIdInternalServerErrorException extends InternalServerErrorException
 {

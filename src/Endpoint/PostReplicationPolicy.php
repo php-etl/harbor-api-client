@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostReplicationPolicy extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostReplicationPolicy extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint let user create a replication policy
      *
-     * @param \Harbor\Api\Model\ReplicationPolicy $policy The policy model.
+     * @param \Gyroscops\Harbor\Api\Model\ReplicationPolicy $policy The policy model.
      */
-    public function __construct(\Harbor\Api\Model\ReplicationPolicy $policy)
+    public function __construct(\Gyroscops\Harbor\Api\Model\ReplicationPolicy $policy)
     {
         $this->body = $policy;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,12 +33,12 @@ class PostReplicationPolicy extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostReplicationPolicyBadRequestException
-     * @throws \Harbor\Api\Exception\PostReplicationPolicyUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostReplicationPolicyForbiddenException
-     * @throws \Harbor\Api\Exception\PostReplicationPolicyConflictException
-     * @throws \Harbor\Api\Exception\PostReplicationPolicyUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\PostReplicationPolicyInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyInternalServerErrorException
      *
      * @return null
      */
@@ -48,22 +48,22 @@ class PostReplicationPolicy extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationPolicyBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationPolicyUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationPolicyForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyForbiddenException();
         }
         if (409 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationPolicyConflictException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyConflictException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationPolicyUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostReplicationPolicyInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostLdapPing extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostLdapPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint ping the available ldap service for test related configuration parameters.
      *
-     * @param \Harbor\Api\Model\LdapConf $ldapconf ldap configuration. support input ldap service configuration. If it's a empty request, will load current configuration from the system.
+     * @param \Gyroscops\Harbor\Api\Model\LdapConf $ldapconf ldap configuration. support input ldap service configuration. If it's a empty request, will load current configuration from the system.
      */
-    public function __construct(\Harbor\Api\Model\LdapConf $ldapconf)
+    public function __construct(\Gyroscops\Harbor\Api\Model\LdapConf $ldapconf)
     {
         $this->body = $ldapconf;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,11 +33,11 @@ class PostLdapPing extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostLdapPingBadRequestException
-     * @throws \Harbor\Api\Exception\PostLdapPingUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostLdapPingForbiddenException
-     * @throws \Harbor\Api\Exception\PostLdapPingUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\PostLdapPingInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingInternalServerErrorException
      *
      * @return null
      */
@@ -47,19 +47,19 @@ class PostLdapPing extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostLdapPingBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostLdapPingUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostLdapPingForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingForbiddenException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PostLdapPingUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostLdapPingInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

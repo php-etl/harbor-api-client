@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class ProjectSummaryNormalizer implements DenormalizerInterface, NormalizerInter
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\ProjectSummary';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\ProjectSummary';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\ProjectSummary';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\ProjectSummary';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class ProjectSummaryNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\ProjectSummary();
+        $object = new \Gyroscops\Harbor\Api\Model\ProjectSummary();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +58,7 @@ class ProjectSummaryNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setRepoCount($data['repo_count']);
         }
         if (\array_key_exists('quota', $data)) {
-            $object->setQuota($this->denormalizer->denormalize($data['quota'], 'Harbor\\Api\\Model\\ProjectSummaryQuota', 'json', $context));
+            $object->setQuota($this->denormalizer->denormalize($data['quota'], 'Gyroscops\\Harbor\\Api\\Model\\ProjectSummaryQuota', 'json', $context));
         }
         if (\array_key_exists('guest_count', $data)) {
             $object->setGuestCount($data['guest_count']);

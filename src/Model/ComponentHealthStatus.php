@@ -1,6 +1,6 @@
 <?php
 
-namespace Harbor\Api\Model;
+namespace Gyroscops\Harbor\Api\Model;
 
 class ComponentHealthStatus
 {

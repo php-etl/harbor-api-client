@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostRegistry extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostRegistry extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint is for user to create a new registry.
      *
-     * @param \Harbor\Api\Model\Registry $registry New created registry.
+     * @param \Gyroscops\Harbor\Api\Model\Registry $registry New created registry.
      */
-    public function __construct(\Harbor\Api\Model\Registry $registry)
+    public function __construct(\Gyroscops\Harbor\Api\Model\Registry $registry)
     {
         $this->body = $registry;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,11 +33,11 @@ class PostRegistry extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostRegistryBadRequestException
-     * @throws \Harbor\Api\Exception\PostRegistryUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostRegistryConflictException
-     * @throws \Harbor\Api\Exception\PostRegistryUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\PostRegistryInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryInternalServerErrorException
      *
      * @return null
      */
@@ -47,19 +47,19 @@ class PostRegistry extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostRegistryBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostRegistryUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryUnauthorizedException();
         }
         if (409 === $status) {
-            throw new \Harbor\Api\Exception\PostRegistryConflictException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryConflictException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PostRegistryUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostRegistryInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

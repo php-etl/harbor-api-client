@@ -1,22 +1,22 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutUserByUserId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $user_id;
     /**
      * This endpoint let a registered user change his profile.
      *
      * @param int $userId Registered user ID
-     * @param \Harbor\Api\Model\UserProfile $profile Only email, realname and comment can be modified.
+     * @param \Gyroscops\Harbor\Api\Model\UserProfile $profile Only email, realname and comment can be modified.
      */
-    public function __construct(int $userId, \Harbor\Api\Model\UserProfile $profile)
+    public function __construct(int $userId, \Gyroscops\Harbor\Api\Model\UserProfile $profile)
     {
         $this->user_id = $userId;
         $this->body = $profile;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -36,11 +36,11 @@ class PutUserByUserId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutUserByUserIdBadRequestException
-     * @throws \Harbor\Api\Exception\PutUserByUserIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutUserByUserIdForbiddenException
-     * @throws \Harbor\Api\Exception\PutUserByUserIdNotFoundException
-     * @throws \Harbor\Api\Exception\PutUserByUserIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdInternalServerErrorException
      *
      * @return null
      */
@@ -50,19 +50,19 @@ class PutUserByUserId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutUserByUserIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutUserByUserIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutUserByUserIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PutUserByUserIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutUserByUserIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

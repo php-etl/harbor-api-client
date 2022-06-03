@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetUsergroupByGroupId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetUsergroupByGroupId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $group_id;
     /**
@@ -14,7 +14,7 @@ class GetUsergroupByGroupId extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
     {
         $this->group_id = $groupId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,33 +34,33 @@ class GetUsergroupByGroupId extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetUsergroupByGroupIdBadRequestException
-     * @throws \Harbor\Api\Exception\GetUsergroupByGroupIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetUsergroupByGroupIdForbiddenException
-     * @throws \Harbor\Api\Exception\GetUsergroupByGroupIdNotFoundException
-     * @throws \Harbor\Api\Exception\GetUsergroupByGroupIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\UserGroup
+     * @return null|\Gyroscops\Harbor\Api\Model\UserGroup
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\UserGroup', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UserGroup', 'json');
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\GetUsergroupByGroupIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetUsergroupByGroupIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetUsergroupByGroupIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetUsergroupByGroupIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetUsergroupByGroupIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

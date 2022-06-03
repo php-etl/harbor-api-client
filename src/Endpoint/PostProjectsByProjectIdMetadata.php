@@ -1,22 +1,22 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostProjectsByProjectIdMetadata extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostProjectsByProjectIdMetadata extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
      * This endpoint is aimed to add metadata of a project.
      *
      * @param int $projectId Selected project ID.
-     * @param \Harbor\Api\Model\ProjectMetadata $metadata The metadata of project.
+     * @param \Gyroscops\Harbor\Api\Model\ProjectMetadata $metadata The metadata of project.
      */
-    public function __construct(int $projectId, \Harbor\Api\Model\ProjectMetadata $metadata)
+    public function __construct(int $projectId, \Gyroscops\Harbor\Api\Model\ProjectMetadata $metadata)
     {
         $this->project_id = $projectId;
         $this->body = $metadata;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -36,12 +36,12 @@ class PostProjectsByProjectIdMetadata extends \Harbor\Api\Runtime\Client\BaseEnd
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdMetadataBadRequestException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdMetadataForbiddenException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdMetadataNotFoundException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdMetadataInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataInternalServerErrorException
      *
      * @return null
      */
@@ -51,22 +51,22 @@ class PostProjectsByProjectIdMetadata extends \Harbor\Api\Runtime\Client\BaseEnd
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdMetadataBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdMetadataForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdMetadataNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataNotFoundException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdMetadataInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -1,22 +1,22 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutLabelById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutLabelById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
      * This endpoint let user update label properties.
      *
      * @param int $id Label ID
-     * @param \Harbor\Api\Model\Label $label The updated label json object.
+     * @param \Gyroscops\Harbor\Api\Model\Label $label The updated label json object.
      */
-    public function __construct(int $id, \Harbor\Api\Model\Label $label)
+    public function __construct(int $id, \Gyroscops\Harbor\Api\Model\Label $label)
     {
         $this->id = $id;
         $this->body = $label;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -36,11 +36,11 @@ class PutLabelById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutLabelByIdBadRequestException
-     * @throws \Harbor\Api\Exception\PutLabelByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutLabelByIdNotFoundException
-     * @throws \Harbor\Api\Exception\PutLabelByIdConflictException
-     * @throws \Harbor\Api\Exception\PutLabelByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdInternalServerErrorException
      *
      * @return null
      */
@@ -50,19 +50,19 @@ class PutLabelById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutLabelByIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutLabelByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdUnauthorizedException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PutLabelByIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdNotFoundException();
         }
         if (409 === $status) {
-            throw new \Harbor\Api\Exception\PutLabelByIdConflictException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdConflictException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutLabelByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

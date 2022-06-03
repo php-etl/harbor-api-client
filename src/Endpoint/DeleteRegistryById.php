@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class DeleteRegistryById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class DeleteRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class DeleteRegistryById extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
     {
         $this->id = $id;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -34,10 +34,10 @@ class DeleteRegistryById extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\DeleteRegistryByIdBadRequestException
-     * @throws \Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\DeleteRegistryByIdNotFoundException
-     * @throws \Harbor\Api\Exception\DeleteRegistryByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdInternalServerErrorException
      *
      * @return null
      */
@@ -47,16 +47,16 @@ class DeleteRegistryById extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\DeleteRegistryByIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\DeleteRegistryByIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\DeleteRegistryByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

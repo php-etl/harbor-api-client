@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\Project';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\Project';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\Project';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\Project';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\Project();
+        $object = new \Gyroscops\Harbor\Api\Model\Project();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,10 +83,10 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setChartCount($data['chart_count']);
         }
         if (\array_key_exists('cve_whitelist', $data)) {
-            $object->setCveWhitelist($this->denormalizer->denormalize($data['cve_whitelist'], 'Harbor\\Api\\Model\\CVEWhitelist', 'json', $context));
+            $object->setCveWhitelist($this->denormalizer->denormalize($data['cve_whitelist'], 'Gyroscops\\Harbor\\Api\\Model\\CVEWhitelist', 'json', $context));
         }
         if (\array_key_exists('metadata', $data)) {
-            $object->setMetadata($this->denormalizer->denormalize($data['metadata'], 'Harbor\\Api\\Model\\ProjectMetadata', 'json', $context));
+            $object->setMetadata($this->denormalizer->denormalize($data['metadata'], 'Gyroscops\\Harbor\\Api\\Model\\ProjectMetadata', 'json', $context));
         }
         return $object;
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class DeleteReplicationPolicyById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class DeleteReplicationPolicyById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class DeleteReplicationPolicyById extends \Harbor\Api\Runtime\Client\BaseEndpoin
     {
         $this->id = $id;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -34,12 +34,12 @@ class DeleteReplicationPolicyById extends \Harbor\Api\Runtime\Client\BaseEndpoin
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\DeleteReplicationPolicyByIdBadRequestException
-     * @throws \Harbor\Api\Exception\DeleteReplicationPolicyByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\DeleteReplicationPolicyByIdForbiddenException
-     * @throws \Harbor\Api\Exception\DeleteReplicationPolicyByIdNotFoundException
-     * @throws \Harbor\Api\Exception\DeleteReplicationPolicyByIdPreconditionFailedException
-     * @throws \Harbor\Api\Exception\DeleteReplicationPolicyByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdPreconditionFailedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdInternalServerErrorException
      *
      * @return null
      */
@@ -49,22 +49,22 @@ class DeleteReplicationPolicyById extends \Harbor\Api\Runtime\Client\BaseEndpoin
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\DeleteReplicationPolicyByIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\DeleteReplicationPolicyByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\DeleteReplicationPolicyByIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\DeleteReplicationPolicyByIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdNotFoundException();
         }
         if (412 === $status) {
-            throw new \Harbor\Api\Exception\DeleteReplicationPolicyByIdPreconditionFailedException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdPreconditionFailedException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\DeleteReplicationPolicyByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

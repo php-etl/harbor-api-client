@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostRegistriesPing extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostRegistriesPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint checks status of a registry, the registry can be given by ID or URL (together with credential)
      *
-     * @param \Harbor\Api\Model\Registry $registry Registry to ping.
+     * @param \Gyroscops\Harbor\Api\Model\Registry $registry Registry to ping.
      */
-    public function __construct(\Harbor\Api\Model\Registry $registry)
+    public function __construct(\Gyroscops\Harbor\Api\Model\Registry $registry)
     {
         $this->body = $registry;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -33,11 +33,11 @@ class PostRegistriesPing extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostRegistriesPingBadRequestException
-     * @throws \Harbor\Api\Exception\PostRegistriesPingUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostRegistriesPingNotFoundException
-     * @throws \Harbor\Api\Exception\PostRegistriesPingUnsupportedMediaTypeException
-     * @throws \Harbor\Api\Exception\PostRegistriesPingInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingInternalServerErrorException
      *
      * @return null
      */
@@ -47,19 +47,19 @@ class PostRegistriesPing extends \Harbor\Api\Runtime\Client\BaseEndpoint impleme
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostRegistriesPingBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostRegistriesPingUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnauthorizedException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PostRegistriesPingNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingNotFoundException();
         }
         if (415 === $status) {
-            throw new \Harbor\Api\Exception\PostRegistriesPingUnsupportedMediaTypeException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnsupportedMediaTypeException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostRegistriesPingInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

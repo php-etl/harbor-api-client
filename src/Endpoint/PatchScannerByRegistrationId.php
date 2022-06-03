@@ -1,22 +1,22 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PatchScannerByRegistrationId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PatchScannerByRegistrationId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $registration_id;
     /**
      * Set the specified scanner registration as the system default one.
      *
      * @param string $registrationId The scanner registration identifier.
-     * @param \Harbor\Api\Model\IsDefault $payload 
+     * @param \Gyroscops\Harbor\Api\Model\IsDefault $payload 
      */
-    public function __construct(string $registrationId, \Harbor\Api\Model\IsDefault $payload)
+    public function __construct(string $registrationId, \Gyroscops\Harbor\Api\Model\IsDefault $payload)
     {
         $this->registration_id = $registrationId;
         $this->body = $payload;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';
@@ -36,9 +36,9 @@ class PatchScannerByRegistrationId extends \Harbor\Api\Runtime\Client\BaseEndpoi
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PatchScannerByRegistrationIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\PatchScannerByRegistrationIdForbiddenException
-     * @throws \Harbor\Api\Exception\PatchScannerByRegistrationIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdInternalServerErrorException
      *
      * @return null
      */
@@ -48,13 +48,13 @@ class PatchScannerByRegistrationId extends \Harbor\Api\Runtime\Client\BaseEndpoi
             return null;
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PatchScannerByRegistrationIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PatchScannerByRegistrationIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PatchScannerByRegistrationIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

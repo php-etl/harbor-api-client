@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class ScannerNormalizer implements DenormalizerInterface, NormalizerInterface, D
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\Scanner';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\Scanner';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\Scanner';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\Scanner';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class ScannerNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\Scanner();
+        $object = new \Gyroscops\Harbor\Api\Model\Scanner();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

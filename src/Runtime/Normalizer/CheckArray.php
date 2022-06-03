@@ -1,6 +1,6 @@
 <?php
 
-namespace Harbor\Api\Runtime\Normalizer;
+namespace Gyroscops\Harbor\Api\Runtime\Normalizer;
 
 trait CheckArray
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class ReplicationPolicyNormalizer implements DenormalizerInterface, NormalizerIn
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\ReplicationPolicy';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\ReplicationPolicy';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\ReplicationPolicy';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\ReplicationPolicy';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class ReplicationPolicyNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\ReplicationPolicy();
+        $object = new \Gyroscops\Harbor\Api\Model\ReplicationPolicy();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,24 +54,24 @@ class ReplicationPolicyNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('filters', $data)) {
             $values = array();
             foreach ($data['filters'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Harbor\\Api\\Model\\ReplicationFilter', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\ReplicationFilter', 'json', $context);
             }
             $object->setFilters($values);
         }
         if (\array_key_exists('dest_registry', $data)) {
-            $object->setDestRegistry($this->denormalizer->denormalize($data['dest_registry'], 'Harbor\\Api\\Model\\Registry', 'json', $context));
+            $object->setDestRegistry($this->denormalizer->denormalize($data['dest_registry'], 'Gyroscops\\Harbor\\Api\\Model\\Registry', 'json', $context));
         }
         if (\array_key_exists('creation_time', $data)) {
             $object->setCreationTime($data['creation_time']);
         }
         if (\array_key_exists('src_registry', $data)) {
-            $object->setSrcRegistry($this->denormalizer->denormalize($data['src_registry'], 'Harbor\\Api\\Model\\Registry', 'json', $context));
+            $object->setSrcRegistry($this->denormalizer->denormalize($data['src_registry'], 'Gyroscops\\Harbor\\Api\\Model\\Registry', 'json', $context));
         }
         if (\array_key_exists('dest_namespace', $data)) {
             $object->setDestNamespace($data['dest_namespace']);
         }
         if (\array_key_exists('trigger', $data)) {
-            $object->setTrigger($this->denormalizer->denormalize($data['trigger'], 'Harbor\\Api\\Model\\ReplicationTrigger', 'json', $context));
+            $object->setTrigger($this->denormalizer->denormalize($data['trigger'], 'Gyroscops\\Harbor\\Api\\Model\\ReplicationTrigger', 'json', $context));
         }
         if (\array_key_exists('deletion', $data)) {
             $object->setDeletion($data['deletion']);

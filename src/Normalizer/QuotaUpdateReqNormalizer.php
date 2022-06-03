@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class QuotaUpdateReqNormalizer implements DenormalizerInterface, NormalizerInter
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\QuotaUpdateReq';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\QuotaUpdateReq';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\QuotaUpdateReq';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\QuotaUpdateReq';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class QuotaUpdateReqNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\QuotaUpdateReq();
+        $object = new \Gyroscops\Harbor\Api\Model\QuotaUpdateReq();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

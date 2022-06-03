@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetLabelById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetLabelById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class GetLabelById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
     {
         $this->id = $id;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,25 +34,25 @@ class GetLabelById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetLabelByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetLabelByIdNotFoundException
-     * @throws \Harbor\Api\Exception\GetLabelByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\Label
+     * @return null|\Gyroscops\Harbor\Api\Model\Label
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\Label', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Label', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetLabelByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLabelByIdUnauthorizedException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetLabelByIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLabelByIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetLabelByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetLabelByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

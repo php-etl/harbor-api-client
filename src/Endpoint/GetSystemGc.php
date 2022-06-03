@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetSystemGc extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetSystemGc extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,25 +24,25 @@ class GetSystemGc extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Ha
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetSystemGcUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetSystemGcForbiddenException
-     * @throws \Harbor\Api\Exception\GetSystemGcInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\GCResult[]
+     * @return null|\Gyroscops\Harbor\Api\Model\GCResult[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\GCResult[]', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\GCResult[]', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemGcInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

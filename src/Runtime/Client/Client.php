@@ -1,6 +1,6 @@
 <?php
 
-namespace Harbor\Api\Runtime\Client;
+namespace Gyroscops\Harbor\Api\Runtime\Client;
 
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use Psr\Http\Client\ClientInterface;

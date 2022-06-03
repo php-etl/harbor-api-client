@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class OverallHealthStatusNormalizer implements DenormalizerInterface, Normalizer
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\OverallHealthStatus';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\OverallHealthStatus';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\OverallHealthStatus';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\OverallHealthStatus';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class OverallHealthStatusNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\OverallHealthStatus();
+        $object = new \Gyroscops\Harbor\Api\Model\OverallHealthStatus();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -48,7 +48,7 @@ class OverallHealthStatusNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('components', $data)) {
             $values = array();
             foreach ($data['components'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Harbor\\Api\\Model\\ComponentHealthStatus', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\ComponentHealthStatus', 'json', $context);
             }
             $object->setComponents($values);
         }

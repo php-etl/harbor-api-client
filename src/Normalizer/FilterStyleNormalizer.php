@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class FilterStyleNormalizer implements DenormalizerInterface, NormalizerInterfac
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\FilterStyle';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\FilterStyle';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\FilterStyle';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\FilterStyle';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class FilterStyleNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\FilterStyle();
+        $object = new \Gyroscops\Harbor\Api\Model\FilterStyle();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

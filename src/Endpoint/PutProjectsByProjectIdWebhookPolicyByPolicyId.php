@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutProjectsByProjectIdWebhookPolicyByPolicyId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutProjectsByProjectIdWebhookPolicyByPolicyId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     protected $policy_id;
@@ -11,15 +11,15 @@ class PutProjectsByProjectIdWebhookPolicyByPolicyId extends \Harbor\Api\Runtime\
      *
      * @param int $projectId Relevant project ID.
      * @param int $policyId The id of webhook policy.
-     * @param \Harbor\Api\Model\WebhookPolicy $policy All properties needed except "id", "project_id", "creation_time", "update_time".
+     * @param \Gyroscops\Harbor\Api\Model\WebhookPolicy $policy All properties needed except "id", "project_id", "creation_time", "update_time".
      */
-    public function __construct(int $projectId, int $policyId, \Harbor\Api\Model\WebhookPolicy $policy)
+    public function __construct(int $projectId, int $policyId, \Gyroscops\Harbor\Api\Model\WebhookPolicy $policy)
     {
         $this->project_id = $projectId;
         $this->policy_id = $policyId;
         $this->body = $policy;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -39,11 +39,11 @@ class PutProjectsByProjectIdWebhookPolicyByPolicyId extends \Harbor\Api\Runtime\
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
-     * @throws \Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
-     * @throws \Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException
-     * @throws \Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException
      *
      * @return null
      */
@@ -53,19 +53,19 @@ class PutProjectsByProjectIdWebhookPolicyByPolicyId extends \Harbor\Api\Runtime\
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

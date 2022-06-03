@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class ConfigurationsScanAllPolicyNormalizer implements DenormalizerInterface, No
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\ConfigurationsScanAllPolicy';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\ConfigurationsScanAllPolicy';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\ConfigurationsScanAllPolicy';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\ConfigurationsScanAllPolicy';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class ConfigurationsScanAllPolicyNormalizer implements DenormalizerInterface, No
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\ConfigurationsScanAllPolicy();
+        $object = new \Gyroscops\Harbor\Api\Model\ConfigurationsScanAllPolicy();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -46,7 +46,7 @@ class ConfigurationsScanAllPolicyNormalizer implements DenormalizerInterface, No
             $object->setType($data['type']);
         }
         if (\array_key_exists('parameter', $data)) {
-            $object->setParameter($this->denormalizer->denormalize($data['parameter'], 'Harbor\\Api\\Model\\ConfigurationsScanAllPolicyParameter', 'json', $context));
+            $object->setParameter($this->denormalizer->denormalize($data['parameter'], 'Gyroscops\\Harbor\\Api\\Model\\ConfigurationsScanAllPolicyParameter', 'json', $context));
         }
         return $object;
     }

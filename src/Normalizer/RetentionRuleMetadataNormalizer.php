@@ -1,9 +1,9 @@
 <?php
 
-namespace Harbor\Api\Normalizer;
+namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -21,11 +21,11 @@ class RetentionRuleMetadataNormalizer implements DenormalizerInterface, Normaliz
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Harbor\\Api\\Model\\RetentionRuleMetadata';
+        return $type === 'Gyroscops\\Harbor\\Api\\Model\\RetentionRuleMetadata';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Harbor\\Api\\Model\\RetentionRuleMetadata';
+        return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\RetentionRuleMetadata';
     }
     /**
      * @return mixed
@@ -38,7 +38,7 @@ class RetentionRuleMetadataNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Harbor\Api\Model\RetentionRuleMetadata();
+        $object = new \Gyroscops\Harbor\Api\Model\RetentionRuleMetadata();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -51,7 +51,7 @@ class RetentionRuleMetadataNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('params', $data)) {
             $values = array();
             foreach ($data['params'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Harbor\\Api\\Model\\RetentionRuleParamMetadata', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\RetentionRuleParamMetadata', 'json', $context);
             }
             $object->setParams($values);
         }

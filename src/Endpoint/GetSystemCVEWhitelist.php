@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetSystemCVEWhitelist extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetSystemCVEWhitelist extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,21 +24,21 @@ class GetSystemCVEWhitelist extends \Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetSystemCVEWhitelistUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetSystemCVEWhitelistInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemCVEWhitelistUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemCVEWhitelistInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\CVEWhitelist
+     * @return null|\Gyroscops\Harbor\Api\Model\CVEWhitelist
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\CVEWhitelist', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\CVEWhitelist', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemCVEWhitelistUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemCVEWhitelistUnauthorizedException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetSystemCVEWhitelistInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemCVEWhitelistInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

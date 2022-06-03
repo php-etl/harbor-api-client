@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetRegistryById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class GetRegistryById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
     {
         $this->id = $id;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -34,25 +34,25 @@ class GetRegistryById extends \Harbor\Api\Runtime\Client\BaseEndpoint implements
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetRegistryByIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetRegistryByIdNotFoundException
-     * @throws \Harbor\Api\Exception\GetRegistryByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistryByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistryByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistryByIdInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\Registry
+     * @return null|\Gyroscops\Harbor\Api\Model\Registry
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\Registry', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Registry', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistryByIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistryByIdUnauthorizedException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistryByIdNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistryByIdNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetRegistryByIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistryByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

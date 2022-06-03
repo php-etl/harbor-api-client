@@ -1,10 +1,10 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class GetStatistic extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class GetStatistic extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -24,21 +24,21 @@ class GetStatistic extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \H
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\GetStatisticUnauthorizedException
-     * @throws \Harbor\Api\Exception\GetStatisticInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetStatisticUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetStatisticInternalServerErrorException
      *
-     * @return null|\Harbor\Api\Model\StatisticMap
+     * @return null|\Gyroscops\Harbor\Api\Model\StatisticMap
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Harbor\\Api\\Model\\StatisticMap', 'json');
+            return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\StatisticMap', 'json');
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\GetStatisticUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetStatisticUnauthorizedException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\GetStatisticInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\GetStatisticInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

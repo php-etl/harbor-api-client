@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class DeleteUsergroupByGroupId extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class DeleteUsergroupByGroupId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $group_id;
     /**
@@ -14,7 +14,7 @@ class DeleteUsergroupByGroupId extends \Harbor\Api\Runtime\Client\BaseEndpoint i
     {
         $this->group_id = $groupId;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -34,10 +34,10 @@ class DeleteUsergroupByGroupId extends \Harbor\Api\Runtime\Client\BaseEndpoint i
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\DeleteUsergroupByGroupIdBadRequestException
-     * @throws \Harbor\Api\Exception\DeleteUsergroupByGroupIdUnauthorizedException
-     * @throws \Harbor\Api\Exception\DeleteUsergroupByGroupIdForbiddenException
-     * @throws \Harbor\Api\Exception\DeleteUsergroupByGroupIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdInternalServerErrorException
      *
      * @return null
      */
@@ -47,16 +47,16 @@ class DeleteUsergroupByGroupId extends \Harbor\Api\Runtime\Client\BaseEndpoint i
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\DeleteUsergroupByGroupIdBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\DeleteUsergroupByGroupIdUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\DeleteUsergroupByGroupIdForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\DeleteUsergroupByGroupIdInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

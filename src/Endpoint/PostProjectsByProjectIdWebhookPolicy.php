@@ -1,22 +1,22 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PostProjectsByProjectIdWebhookPolicy extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PostProjectsByProjectIdWebhookPolicy extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
      * This endpoint create a webhook policy if the project does not have one.
      *
      * @param int $projectId Relevant project ID
-     * @param \Harbor\Api\Model\WebhookPolicy $policy Properties "targets" and "event_types" needed.
+     * @param \Gyroscops\Harbor\Api\Model\WebhookPolicy $policy Properties "targets" and "event_types" needed.
      */
-    public function __construct(int $projectId, \Harbor\Api\Model\WebhookPolicy $policy)
+    public function __construct(int $projectId, \Gyroscops\Harbor\Api\Model\WebhookPolicy $policy)
     {
         $this->project_id = $projectId;
         $this->body = $policy;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -36,10 +36,10 @@ class PostProjectsByProjectIdWebhookPolicy extends \Harbor\Api\Runtime\Client\Ba
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyBadRequestException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyUnauthorizedException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyForbiddenException
-     * @throws \Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyInternalServerErrorException
      *
      * @return null
      */
@@ -49,16 +49,16 @@ class PostProjectsByProjectIdWebhookPolicy extends \Harbor\Api\Runtime\Client\Ba
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

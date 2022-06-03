@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutUsersByUserIdSysadmin extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutUsersByUserIdSysadmin extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     protected $user_id;
     /**
@@ -11,14 +11,14 @@ class PutUsersByUserIdSysadmin extends \Harbor\Api\Runtime\Client\BaseEndpoint i
     
     *
     * @param int $userId Registered user ID
-    * @param \Harbor\Api\Model\SysAdminFlag $sysadminFlag Toggle a user to admin or not.
+    * @param \Gyroscops\Harbor\Api\Model\SysAdminFlag $sysadminFlag Toggle a user to admin or not.
     */
-    public function __construct(int $userId, \Harbor\Api\Model\SysAdminFlag $sysadminFlag)
+    public function __construct(int $userId, \Gyroscops\Harbor\Api\Model\SysAdminFlag $sysadminFlag)
     {
         $this->user_id = $userId;
         $this->body = $sysadminFlag;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -38,11 +38,11 @@ class PutUsersByUserIdSysadmin extends \Harbor\Api\Runtime\Client\BaseEndpoint i
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdSysadminBadRequestException
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdSysadminUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdSysadminForbiddenException
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdSysadminNotFoundException
-     * @throws \Harbor\Api\Exception\PutUsersByUserIdSysadminInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminInternalServerErrorException
      *
      * @return null
      */
@@ -52,19 +52,19 @@ class PutUsersByUserIdSysadmin extends \Harbor\Api\Runtime\Client\BaseEndpoint i
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdSysadminBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdSysadminUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdSysadminForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminForbiddenException();
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdSysadminNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutUsersByUserIdSysadminInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

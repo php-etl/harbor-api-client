@@ -1,19 +1,19 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class PutSystemGcSchedule extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class PutSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint is for update gc schedule.
      *
-     * @param \Harbor\Api\Model\AdminJobSchedule $schedule Updates of gc's schedule.
+     * @param \Gyroscops\Harbor\Api\Model\AdminJobSchedule $schedule Updates of gc's schedule.
      */
-    public function __construct(\Harbor\Api\Model\AdminJobSchedule $schedule)
+    public function __construct(\Gyroscops\Harbor\Api\Model\AdminJobSchedule $schedule)
     {
         $this->body = $schedule;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -33,10 +33,10 @@ class PutSystemGcSchedule extends \Harbor\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\PutSystemGcScheduleBadRequestException
-     * @throws \Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException
-     * @throws \Harbor\Api\Exception\PutSystemGcScheduleForbiddenException
-     * @throws \Harbor\Api\Exception\PutSystemGcScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleInternalServerErrorException
      *
      * @return null
      */
@@ -46,16 +46,16 @@ class PutSystemGcSchedule extends \Harbor\Api\Runtime\Client\BaseEndpoint implem
             return null;
         }
         if (400 === $status) {
-            throw new \Harbor\Api\Exception\PutSystemGcScheduleBadRequestException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException();
         }
         if (401 === $status) {
-            throw new \Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException();
         }
         if (403 === $status) {
-            throw new \Harbor\Api\Exception\PutSystemGcScheduleForbiddenException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleForbiddenException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\PutSystemGcScheduleInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

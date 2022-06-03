@@ -1,8 +1,8 @@
 <?php
 
-namespace Harbor\Api\Endpoint;
+namespace Gyroscops\Harbor\Api\Endpoint;
 
-class HeadProject extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Harbor\Api\Runtime\Client\Endpoint
+class HeadProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     /**
      * This endpoint is used to check if the project name user provided already exist.
@@ -15,7 +15,7 @@ class HeadProject extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Ha
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Harbor\Api\Runtime\Client\EndpointTrait;
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'HEAD';
@@ -44,8 +44,8 @@ class HeadProject extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Ha
     /**
      * {@inheritdoc}
      *
-     * @throws \Harbor\Api\Exception\HeadProjectNotFoundException
-     * @throws \Harbor\Api\Exception\HeadProjectInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\HeadProjectNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\HeadProjectInternalServerErrorException
      *
      * @return null
      */
@@ -55,10 +55,10 @@ class HeadProject extends \Harbor\Api\Runtime\Client\BaseEndpoint implements \Ha
             return null;
         }
         if (404 === $status) {
-            throw new \Harbor\Api\Exception\HeadProjectNotFoundException();
+            throw new \Gyroscops\Harbor\Api\Exception\HeadProjectNotFoundException();
         }
         if (500 === $status) {
-            throw new \Harbor\Api\Exception\HeadProjectInternalServerErrorException();
+            throw new \Gyroscops\Harbor\Api\Exception\HeadProjectInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

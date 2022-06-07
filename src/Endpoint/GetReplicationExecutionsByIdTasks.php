@@ -34,10 +34,10 @@ class GetReplicationExecutionsByIdTasks extends \Gyroscops\Harbor\Api\Runtime\Cl
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ReplicationTask[]
@@ -47,17 +47,17 @@ class GetReplicationExecutionsByIdTasks extends \Gyroscops\Harbor\Api\Runtime\Cl
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ReplicationTask[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksInternalServerErrorException();

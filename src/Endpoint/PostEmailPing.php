@@ -33,10 +33,10 @@ class PostEmailPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingInternalServerErrorException
      *
      * @return null
@@ -46,17 +46,17 @@ class PostEmailPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingForbiddenException();
-        }
         if (415 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingUnsupportedMediaTypeException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostEmailPingInternalServerErrorException();

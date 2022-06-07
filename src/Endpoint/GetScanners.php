@@ -24,10 +24,10 @@ class GetScanners extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScannersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScannersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration[]
      */
@@ -36,17 +36,17 @@ class GetScanners extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ScannerRegistration[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetScannersBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetScannersForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetScannersUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetScannersForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetScannersInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetScannersBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

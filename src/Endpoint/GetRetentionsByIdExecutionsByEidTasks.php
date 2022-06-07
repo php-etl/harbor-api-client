@@ -37,8 +37,8 @@ class GetRetentionsByIdExecutionsByEidTasks extends \Gyroscops\Harbor\Api\Runtim
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RetentionExecutionTask[]
@@ -48,11 +48,11 @@ class GetRetentionsByIdExecutionsByEidTasks extends \Gyroscops\Harbor\Api\Runtim
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RetentionExecutionTask[]', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksInternalServerErrorException();

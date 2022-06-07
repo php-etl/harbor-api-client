@@ -39,10 +39,10 @@ class PutProjectsByProjectIdWebhookPolicyByPolicyId extends \Gyroscops\Harbor\Ap
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException
      *
      * @return null
@@ -52,17 +52,17 @@ class PutProjectsByProjectIdWebhookPolicyByPolicyId extends \Gyroscops\Harbor\Ap
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException();

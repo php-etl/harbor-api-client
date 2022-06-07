@@ -36,11 +36,11 @@ class PutRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint 
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdConflictException
      *
      * @return null
      */
@@ -49,20 +49,20 @@ class PutRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint 
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdNotFoundException();
+        }
+        if (500 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdUnauthorizedException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdNotFoundException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException();
         }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdConflictException();
-        }
-        if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

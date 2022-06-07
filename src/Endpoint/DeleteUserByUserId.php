@@ -36,10 +36,10 @@ class DeleteUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdInternalServerErrorException
      *
      * @return null
@@ -49,17 +49,17 @@ class DeleteUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdInternalServerErrorException();

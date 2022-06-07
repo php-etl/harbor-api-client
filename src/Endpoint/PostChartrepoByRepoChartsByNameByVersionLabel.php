@@ -42,11 +42,11 @@ class PostChartrepoByRepoChartsByNameByVersionLabel extends \Gyroscops\Harbor\Ap
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelInternalServerErrorException
      *
      * @return null
@@ -56,20 +56,20 @@ class PostChartrepoByRepoChartsByNameByVersionLabel extends \Gyroscops\Harbor\Ap
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelBadRequestException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\BadRequestFormatedError', 'json'));
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UnauthorizedChartAPIError', 'json'));
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\NotFoundChartAPIError', 'json'));
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelForbiddenException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ForbiddenChartAPIError', 'json'));
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\NotFoundChartAPIError', 'json'));
-        }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelConflictException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ConflictFormatedError', 'json'));
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UnauthorizedChartAPIError', 'json'));
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelBadRequestException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\BadRequestFormatedError', 'json'));
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\InternalChartAPIError', 'json'));

@@ -33,11 +33,11 @@ class PostRegistry extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryUnsupportedMediaTypeException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryConflictException
      *
      * @return null
      */
@@ -46,20 +46,20 @@ class PostRegistry extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryUnauthorizedException();
-        }
-        if (409 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryConflictException();
-        }
         if (415 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostRegistryUnsupportedMediaTypeException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostRegistryInternalServerErrorException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryBadRequestException();
+        }
+        if (409 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistryConflictException();
         }
     }
     public function getAuthenticationScopes() : array

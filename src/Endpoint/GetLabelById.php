@@ -34,8 +34,8 @@ class GetLabelById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Label
@@ -45,11 +45,11 @@ class GetLabelById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Label', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetLabelByIdUnauthorizedException();
-        }
         if (404 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetLabelByIdNotFoundException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetLabelByIdUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetLabelByIdInternalServerErrorException();

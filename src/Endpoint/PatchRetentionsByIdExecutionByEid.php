@@ -39,8 +39,8 @@ class PatchRetentionsByIdExecutionByEid extends \Gyroscops\Harbor\Api\Runtime\Cl
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidInternalServerErrorException
      *
      * @return null
@@ -50,11 +50,11 @@ class PatchRetentionsByIdExecutionByEid extends \Gyroscops\Harbor\Api\Runtime\Cl
         if (200 === $status) {
             return null;
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidInternalServerErrorException();

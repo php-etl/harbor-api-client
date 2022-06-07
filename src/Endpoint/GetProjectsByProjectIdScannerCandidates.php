@@ -34,10 +34,10 @@ class GetProjectsByProjectIdScannerCandidates extends \Gyroscops\Harbor\Api\Runt
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration[]
      */
@@ -46,17 +46,17 @@ class GetProjectsByProjectIdScannerCandidates extends \Gyroscops\Harbor\Api\Runt
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ScannerRegistration[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

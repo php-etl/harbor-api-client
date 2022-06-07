@@ -24,8 +24,8 @@ class GetScansAllMetric extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoin
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScansAllMetricUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScansAllMetricForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScansAllMetricUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScansAllMetricInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Stats
@@ -35,11 +35,11 @@ class GetScansAllMetric extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoin
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Stats', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetScansAllMetricUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetScansAllMetricForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetScansAllMetricUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetScansAllMetricInternalServerErrorException();

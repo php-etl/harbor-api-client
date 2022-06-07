@@ -36,11 +36,11 @@ class PutLabelById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdConflictException
      *
      * @return null
      */
@@ -49,20 +49,20 @@ class PutLabelById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdBadRequestException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdNotFoundException();
+        }
+        if (500 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdInternalServerErrorException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdUnauthorizedException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdNotFoundException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdBadRequestException();
         }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdConflictException();
-        }
-        if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutLabelByIdInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -33,10 +33,10 @@ class PutSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException
      *
      * @return null
      */
@@ -45,17 +45,17 @@ class PutSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

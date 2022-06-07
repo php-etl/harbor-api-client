@@ -39,10 +39,10 @@ class PutProjectsByProjectIdMemberByMid extends \Gyroscops\Harbor\Api\Runtime\Cl
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidInternalServerErrorException
      *
      * @return null
@@ -52,17 +52,17 @@ class PutProjectsByProjectIdMemberByMid extends \Gyroscops\Harbor\Api\Runtime\Cl
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidInternalServerErrorException();

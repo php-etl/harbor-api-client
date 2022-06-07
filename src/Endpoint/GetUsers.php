@@ -50,10 +50,10 @@ class GetUsers extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impleme
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\User[]
      */
@@ -62,17 +62,17 @@ class GetUsers extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impleme
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\User[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetUsersBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsersForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetUsersUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetUsersForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetUsersInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsersBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

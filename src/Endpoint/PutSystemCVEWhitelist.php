@@ -33,8 +33,8 @@ class PutSystemCVEWhitelist extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistInternalServerErrorException
      *
      * @return null
@@ -44,11 +44,11 @@ class PutSystemCVEWhitelist extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
         if (200 === $status) {
             return null;
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistInternalServerErrorException();

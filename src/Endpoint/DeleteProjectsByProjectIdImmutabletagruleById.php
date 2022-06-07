@@ -37,10 +37,10 @@ class DeleteProjectsByProjectIdImmutabletagruleById extends \Gyroscops\Harbor\Ap
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdBadRequestException
      *
      * @return null
      */
@@ -49,17 +49,17 @@ class DeleteProjectsByProjectIdImmutabletagruleById extends \Gyroscops\Harbor\Ap
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

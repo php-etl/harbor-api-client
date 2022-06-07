@@ -36,10 +36,10 @@ class PutQuotaById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdInternalServerErrorException
      *
      * @return null
@@ -49,17 +49,17 @@ class PutQuotaById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdInternalServerErrorException();

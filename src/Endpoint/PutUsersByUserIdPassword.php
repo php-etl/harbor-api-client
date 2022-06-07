@@ -36,10 +36,10 @@ class PutUsersByUserIdPassword extends \Gyroscops\Harbor\Api\Runtime\Client\Base
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordBadRequestException
      *
      * @return null
      */
@@ -48,17 +48,17 @@ class PutUsersByUserIdPassword extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

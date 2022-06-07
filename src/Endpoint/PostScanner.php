@@ -33,10 +33,10 @@ class PostScanner extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostScannerForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostScannerInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerBadRequestException
      *
      * @return null
      */
@@ -45,17 +45,17 @@ class PostScanner extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostScannerBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostScannerForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostScannerUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostScannerForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostScannerInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostScannerBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

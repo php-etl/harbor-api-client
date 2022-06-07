@@ -34,8 +34,8 @@ class GetScannersByRegistrationIdMetadata extends \Gyroscops\Harbor\Api\Runtime\
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ScannerAdapterMetadata
@@ -45,11 +45,11 @@ class GetScannersByRegistrationIdMetadata extends \Gyroscops\Harbor\Api\Runtime\
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ScannerAdapterMetadata', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataInternalServerErrorException();

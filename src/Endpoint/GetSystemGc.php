@@ -24,8 +24,8 @@ class GetSystemGc extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\GCResult[]
@@ -35,11 +35,11 @@ class GetSystemGc extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\GCResult[]', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcInternalServerErrorException();

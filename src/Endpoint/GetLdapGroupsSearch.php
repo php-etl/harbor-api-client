@@ -46,9 +46,9 @@ class GetLdapGroupsSearch extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\UserGroup[]
      */
@@ -57,14 +57,14 @@ class GetLdapGroupsSearch extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UserGroup[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchBadRequestException();
-        }
         if (404 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchNotFoundException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

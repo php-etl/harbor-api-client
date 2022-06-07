@@ -24,8 +24,8 @@ class GetReplicationAdapters extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEn
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersInternalServerErrorException
      *
      * @return null
@@ -35,11 +35,11 @@ class GetReplicationAdapters extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEn
         if (200 === $status) {
             return json_decode($body);
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersInternalServerErrorException();

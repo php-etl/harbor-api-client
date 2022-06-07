@@ -34,10 +34,10 @@ class GetUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint 
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\User
@@ -47,17 +47,17 @@ class GetUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint 
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\User', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetUserByUserIdInternalServerErrorException();

@@ -34,8 +34,8 @@ class GetRetentionsByIdExecutions extends \Gyroscops\Harbor\Api\Runtime\Client\B
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RetentionExecution[]
@@ -45,11 +45,11 @@ class GetRetentionsByIdExecutions extends \Gyroscops\Harbor\Api\Runtime\Client\B
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RetentionExecution[]', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsInternalServerErrorException();

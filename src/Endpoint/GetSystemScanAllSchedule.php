@@ -24,8 +24,8 @@ class GetSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\Base
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\AdminJobSchedule
@@ -35,11 +35,11 @@ class GetSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\AdminJobSchedule', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleInternalServerErrorException();

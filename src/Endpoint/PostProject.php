@@ -33,11 +33,11 @@ class PostProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectUnsupportedMediaTypeException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectConflictException
      *
      * @return null
      */
@@ -46,20 +46,20 @@ class PostProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectUnauthorizedException();
-        }
-        if (409 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectConflictException();
-        }
         if (415 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectUnsupportedMediaTypeException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectInternalServerErrorException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectBadRequestException();
+        }
+        if (409 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectConflictException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -34,9 +34,9 @@ class GetQuotaById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Quota
@@ -46,14 +46,14 @@ class GetQuotaById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Quota', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetQuotaByIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotaByIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetQuotaByIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetQuotaByIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotaByIdUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetQuotaByIdInternalServerErrorException();

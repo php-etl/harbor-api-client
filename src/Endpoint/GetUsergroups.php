@@ -24,8 +24,8 @@ class GetUsergroups extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\UserGroup[]
@@ -35,11 +35,11 @@ class GetUsergroups extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UserGroup[]', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupsUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupsForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupsUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupsInternalServerErrorException();

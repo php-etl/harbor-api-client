@@ -33,10 +33,10 @@ class PostUser extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impleme
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUserBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUserForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostUserUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUserForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostUserInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUserBadRequestException
      *
      * @return null
      */
@@ -45,17 +45,17 @@ class PostUser extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impleme
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostUserBadRequestException();
+        if (415 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostUserUnsupportedMediaTypeException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostUserForbiddenException();
         }
-        if (415 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostUserUnsupportedMediaTypeException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostUserInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostUserBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

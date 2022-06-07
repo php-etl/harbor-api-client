@@ -37,10 +37,10 @@ class DeleteProjectsByProjectIdMetadataByMetaName extends \Gyroscops\Harbor\Api\
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameBadRequestException
      *
      * @return null
      */
@@ -49,17 +49,17 @@ class DeleteProjectsByProjectIdMetadataByMetaName extends \Gyroscops\Harbor\Api\
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameBadRequestException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameNotFoundException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

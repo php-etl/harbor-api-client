@@ -33,10 +33,10 @@ class PostReplicationExecution extends \Gyroscops\Harbor\Api\Runtime\Client\Base
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionInternalServerErrorException
      *
      * @return null
@@ -46,17 +46,17 @@ class PostReplicationExecution extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException();
+        if (415 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException();
         }
-        if (415 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionInternalServerErrorException();

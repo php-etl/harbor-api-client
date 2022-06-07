@@ -34,8 +34,8 @@ class GetRegistriesByIdInfo extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RegistryInfo
@@ -45,11 +45,11 @@ class GetRegistriesByIdInfo extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RegistryInfo', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoUnauthorizedException();
-        }
         if (404 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoNotFoundException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoInternalServerErrorException();

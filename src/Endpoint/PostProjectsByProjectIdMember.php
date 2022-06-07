@@ -36,11 +36,11 @@ class PostProjectsByProjectIdMember extends \Gyroscops\Harbor\Api\Runtime\Client
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberConflictException
      *
      * @return null
      */
@@ -49,20 +49,20 @@ class PostProjectsByProjectIdMember extends \Gyroscops\Harbor\Api\Runtime\Client
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberForbiddenException();
+        }
+        if (500 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberInternalServerErrorException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberBadRequestException();
         }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberConflictException();
-        }
-        if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -37,9 +37,9 @@ class DeleteProjectsByProjectIdRobotByRobotId extends \Gyroscops\Harbor\Api\Runt
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdInternalServerErrorException
      *
      * @return null
@@ -49,14 +49,14 @@ class DeleteProjectsByProjectIdRobotByRobotId extends \Gyroscops\Harbor\Api\Runt
         if (200 === $status) {
             return null;
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdInternalServerErrorException();

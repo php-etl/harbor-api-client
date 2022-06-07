@@ -24,8 +24,8 @@ class GetScansScheduleMetric extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEn
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Stats
@@ -35,11 +35,11 @@ class GetScansScheduleMetric extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEn
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Stats', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricInternalServerErrorException();

@@ -36,9 +36,9 @@ class PutScannerByRegistrationId extends \Gyroscops\Harbor\Api\Runtime\Client\Ba
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdInternalServerErrorException
      *
      * @return null
@@ -48,14 +48,14 @@ class PutScannerByRegistrationId extends \Gyroscops\Harbor\Api\Runtime\Client\Ba
         if (200 === $status) {
             return null;
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdInternalServerErrorException();

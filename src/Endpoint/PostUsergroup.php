@@ -33,11 +33,11 @@ class PostUsergroup extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupConflictException
      *
      * @return null
      */
@@ -46,20 +46,20 @@ class PostUsergroup extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupForbiddenException();
+        }
+        if (500 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupInternalServerErrorException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupBadRequestException();
         }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupConflictException();
-        }
-        if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostUsergroupInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

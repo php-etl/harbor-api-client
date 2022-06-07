@@ -39,11 +39,11 @@ class PutUsersByUserIdCliSecret extends \Gyroscops\Harbor\Api\Runtime\Client\Bas
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretPreconditionFailedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretInternalServerErrorException
      *
      * @return null
@@ -53,20 +53,20 @@ class PutUsersByUserIdCliSecret extends \Gyroscops\Harbor\Api\Runtime\Client\Bas
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretNotFoundException();
-        }
         if (412 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretPreconditionFailedException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretInternalServerErrorException();

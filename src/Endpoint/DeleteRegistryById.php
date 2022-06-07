@@ -34,10 +34,10 @@ class DeleteRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException
      *
      * @return null
      */
@@ -46,17 +46,17 @@ class DeleteRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdNotFoundException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdNotFoundException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

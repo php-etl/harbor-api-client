@@ -34,11 +34,11 @@ class DeleteReplicationPolicyById extends \Gyroscops\Harbor\Api\Runtime\Client\B
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdPreconditionFailedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdInternalServerErrorException
      *
      * @return null
@@ -48,20 +48,20 @@ class DeleteReplicationPolicyById extends \Gyroscops\Harbor\Api\Runtime\Client\B
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdNotFoundException();
-        }
         if (412 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdPreconditionFailedException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdInternalServerErrorException();

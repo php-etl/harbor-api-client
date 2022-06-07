@@ -24,8 +24,8 @@ class GetSysteminfoVolume extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\SystemInfo
@@ -35,11 +35,11 @@ class GetSysteminfoVolume extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\SystemInfo', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeInternalServerErrorException();

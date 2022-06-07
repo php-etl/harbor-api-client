@@ -36,11 +36,11 @@ class PostProjectsByProjectIdRobot extends \Gyroscops\Harbor\Api\Runtime\Client\
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotConflictException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RobotAccountPostRep
      */
@@ -49,20 +49,20 @@ class PostProjectsByProjectIdRobot extends \Gyroscops\Harbor\Api\Runtime\Client\
         if (201 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RobotAccountPostRep', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotForbiddenException();
+        }
+        if (500 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotInternalServerErrorException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotBadRequestException();
         }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotConflictException();
-        }
-        if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

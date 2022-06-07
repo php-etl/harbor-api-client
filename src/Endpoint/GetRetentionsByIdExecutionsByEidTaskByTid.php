@@ -40,8 +40,8 @@ class GetRetentionsByIdExecutionsByEidTaskByTid extends \Gyroscops\Harbor\Api\Ru
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidInternalServerErrorException
      *
      * @return null
@@ -51,11 +51,11 @@ class GetRetentionsByIdExecutionsByEidTaskByTid extends \Gyroscops\Harbor\Api\Ru
         if (200 === $status) {
             return json_decode($body);
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidInternalServerErrorException();

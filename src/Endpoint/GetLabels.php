@@ -52,9 +52,9 @@ class GetLabels extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Label[]
      */
@@ -63,14 +63,14 @@ class GetLabels extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Label[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException();
-        }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetLabelsUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetLabelsInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

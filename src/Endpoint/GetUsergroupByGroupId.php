@@ -34,10 +34,10 @@ class GetUsergroupByGroupId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\UserGroup
@@ -47,17 +47,17 @@ class GetUsergroupByGroupId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UserGroup', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdInternalServerErrorException();

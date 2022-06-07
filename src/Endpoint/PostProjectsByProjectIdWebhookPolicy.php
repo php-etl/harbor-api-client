@@ -36,10 +36,10 @@ class PostProjectsByProjectIdWebhookPolicy extends \Gyroscops\Harbor\Api\Runtime
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyBadRequestException
      *
      * @return null
      */
@@ -48,17 +48,17 @@ class PostProjectsByProjectIdWebhookPolicy extends \Gyroscops\Harbor\Api\Runtime
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

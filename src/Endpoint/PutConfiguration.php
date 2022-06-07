@@ -33,8 +33,8 @@ class PutConfiguration extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationInternalServerErrorException
      *
      * @return null
@@ -44,11 +44,11 @@ class PutConfiguration extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint
         if (200 === $status) {
             return null;
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutConfigurationUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutConfigurationForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutConfigurationUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutConfigurationInternalServerErrorException();

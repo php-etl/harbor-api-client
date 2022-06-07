@@ -34,10 +34,10 @@ class GetProjectsByProjectIdScanner extends \Gyroscops\Harbor\Api\Runtime\Client
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration
@@ -47,17 +47,17 @@ class GetProjectsByProjectIdScanner extends \Gyroscops\Harbor\Api\Runtime\Client
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ScannerRegistration', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerInternalServerErrorException();

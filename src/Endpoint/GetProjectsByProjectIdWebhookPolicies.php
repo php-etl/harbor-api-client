@@ -34,10 +34,10 @@ class GetProjectsByProjectIdWebhookPolicies extends \Gyroscops\Harbor\Api\Runtim
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\WebhookPolicy[]
      */
@@ -46,17 +46,17 @@ class GetProjectsByProjectIdWebhookPolicies extends \Gyroscops\Harbor\Api\Runtim
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\WebhookPolicy[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

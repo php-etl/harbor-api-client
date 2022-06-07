@@ -34,10 +34,10 @@ class DeleteProjectByProjectId extends \Gyroscops\Harbor\Api\Runtime\Client\Base
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdPreconditionFailedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdInternalServerErrorException
      *
      * @return null
@@ -47,17 +47,17 @@ class DeleteProjectByProjectId extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdBadRequestException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdNotFoundException();
-        }
         if (412 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdPreconditionFailedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdInternalServerErrorException();

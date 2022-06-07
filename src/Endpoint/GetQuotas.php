@@ -55,8 +55,8 @@ class GetQuotas extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Quota[]
@@ -66,11 +66,11 @@ class GetQuotas extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Quota[]', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetQuotasUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetQuotasForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotasUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetQuotasInternalServerErrorException();

@@ -33,10 +33,10 @@ class PostRegistriesPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingInternalServerErrorException
      *
      * @return null
@@ -46,17 +46,17 @@ class PostRegistriesPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingBadRequestException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingNotFoundException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnauthorizedException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingNotFoundException();
-        }
         if (415 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnsupportedMediaTypeException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostRegistriesPingInternalServerErrorException();

@@ -47,9 +47,9 @@ class GetRegistriesByIdNamespace extends \Gyroscops\Harbor\Api\Runtime\Client\Ba
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\_Namespace[]
@@ -59,14 +59,14 @@ class GetRegistriesByIdNamespace extends \Gyroscops\Harbor\Api\Runtime\Client\Ba
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\_Namespace[]', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceInternalServerErrorException();

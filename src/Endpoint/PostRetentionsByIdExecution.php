@@ -36,8 +36,8 @@ class PostRetentionsByIdExecution extends \Gyroscops\Harbor\Api\Runtime\Client\B
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionInternalServerErrorException
      *
      * @return null
@@ -47,11 +47,11 @@ class PostRetentionsByIdExecution extends \Gyroscops\Harbor\Api\Runtime\Client\B
         if (200 === $status) {
             return null;
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionInternalServerErrorException();

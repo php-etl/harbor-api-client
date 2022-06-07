@@ -44,8 +44,8 @@ class GetLdapUsersSearch extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\LdapUsers[]
@@ -55,11 +55,11 @@ class GetLdapUsersSearch extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\LdapUsers[]', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchInternalServerErrorException();

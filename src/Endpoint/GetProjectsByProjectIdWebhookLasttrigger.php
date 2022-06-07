@@ -34,10 +34,10 @@ class GetProjectsByProjectIdWebhookLasttrigger extends \Gyroscops\Harbor\Api\Run
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\WebhookLastTrigger[]
      */
@@ -46,17 +46,17 @@ class GetProjectsByProjectIdWebhookLasttrigger extends \Gyroscops\Harbor\Api\Run
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\WebhookLastTrigger[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

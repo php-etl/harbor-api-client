@@ -52,8 +52,8 @@ class GetReplicationExecutions extends \Gyroscops\Harbor\Api\Runtime\Client\Base
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ReplicationExecution[]
@@ -63,11 +63,11 @@ class GetReplicationExecutions extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ReplicationExecution[]', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsInternalServerErrorException();

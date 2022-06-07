@@ -36,8 +36,8 @@ class PatchScannerByRegistrationId extends \Gyroscops\Harbor\Api\Runtime\Client\
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdInternalServerErrorException
      *
      * @return null
@@ -47,11 +47,11 @@ class PatchScannerByRegistrationId extends \Gyroscops\Harbor\Api\Runtime\Client\
         if (200 === $status) {
             return null;
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdInternalServerErrorException();

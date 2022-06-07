@@ -34,10 +34,10 @@ class GetReplicationPolicyById extends \Gyroscops\Harbor\Api\Runtime\Client\Base
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ReplicationPolicy
@@ -47,17 +47,17 @@ class GetReplicationPolicyById extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ReplicationPolicy', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdInternalServerErrorException();

@@ -38,10 +38,10 @@ class PutUsersByUserIdSysadmin extends \Gyroscops\Harbor\Api\Runtime\Client\Base
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminInternalServerErrorException
      *
      * @return null
@@ -51,17 +51,17 @@ class PutUsersByUserIdSysadmin extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminInternalServerErrorException();

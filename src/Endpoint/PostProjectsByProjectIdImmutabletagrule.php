@@ -36,10 +36,10 @@ class PostProjectsByProjectIdImmutabletagrule extends \Gyroscops\Harbor\Api\Runt
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleBadRequestException
      *
      * @return null
      */
@@ -48,17 +48,17 @@ class PostProjectsByProjectIdImmutabletagrule extends \Gyroscops\Harbor\Api\Runt
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

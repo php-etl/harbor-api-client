@@ -34,8 +34,8 @@ class GetProjectsByProjectIdWebhookEvent extends \Gyroscops\Harbor\Api\Runtime\C
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\SupportedWebhookEventTypes
@@ -45,11 +45,11 @@ class GetProjectsByProjectIdWebhookEvent extends \Gyroscops\Harbor\Api\Runtime\C
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\SupportedWebhookEventTypes', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventInternalServerErrorException();

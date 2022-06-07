@@ -36,10 +36,10 @@ class PutUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint 
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdInternalServerErrorException
      *
      * @return null
@@ -49,17 +49,17 @@ class PutUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint 
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUserByUserIdInternalServerErrorException();

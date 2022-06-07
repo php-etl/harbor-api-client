@@ -47,10 +47,10 @@ class GetProjectsByProjectIdMembers extends \Gyroscops\Harbor\Api\Runtime\Client
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ProjectMemberEntity[]
@@ -60,17 +60,17 @@ class GetProjectsByProjectIdMembers extends \Gyroscops\Harbor\Api\Runtime\Client
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ProjectMemberEntity[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersInternalServerErrorException();

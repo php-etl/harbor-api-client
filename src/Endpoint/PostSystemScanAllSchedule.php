@@ -33,12 +33,12 @@ class PostSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\Bas
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleConflictException
      *
      * @return null
      */
@@ -47,23 +47,23 @@ class PostSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\Bas
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException();
-        }
-        if (409 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleConflictException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException();
         }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException();
+        }
         if (503 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException();
+        }
+        if (409 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleConflictException();
         }
     }
     public function getAuthenticationScopes() : array

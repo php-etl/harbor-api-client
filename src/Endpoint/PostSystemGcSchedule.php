@@ -33,11 +33,11 @@ class PostSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndp
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleConflictException
      *
      * @return null
      */
@@ -46,20 +46,20 @@ class PostSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndp
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleForbiddenException();
+        }
+        if (500 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleInternalServerErrorException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleBadRequestException();
         }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleConflictException();
-        }
-        if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleInternalServerErrorException();
         }
     }
     public function getAuthenticationScopes() : array

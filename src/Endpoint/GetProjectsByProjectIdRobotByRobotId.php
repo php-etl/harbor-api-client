@@ -37,9 +37,9 @@ class GetProjectsByProjectIdRobotByRobotId extends \Gyroscops\Harbor\Api\Runtime
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RobotAccount
@@ -49,14 +49,14 @@ class GetProjectsByProjectIdRobotByRobotId extends \Gyroscops\Harbor\Api\Runtime
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RobotAccount', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdInternalServerErrorException();

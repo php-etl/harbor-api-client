@@ -34,10 +34,10 @@ class GetSystemGcByIdLog extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogInternalServerErrorException
      *
      * @return null
@@ -47,17 +47,17 @@ class GetSystemGcByIdLog extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
         if (200 === $status) {
             return json_decode($body);
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogInternalServerErrorException();

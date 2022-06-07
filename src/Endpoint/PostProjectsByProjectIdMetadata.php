@@ -36,11 +36,11 @@ class PostProjectsByProjectIdMetadata extends \Gyroscops\Harbor\Api\Runtime\Clie
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataInternalServerErrorException
      *
      * @return null
@@ -50,20 +50,20 @@ class PostProjectsByProjectIdMetadata extends \Gyroscops\Harbor\Api\Runtime\Clie
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnauthorizedException();
         }
         if (415 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnsupportedMediaTypeException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataInternalServerErrorException();

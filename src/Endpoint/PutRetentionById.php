@@ -39,8 +39,8 @@ class PutRetentionById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutRetentionByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutRetentionByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRetentionByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutRetentionByIdInternalServerErrorException
      *
      * @return null
@@ -50,11 +50,11 @@ class PutRetentionById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint
         if (200 === $status) {
             return null;
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutRetentionByIdUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutRetentionByIdForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutRetentionByIdUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutRetentionByIdInternalServerErrorException();

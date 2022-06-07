@@ -34,11 +34,11 @@ class GetReplicationExecutionById extends \Gyroscops\Harbor\Api\Runtime\Client\B
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ReplicationExecution
@@ -48,20 +48,20 @@ class GetReplicationExecutionById extends \Gyroscops\Harbor\Api\Runtime\Client\B
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ReplicationExecution', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnauthorizedException();
         }
         if (415 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnsupportedMediaTypeException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdInternalServerErrorException();

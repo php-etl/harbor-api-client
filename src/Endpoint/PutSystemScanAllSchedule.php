@@ -33,10 +33,10 @@ class PutSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\Base
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleBadRequestException
      *
      * @return null
      */
@@ -45,17 +45,17 @@ class PutSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

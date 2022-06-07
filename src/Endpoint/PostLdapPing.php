@@ -33,10 +33,10 @@ class PostLdapPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingInternalServerErrorException
      *
      * @return null
@@ -46,17 +46,17 @@ class PostLdapPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingForbiddenException();
-        }
         if (415 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingUnsupportedMediaTypeException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostLdapPingInternalServerErrorException();

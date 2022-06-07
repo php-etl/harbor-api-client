@@ -34,10 +34,10 @@ class GetProjectsByProjectIdImmutabletagrules extends \Gyroscops\Harbor\Api\Runt
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RetentionRule[]
      */
@@ -46,17 +46,17 @@ class GetProjectsByProjectIdImmutabletagrules extends \Gyroscops\Harbor\Api\Runt
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RetentionRule[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

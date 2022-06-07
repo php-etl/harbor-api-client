@@ -24,8 +24,8 @@ class GetSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\AdminJobSchedule
@@ -35,11 +35,11 @@ class GetSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\AdminJobSchedule', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleInternalServerErrorException();

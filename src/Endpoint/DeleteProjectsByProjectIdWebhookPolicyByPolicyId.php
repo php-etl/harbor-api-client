@@ -37,10 +37,10 @@ class DeleteProjectsByProjectIdWebhookPolicyByPolicyId extends \Gyroscops\Harbor
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException
      *
      * @return null
@@ -50,17 +50,17 @@ class DeleteProjectsByProjectIdWebhookPolicyByPolicyId extends \Gyroscops\Harbor
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException();

@@ -34,8 +34,8 @@ class GetRetentionById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RetentionPolicy
@@ -45,11 +45,11 @@ class GetRetentionById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RetentionPolicy', 'json');
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionByIdUnauthorizedException();
-        }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRetentionByIdForbiddenException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetRetentionByIdUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetRetentionByIdInternalServerErrorException();

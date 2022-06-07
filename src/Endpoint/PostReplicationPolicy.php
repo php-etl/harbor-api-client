@@ -33,11 +33,11 @@ class PostReplicationPolicy extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnsupportedMediaTypeException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyConflictException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyInternalServerErrorException
      *
      * @return null
@@ -47,11 +47,8 @@ class PostReplicationPolicy extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnauthorizedException();
+        if (415 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnsupportedMediaTypeException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyForbiddenException();
@@ -59,8 +56,11 @@ class PostReplicationPolicy extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyConflictException();
         }
-        if (415 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnsupportedMediaTypeException();
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyBadRequestException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyInternalServerErrorException();

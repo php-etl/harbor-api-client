@@ -33,9 +33,9 @@ class PostSystemOidcPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingBadRequestException
      *
      * @return null
      */
@@ -44,14 +44,14 @@ class PostSystemOidcPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

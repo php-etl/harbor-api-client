@@ -36,10 +36,10 @@ class PostProjectsByProjectIdWebhookPoliciesTest extends \Gyroscops\Harbor\Api\R
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestBadRequestException
      *
      * @return null
      */
@@ -48,17 +48,17 @@ class PostProjectsByProjectIdWebhookPoliciesTest extends \Gyroscops\Harbor\Api\R
         if (200 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

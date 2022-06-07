@@ -33,11 +33,11 @@ class PostLabel extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnsupportedMediaTypeException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLabelInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelConflictException
      *
      * @return null
      */
@@ -46,20 +46,20 @@ class PostLabel extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException();
-        }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException();
-        }
-        if (409 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostLabelConflictException();
-        }
         if (415 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostLabelUnsupportedMediaTypeException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostLabelInternalServerErrorException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException();
+        }
+        if (409 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelConflictException();
         }
     }
     public function getAuthenticationScopes() : array

@@ -47,10 +47,10 @@ class GetProjectsByProjectIdWebhookJobs extends \Gyroscops\Harbor\Api\Runtime\Cl
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\WebhookJob[]
      */
@@ -59,17 +59,17 @@ class GetProjectsByProjectIdWebhookJobs extends \Gyroscops\Harbor\Api\Runtime\Cl
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\WebhookJob[]', 'json');
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

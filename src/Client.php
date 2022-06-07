@@ -13,11 +13,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     * @param int $userId User ID
     * @param \Gyroscops\Harbor\Api\Model\UsersUserIdCliSecretPutBody $inputSecret JSON object that includes the new secret
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretBadRequestException
-    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretUnauthorizedException
-    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretForbiddenException
     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretNotFoundException
+    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretForbiddenException
     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretPreconditionFailedException
+    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretUnauthorizedException
+    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretBadRequestException
     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdCliSecretInternalServerErrorException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
@@ -28,8 +28,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcScheduleInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\AdminJobSchedule|\Psr\Http\Message\ResponseInterface
@@ -43,11 +43,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\AdminJobSchedule $schedule Updates of gc's schedule.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleConflictException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -60,10 +60,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\AdminJobSchedule $schedule Updates of gc's schedule.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -73,8 +73,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScansAllMetricUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScansAllMetricForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScansAllMetricUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScansAllMetricInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Stats|\Psr\Http\Message\ResponseInterface
@@ -105,11 +105,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id The execution ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ReplicationExecution|\Psr\Http\Message\ResponseInterface
@@ -123,11 +123,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id The execution ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationExecutionByIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -147,9 +147,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *     @var int $page_size The size of per page.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Label[]|\Psr\Http\Message\ResponseInterface
      */
@@ -162,11 +162,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\Label $label The json object of label.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnsupportedMediaTypeException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLabelInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelConflictException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -182,9 +182,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *     @var string $name The name of namespace.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdNamespaceInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\_Namespace[]|\Psr\Http\Message\ResponseInterface
@@ -195,8 +195,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\GCResult[]|\Psr\Http\Message\ResponseInterface
@@ -213,10 +213,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *     @var int $policy_id The policy ID.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookJobsBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\WebhookJob[]|\Psr\Http\Message\ResponseInterface
      */
@@ -229,10 +229,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\LdapConf $ldapconf ldap configuration. support input ldap service configuration. If it's a empty request, will load current configuration from the system.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLdapPingInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -249,10 +249,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *     @var string $entityname The entity name to search.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMembersInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ProjectMemberEntity[]|\Psr\Http\Message\ResponseInterface
@@ -267,11 +267,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param \Gyroscops\Harbor\Api\Model\ProjectMember $projectMember 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMemberConflictException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -285,10 +285,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param int $id Immutable tag rule ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdImmutabletagruleByIdBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -303,10 +303,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $id Immutable tag rule ID.
      * @param \Gyroscops\Harbor\Api\Model\RetentionRule $retentionRule 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdImmutabletagruleByIdBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -319,10 +319,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\EmailServerSetting $settings Email server settings, if some of the settings are not assigned, they will be read from system configuration.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostEmailPingInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -336,10 +336,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $projectId Relevant project ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotsBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotsUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotsForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotsNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotsForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotsUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotsBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotsInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RobotAccount[]|\Psr\Http\Message\ResponseInterface
@@ -354,11 +354,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param \Gyroscops\Harbor\Api\Model\RobotAccountCreate $robot Request body of creating a robot account.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotConflictException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RobotAccountPostRep|\Psr\Http\Message\ResponseInterface
      */
@@ -371,10 +371,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id Relevant job ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -409,8 +409,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemScanAllScheduleInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\AdminJobSchedule|\Psr\Http\Message\ResponseInterface
@@ -424,12 +424,12 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\AdminJobSchedule $schedule Create a schedule or a manual trigger for the scan all job.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleConflictException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -442,10 +442,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\AdminJobSchedule $schedule Updates the schedule of scan all job, which scans all of images in Harbor.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -459,10 +459,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId The ID of project.
      * @param string $metaName The name of metadat.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMetadataByMetaNameBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -491,10 +491,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId The ID of project.
      * @param string $metaName The name of metadat.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMetadataByMetaNameBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMetadataByMetaNameUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMetadataByMetaNameForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMetadataByMetaNameNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMetadataByMetaNameForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMetadataByMetaNameUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMetadataByMetaNameBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMetadataByMetaNameInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -508,10 +508,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $projectId The project identifier.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration|\Psr\Http\Message\ResponseInterface
@@ -526,10 +526,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId The project identifier.
      * @param \Gyroscops\Harbor\Api\Model\ProjectScanner $payload 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdScannerBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdScannerUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdScannerForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdScannerNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdScannerForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdScannerUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdScannerBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdScannerInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -544,8 +544,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $id Retention ID.
      * @param int $eid Retention execution ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTasksInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RetentionExecutionTask[]|\Psr\Http\Message\ResponseInterface
@@ -570,9 +570,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param string $registrationId The scanner registration identifier.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteScannerByRegistrationIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration|\Psr\Http\Message\ResponseInterface
@@ -586,9 +586,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param string $registrationId The scanner registration identifer.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScannerByRegistrationIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration|\Psr\Http\Message\ResponseInterface
@@ -603,8 +603,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param string $registrationId The scanner registration identifier.
      * @param \Gyroscops\Harbor\Api\Model\IsDefault $payload 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PatchScannerByRegistrationIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -619,9 +619,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param string $registrationId The scanner registration identifier.
      * @param \Gyroscops\Harbor\Api\Model\ScannerRegistrationReq $registration A scanner registraiton to be updated.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutScannerByRegistrationIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -635,8 +635,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id Retention ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RetentionPolicy|\Psr\Http\Message\ResponseInterface
@@ -654,8 +654,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     * @param int $id Retention ID.
     * @param \Gyroscops\Harbor\Api\Model\RetentionPolicy $policy 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Gyroscops\Harbor\Api\Exception\PutRetentionByIdUnauthorizedException
     * @throws \Gyroscops\Harbor\Api\Exception\PutRetentionByIdForbiddenException
+    * @throws \Gyroscops\Harbor\Api\Exception\PutRetentionByIdUnauthorizedException
     * @throws \Gyroscops\Harbor\Api\Exception\PutRetentionByIdInternalServerErrorException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
@@ -666,10 +666,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScannersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScannersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration[]|\Psr\Http\Message\ResponseInterface
      */
@@ -682,10 +682,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\ScannerRegistrationReq $registration A scanner registration to be created.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostScannerForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostScannerInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannerBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -695,8 +695,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSysteminfoVolumeInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\SystemInfo|\Psr\Http\Message\ResponseInterface
@@ -710,10 +710,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\Registry $registry Registry to ping.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRegistriesPingInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -727,10 +727,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id The execution ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ReplicationTask[]|\Psr\Http\Message\ResponseInterface
@@ -741,8 +741,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupsInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\UserGroup[]|\Psr\Http\Message\ResponseInterface
@@ -756,11 +756,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\UserGroup $usergroup 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUsergroupConflictException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -773,8 +773,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id The registry ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRegistriesByIdInfoInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RegistryInfo|\Psr\Http\Message\ResponseInterface
@@ -790,8 +790,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $eid Retention execution ID.
      * @param int $tid Retention execution ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsByEidTaskByTidInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -806,10 +806,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param \Gyroscops\Harbor\Api\Model\WebhookPolicy $policy Only property "targets" needed.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPoliciesTestBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -822,10 +822,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $groupId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUsergroupByGroupIdBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -838,10 +838,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $groupId Group ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsergroupByGroupIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\UserGroup|\Psr\Http\Message\ResponseInterface
@@ -856,10 +856,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $groupId Group ID
      * @param \Gyroscops\Harbor\Api\Model\UserGroup $usergroup 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsergroupByGroupIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -882,8 +882,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     *     @var int $page_size The size of per page, default is 10, maximum is 100.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasUnauthorizedException
     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasForbiddenException
+    * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasUnauthorizedException
     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasInternalServerErrorException
     *
     * @return null|\Gyroscops\Harbor\Api\Model\Quota[]|\Psr\Http\Message\ResponseInterface
@@ -897,10 +897,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $projectId Project ID of project which will be deleted.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdPreconditionFailedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectByProjectIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -929,10 +929,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Selected project ID.
      * @param \Gyroscops\Harbor\Api\Model\ProjectReq $project Updates of project.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectByProjectIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -977,10 +977,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param int $policyId The id of webhook policy.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -995,10 +995,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param int $policyId The id of webhook policy.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\WebhookPolicy|\Psr\Http\Message\ResponseInterface
@@ -1014,10 +1014,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $policyId The id of webhook policy.
      * @param \Gyroscops\Harbor\Api\Model\WebhookPolicy $policy All properties needed except "id", "project_id", "creation_time", "update_time".
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdWebhookPolicyByPolicyIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1067,11 +1067,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\ProjectReq $project New created project.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectUnsupportedMediaTypeException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectConflictException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1099,11 +1099,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Selected project ID.
      * @param \Gyroscops\Harbor\Api\Model\ProjectMetadata $metadata The metadata of project.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdMetadataInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1117,8 +1117,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $projectId Relevant project ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookEventInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\SupportedWebhookEventTypes|\Psr\Http\Message\ResponseInterface
@@ -1135,9 +1135,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *     @var string $groupdn The LDAP group DN
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapGroupsSearchBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\UserGroup[]|\Psr\Http\Message\ResponseInterface
      */
@@ -1151,9 +1151,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param int $robotId The ID of robot account.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdRobotByRobotIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1168,9 +1168,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param int $robotId The ID of robot account.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdRobotByRobotIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RobotAccount|\Psr\Http\Message\ResponseInterface
@@ -1202,10 +1202,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     * @param int $userId Registered user ID
     * @param \Gyroscops\Harbor\Api\Model\SysAdminFlag $sysadminFlag Toggle a user to admin or not.
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminBadRequestException
-    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminUnauthorizedException
-    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminForbiddenException
     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminNotFoundException
+    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminForbiddenException
+    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminUnauthorizedException
+    * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminBadRequestException
     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdSysadminInternalServerErrorException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
@@ -1223,10 +1223,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *     @var int $page_size The size of per page.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ReplicationPolicy[]|\Psr\Http\Message\ResponseInterface
      */
@@ -1239,11 +1239,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\ReplicationPolicy $policy The policy model.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnsupportedMediaTypeException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyConflictException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationPolicyInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1257,8 +1257,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id Retention ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRetentionsByIdExecutionsInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RetentionExecution[]|\Psr\Http\Message\ResponseInterface
@@ -1273,8 +1273,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $id Retention ID.
      * @param \Gyroscops\Harbor\Api\Model\RetentionsIdExecutionsPostBody $action 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionsByIdExecutionInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1289,10 +1289,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $userId Registered user ID.
      * @param \Gyroscops\Harbor\Api\Model\Password $password Password to be updated, the attribute 'old_password' is optional when the API is called by the system administrator.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1305,10 +1305,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $projectId The project identifier.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdScannerCandidatesBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ScannerRegistration[]|\Psr\Http\Message\ResponseInterface
      */
@@ -1323,9 +1323,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param string $name The chart name
      * @param string $version The chart version
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1342,11 +1342,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param string $version The chart version
      * @param \Gyroscops\Harbor\Api\Model\Label $label The label being marked to the chart version
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostChartrepoByRepoChartsByNameByVersionLabelInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1360,10 +1360,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $projectId Relevant project ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdSummaryInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ProjectSummary|\Psr\Http\Message\ResponseInterface
@@ -1377,10 +1377,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $projectId Relevant project ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookPoliciesBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\WebhookPolicy[]|\Psr\Http\Message\ResponseInterface
      */
@@ -1394,10 +1394,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID
      * @param \Gyroscops\Harbor\Api\Model\WebhookPolicy $policy Properties "targets" and "event_types" needed.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdWebhookPolicyBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1413,10 +1413,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param string $version The chart version
      * @param int $id The label ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteChartrepoByRepoChartsByNameByVersionLabelByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteChartrepoByRepoChartsByNameByVersionLabelByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteChartrepoByRepoChartsByNameByVersionLabelByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteChartrepoByRepoChartsByNameByVersionLabelByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteChartrepoByRepoChartsByNameByVersionLabelByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteChartrepoByRepoChartsByNameByVersionLabelByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteChartrepoByRepoChartsByNameByVersionLabelByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteChartrepoByRepoChartsByNameByVersionLabelByIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1427,8 +1427,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScansScheduleMetricInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Stats|\Psr\Http\Message\ResponseInterface
@@ -1442,8 +1442,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id Relevant job ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\GCResult|\Psr\Http\Message\ResponseInterface
@@ -1463,8 +1463,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *     @var int $page_size The page size.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ReplicationExecution[]|\Psr\Http\Message\ResponseInterface
@@ -1478,10 +1478,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\ReplicationExecution $execution The execution that needs to be started, only the property "policy_id" is needed.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1506,8 +1506,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\CVEWhitelist $whitelist The whitelist with new content
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemCVEWhitelistInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1535,10 +1535,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *     @var int $page_size The size of per page.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUsersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUsersBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\User[]|\Psr\Http\Message\ResponseInterface
      */
@@ -1551,10 +1551,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\User $user New created user.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUserBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUserForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostUserUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUserForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostUserInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUserBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1569,8 +1569,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $eid Retention execution ID.
      * @param \Gyroscops\Harbor\Api\Model\RetentionsIdExecutionsEidPatchBody $action The action, only support "stop" now.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PatchRetentionsByIdExecutionByEidInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1584,10 +1584,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id The registry's ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1600,8 +1600,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id The registry ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistryByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRegistryByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetRegistryByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetRegistryByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Registry|\Psr\Http\Message\ResponseInterface
@@ -1616,11 +1616,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $id The registry's ID.
      * @param \Gyroscops\Harbor\Api\Model\PutRegistry $repoTarget Updates registry.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdConflictException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1635,8 +1635,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *     @var string $username Registered user ID
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLdapUsersSearchInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\LdapUsers[]|\Psr\Http\Message\ResponseInterface
@@ -1653,10 +1653,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     *
     * @param \Gyroscops\Harbor\Api\Model\RetentionPolicy $policy Create Retention Policy successfully.
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionBadRequestException
-    * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionUnauthorizedException
     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionForbiddenException
+    * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionUnauthorizedException
     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionInternalServerErrorException
+    * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionBadRequestException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
@@ -1670,10 +1670,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param int $mid Member ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectsByProjectIdMemberByMidBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1687,10 +1687,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param int $mid The member ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ProjectMemberEntity|\Psr\Http\Message\ResponseInterface
@@ -1706,10 +1706,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $mid Member ID.
      * @param \Gyroscops\Harbor\Api\Model\RoleRequest $role 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdMemberByMidInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1725,9 +1725,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     *
     * @param \Gyroscops\Harbor\Api\Model\LdapImportUsers $uidList The uid listed for importing. This list will check users validity of ldap service based on configuration from the system.
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnauthorizedException
-    * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportForbiddenException
     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportNotFoundException
+    * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportForbiddenException
+    * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnauthorizedException
     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnsupportedMediaTypeException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
@@ -1738,8 +1738,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationAdaptersInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1764,9 +1764,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id Quota ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetQuotaByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Quota|\Psr\Http\Message\ResponseInterface
@@ -1781,10 +1781,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $id Quota ID
      * @param \Gyroscops\Harbor\Api\Model\QuotaUpdateReq $hard The new hard limits for the quota
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1798,10 +1798,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $projectId Relevant project ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdImmutabletagrulesBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RetentionRule[]|\Psr\Http\Message\ResponseInterface
      */
@@ -1815,10 +1815,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $projectId Relevant project ID.
      * @param \Gyroscops\Harbor\Api\Model\RetentionRule $retentionRule 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdImmutabletagruleBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1831,11 +1831,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id Replication policy ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdPreconditionFailedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteReplicationPolicyByIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1849,10 +1849,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id policy ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPolicyByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ReplicationPolicy|\Psr\Http\Message\ResponseInterface
@@ -1867,11 +1867,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $id policy ID
      * @param \Gyroscops\Harbor\Api\Model\ReplicationPolicy $policy The replication policy model.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationPolicyByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationPolicyByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationPolicyByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationPolicyByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationPolicyByIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationPolicyByIdConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationPolicyByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationPolicyByIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutReplicationPolicyByIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1901,11 +1901,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\Registry $registry New created registry.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryUnsupportedMediaTypeException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRegistryConflictException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1918,10 +1918,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id Label ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteLabelByIdBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1934,8 +1934,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $id Label ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLabelByIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Label|\Psr\Http\Message\ResponseInterface
@@ -1950,11 +1950,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $id Label ID
      * @param \Gyroscops\Harbor\Api\Model\Label $label The updated label json object.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutLabelByIdConflictException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -1964,8 +1964,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetConfigurationUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetConfigurationForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetConfigurationUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetConfigurationInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ConfigurationsResponse|\Psr\Http\Message\ResponseInterface
@@ -1979,8 +1979,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\Configurations $configurations The configuration map can contain a subset of the attributes of the schema, which are to be updated.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutConfigurationInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1994,9 +1994,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\SystemOidcPingPostBody $endpoint Request body for OIDC endpoint to be tested.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -2009,10 +2009,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param \Gyroscops\Harbor\Api\Model\ScannerRegistrationSettings $settings A scanner registration settings to be tested.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PostScannersPingBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostScannersPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostScannersPingForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannersPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostScannersPingInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostScannersPingBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -2037,10 +2037,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     *
     * @param int $userId User ID for marking as to be removed.
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException
-    * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException
-    * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException
     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdNotFoundException
+    * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException
+    * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException
+    * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException
     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdInternalServerErrorException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
@@ -2054,10 +2054,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $userId Registered user ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUserByUserIdInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\User|\Psr\Http\Message\ResponseInterface
@@ -2072,10 +2072,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $userId Registered user ID
      * @param \Gyroscops\Harbor\Api\Model\UserProfile $profile Only email, realname and comment can be modified.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUserByUserIdInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -2090,10 +2090,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param int $id The execution ID.
      * @param int $taskId The task ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationExecutionsByIdTasksByTaskIdLogInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -2107,8 +2107,8 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param string $registrationId The scanner registration identifier.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetScannersByRegistrationIdMetadataInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ScannerAdapterMetadata|\Psr\Http\Message\ResponseInterface
@@ -2122,10 +2122,10 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @param int $projectId Relevant project ID.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdWebhookLasttriggerBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\WebhookLastTrigger[]|\Psr\Http\Message\ResponseInterface
      */

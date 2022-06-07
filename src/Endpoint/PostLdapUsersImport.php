@@ -35,9 +35,9 @@ class PostLdapUsersImport extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnsupportedMediaTypeException
      *
      * @return null
@@ -47,14 +47,14 @@ class PostLdapUsersImport extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
         if (200 === $status) {
             return null;
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnauthorizedException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\LdapFailedImportUsers[]', 'json'));
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportForbiddenException();
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\LdapFailedImportUsers[]', 'json'));
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnauthorizedException();
         }
         if (415 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostLdapUsersImportUnsupportedMediaTypeException();

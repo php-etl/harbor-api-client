@@ -36,10 +36,10 @@ class PostRetention extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostRetentionBadRequestException
      *
      * @return null
      */
@@ -48,17 +48,17 @@ class PostRetention extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
         if (201 === $status) {
             return null;
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionForbiddenException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostRetentionUnauthorizedException();
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionForbiddenException();
-        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostRetentionInternalServerErrorException();
+        }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostRetentionBadRequestException();
         }
     }
     public function getAuthenticationScopes() : array

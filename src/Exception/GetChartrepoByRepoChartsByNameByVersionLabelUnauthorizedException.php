@@ -13,7 +13,7 @@ class GetChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException extends 
         parent::__construct('Unauthorized');
         $this->unauthorizedChartAPIError = $unauthorizedChartAPIError;
     }
-    public function getUnauthorizedChartAPIError() : \Gyroscops\Harbor\Api\Model\UnauthorizedChartAPIError
+    public function getUnauthorizedChartAPIError(): \Gyroscops\Harbor\Api\Model\UnauthorizedChartAPIError
     {
         return $this->unauthorizedChartAPIError;
     }

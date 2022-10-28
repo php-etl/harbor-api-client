@@ -7,26 +7,26 @@ class LdapImportUsers
     /**
      * selected uid list
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $ldapUidList;
     /**
      * selected uid list
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLdapUidList() : array
+    public function getLdapUidList(): ?array
     {
         return $this->ldapUidList;
     }
     /**
      * selected uid list
      *
-     * @param string[] $ldapUidList
+     * @param string[]|null $ldapUidList
      *
      * @return self
      */
-    public function setLdapUidList(array $ldapUidList) : self
+    public function setLdapUidList(?array $ldapUidList): self
     {
         $this->ldapUidList = $ldapUidList;
         return $this;

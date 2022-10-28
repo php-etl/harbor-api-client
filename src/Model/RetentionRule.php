@@ -5,217 +5,217 @@ namespace Gyroscops\Harbor\Api\Model;
 class RetentionRule
 {
     /**
-     * 
      *
-     * @var int
+     *
+     * @var int|null
      */
     protected $priority;
     /**
-     * 
      *
-     * @var RetentionSelector[][]
+     *
+     * @var RetentionSelector[][]|null
      */
     protected $scopeSelectors;
     /**
-     * 
      *
-     * @var bool
+     *
+     * @var bool|null
      */
     protected $disabled;
     /**
-     * 
      *
-     * @var mixed[]
+     *
+     * @var mixed[]|null
      */
     protected $params;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $template;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $action;
     /**
-     * 
      *
-     * @var RetentionSelector[]
+     *
+     * @var RetentionSelector[]|null
      */
     protected $tagSelectors;
     /**
-     * 
      *
-     * @var int
+     *
+     * @var int|null
      */
     protected $id;
     /**
-     * 
      *
-     * @return int
+     *
+     * @return int|null
      */
-    public function getPriority() : int
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
     /**
-     * 
      *
-     * @param int $priority
+     *
+     * @param int|null $priority
      *
      * @return self
      */
-    public function setPriority(int $priority) : self
+    public function setPriority(?int $priority): self
     {
         $this->priority = $priority;
         return $this;
     }
     /**
-     * 
      *
-     * @return RetentionSelector[][]
+     *
+     * @return RetentionSelector[][]|null
      */
-    public function getScopeSelectors() : iterable
+    public function getScopeSelectors(): ?iterable
     {
         return $this->scopeSelectors;
     }
     /**
-     * 
      *
-     * @param RetentionSelector[][] $scopeSelectors
+     *
+     * @param RetentionSelector[][]|null $scopeSelectors
      *
      * @return self
      */
-    public function setScopeSelectors(iterable $scopeSelectors) : self
+    public function setScopeSelectors(?iterable $scopeSelectors): self
     {
         $this->scopeSelectors = $scopeSelectors;
         return $this;
     }
     /**
-     * 
      *
-     * @return bool
+     *
+     * @return bool|null
      */
-    public function getDisabled() : bool
+    public function getDisabled(): ?bool
     {
         return $this->disabled;
     }
     /**
-     * 
      *
-     * @param bool $disabled
+     *
+     * @param bool|null $disabled
      *
      * @return self
      */
-    public function setDisabled(bool $disabled) : self
+    public function setDisabled(?bool $disabled): self
     {
         $this->disabled = $disabled;
         return $this;
     }
     /**
-     * 
      *
-     * @return mixed[]
+     *
+     * @return mixed[]|null
      */
-    public function getParams() : iterable
+    public function getParams(): ?iterable
     {
         return $this->params;
     }
     /**
-     * 
      *
-     * @param mixed[] $params
+     *
+     * @param mixed[]|null $params
      *
      * @return self
      */
-    public function setParams(iterable $params) : self
+    public function setParams(?iterable $params): self
     {
         $this->params = $params;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getTemplate() : string
+    public function getTemplate(): ?string
     {
         return $this->template;
     }
     /**
-     * 
      *
-     * @param string $template
+     *
+     * @param string|null $template
      *
      * @return self
      */
-    public function setTemplate(string $template) : self
+    public function setTemplate(?string $template): self
     {
         $this->template = $template;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getAction() : string
+    public function getAction(): ?string
     {
         return $this->action;
     }
     /**
-     * 
      *
-     * @param string $action
+     *
+     * @param string|null $action
      *
      * @return self
      */
-    public function setAction(string $action) : self
+    public function setAction(?string $action): self
     {
         $this->action = $action;
         return $this;
     }
     /**
-     * 
      *
-     * @return RetentionSelector[]
+     *
+     * @return RetentionSelector[]|null
      */
-    public function getTagSelectors() : array
+    public function getTagSelectors(): ?array
     {
         return $this->tagSelectors;
     }
     /**
-     * 
      *
-     * @param RetentionSelector[] $tagSelectors
+     *
+     * @param RetentionSelector[]|null $tagSelectors
      *
      * @return self
      */
-    public function setTagSelectors(array $tagSelectors) : self
+    public function setTagSelectors(?array $tagSelectors): self
     {
         $this->tagSelectors = $tagSelectors;
         return $this;
     }
     /**
-     * 
      *
-     * @return int
+     *
+     * @return int|null
      */
-    public function getId() : int
+    public function getId(): ?int
     {
         return $this->id;
     }
     /**
-     * 
      *
-     * @param int $id
+     *
+     * @param int|null $id
      *
      * @return self
      */
-    public function setId(int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;

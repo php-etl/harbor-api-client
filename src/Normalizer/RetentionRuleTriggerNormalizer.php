@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RetentionRuleTriggerNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,14 +43,20 @@ class RetentionRuleTriggerNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('kind', $data)) {
+        if (\array_key_exists('kind', $data) && $data['kind'] !== null) {
             $object->setKind($data['kind']);
+        } elseif (\array_key_exists('kind', $data) && $data['kind'] === null) {
+            $object->setKind(null);
         }
-        if (\array_key_exists('references', $data)) {
+        if (\array_key_exists('references', $data) && $data['references'] !== null) {
             $object->setReferences($data['references']);
+        } elseif (\array_key_exists('references', $data) && $data['references'] === null) {
+            $object->setReferences(null);
         }
-        if (\array_key_exists('settings', $data)) {
+        if (\array_key_exists('settings', $data) && $data['settings'] !== null) {
             $object->setSettings($data['settings']);
+        } elseif (\array_key_exists('settings', $data) && $data['settings'] === null) {
+            $object->setSettings(null);
         }
         return $object;
     }

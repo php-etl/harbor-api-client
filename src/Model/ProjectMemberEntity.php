@@ -7,62 +7,62 @@ class ProjectMemberEntity
     /**
      * the id of entity, if the member is a user, it is user_id in user table. if the member is a user group, it is the user group's ID in user_group table.
      *
-     * @var int
+     * @var int|null
      */
     protected $entityId;
     /**
      * the name of the role
      *
-     * @var string
+     * @var string|null
      */
     protected $roleName;
     /**
      * the name of the group member.
      *
-     * @var string
+     * @var string|null
      */
     protected $entityName;
     /**
      * the entity's type, u for user entity, g for group entity.
      *
-     * @var string
+     * @var string|null
      */
     protected $entityType;
     /**
      * the project id
      *
-     * @var int
+     * @var int|null
      */
     protected $projectId;
     /**
      * the project member id
      *
-     * @var int
+     * @var int|null
      */
     protected $id;
     /**
      * the role id
      *
-     * @var int
+     * @var int|null
      */
     protected $roleId;
     /**
      * the id of entity, if the member is a user, it is user_id in user table. if the member is a user group, it is the user group's ID in user_group table.
      *
-     * @return int
+     * @return int|null
      */
-    public function getEntityId() : int
+    public function getEntityId(): ?int
     {
         return $this->entityId;
     }
     /**
      * the id of entity, if the member is a user, it is user_id in user table. if the member is a user group, it is the user group's ID in user_group table.
      *
-     * @param int $entityId
+     * @param int|null $entityId
      *
      * @return self
      */
-    public function setEntityId(int $entityId) : self
+    public function setEntityId(?int $entityId): self
     {
         $this->entityId = $entityId;
         return $this;
@@ -70,20 +70,20 @@ class ProjectMemberEntity
     /**
      * the name of the role
      *
-     * @return string
+     * @return string|null
      */
-    public function getRoleName() : string
+    public function getRoleName(): ?string
     {
         return $this->roleName;
     }
     /**
      * the name of the role
      *
-     * @param string $roleName
+     * @param string|null $roleName
      *
      * @return self
      */
-    public function setRoleName(string $roleName) : self
+    public function setRoleName(?string $roleName): self
     {
         $this->roleName = $roleName;
         return $this;
@@ -91,20 +91,20 @@ class ProjectMemberEntity
     /**
      * the name of the group member.
      *
-     * @return string
+     * @return string|null
      */
-    public function getEntityName() : string
+    public function getEntityName(): ?string
     {
         return $this->entityName;
     }
     /**
      * the name of the group member.
      *
-     * @param string $entityName
+     * @param string|null $entityName
      *
      * @return self
      */
-    public function setEntityName(string $entityName) : self
+    public function setEntityName(?string $entityName): self
     {
         $this->entityName = $entityName;
         return $this;
@@ -112,20 +112,20 @@ class ProjectMemberEntity
     /**
      * the entity's type, u for user entity, g for group entity.
      *
-     * @return string
+     * @return string|null
      */
-    public function getEntityType() : string
+    public function getEntityType(): ?string
     {
         return $this->entityType;
     }
     /**
      * the entity's type, u for user entity, g for group entity.
      *
-     * @param string $entityType
+     * @param string|null $entityType
      *
      * @return self
      */
-    public function setEntityType(string $entityType) : self
+    public function setEntityType(?string $entityType): self
     {
         $this->entityType = $entityType;
         return $this;
@@ -133,20 +133,20 @@ class ProjectMemberEntity
     /**
      * the project id
      *
-     * @return int
+     * @return int|null
      */
-    public function getProjectId() : int
+    public function getProjectId(): ?int
     {
         return $this->projectId;
     }
     /**
      * the project id
      *
-     * @param int $projectId
+     * @param int|null $projectId
      *
      * @return self
      */
-    public function setProjectId(int $projectId) : self
+    public function setProjectId(?int $projectId): self
     {
         $this->projectId = $projectId;
         return $this;
@@ -154,20 +154,20 @@ class ProjectMemberEntity
     /**
      * the project member id
      *
-     * @return int
+     * @return int|null
      */
-    public function getId() : int
+    public function getId(): ?int
     {
         return $this->id;
     }
     /**
      * the project member id
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
-    public function setId(int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;
@@ -175,20 +175,20 @@ class ProjectMemberEntity
     /**
      * the role id
      *
-     * @return int
+     * @return int|null
      */
-    public function getRoleId() : int
+    public function getRoleId(): ?int
     {
         return $this->roleId;
     }
     /**
      * the role id
      *
-     * @param int $roleId
+     * @param int|null $roleId
      *
      * @return self
      */
-    public function setRoleId(int $roleId) : self
+    public function setRoleId(?int $roleId): self
     {
         $this->roleId = $roleId;
         return $this;

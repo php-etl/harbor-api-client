@@ -5,28 +5,28 @@ namespace Gyroscops\Harbor\Api\Model;
 class RetentionsIdExecutionsPostBody
 {
     /**
-     * 
      *
-     * @var bool
+     *
+     * @var bool|null
      */
     protected $dryRun;
     /**
-     * 
      *
-     * @return bool
+     *
+     * @return bool|null
      */
-    public function getDryRun() : bool
+    public function getDryRun(): ?bool
     {
         return $this->dryRun;
     }
     /**
-     * 
      *
-     * @param bool $dryRun
+     *
+     * @param bool|null $dryRun
      *
      * @return self
      */
-    public function setDryRun(bool $dryRun) : self
+    public function setDryRun(?bool $dryRun): self
     {
         $this->dryRun = $dryRun;
         return $this;

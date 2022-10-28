@@ -7,32 +7,32 @@ class LdapFailedImportUsers
     /**
      * the uid can't add to system.
      *
-     * @var string
+     * @var string|null
      */
     protected $ldapUid;
     /**
      * fail reason.
      *
-     * @var string
+     * @var string|null
      */
     protected $error;
     /**
      * the uid can't add to system.
      *
-     * @return string
+     * @return string|null
      */
-    public function getLdapUid() : string
+    public function getLdapUid(): ?string
     {
         return $this->ldapUid;
     }
     /**
      * the uid can't add to system.
      *
-     * @param string $ldapUid
+     * @param string|null $ldapUid
      *
      * @return self
      */
-    public function setLdapUid(string $ldapUid) : self
+    public function setLdapUid(?string $ldapUid): self
     {
         $this->ldapUid = $ldapUid;
         return $this;
@@ -40,20 +40,20 @@ class LdapFailedImportUsers
     /**
      * fail reason.
      *
-     * @return string
+     * @return string|null
      */
-    public function getError() : string
+    public function getError(): ?string
     {
         return $this->error;
     }
     /**
      * fail reason.
      *
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
-    public function setError(string $error) : self
+    public function setError(?string $error): self
     {
         $this->error = $error;
         return $this;

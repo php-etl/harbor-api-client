@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RetentionsIdExecutionsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,8 +43,10 @@ class RetentionsIdExecutionsPostBodyNormalizer implements DenormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('dry_run', $data)) {
+        if (\array_key_exists('dry_run', $data) && $data['dry_run'] !== null) {
             $object->setDryRun($data['dry_run']);
+        } elseif (\array_key_exists('dry_run', $data) && $data['dry_run'] === null) {
+            $object->setDryRun(null);
         }
         return $object;
     }

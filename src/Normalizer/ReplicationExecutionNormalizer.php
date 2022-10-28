@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ReplicationExecutionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,41 +43,65 @@ class ReplicationExecutionNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('status', $data)) {
+        if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
+        } elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+            $object->setStatus(null);
         }
-        if (\array_key_exists('status_text', $data)) {
+        if (\array_key_exists('status_text', $data) && $data['status_text'] !== null) {
             $object->setStatusText($data['status_text']);
+        } elseif (\array_key_exists('status_text', $data) && $data['status_text'] === null) {
+            $object->setStatusText(null);
         }
-        if (\array_key_exists('trigger', $data)) {
+        if (\array_key_exists('trigger', $data) && $data['trigger'] !== null) {
             $object->setTrigger($data['trigger']);
+        } elseif (\array_key_exists('trigger', $data) && $data['trigger'] === null) {
+            $object->setTrigger(null);
         }
-        if (\array_key_exists('start_time', $data)) {
+        if (\array_key_exists('start_time', $data) && $data['start_time'] !== null) {
             $object->setStartTime($data['start_time']);
+        } elseif (\array_key_exists('start_time', $data) && $data['start_time'] === null) {
+            $object->setStartTime(null);
         }
-        if (\array_key_exists('failed', $data)) {
+        if (\array_key_exists('failed', $data) && $data['failed'] !== null) {
             $object->setFailed($data['failed']);
+        } elseif (\array_key_exists('failed', $data) && $data['failed'] === null) {
+            $object->setFailed(null);
         }
-        if (\array_key_exists('succeed', $data)) {
+        if (\array_key_exists('succeed', $data) && $data['succeed'] !== null) {
             $object->setSucceed($data['succeed']);
+        } elseif (\array_key_exists('succeed', $data) && $data['succeed'] === null) {
+            $object->setSucceed(null);
         }
-        if (\array_key_exists('stopped', $data)) {
+        if (\array_key_exists('stopped', $data) && $data['stopped'] !== null) {
             $object->setStopped($data['stopped']);
+        } elseif (\array_key_exists('stopped', $data) && $data['stopped'] === null) {
+            $object->setStopped(null);
         }
-        if (\array_key_exists('end_time', $data)) {
+        if (\array_key_exists('end_time', $data) && $data['end_time'] !== null) {
             $object->setEndTime($data['end_time']);
+        } elseif (\array_key_exists('end_time', $data) && $data['end_time'] === null) {
+            $object->setEndTime(null);
         }
-        if (\array_key_exists('in_progress', $data)) {
+        if (\array_key_exists('in_progress', $data) && $data['in_progress'] !== null) {
             $object->setInProgress($data['in_progress']);
+        } elseif (\array_key_exists('in_progress', $data) && $data['in_progress'] === null) {
+            $object->setInProgress(null);
         }
-        if (\array_key_exists('total', $data)) {
+        if (\array_key_exists('total', $data) && $data['total'] !== null) {
             $object->setTotal($data['total']);
+        } elseif (\array_key_exists('total', $data) && $data['total'] === null) {
+            $object->setTotal(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
-        if (\array_key_exists('policy_id', $data)) {
+        if (\array_key_exists('policy_id', $data) && $data['policy_id'] !== null) {
             $object->setPolicyId($data['policy_id']);
+        } elseif (\array_key_exists('policy_id', $data) && $data['policy_id'] === null) {
+            $object->setPolicyId(null);
         }
         return $object;
     }

@@ -7,38 +7,38 @@ class Scanner
     /**
      * Version of the scanner adapter
      *
-     * @var string
+     * @var string|null
      */
     protected $version;
     /**
      * Name of the scanner provider
      *
-     * @var string
+     * @var string|null
      */
     protected $vendor;
     /**
      * Name of the scanner
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * Version of the scanner adapter
      *
-     * @return string
+     * @return string|null
      */
-    public function getVersion() : string
+    public function getVersion(): ?string
     {
         return $this->version;
     }
     /**
      * Version of the scanner adapter
      *
-     * @param string $version
+     * @param string|null $version
      *
      * @return self
      */
-    public function setVersion(string $version) : self
+    public function setVersion(?string $version): self
     {
         $this->version = $version;
         return $this;
@@ -46,20 +46,20 @@ class Scanner
     /**
      * Name of the scanner provider
      *
-     * @return string
+     * @return string|null
      */
-    public function getVendor() : string
+    public function getVendor(): ?string
     {
         return $this->vendor;
     }
     /**
      * Name of the scanner provider
      *
-     * @param string $vendor
+     * @param string|null $vendor
      *
      * @return self
      */
-    public function setVendor(string $vendor) : self
+    public function setVendor(?string $vendor): self
     {
         $this->vendor = $vendor;
         return $this;
@@ -67,20 +67,20 @@ class Scanner
     /**
      * Name of the scanner
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * Name of the scanner
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;

@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PutRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $id;
     /**
      * This endpoint is for update a given registry.
@@ -16,31 +17,30 @@ class PutRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint 
         $this->id = $id;
         $this->body = $repoTarget;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'PUT';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{id}'), array($this->id), '/registries/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException
      *
      * @return null
      */
@@ -49,23 +49,23 @@ class PutRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint 
         if (200 === $status) {
             return null;
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdNotFoundException();
-        }
-        if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdUnauthorizedException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdBadRequestException();
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdNotFoundException();
         }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdConflictException();
         }
+        if (500 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutRegistryByIdInternalServerErrorException();
+        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

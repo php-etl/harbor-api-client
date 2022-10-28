@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PostSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
      * This endpoint is for update gc schedule.
      *
@@ -13,31 +14,30 @@ class PostSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndp
     {
         $this->body = $schedule;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/system/gc/schedule';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleInternalServerErrorException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleInternalServerErrorException
      *
      * @return null
      */
@@ -46,23 +46,23 @@ class PostSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndp
         if (200 === $status) {
             return null;
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleForbiddenException();
-        }
-        if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleInternalServerErrorException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleUnauthorizedException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleForbiddenException();
         }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleConflictException();
         }
+        if (500 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemGcScheduleInternalServerErrorException();
+        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

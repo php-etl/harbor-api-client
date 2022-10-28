@@ -7,32 +7,32 @@ class SystemOidcPingPostBody
     /**
      * The URL of OIDC endpoint to be tested.
      *
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
      * Whether the certificate should be verified
      *
-     * @var bool
+     * @var bool|null
      */
     protected $verifyCert;
     /**
      * The URL of OIDC endpoint to be tested.
      *
-     * @return string
+     * @return string|null
      */
-    public function getUrl() : string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
     /**
      * The URL of OIDC endpoint to be tested.
      *
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */
-    public function setUrl(string $url) : self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
         return $this;
@@ -40,20 +40,20 @@ class SystemOidcPingPostBody
     /**
      * Whether the certificate should be verified
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getVerifyCert() : bool
+    public function getVerifyCert(): ?bool
     {
         return $this->verifyCert;
     }
     /**
      * Whether the certificate should be verified
      *
-     * @param bool $verifyCert
+     * @param bool|null $verifyCert
      *
      * @return self
      */
-    public function setVerifyCert(bool $verifyCert) : self
+    public function setVerifyCert(?bool $verifyCert): self
     {
         $this->verifyCert = $verifyCert;
         return $this;

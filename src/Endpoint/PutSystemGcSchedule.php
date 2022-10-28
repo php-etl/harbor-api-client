@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PutSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
      * This endpoint is for update gc schedule.
      *
@@ -13,30 +14,29 @@ class PutSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
     {
         $this->body = $schedule;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'PUT';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/system/gc/schedule';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleInternalServerErrorException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleInternalServerErrorException
      *
      * @return null
      */
@@ -45,20 +45,20 @@ class PutSystemGcSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
         if (200 === $status) {
             return null;
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleUnauthorizedException();
         }
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleForbiddenException();
+        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleInternalServerErrorException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutSystemGcScheduleBadRequestException();
-        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class SearchResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,14 +43,20 @@ class SearchResultNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('score', $data)) {
+        if (\array_key_exists('score', $data) && $data['score'] !== null) {
             $object->setScore($data['score']);
+        } elseif (\array_key_exists('score', $data) && $data['score'] === null) {
+            $object->setScore(null);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (\array_key_exists('chart', $data)) {
+        if (\array_key_exists('chart', $data) && $data['chart'] !== null) {
             $object->setChart($this->denormalizer->denormalize($data['chart'], 'Gyroscops\\Harbor\\Api\\Model\\ChartVersion', 'json', $context));
+        } elseif (\array_key_exists('chart', $data) && $data['chart'] === null) {
+            $object->setChart(null);
         }
         return $object;
     }

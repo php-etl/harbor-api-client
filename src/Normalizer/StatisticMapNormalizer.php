@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class StatisticMapNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,23 +43,35 @@ class StatisticMapNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('total_project_count', $data)) {
+        if (\array_key_exists('total_project_count', $data) && $data['total_project_count'] !== null) {
             $object->setTotalProjectCount($data['total_project_count']);
+        } elseif (\array_key_exists('total_project_count', $data) && $data['total_project_count'] === null) {
+            $object->setTotalProjectCount(null);
         }
-        if (\array_key_exists('public_project_count', $data)) {
+        if (\array_key_exists('public_project_count', $data) && $data['public_project_count'] !== null) {
             $object->setPublicProjectCount($data['public_project_count']);
+        } elseif (\array_key_exists('public_project_count', $data) && $data['public_project_count'] === null) {
+            $object->setPublicProjectCount(null);
         }
-        if (\array_key_exists('private_project_count', $data)) {
+        if (\array_key_exists('private_project_count', $data) && $data['private_project_count'] !== null) {
             $object->setPrivateProjectCount($data['private_project_count']);
+        } elseif (\array_key_exists('private_project_count', $data) && $data['private_project_count'] === null) {
+            $object->setPrivateProjectCount(null);
         }
-        if (\array_key_exists('public_repo_count', $data)) {
+        if (\array_key_exists('public_repo_count', $data) && $data['public_repo_count'] !== null) {
             $object->setPublicRepoCount($data['public_repo_count']);
+        } elseif (\array_key_exists('public_repo_count', $data) && $data['public_repo_count'] === null) {
+            $object->setPublicRepoCount(null);
         }
-        if (\array_key_exists('total_repo_count', $data)) {
+        if (\array_key_exists('total_repo_count', $data) && $data['total_repo_count'] !== null) {
             $object->setTotalRepoCount($data['total_repo_count']);
+        } elseif (\array_key_exists('total_repo_count', $data) && $data['total_repo_count'] === null) {
+            $object->setTotalRepoCount(null);
         }
-        if (\array_key_exists('private_repo_count', $data)) {
+        if (\array_key_exists('private_repo_count', $data) && $data['private_repo_count'] !== null) {
             $object->setPrivateRepoCount($data['private_repo_count']);
+        } elseif (\array_key_exists('private_repo_count', $data) && $data['private_repo_count'] === null) {
+            $object->setPrivateRepoCount(null);
         }
         return $object;
     }

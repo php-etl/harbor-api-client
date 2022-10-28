@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ChartVersionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,69 +43,101 @@ class ChartVersionNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('labels', $data)) {
+        if (\array_key_exists('labels', $data) && $data['labels'] !== null) {
             $values = array();
             foreach ($data['labels'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\Label', 'json', $context);
             }
             $object->setLabels($values);
+        } elseif (\array_key_exists('labels', $data) && $data['labels'] === null) {
+            $object->setLabels(null);
         }
-        if (\array_key_exists('engine', $data)) {
+        if (\array_key_exists('engine', $data) && $data['engine'] !== null) {
             $object->setEngine($data['engine']);
+        } elseif (\array_key_exists('engine', $data) && $data['engine'] === null) {
+            $object->setEngine(null);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (\array_key_exists('deprecated', $data)) {
+        if (\array_key_exists('deprecated', $data) && $data['deprecated'] !== null) {
             $object->setDeprecated($data['deprecated']);
+        } elseif (\array_key_exists('deprecated', $data) && $data['deprecated'] === null) {
+            $object->setDeprecated(null);
         }
-        if (\array_key_exists('appVersion', $data)) {
+        if (\array_key_exists('appVersion', $data) && $data['appVersion'] !== null) {
             $object->setAppVersion($data['appVersion']);
+        } elseif (\array_key_exists('appVersion', $data) && $data['appVersion'] === null) {
+            $object->setAppVersion(null);
         }
-        if (\array_key_exists('apiVersion', $data)) {
+        if (\array_key_exists('apiVersion', $data) && $data['apiVersion'] !== null) {
             $object->setApiVersion($data['apiVersion']);
+        } elseif (\array_key_exists('apiVersion', $data) && $data['apiVersion'] === null) {
+            $object->setApiVersion(null);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (\array_key_exists('sources', $data)) {
+        if (\array_key_exists('sources', $data) && $data['sources'] !== null) {
             $values_1 = array();
             foreach ($data['sources'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setSources($values_1);
+        } elseif (\array_key_exists('sources', $data) && $data['sources'] === null) {
+            $object->setSources(null);
         }
-        if (\array_key_exists('version', $data)) {
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
+        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
         }
-        if (\array_key_exists('keywords', $data)) {
+        if (\array_key_exists('keywords', $data) && $data['keywords'] !== null) {
             $values_2 = array();
             foreach ($data['keywords'] as $value_2) {
                 $values_2[] = $value_2;
             }
             $object->setKeywords($values_2);
+        } elseif (\array_key_exists('keywords', $data) && $data['keywords'] === null) {
+            $object->setKeywords(null);
         }
-        if (\array_key_exists('home', $data)) {
+        if (\array_key_exists('home', $data) && $data['home'] !== null) {
             $object->setHome($data['home']);
+        } elseif (\array_key_exists('home', $data) && $data['home'] === null) {
+            $object->setHome(null);
         }
-        if (\array_key_exists('icon', $data)) {
+        if (\array_key_exists('icon', $data) && $data['icon'] !== null) {
             $object->setIcon($data['icon']);
+        } elseif (\array_key_exists('icon', $data) && $data['icon'] === null) {
+            $object->setIcon(null);
         }
-        if (\array_key_exists('removed', $data)) {
+        if (\array_key_exists('removed', $data) && $data['removed'] !== null) {
             $object->setRemoved($data['removed']);
+        } elseif (\array_key_exists('removed', $data) && $data['removed'] === null) {
+            $object->setRemoved(null);
         }
-        if (\array_key_exists('digest', $data)) {
+        if (\array_key_exists('digest', $data) && $data['digest'] !== null) {
             $object->setDigest($data['digest']);
+        } elseif (\array_key_exists('digest', $data) && $data['digest'] === null) {
+            $object->setDigest(null);
         }
-        if (\array_key_exists('urls', $data)) {
+        if (\array_key_exists('urls', $data) && $data['urls'] !== null) {
             $values_3 = array();
             foreach ($data['urls'] as $value_3) {
                 $values_3[] = $value_3;
             }
             $object->setUrls($values_3);
+        } elseif (\array_key_exists('urls', $data) && $data['urls'] === null) {
+            $object->setUrls(null);
         }
-        if (\array_key_exists('created', $data)) {
+        if (\array_key_exists('created', $data) && $data['created'] !== null) {
             $object->setCreated($data['created']);
+        } elseif (\array_key_exists('created', $data) && $data['created'] === null) {
+            $object->setCreated(null);
         }
         return $object;
     }

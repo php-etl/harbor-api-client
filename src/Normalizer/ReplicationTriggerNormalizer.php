@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ReplicationTriggerNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,11 +43,15 @@ class ReplicationTriggerNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('type', $data)) {
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
         }
-        if (\array_key_exists('trigger_settings', $data)) {
+        if (\array_key_exists('trigger_settings', $data) && $data['trigger_settings'] !== null) {
             $object->setTriggerSettings($this->denormalizer->denormalize($data['trigger_settings'], 'Gyroscops\\Harbor\\Api\\Model\\TriggerSettings', 'json', $context));
+        } elseif (\array_key_exists('trigger_settings', $data) && $data['trigger_settings'] === null) {
+            $object->setTriggerSettings(null);
         }
         return $object;
     }

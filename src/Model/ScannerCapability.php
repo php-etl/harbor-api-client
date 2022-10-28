@@ -5,55 +5,55 @@ namespace Gyroscops\Harbor\Api\Model;
 class ScannerCapability
 {
     /**
-     * 
      *
-     * @var string[]
+     *
+     * @var string[]|null
      */
     protected $producesMimeTypes;
     /**
-     * 
      *
-     * @var string[]
+     *
+     * @var string[]|null
      */
     protected $consumesMimeTypes;
     /**
-     * 
      *
-     * @return string[]
+     *
+     * @return string[]|null
      */
-    public function getProducesMimeTypes() : array
+    public function getProducesMimeTypes(): ?array
     {
         return $this->producesMimeTypes;
     }
     /**
-     * 
      *
-     * @param string[] $producesMimeTypes
+     *
+     * @param string[]|null $producesMimeTypes
      *
      * @return self
      */
-    public function setProducesMimeTypes(array $producesMimeTypes) : self
+    public function setProducesMimeTypes(?array $producesMimeTypes): self
     {
         $this->producesMimeTypes = $producesMimeTypes;
         return $this;
     }
     /**
-     * 
      *
-     * @return string[]
+     *
+     * @return string[]|null
      */
-    public function getConsumesMimeTypes() : array
+    public function getConsumesMimeTypes(): ?array
     {
         return $this->consumesMimeTypes;
     }
     /**
-     * 
      *
-     * @param string[] $consumesMimeTypes
+     *
+     * @param string[]|null $consumesMimeTypes
      *
      * @return self
      */
-    public function setConsumesMimeTypes(array $consumesMimeTypes) : self
+    public function setConsumesMimeTypes(?array $consumesMimeTypes): self
     {
         $this->consumesMimeTypes = $consumesMimeTypes;
         return $this;

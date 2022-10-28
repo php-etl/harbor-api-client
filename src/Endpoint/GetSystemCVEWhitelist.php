@@ -5,19 +5,19 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 class GetSystemCVEWhitelist extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
     use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/system/CVEWhitelist';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
@@ -41,7 +41,7 @@ class GetSystemCVEWhitelist extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemCVEWhitelistInternalServerErrorException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

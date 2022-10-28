@@ -7,104 +7,104 @@ class Project
     /**
      * The update time of the project.
      *
-     * @var string
+     * @var string|null
      */
     protected $updateTime;
     /**
      * The owner name of the project.
      *
-     * @var string
+     * @var string|null
      */
     protected $ownerName;
     /**
      * The name of the project.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * A deletion mark of the project.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $deleted;
     /**
      * The owner ID of the project always means the creator of the project.
      *
-     * @var int
+     * @var int|null
      */
     protected $ownerId;
     /**
      * The number of the repositories under this project.
      *
-     * @var int
+     * @var int|null
      */
     protected $repoCount;
     /**
      * The creation time of the project.
      *
-     * @var string
+     * @var string|null
      */
     protected $creationTime;
     /**
      * Correspond to the UI about whether the project's publicity is  updatable (for UI)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $togglable;
     /**
      * Project ID
      *
-     * @var int
+     * @var int|null
      */
     protected $projectId;
     /**
      * The role ID with highest permission of the current user who triggered the API (for UI).  This attribute is deprecated and will be removed in future versions.
      *
-     * @var int
+     * @var int|null
      */
     protected $currentUserRoleId;
     /**
      * The list of role ID of the current user who triggered the API (for UI)
      *
-     * @var int[]
+     * @var int[]|null
      */
     protected $currentUserRoleIds;
     /**
      * The total number of charts under this project.
      *
-     * @var int
+     * @var int|null
      */
     protected $chartCount;
     /**
      * The CVE Whitelist for system or project
      *
-     * @var CVEWhitelist
+     * @var CVEWhitelist|null
      */
     protected $cveWhitelist;
     /**
-     * 
      *
-     * @var ProjectMetadata
+     *
+     * @var ProjectMetadata|null
      */
     protected $metadata;
     /**
      * The update time of the project.
      *
-     * @return string
+     * @return string|null
      */
-    public function getUpdateTime() : string
+    public function getUpdateTime(): ?string
     {
         return $this->updateTime;
     }
     /**
      * The update time of the project.
      *
-     * @param string $updateTime
+     * @param string|null $updateTime
      *
      * @return self
      */
-    public function setUpdateTime(string $updateTime) : self
+    public function setUpdateTime(?string $updateTime): self
     {
         $this->updateTime = $updateTime;
         return $this;
@@ -112,20 +112,20 @@ class Project
     /**
      * The owner name of the project.
      *
-     * @return string
+     * @return string|null
      */
-    public function getOwnerName() : string
+    public function getOwnerName(): ?string
     {
         return $this->ownerName;
     }
     /**
      * The owner name of the project.
      *
-     * @param string $ownerName
+     * @param string|null $ownerName
      *
      * @return self
      */
-    public function setOwnerName(string $ownerName) : self
+    public function setOwnerName(?string $ownerName): self
     {
         $this->ownerName = $ownerName;
         return $this;
@@ -133,20 +133,20 @@ class Project
     /**
      * The name of the project.
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The name of the project.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -154,20 +154,20 @@ class Project
     /**
      * A deletion mark of the project.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getDeleted() : bool
+    public function getDeleted(): ?bool
     {
         return $this->deleted;
     }
     /**
      * A deletion mark of the project.
      *
-     * @param bool $deleted
+     * @param bool|null $deleted
      *
      * @return self
      */
-    public function setDeleted(bool $deleted) : self
+    public function setDeleted(?bool $deleted): self
     {
         $this->deleted = $deleted;
         return $this;
@@ -175,20 +175,20 @@ class Project
     /**
      * The owner ID of the project always means the creator of the project.
      *
-     * @return int
+     * @return int|null
      */
-    public function getOwnerId() : int
+    public function getOwnerId(): ?int
     {
         return $this->ownerId;
     }
     /**
      * The owner ID of the project always means the creator of the project.
      *
-     * @param int $ownerId
+     * @param int|null $ownerId
      *
      * @return self
      */
-    public function setOwnerId(int $ownerId) : self
+    public function setOwnerId(?int $ownerId): self
     {
         $this->ownerId = $ownerId;
         return $this;
@@ -196,20 +196,20 @@ class Project
     /**
      * The number of the repositories under this project.
      *
-     * @return int
+     * @return int|null
      */
-    public function getRepoCount() : int
+    public function getRepoCount(): ?int
     {
         return $this->repoCount;
     }
     /**
      * The number of the repositories under this project.
      *
-     * @param int $repoCount
+     * @param int|null $repoCount
      *
      * @return self
      */
-    public function setRepoCount(int $repoCount) : self
+    public function setRepoCount(?int $repoCount): self
     {
         $this->repoCount = $repoCount;
         return $this;
@@ -217,20 +217,20 @@ class Project
     /**
      * The creation time of the project.
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreationTime() : string
+    public function getCreationTime(): ?string
     {
         return $this->creationTime;
     }
     /**
      * The creation time of the project.
      *
-     * @param string $creationTime
+     * @param string|null $creationTime
      *
      * @return self
      */
-    public function setCreationTime(string $creationTime) : self
+    public function setCreationTime(?string $creationTime): self
     {
         $this->creationTime = $creationTime;
         return $this;
@@ -238,20 +238,20 @@ class Project
     /**
      * Correspond to the UI about whether the project's publicity is  updatable (for UI)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getTogglable() : bool
+    public function getTogglable(): ?bool
     {
         return $this->togglable;
     }
     /**
      * Correspond to the UI about whether the project's publicity is  updatable (for UI)
      *
-     * @param bool $togglable
+     * @param bool|null $togglable
      *
      * @return self
      */
-    public function setTogglable(bool $togglable) : self
+    public function setTogglable(?bool $togglable): self
     {
         $this->togglable = $togglable;
         return $this;
@@ -259,20 +259,20 @@ class Project
     /**
      * Project ID
      *
-     * @return int
+     * @return int|null
      */
-    public function getProjectId() : int
+    public function getProjectId(): ?int
     {
         return $this->projectId;
     }
     /**
      * Project ID
      *
-     * @param int $projectId
+     * @param int|null $projectId
      *
      * @return self
      */
-    public function setProjectId(int $projectId) : self
+    public function setProjectId(?int $projectId): self
     {
         $this->projectId = $projectId;
         return $this;
@@ -280,20 +280,20 @@ class Project
     /**
      * The role ID with highest permission of the current user who triggered the API (for UI).  This attribute is deprecated and will be removed in future versions.
      *
-     * @return int
+     * @return int|null
      */
-    public function getCurrentUserRoleId() : int
+    public function getCurrentUserRoleId(): ?int
     {
         return $this->currentUserRoleId;
     }
     /**
      * The role ID with highest permission of the current user who triggered the API (for UI).  This attribute is deprecated and will be removed in future versions.
      *
-     * @param int $currentUserRoleId
+     * @param int|null $currentUserRoleId
      *
      * @return self
      */
-    public function setCurrentUserRoleId(int $currentUserRoleId) : self
+    public function setCurrentUserRoleId(?int $currentUserRoleId): self
     {
         $this->currentUserRoleId = $currentUserRoleId;
         return $this;
@@ -301,20 +301,20 @@ class Project
     /**
      * The list of role ID of the current user who triggered the API (for UI)
      *
-     * @return int[]
+     * @return int[]|null
      */
-    public function getCurrentUserRoleIds() : array
+    public function getCurrentUserRoleIds(): ?array
     {
         return $this->currentUserRoleIds;
     }
     /**
      * The list of role ID of the current user who triggered the API (for UI)
      *
-     * @param int[] $currentUserRoleIds
+     * @param int[]|null $currentUserRoleIds
      *
      * @return self
      */
-    public function setCurrentUserRoleIds(array $currentUserRoleIds) : self
+    public function setCurrentUserRoleIds(?array $currentUserRoleIds): self
     {
         $this->currentUserRoleIds = $currentUserRoleIds;
         return $this;
@@ -322,20 +322,20 @@ class Project
     /**
      * The total number of charts under this project.
      *
-     * @return int
+     * @return int|null
      */
-    public function getChartCount() : int
+    public function getChartCount(): ?int
     {
         return $this->chartCount;
     }
     /**
      * The total number of charts under this project.
      *
-     * @param int $chartCount
+     * @param int|null $chartCount
      *
      * @return self
      */
-    public function setChartCount(int $chartCount) : self
+    public function setChartCount(?int $chartCount): self
     {
         $this->chartCount = $chartCount;
         return $this;
@@ -343,41 +343,41 @@ class Project
     /**
      * The CVE Whitelist for system or project
      *
-     * @return CVEWhitelist
+     * @return CVEWhitelist|null
      */
-    public function getCveWhitelist() : CVEWhitelist
+    public function getCveWhitelist(): ?CVEWhitelist
     {
         return $this->cveWhitelist;
     }
     /**
      * The CVE Whitelist for system or project
      *
-     * @param CVEWhitelist $cveWhitelist
+     * @param CVEWhitelist|null $cveWhitelist
      *
      * @return self
      */
-    public function setCveWhitelist(CVEWhitelist $cveWhitelist) : self
+    public function setCveWhitelist(?CVEWhitelist $cveWhitelist): self
     {
         $this->cveWhitelist = $cveWhitelist;
         return $this;
     }
     /**
-     * 
      *
-     * @return ProjectMetadata
+     *
+     * @return ProjectMetadata|null
      */
-    public function getMetadata() : ProjectMetadata
+    public function getMetadata(): ?ProjectMetadata
     {
         return $this->metadata;
     }
     /**
-     * 
      *
-     * @param ProjectMetadata $metadata
+     *
+     * @param ProjectMetadata|null $metadata
      *
      * @return self
      */
-    public function setMetadata(ProjectMetadata $metadata) : self
+    public function setMetadata(?ProjectMetadata $metadata): self
     {
         $this->metadata = $metadata;
         return $this;

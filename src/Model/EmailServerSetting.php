@@ -7,56 +7,56 @@ class EmailServerSetting
     /**
      * Use ssl/tls or not.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $emailSsl;
     /**
      * The password of email server.
      *
-     * @var string
+     * @var string|null
      */
     protected $emailPassword;
     /**
      * The dentity of email server.
      *
-     * @var string
+     * @var string|null
      */
     protected $emailIdentity;
     /**
      * The port of email server.
      *
-     * @var int
+     * @var int|null
      */
     protected $emailPort;
     /**
      * The username of email server.
      *
-     * @var string
+     * @var string|null
      */
     protected $emailUsername;
     /**
      * The host of email server.
      *
-     * @var string
+     * @var string|null
      */
     protected $emailHost;
     /**
      * Use ssl/tls or not.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getEmailSsl() : bool
+    public function getEmailSsl(): ?bool
     {
         return $this->emailSsl;
     }
     /**
      * Use ssl/tls or not.
      *
-     * @param bool $emailSsl
+     * @param bool|null $emailSsl
      *
      * @return self
      */
-    public function setEmailSsl(bool $emailSsl) : self
+    public function setEmailSsl(?bool $emailSsl): self
     {
         $this->emailSsl = $emailSsl;
         return $this;
@@ -64,20 +64,20 @@ class EmailServerSetting
     /**
      * The password of email server.
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmailPassword() : string
+    public function getEmailPassword(): ?string
     {
         return $this->emailPassword;
     }
     /**
      * The password of email server.
      *
-     * @param string $emailPassword
+     * @param string|null $emailPassword
      *
      * @return self
      */
-    public function setEmailPassword(string $emailPassword) : self
+    public function setEmailPassword(?string $emailPassword): self
     {
         $this->emailPassword = $emailPassword;
         return $this;
@@ -85,20 +85,20 @@ class EmailServerSetting
     /**
      * The dentity of email server.
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmailIdentity() : string
+    public function getEmailIdentity(): ?string
     {
         return $this->emailIdentity;
     }
     /**
      * The dentity of email server.
      *
-     * @param string $emailIdentity
+     * @param string|null $emailIdentity
      *
      * @return self
      */
-    public function setEmailIdentity(string $emailIdentity) : self
+    public function setEmailIdentity(?string $emailIdentity): self
     {
         $this->emailIdentity = $emailIdentity;
         return $this;
@@ -106,20 +106,20 @@ class EmailServerSetting
     /**
      * The port of email server.
      *
-     * @return int
+     * @return int|null
      */
-    public function getEmailPort() : int
+    public function getEmailPort(): ?int
     {
         return $this->emailPort;
     }
     /**
      * The port of email server.
      *
-     * @param int $emailPort
+     * @param int|null $emailPort
      *
      * @return self
      */
-    public function setEmailPort(int $emailPort) : self
+    public function setEmailPort(?int $emailPort): self
     {
         $this->emailPort = $emailPort;
         return $this;
@@ -127,20 +127,20 @@ class EmailServerSetting
     /**
      * The username of email server.
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmailUsername() : string
+    public function getEmailUsername(): ?string
     {
         return $this->emailUsername;
     }
     /**
      * The username of email server.
      *
-     * @param string $emailUsername
+     * @param string|null $emailUsername
      *
      * @return self
      */
-    public function setEmailUsername(string $emailUsername) : self
+    public function setEmailUsername(?string $emailUsername): self
     {
         $this->emailUsername = $emailUsername;
         return $this;
@@ -148,20 +148,20 @@ class EmailServerSetting
     /**
      * The host of email server.
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmailHost() : string
+    public function getEmailHost(): ?string
     {
         return $this->emailHost;
     }
     /**
      * The host of email server.
      *
-     * @param string $emailHost
+     * @param string|null $emailHost
      *
      * @return self
      */
-    public function setEmailHost(string $emailHost) : self
+    public function setEmailHost(?string $emailHost): self
     {
         $this->emailHost = $emailHost;
         return $this;

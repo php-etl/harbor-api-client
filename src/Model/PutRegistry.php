@@ -7,62 +7,62 @@ class PutRegistry
     /**
      * The registry access key.
      *
-     * @var string
+     * @var string|null
      */
     protected $accessKey;
     /**
      * Credential type of the registry, e.g. 'basic'.
      *
-     * @var string
+     * @var string|null
      */
     protected $credentialType;
     /**
      * The registry name.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The registry access secret.
      *
-     * @var string
+     * @var string|null
      */
     protected $accessSecret;
     /**
      * The registry address URL string.
      *
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
      * Whether or not the certificate will be verified when Harbor tries to access the server.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $insecure;
     /**
      * Description of the registry.
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * The registry access key.
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccessKey() : string
+    public function getAccessKey(): ?string
     {
         return $this->accessKey;
     }
     /**
      * The registry access key.
      *
-     * @param string $accessKey
+     * @param string|null $accessKey
      *
      * @return self
      */
-    public function setAccessKey(string $accessKey) : self
+    public function setAccessKey(?string $accessKey): self
     {
         $this->accessKey = $accessKey;
         return $this;
@@ -70,20 +70,20 @@ class PutRegistry
     /**
      * Credential type of the registry, e.g. 'basic'.
      *
-     * @return string
+     * @return string|null
      */
-    public function getCredentialType() : string
+    public function getCredentialType(): ?string
     {
         return $this->credentialType;
     }
     /**
      * Credential type of the registry, e.g. 'basic'.
      *
-     * @param string $credentialType
+     * @param string|null $credentialType
      *
      * @return self
      */
-    public function setCredentialType(string $credentialType) : self
+    public function setCredentialType(?string $credentialType): self
     {
         $this->credentialType = $credentialType;
         return $this;
@@ -91,20 +91,20 @@ class PutRegistry
     /**
      * The registry name.
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The registry name.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -112,20 +112,20 @@ class PutRegistry
     /**
      * The registry access secret.
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccessSecret() : string
+    public function getAccessSecret(): ?string
     {
         return $this->accessSecret;
     }
     /**
      * The registry access secret.
      *
-     * @param string $accessSecret
+     * @param string|null $accessSecret
      *
      * @return self
      */
-    public function setAccessSecret(string $accessSecret) : self
+    public function setAccessSecret(?string $accessSecret): self
     {
         $this->accessSecret = $accessSecret;
         return $this;
@@ -133,20 +133,20 @@ class PutRegistry
     /**
      * The registry address URL string.
      *
-     * @return string
+     * @return string|null
      */
-    public function getUrl() : string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
     /**
      * The registry address URL string.
      *
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */
-    public function setUrl(string $url) : self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
         return $this;
@@ -154,20 +154,20 @@ class PutRegistry
     /**
      * Whether or not the certificate will be verified when Harbor tries to access the server.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getInsecure() : bool
+    public function getInsecure(): ?bool
     {
         return $this->insecure;
     }
     /**
      * Whether or not the certificate will be verified when Harbor tries to access the server.
      *
-     * @param bool $insecure
+     * @param bool|null $insecure
      *
      * @return self
      */
-    public function setInsecure(bool $insecure) : self
+    public function setInsecure(?bool $insecure): self
     {
         $this->insecure = $insecure;
         return $this;
@@ -175,20 +175,20 @@ class PutRegistry
     /**
      * Description of the registry.
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
      * Description of the registry.
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
         return $this;

@@ -7,38 +7,38 @@ class FilterStyle
     /**
      * The filter type
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * The filter style
      *
-     * @var string
+     * @var string|null
      */
     protected $style;
     /**
      * The filter values
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $values;
     /**
      * The filter type
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType(): ?string
     {
         return $this->type;
     }
     /**
      * The filter type
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type): self
     {
         $this->type = $type;
         return $this;
@@ -46,20 +46,20 @@ class FilterStyle
     /**
      * The filter style
      *
-     * @return string
+     * @return string|null
      */
-    public function getStyle() : string
+    public function getStyle(): ?string
     {
         return $this->style;
     }
     /**
      * The filter style
      *
-     * @param string $style
+     * @param string|null $style
      *
      * @return self
      */
-    public function setStyle(string $style) : self
+    public function setStyle(?string $style): self
     {
         $this->style = $style;
         return $this;
@@ -67,20 +67,20 @@ class FilterStyle
     /**
      * The filter values
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getValues() : array
+    public function getValues(): ?array
     {
         return $this->values;
     }
     /**
      * The filter values
      *
-     * @param string[] $values
+     * @param string[]|null $values
      *
      * @return self
      */
-    public function setValues(array $values) : self
+    public function setValues(?array $values): self
     {
         $this->values = $values;
         return $this;

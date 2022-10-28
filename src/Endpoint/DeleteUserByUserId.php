@@ -4,11 +4,12 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class DeleteUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $user_id;
     /**
     * This endpoint let administrator of Harbor mark a registered user as
     be removed.It actually won't be deleted from DB.
-    
+
     *
     * @param int $userId User ID for marking as to be removed.
     */
@@ -16,30 +17,29 @@ class DeleteUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
     {
         $this->user_id = $userId;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'DELETE';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{user_id}'), array($this->user_id), '/users/{user_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdInternalServerErrorException
      *
      * @return null
@@ -49,23 +49,23 @@ class DeleteUserByUserId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
         if (200 === $status) {
             return null;
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdNotFoundException();
-        }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdUnauthorizedException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdForbiddenException();
+        }
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdNotFoundException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteUserByUserIdInternalServerErrorException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class IsDefaultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,8 +43,10 @@ class IsDefaultNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('is_default', $data)) {
+        if (\array_key_exists('is_default', $data) && $data['is_default'] !== null) {
             $object->setIsDefault($data['is_default']);
+        } elseif (\array_key_exists('is_default', $data) && $data['is_default'] === null) {
+            $object->setIsDefault(null);
         }
         return $object;
     }

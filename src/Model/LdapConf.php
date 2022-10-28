@@ -7,68 +7,68 @@ class LdapConf
     /**
      * The url of ldap service.
      *
-     * @var string
+     * @var string|null
      */
     protected $ldapUrl;
     /**
      * The serach uid from ldap service attributes.
      *
-     * @var string
+     * @var string|null
      */
     protected $ldapUid;
     /**
      * The search dn of ldap service.
      *
-     * @var string
+     * @var string|null
      */
     protected $ldapSearchDn;
     /**
      * The connect timeout of ldap service(second).
      *
-     * @var int
+     * @var int|null
      */
     protected $ldapConnectionTimeout;
     /**
      * The search password of ldap service.
      *
-     * @var string
+     * @var string|null
      */
     protected $ldapSearchPassword;
     /**
      * The serach scope of ldap service.
      *
-     * @var int
+     * @var int|null
      */
     protected $ldapScope;
     /**
      * The base dn of ldap service.
      *
-     * @var string
+     * @var string|null
      */
     protected $ldapBaseDn;
     /**
      * The serach filter of ldap service.
      *
-     * @var string
+     * @var string|null
      */
     protected $ldapFilter;
     /**
      * The url of ldap service.
      *
-     * @return string
+     * @return string|null
      */
-    public function getLdapUrl() : string
+    public function getLdapUrl(): ?string
     {
         return $this->ldapUrl;
     }
     /**
      * The url of ldap service.
      *
-     * @param string $ldapUrl
+     * @param string|null $ldapUrl
      *
      * @return self
      */
-    public function setLdapUrl(string $ldapUrl) : self
+    public function setLdapUrl(?string $ldapUrl): self
     {
         $this->ldapUrl = $ldapUrl;
         return $this;
@@ -76,20 +76,20 @@ class LdapConf
     /**
      * The serach uid from ldap service attributes.
      *
-     * @return string
+     * @return string|null
      */
-    public function getLdapUid() : string
+    public function getLdapUid(): ?string
     {
         return $this->ldapUid;
     }
     /**
      * The serach uid from ldap service attributes.
      *
-     * @param string $ldapUid
+     * @param string|null $ldapUid
      *
      * @return self
      */
-    public function setLdapUid(string $ldapUid) : self
+    public function setLdapUid(?string $ldapUid): self
     {
         $this->ldapUid = $ldapUid;
         return $this;
@@ -97,20 +97,20 @@ class LdapConf
     /**
      * The search dn of ldap service.
      *
-     * @return string
+     * @return string|null
      */
-    public function getLdapSearchDn() : string
+    public function getLdapSearchDn(): ?string
     {
         return $this->ldapSearchDn;
     }
     /**
      * The search dn of ldap service.
      *
-     * @param string $ldapSearchDn
+     * @param string|null $ldapSearchDn
      *
      * @return self
      */
-    public function setLdapSearchDn(string $ldapSearchDn) : self
+    public function setLdapSearchDn(?string $ldapSearchDn): self
     {
         $this->ldapSearchDn = $ldapSearchDn;
         return $this;
@@ -118,20 +118,20 @@ class LdapConf
     /**
      * The connect timeout of ldap service(second).
      *
-     * @return int
+     * @return int|null
      */
-    public function getLdapConnectionTimeout() : int
+    public function getLdapConnectionTimeout(): ?int
     {
         return $this->ldapConnectionTimeout;
     }
     /**
      * The connect timeout of ldap service(second).
      *
-     * @param int $ldapConnectionTimeout
+     * @param int|null $ldapConnectionTimeout
      *
      * @return self
      */
-    public function setLdapConnectionTimeout(int $ldapConnectionTimeout) : self
+    public function setLdapConnectionTimeout(?int $ldapConnectionTimeout): self
     {
         $this->ldapConnectionTimeout = $ldapConnectionTimeout;
         return $this;
@@ -139,20 +139,20 @@ class LdapConf
     /**
      * The search password of ldap service.
      *
-     * @return string
+     * @return string|null
      */
-    public function getLdapSearchPassword() : string
+    public function getLdapSearchPassword(): ?string
     {
         return $this->ldapSearchPassword;
     }
     /**
      * The search password of ldap service.
      *
-     * @param string $ldapSearchPassword
+     * @param string|null $ldapSearchPassword
      *
      * @return self
      */
-    public function setLdapSearchPassword(string $ldapSearchPassword) : self
+    public function setLdapSearchPassword(?string $ldapSearchPassword): self
     {
         $this->ldapSearchPassword = $ldapSearchPassword;
         return $this;
@@ -160,20 +160,20 @@ class LdapConf
     /**
      * The serach scope of ldap service.
      *
-     * @return int
+     * @return int|null
      */
-    public function getLdapScope() : int
+    public function getLdapScope(): ?int
     {
         return $this->ldapScope;
     }
     /**
      * The serach scope of ldap service.
      *
-     * @param int $ldapScope
+     * @param int|null $ldapScope
      *
      * @return self
      */
-    public function setLdapScope(int $ldapScope) : self
+    public function setLdapScope(?int $ldapScope): self
     {
         $this->ldapScope = $ldapScope;
         return $this;
@@ -181,20 +181,20 @@ class LdapConf
     /**
      * The base dn of ldap service.
      *
-     * @return string
+     * @return string|null
      */
-    public function getLdapBaseDn() : string
+    public function getLdapBaseDn(): ?string
     {
         return $this->ldapBaseDn;
     }
     /**
      * The base dn of ldap service.
      *
-     * @param string $ldapBaseDn
+     * @param string|null $ldapBaseDn
      *
      * @return self
      */
-    public function setLdapBaseDn(string $ldapBaseDn) : self
+    public function setLdapBaseDn(?string $ldapBaseDn): self
     {
         $this->ldapBaseDn = $ldapBaseDn;
         return $this;
@@ -202,20 +202,20 @@ class LdapConf
     /**
      * The serach filter of ldap service.
      *
-     * @return string
+     * @return string|null
      */
-    public function getLdapFilter() : string
+    public function getLdapFilter(): ?string
     {
         return $this->ldapFilter;
     }
     /**
      * The serach filter of ldap service.
      *
-     * @param string $ldapFilter
+     * @param string|null $ldapFilter
      *
      * @return self
      */
-    public function setLdapFilter(string $ldapFilter) : self
+    public function setLdapFilter(?string $ldapFilter): self
     {
         $this->ldapFilter = $ldapFilter;
         return $this;

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RobotAccountCreateNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,21 +43,29 @@ class RobotAccountCreateNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('access', $data)) {
+        if (\array_key_exists('access', $data) && $data['access'] !== null) {
             $values = array();
             foreach ($data['access'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\RobotAccountAccess', 'json', $context);
             }
             $object->setAccess($values);
+        } elseif (\array_key_exists('access', $data) && $data['access'] === null) {
+            $object->setAccess(null);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (\array_key_exists('expires_at', $data)) {
+        if (\array_key_exists('expires_at', $data) && $data['expires_at'] !== null) {
             $object->setExpiresAt($data['expires_at']);
+        } elseif (\array_key_exists('expires_at', $data) && $data['expires_at'] === null) {
+            $object->setExpiresAt(null);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         return $object;
     }

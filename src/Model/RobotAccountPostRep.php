@@ -7,32 +7,32 @@ class RobotAccountPostRep
     /**
      * the token of robot account
      *
-     * @var string
+     * @var string|null
      */
     protected $token;
     /**
      * the name of robot account
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * the token of robot account
      *
-     * @return string
+     * @return string|null
      */
-    public function getToken() : string
+    public function getToken(): ?string
     {
         return $this->token;
     }
     /**
      * the token of robot account
      *
-     * @param string $token
+     * @param string|null $token
      *
      * @return self
      */
-    public function setToken(string $token) : self
+    public function setToken(?string $token): self
     {
         $this->token = $token;
         return $this;
@@ -40,20 +40,20 @@ class RobotAccountPostRep
     /**
      * the name of robot account
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * the name of robot account
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;

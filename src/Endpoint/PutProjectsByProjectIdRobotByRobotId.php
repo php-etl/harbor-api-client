@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PutProjectsByProjectIdRobotByRobotId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $project_id;
     protected $robot_id;
     /**
@@ -19,20 +20,19 @@ class PutProjectsByProjectIdRobotByRobotId extends \Gyroscops\Harbor\Api\Runtime
         $this->robot_id = $robotId;
         $this->body = $robot;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'PUT';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{project_id}', '{robot_id}'), array($this->project_id, $this->robot_id), '/projects/{project_id}/robots/{robot_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
@@ -52,7 +52,7 @@ class PutProjectsByProjectIdRobotByRobotId extends \Gyroscops\Harbor\Api\Runtime
             throw new \Gyroscops\Harbor\Api\Exception\PutProjectsByProjectIdRobotByRobotIdInternalServerErrorException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

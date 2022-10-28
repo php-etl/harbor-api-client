@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PutUsersByUserIdPassword extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $user_id;
     /**
      * This endpoint is for user to update password. Users with the admin role can change any user's password. Guest users can change only their own password.
@@ -16,30 +17,29 @@ class PutUsersByUserIdPassword extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         $this->user_id = $userId;
         $this->body = $password;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'PUT';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{user_id}'), array($this->user_id), '/users/{user_id}/password');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordInternalServerErrorException
      * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordInternalServerErrorException
      *
      * @return null
      */
@@ -48,20 +48,20 @@ class PutUsersByUserIdPassword extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (200 === $status) {
             return null;
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordUnauthorizedException();
         }
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordForbiddenException();
+        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordInternalServerErrorException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutUsersByUserIdPasswordBadRequestException();
-        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

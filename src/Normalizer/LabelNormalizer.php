@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,32 +43,50 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('update_time', $data)) {
+        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
             $object->setUpdateTime($data['update_time']);
+        } elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
+            $object->setUpdateTime(null);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (\array_key_exists('color', $data)) {
+        if (\array_key_exists('color', $data) && $data['color'] !== null) {
             $object->setColor($data['color']);
+        } elseif (\array_key_exists('color', $data) && $data['color'] === null) {
+            $object->setColor(null);
         }
-        if (\array_key_exists('creation_time', $data)) {
+        if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
             $object->setCreationTime($data['creation_time']);
+        } elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
+            $object->setCreationTime(null);
         }
-        if (\array_key_exists('deleted', $data)) {
+        if (\array_key_exists('deleted', $data) && $data['deleted'] !== null) {
             $object->setDeleted($data['deleted']);
+        } elseif (\array_key_exists('deleted', $data) && $data['deleted'] === null) {
+            $object->setDeleted(null);
         }
-        if (\array_key_exists('scope', $data)) {
+        if (\array_key_exists('scope', $data) && $data['scope'] !== null) {
             $object->setScope($data['scope']);
+        } elseif (\array_key_exists('scope', $data) && $data['scope'] === null) {
+            $object->setScope(null);
         }
-        if (\array_key_exists('project_id', $data)) {
+        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
             $object->setProjectId($data['project_id']);
+        } elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
+            $object->setProjectId(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
         return $object;
     }

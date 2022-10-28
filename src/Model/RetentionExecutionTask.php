@@ -5,298 +5,298 @@ namespace Gyroscops\Harbor\Api\Model;
 class RetentionExecutionTask
 {
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $status;
     /**
-     * 
      *
-     * @var int
+     *
+     * @var int|null
      */
     protected $retained;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $jobId;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $repository;
     /**
-     * 
      *
-     * @var int
+     *
+     * @var int|null
      */
     protected $statusCode;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $startTime;
     /**
-     * 
      *
-     * @var int
+     *
+     * @var int|null
      */
     protected $statusRevision;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $endTime;
     /**
-     * 
      *
-     * @var int
+     *
+     * @var int|null
      */
     protected $total;
     /**
-     * 
      *
-     * @var int
+     *
+     * @var int|null
      */
     protected $id;
     /**
-     * 
      *
-     * @var int
+     *
+     * @var int|null
      */
     protected $executionId;
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getStatus() : string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
     /**
-     * 
      *
-     * @param string $status
+     *
+     * @param string|null $status
      *
      * @return self
      */
-    public function setStatus(string $status) : self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
         return $this;
     }
     /**
-     * 
      *
-     * @return int
+     *
+     * @return int|null
      */
-    public function getRetained() : int
+    public function getRetained(): ?int
     {
         return $this->retained;
     }
     /**
-     * 
      *
-     * @param int $retained
+     *
+     * @param int|null $retained
      *
      * @return self
      */
-    public function setRetained(int $retained) : self
+    public function setRetained(?int $retained): self
     {
         $this->retained = $retained;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getJobId() : string
+    public function getJobId(): ?string
     {
         return $this->jobId;
     }
     /**
-     * 
      *
-     * @param string $jobId
+     *
+     * @param string|null $jobId
      *
      * @return self
      */
-    public function setJobId(string $jobId) : self
+    public function setJobId(?string $jobId): self
     {
         $this->jobId = $jobId;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getRepository() : string
+    public function getRepository(): ?string
     {
         return $this->repository;
     }
     /**
-     * 
      *
-     * @param string $repository
+     *
+     * @param string|null $repository
      *
      * @return self
      */
-    public function setRepository(string $repository) : self
+    public function setRepository(?string $repository): self
     {
         $this->repository = $repository;
         return $this;
     }
     /**
-     * 
      *
-     * @return int
+     *
+     * @return int|null
      */
-    public function getStatusCode() : int
+    public function getStatusCode(): ?int
     {
         return $this->statusCode;
     }
     /**
-     * 
      *
-     * @param int $statusCode
+     *
+     * @param int|null $statusCode
      *
      * @return self
      */
-    public function setStatusCode(int $statusCode) : self
+    public function setStatusCode(?int $statusCode): self
     {
         $this->statusCode = $statusCode;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getStartTime() : string
+    public function getStartTime(): ?string
     {
         return $this->startTime;
     }
     /**
-     * 
      *
-     * @param string $startTime
+     *
+     * @param string|null $startTime
      *
      * @return self
      */
-    public function setStartTime(string $startTime) : self
+    public function setStartTime(?string $startTime): self
     {
         $this->startTime = $startTime;
         return $this;
     }
     /**
-     * 
      *
-     * @return int
+     *
+     * @return int|null
      */
-    public function getStatusRevision() : int
+    public function getStatusRevision(): ?int
     {
         return $this->statusRevision;
     }
     /**
-     * 
      *
-     * @param int $statusRevision
+     *
+     * @param int|null $statusRevision
      *
      * @return self
      */
-    public function setStatusRevision(int $statusRevision) : self
+    public function setStatusRevision(?int $statusRevision): self
     {
         $this->statusRevision = $statusRevision;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getEndTime() : string
+    public function getEndTime(): ?string
     {
         return $this->endTime;
     }
     /**
-     * 
      *
-     * @param string $endTime
+     *
+     * @param string|null $endTime
      *
      * @return self
      */
-    public function setEndTime(string $endTime) : self
+    public function setEndTime(?string $endTime): self
     {
         $this->endTime = $endTime;
         return $this;
     }
     /**
-     * 
      *
-     * @return int
+     *
+     * @return int|null
      */
-    public function getTotal() : int
+    public function getTotal(): ?int
     {
         return $this->total;
     }
     /**
-     * 
      *
-     * @param int $total
+     *
+     * @param int|null $total
      *
      * @return self
      */
-    public function setTotal(int $total) : self
+    public function setTotal(?int $total): self
     {
         $this->total = $total;
         return $this;
     }
     /**
-     * 
      *
-     * @return int
+     *
+     * @return int|null
      */
-    public function getId() : int
+    public function getId(): ?int
     {
         return $this->id;
     }
     /**
-     * 
      *
-     * @param int $id
+     *
+     * @param int|null $id
      *
      * @return self
      */
-    public function setId(int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;
     }
     /**
-     * 
      *
-     * @return int
+     *
+     * @return int|null
      */
-    public function getExecutionId() : int
+    public function getExecutionId(): ?int
     {
         return $this->executionId;
     }
     /**
-     * 
      *
-     * @param int $executionId
+     *
+     * @param int|null $executionId
      *
      * @return self
      */
-    public function setExecutionId(int $executionId) : self
+    public function setExecutionId(?int $executionId): self
     {
         $this->executionId = $executionId;
         return $this;

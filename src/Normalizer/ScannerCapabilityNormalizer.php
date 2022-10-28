@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ScannerCapabilityNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,19 +43,23 @@ class ScannerCapabilityNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('produces_mime_types', $data)) {
+        if (\array_key_exists('produces_mime_types', $data) && $data['produces_mime_types'] !== null) {
             $values = array();
             foreach ($data['produces_mime_types'] as $value) {
                 $values[] = $value;
             }
             $object->setProducesMimeTypes($values);
+        } elseif (\array_key_exists('produces_mime_types', $data) && $data['produces_mime_types'] === null) {
+            $object->setProducesMimeTypes(null);
         }
-        if (\array_key_exists('consumes_mime_types', $data)) {
+        if (\array_key_exists('consumes_mime_types', $data) && $data['consumes_mime_types'] !== null) {
             $values_1 = array();
             foreach ($data['consumes_mime_types'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setConsumesMimeTypes($values_1);
+        } elseif (\array_key_exists('consumes_mime_types', $data) && $data['consumes_mime_types'] === null) {
+            $object->setConsumesMimeTypes(null);
         }
         return $object;
     }

@@ -7,98 +7,98 @@ class ReplicationPolicy
     /**
      * The update time of the policy.
      *
-     * @var string
+     * @var string|null
      */
     protected $updateTime;
     /**
      * The description of the policy.
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * Whether the policy is enabled or not.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $enabled;
     /**
      * The replication policy filter array.
      *
-     * @var ReplicationFilter[]
+     * @var ReplicationFilter[]|null
      */
     protected $filters;
     /**
-     * 
      *
-     * @var Registry
+     *
+     * @var Registry|null
      */
     protected $destRegistry;
     /**
      * The create time of the policy.
      *
-     * @var string
+     * @var string|null
      */
     protected $creationTime;
     /**
-     * 
      *
-     * @var Registry
+     *
+     * @var Registry|null
      */
     protected $srcRegistry;
     /**
      * The destination namespace.
      *
-     * @var string
+     * @var string|null
      */
     protected $destNamespace;
     /**
-     * 
      *
-     * @var ReplicationTrigger
+     *
+     * @var ReplicationTrigger|null
      */
     protected $trigger;
     /**
      * Whether to replicate the deletion operation.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $deletion;
     /**
      * Whether to override the resources on the destination registry.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $override;
     /**
      * The policy ID.
      *
-     * @var int
+     * @var int|null
      */
     protected $id;
     /**
      * The policy name.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The update time of the policy.
      *
-     * @return string
+     * @return string|null
      */
-    public function getUpdateTime() : string
+    public function getUpdateTime(): ?string
     {
         return $this->updateTime;
     }
     /**
      * The update time of the policy.
      *
-     * @param string $updateTime
+     * @param string|null $updateTime
      *
      * @return self
      */
-    public function setUpdateTime(string $updateTime) : self
+    public function setUpdateTime(?string $updateTime): self
     {
         $this->updateTime = $updateTime;
         return $this;
@@ -106,20 +106,20 @@ class ReplicationPolicy
     /**
      * The description of the policy.
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
      * The description of the policy.
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
         return $this;
@@ -127,20 +127,20 @@ class ReplicationPolicy
     /**
      * Whether the policy is enabled or not.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getEnabled() : bool
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
     /**
      * Whether the policy is enabled or not.
      *
-     * @param bool $enabled
+     * @param bool|null $enabled
      *
      * @return self
      */
-    public function setEnabled(bool $enabled) : self
+    public function setEnabled(?bool $enabled): self
     {
         $this->enabled = $enabled;
         return $this;
@@ -148,41 +148,41 @@ class ReplicationPolicy
     /**
      * The replication policy filter array.
      *
-     * @return ReplicationFilter[]
+     * @return ReplicationFilter[]|null
      */
-    public function getFilters() : array
+    public function getFilters(): ?array
     {
         return $this->filters;
     }
     /**
      * The replication policy filter array.
      *
-     * @param ReplicationFilter[] $filters
+     * @param ReplicationFilter[]|null $filters
      *
      * @return self
      */
-    public function setFilters(array $filters) : self
+    public function setFilters(?array $filters): self
     {
         $this->filters = $filters;
         return $this;
     }
     /**
-     * 
      *
-     * @return Registry
+     *
+     * @return Registry|null
      */
-    public function getDestRegistry() : Registry
+    public function getDestRegistry(): ?Registry
     {
         return $this->destRegistry;
     }
     /**
-     * 
      *
-     * @param Registry $destRegistry
+     *
+     * @param Registry|null $destRegistry
      *
      * @return self
      */
-    public function setDestRegistry(Registry $destRegistry) : self
+    public function setDestRegistry(?Registry $destRegistry): self
     {
         $this->destRegistry = $destRegistry;
         return $this;
@@ -190,41 +190,41 @@ class ReplicationPolicy
     /**
      * The create time of the policy.
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreationTime() : string
+    public function getCreationTime(): ?string
     {
         return $this->creationTime;
     }
     /**
      * The create time of the policy.
      *
-     * @param string $creationTime
+     * @param string|null $creationTime
      *
      * @return self
      */
-    public function setCreationTime(string $creationTime) : self
+    public function setCreationTime(?string $creationTime): self
     {
         $this->creationTime = $creationTime;
         return $this;
     }
     /**
-     * 
      *
-     * @return Registry
+     *
+     * @return Registry|null
      */
-    public function getSrcRegistry() : Registry
+    public function getSrcRegistry(): ?Registry
     {
         return $this->srcRegistry;
     }
     /**
-     * 
      *
-     * @param Registry $srcRegistry
+     *
+     * @param Registry|null $srcRegistry
      *
      * @return self
      */
-    public function setSrcRegistry(Registry $srcRegistry) : self
+    public function setSrcRegistry(?Registry $srcRegistry): self
     {
         $this->srcRegistry = $srcRegistry;
         return $this;
@@ -232,41 +232,41 @@ class ReplicationPolicy
     /**
      * The destination namespace.
      *
-     * @return string
+     * @return string|null
      */
-    public function getDestNamespace() : string
+    public function getDestNamespace(): ?string
     {
         return $this->destNamespace;
     }
     /**
      * The destination namespace.
      *
-     * @param string $destNamespace
+     * @param string|null $destNamespace
      *
      * @return self
      */
-    public function setDestNamespace(string $destNamespace) : self
+    public function setDestNamespace(?string $destNamespace): self
     {
         $this->destNamespace = $destNamespace;
         return $this;
     }
     /**
-     * 
      *
-     * @return ReplicationTrigger
+     *
+     * @return ReplicationTrigger|null
      */
-    public function getTrigger() : ReplicationTrigger
+    public function getTrigger(): ?ReplicationTrigger
     {
         return $this->trigger;
     }
     /**
-     * 
      *
-     * @param ReplicationTrigger $trigger
+     *
+     * @param ReplicationTrigger|null $trigger
      *
      * @return self
      */
-    public function setTrigger(ReplicationTrigger $trigger) : self
+    public function setTrigger(?ReplicationTrigger $trigger): self
     {
         $this->trigger = $trigger;
         return $this;
@@ -274,20 +274,20 @@ class ReplicationPolicy
     /**
      * Whether to replicate the deletion operation.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getDeletion() : bool
+    public function getDeletion(): ?bool
     {
         return $this->deletion;
     }
     /**
      * Whether to replicate the deletion operation.
      *
-     * @param bool $deletion
+     * @param bool|null $deletion
      *
      * @return self
      */
-    public function setDeletion(bool $deletion) : self
+    public function setDeletion(?bool $deletion): self
     {
         $this->deletion = $deletion;
         return $this;
@@ -295,20 +295,20 @@ class ReplicationPolicy
     /**
      * Whether to override the resources on the destination registry.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getOverride() : bool
+    public function getOverride(): ?bool
     {
         return $this->override;
     }
     /**
      * Whether to override the resources on the destination registry.
      *
-     * @param bool $override
+     * @param bool|null $override
      *
      * @return self
      */
-    public function setOverride(bool $override) : self
+    public function setOverride(?bool $override): self
     {
         $this->override = $override;
         return $this;
@@ -316,20 +316,20 @@ class ReplicationPolicy
     /**
      * The policy ID.
      *
-     * @return int
+     * @return int|null
      */
-    public function getId() : int
+    public function getId(): ?int
     {
         return $this->id;
     }
     /**
      * The policy ID.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
-    public function setId(int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;
@@ -337,20 +337,20 @@ class ReplicationPolicy
     /**
      * The policy name.
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The policy name.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;

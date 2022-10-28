@@ -5,175 +5,175 @@ namespace Gyroscops\Harbor\Api\Model;
 class User
 {
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $username;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $comment;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $updateTime;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $password;
     /**
      * The ID of the user.
      *
-     * @var int
+     * @var int|null
      */
     protected $userId;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $realname;
     /**
-     * 
      *
-     * @var bool
+     *
+     * @var bool|null
      */
     protected $deleted;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $creationTime;
     /**
      * indicate the admin privilege is grant by authenticator (LDAP), is always false unless it is the current login user
      *
-     * @var bool
+     * @var bool|null
      */
     protected $adminRoleInAuth;
     /**
-     * 
      *
-     * @var int
+     *
+     * @var int|null
      */
     protected $roleId;
     /**
-     * 
      *
-     * @var bool
+     *
+     * @var bool|null
      */
     protected $sysadminFlag;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $roleName;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $resetUuid;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $salt;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $email;
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getUsername() : string
+    public function getUsername(): ?string
     {
         return $this->username;
     }
     /**
-     * 
      *
-     * @param string $username
+     *
+     * @param string|null $username
      *
      * @return self
      */
-    public function setUsername(string $username) : self
+    public function setUsername(?string $username): self
     {
         $this->username = $username;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getComment() : string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
     /**
-     * 
      *
-     * @param string $comment
+     *
+     * @param string|null $comment
      *
      * @return self
      */
-    public function setComment(string $comment) : self
+    public function setComment(?string $comment): self
     {
         $this->comment = $comment;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getUpdateTime() : string
+    public function getUpdateTime(): ?string
     {
         return $this->updateTime;
     }
     /**
-     * 
      *
-     * @param string $updateTime
+     *
+     * @param string|null $updateTime
      *
      * @return self
      */
-    public function setUpdateTime(string $updateTime) : self
+    public function setUpdateTime(?string $updateTime): self
     {
         $this->updateTime = $updateTime;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getPassword() : string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
     /**
-     * 
      *
-     * @param string $password
+     *
+     * @param string|null $password
      *
      * @return self
      */
-    public function setPassword(string $password) : self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
         return $this;
@@ -181,83 +181,83 @@ class User
     /**
      * The ID of the user.
      *
-     * @return int
+     * @return int|null
      */
-    public function getUserId() : int
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
     /**
      * The ID of the user.
      *
-     * @param int $userId
+     * @param int|null $userId
      *
      * @return self
      */
-    public function setUserId(int $userId) : self
+    public function setUserId(?int $userId): self
     {
         $this->userId = $userId;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getRealname() : string
+    public function getRealname(): ?string
     {
         return $this->realname;
     }
     /**
-     * 
      *
-     * @param string $realname
+     *
+     * @param string|null $realname
      *
      * @return self
      */
-    public function setRealname(string $realname) : self
+    public function setRealname(?string $realname): self
     {
         $this->realname = $realname;
         return $this;
     }
     /**
-     * 
      *
-     * @return bool
+     *
+     * @return bool|null
      */
-    public function getDeleted() : bool
+    public function getDeleted(): ?bool
     {
         return $this->deleted;
     }
     /**
-     * 
      *
-     * @param bool $deleted
+     *
+     * @param bool|null $deleted
      *
      * @return self
      */
-    public function setDeleted(bool $deleted) : self
+    public function setDeleted(?bool $deleted): self
     {
         $this->deleted = $deleted;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getCreationTime() : string
+    public function getCreationTime(): ?string
     {
         return $this->creationTime;
     }
     /**
-     * 
      *
-     * @param string $creationTime
+     *
+     * @param string|null $creationTime
      *
      * @return self
      */
-    public function setCreationTime(string $creationTime) : self
+    public function setCreationTime(?string $creationTime): self
     {
         $this->creationTime = $creationTime;
         return $this;
@@ -265,146 +265,146 @@ class User
     /**
      * indicate the admin privilege is grant by authenticator (LDAP), is always false unless it is the current login user
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getAdminRoleInAuth() : bool
+    public function getAdminRoleInAuth(): ?bool
     {
         return $this->adminRoleInAuth;
     }
     /**
      * indicate the admin privilege is grant by authenticator (LDAP), is always false unless it is the current login user
      *
-     * @param bool $adminRoleInAuth
+     * @param bool|null $adminRoleInAuth
      *
      * @return self
      */
-    public function setAdminRoleInAuth(bool $adminRoleInAuth) : self
+    public function setAdminRoleInAuth(?bool $adminRoleInAuth): self
     {
         $this->adminRoleInAuth = $adminRoleInAuth;
         return $this;
     }
     /**
-     * 
      *
-     * @return int
+     *
+     * @return int|null
      */
-    public function getRoleId() : int
+    public function getRoleId(): ?int
     {
         return $this->roleId;
     }
     /**
-     * 
      *
-     * @param int $roleId
+     *
+     * @param int|null $roleId
      *
      * @return self
      */
-    public function setRoleId(int $roleId) : self
+    public function setRoleId(?int $roleId): self
     {
         $this->roleId = $roleId;
         return $this;
     }
     /**
-     * 
      *
-     * @return bool
+     *
+     * @return bool|null
      */
-    public function getSysadminFlag() : bool
+    public function getSysadminFlag(): ?bool
     {
         return $this->sysadminFlag;
     }
     /**
-     * 
      *
-     * @param bool $sysadminFlag
+     *
+     * @param bool|null $sysadminFlag
      *
      * @return self
      */
-    public function setSysadminFlag(bool $sysadminFlag) : self
+    public function setSysadminFlag(?bool $sysadminFlag): self
     {
         $this->sysadminFlag = $sysadminFlag;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getRoleName() : string
+    public function getRoleName(): ?string
     {
         return $this->roleName;
     }
     /**
-     * 
      *
-     * @param string $roleName
+     *
+     * @param string|null $roleName
      *
      * @return self
      */
-    public function setRoleName(string $roleName) : self
+    public function setRoleName(?string $roleName): self
     {
         $this->roleName = $roleName;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getResetUuid() : string
+    public function getResetUuid(): ?string
     {
         return $this->resetUuid;
     }
     /**
-     * 
      *
-     * @param string $resetUuid
+     *
+     * @param string|null $resetUuid
      *
      * @return self
      */
-    public function setResetUuid(string $resetUuid) : self
+    public function setResetUuid(?string $resetUuid): self
     {
         $this->resetUuid = $resetUuid;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getSalt() : string
+    public function getSalt(): ?string
     {
         return $this->salt;
     }
     /**
-     * 
      *
-     * @param string $salt
+     *
+     * @param string|null $salt
      *
      * @return self
      */
-    public function setSalt(string $salt) : self
+    public function setSalt(?string $salt): self
     {
         $this->salt = $salt;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
     /**
-     * 
      *
-     * @param string $email
+     *
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
         return $this;

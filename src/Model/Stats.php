@@ -7,50 +7,50 @@ class Stats
     /**
      * The metrics data for the each status
      *
-     * @var int[]
+     * @var int[]|null
      */
     protected $metrics;
     /**
      * The number of the finished scan processes triggered by the scan all action
      *
-     * @var int
+     * @var int|null
      */
     protected $completed;
     /**
      * The total number of scan processes triggered by the scan all action
      *
-     * @var int
+     * @var int|null
      */
     protected $total;
     /**
      * A flag indicating job status of scan all .
      *
-     * @var bool
+     * @var bool|null
      */
     protected $ongoing;
     /**
      * The requester identity which usually uses the ID of the scan all job
      *
-     * @var string
+     * @var string|null
      */
     protected $requester;
     /**
      * The metrics data for the each status
      *
-     * @return int[]
+     * @return int[]|null
      */
-    public function getMetrics() : iterable
+    public function getMetrics(): ?iterable
     {
         return $this->metrics;
     }
     /**
      * The metrics data for the each status
      *
-     * @param int[] $metrics
+     * @param int[]|null $metrics
      *
      * @return self
      */
-    public function setMetrics(iterable $metrics) : self
+    public function setMetrics(?iterable $metrics): self
     {
         $this->metrics = $metrics;
         return $this;
@@ -58,20 +58,20 @@ class Stats
     /**
      * The number of the finished scan processes triggered by the scan all action
      *
-     * @return int
+     * @return int|null
      */
-    public function getCompleted() : int
+    public function getCompleted(): ?int
     {
         return $this->completed;
     }
     /**
      * The number of the finished scan processes triggered by the scan all action
      *
-     * @param int $completed
+     * @param int|null $completed
      *
      * @return self
      */
-    public function setCompleted(int $completed) : self
+    public function setCompleted(?int $completed): self
     {
         $this->completed = $completed;
         return $this;
@@ -79,20 +79,20 @@ class Stats
     /**
      * The total number of scan processes triggered by the scan all action
      *
-     * @return int
+     * @return int|null
      */
-    public function getTotal() : int
+    public function getTotal(): ?int
     {
         return $this->total;
     }
     /**
      * The total number of scan processes triggered by the scan all action
      *
-     * @param int $total
+     * @param int|null $total
      *
      * @return self
      */
-    public function setTotal(int $total) : self
+    public function setTotal(?int $total): self
     {
         $this->total = $total;
         return $this;
@@ -100,20 +100,20 @@ class Stats
     /**
      * A flag indicating job status of scan all .
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getOngoing() : bool
+    public function getOngoing(): ?bool
     {
         return $this->ongoing;
     }
     /**
      * A flag indicating job status of scan all .
      *
-     * @param bool $ongoing
+     * @param bool|null $ongoing
      *
      * @return self
      */
-    public function setOngoing(bool $ongoing) : self
+    public function setOngoing(?bool $ongoing): self
     {
         $this->ongoing = $ongoing;
         return $this;
@@ -121,20 +121,20 @@ class Stats
     /**
      * The requester identity which usually uses the ID of the scan all job
      *
-     * @return string
+     * @return string|null
      */
-    public function getRequester() : string
+    public function getRequester(): ?string
     {
         return $this->requester;
     }
     /**
      * The requester identity which usually uses the ID of the scan all job
      *
-     * @param string $requester
+     * @param string|null $requester
      *
      * @return self
      */
-    public function setRequester(string $requester) : self
+    public function setRequester(?string $requester): self
     {
         $this->requester = $requester;
         return $this;

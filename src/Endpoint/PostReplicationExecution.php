@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PostReplicationExecution extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
      * This endpoint is for user to start one execution of the replication.
      *
@@ -13,30 +14,29 @@ class PostReplicationExecution extends \Gyroscops\Harbor\Api\Runtime\Client\Base
     {
         $this->body = $execution;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/replication/executions';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException
      * @throws \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionInternalServerErrorException
      *
      * @return null
@@ -46,23 +46,23 @@ class PostReplicationExecution extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (201 === $status) {
             return null;
         }
-        if (415 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException();
-        }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnauthorizedException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionForbiddenException();
+        }
+        if (415 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionUnsupportedMediaTypeException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostReplicationExecutionInternalServerErrorException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

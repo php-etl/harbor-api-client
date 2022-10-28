@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,12 +43,14 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('storage', $data)) {
+        if (\array_key_exists('storage', $data) && $data['storage'] !== null) {
             $values = array();
             foreach ($data['storage'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\Storage', 'json', $context);
             }
             $object->setStorage($values);
+        } elseif (\array_key_exists('storage', $data) && $data['storage'] === null) {
+            $object->setStorage(null);
         }
         return $object;
     }

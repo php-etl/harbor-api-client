@@ -13,7 +13,7 @@ class DeleteChartrepoByRepoChartsByNameByVersionLabelByIdForbiddenException exte
         parent::__construct('Operation is forbidden or quota exceeded');
         $this->forbiddenChartAPIError = $forbiddenChartAPIError;
     }
-    public function getForbiddenChartAPIError() : \Gyroscops\Harbor\Api\Model\ForbiddenChartAPIError
+    public function getForbiddenChartAPIError(): \Gyroscops\Harbor\Api\Model\ForbiddenChartAPIError
     {
         return $this->forbiddenChartAPIError;
     }

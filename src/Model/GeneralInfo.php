@@ -7,74 +7,74 @@ class GeneralInfo
     /**
      * The build version of Harbor.
      *
-     * @var string
+     * @var string|null
      */
     protected $harborVersion;
     /**
      * The auth mode of current Harbor instance.
      *
-     * @var string
+     * @var string|null
      */
     protected $authMode;
     /**
      * Indicate whether the Harbor instance enable user to register himself.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $selfRegistration;
     /**
      * The external URL of Harbor, with protocol.
      *
-     * @var string
+     * @var string|null
      */
     protected $externalUrl;
     /**
      * Indicate who can create projects, it could be 'adminonly' or 'everyone'.
      *
-     * @var string
+     * @var string|null
      */
     protected $projectCreationRestriction;
     /**
      * Indicate whether there is a ca root cert file ready for download in the file system.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $hasCaRoot;
     /**
      * If the Harbor instance is deployed with nested notary.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $withNotary;
     /**
      * If the Harbor instance is deployed with nested chartmuseum.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $withChartmuseum;
     /**
      * The url of registry against which the docker command should be issued.
      *
-     * @var string
+     * @var string|null
      */
     protected $registryUrl;
     /**
      * The build version of Harbor.
      *
-     * @return string
+     * @return string|null
      */
-    public function getHarborVersion() : string
+    public function getHarborVersion(): ?string
     {
         return $this->harborVersion;
     }
     /**
      * The build version of Harbor.
      *
-     * @param string $harborVersion
+     * @param string|null $harborVersion
      *
      * @return self
      */
-    public function setHarborVersion(string $harborVersion) : self
+    public function setHarborVersion(?string $harborVersion): self
     {
         $this->harborVersion = $harborVersion;
         return $this;
@@ -82,20 +82,20 @@ class GeneralInfo
     /**
      * The auth mode of current Harbor instance.
      *
-     * @return string
+     * @return string|null
      */
-    public function getAuthMode() : string
+    public function getAuthMode(): ?string
     {
         return $this->authMode;
     }
     /**
      * The auth mode of current Harbor instance.
      *
-     * @param string $authMode
+     * @param string|null $authMode
      *
      * @return self
      */
-    public function setAuthMode(string $authMode) : self
+    public function setAuthMode(?string $authMode): self
     {
         $this->authMode = $authMode;
         return $this;
@@ -103,20 +103,20 @@ class GeneralInfo
     /**
      * Indicate whether the Harbor instance enable user to register himself.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getSelfRegistration() : bool
+    public function getSelfRegistration(): ?bool
     {
         return $this->selfRegistration;
     }
     /**
      * Indicate whether the Harbor instance enable user to register himself.
      *
-     * @param bool $selfRegistration
+     * @param bool|null $selfRegistration
      *
      * @return self
      */
-    public function setSelfRegistration(bool $selfRegistration) : self
+    public function setSelfRegistration(?bool $selfRegistration): self
     {
         $this->selfRegistration = $selfRegistration;
         return $this;
@@ -124,20 +124,20 @@ class GeneralInfo
     /**
      * The external URL of Harbor, with protocol.
      *
-     * @return string
+     * @return string|null
      */
-    public function getExternalUrl() : string
+    public function getExternalUrl(): ?string
     {
         return $this->externalUrl;
     }
     /**
      * The external URL of Harbor, with protocol.
      *
-     * @param string $externalUrl
+     * @param string|null $externalUrl
      *
      * @return self
      */
-    public function setExternalUrl(string $externalUrl) : self
+    public function setExternalUrl(?string $externalUrl): self
     {
         $this->externalUrl = $externalUrl;
         return $this;
@@ -145,20 +145,20 @@ class GeneralInfo
     /**
      * Indicate who can create projects, it could be 'adminonly' or 'everyone'.
      *
-     * @return string
+     * @return string|null
      */
-    public function getProjectCreationRestriction() : string
+    public function getProjectCreationRestriction(): ?string
     {
         return $this->projectCreationRestriction;
     }
     /**
      * Indicate who can create projects, it could be 'adminonly' or 'everyone'.
      *
-     * @param string $projectCreationRestriction
+     * @param string|null $projectCreationRestriction
      *
      * @return self
      */
-    public function setProjectCreationRestriction(string $projectCreationRestriction) : self
+    public function setProjectCreationRestriction(?string $projectCreationRestriction): self
     {
         $this->projectCreationRestriction = $projectCreationRestriction;
         return $this;
@@ -166,20 +166,20 @@ class GeneralInfo
     /**
      * Indicate whether there is a ca root cert file ready for download in the file system.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getHasCaRoot() : bool
+    public function getHasCaRoot(): ?bool
     {
         return $this->hasCaRoot;
     }
     /**
      * Indicate whether there is a ca root cert file ready for download in the file system.
      *
-     * @param bool $hasCaRoot
+     * @param bool|null $hasCaRoot
      *
      * @return self
      */
-    public function setHasCaRoot(bool $hasCaRoot) : self
+    public function setHasCaRoot(?bool $hasCaRoot): self
     {
         $this->hasCaRoot = $hasCaRoot;
         return $this;
@@ -187,20 +187,20 @@ class GeneralInfo
     /**
      * If the Harbor instance is deployed with nested notary.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getWithNotary() : bool
+    public function getWithNotary(): ?bool
     {
         return $this->withNotary;
     }
     /**
      * If the Harbor instance is deployed with nested notary.
      *
-     * @param bool $withNotary
+     * @param bool|null $withNotary
      *
      * @return self
      */
-    public function setWithNotary(bool $withNotary) : self
+    public function setWithNotary(?bool $withNotary): self
     {
         $this->withNotary = $withNotary;
         return $this;
@@ -208,20 +208,20 @@ class GeneralInfo
     /**
      * If the Harbor instance is deployed with nested chartmuseum.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getWithChartmuseum() : bool
+    public function getWithChartmuseum(): ?bool
     {
         return $this->withChartmuseum;
     }
     /**
      * If the Harbor instance is deployed with nested chartmuseum.
      *
-     * @param bool $withChartmuseum
+     * @param bool|null $withChartmuseum
      *
      * @return self
      */
-    public function setWithChartmuseum(bool $withChartmuseum) : self
+    public function setWithChartmuseum(?bool $withChartmuseum): self
     {
         $this->withChartmuseum = $withChartmuseum;
         return $this;
@@ -229,20 +229,20 @@ class GeneralInfo
     /**
      * The url of registry against which the docker command should be issued.
      *
-     * @return string
+     * @return string|null
      */
-    public function getRegistryUrl() : string
+    public function getRegistryUrl(): ?string
     {
         return $this->registryUrl;
     }
     /**
      * The url of registry against which the docker command should be issued.
      *
-     * @param string $registryUrl
+     * @param string|null $registryUrl
      *
      * @return self
      */
-    public function setRegistryUrl(string $registryUrl) : self
+    public function setRegistryUrl(?string $registryUrl): self
     {
         $this->registryUrl = $registryUrl;
         return $this;

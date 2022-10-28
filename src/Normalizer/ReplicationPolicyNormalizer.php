@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ReplicationPolicyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,48 +43,74 @@ class ReplicationPolicyNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('update_time', $data)) {
+        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
             $object->setUpdateTime($data['update_time']);
+        } elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
+            $object->setUpdateTime(null);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (\array_key_exists('enabled', $data)) {
+        if (\array_key_exists('enabled', $data) && $data['enabled'] !== null) {
             $object->setEnabled($data['enabled']);
+        } elseif (\array_key_exists('enabled', $data) && $data['enabled'] === null) {
+            $object->setEnabled(null);
         }
-        if (\array_key_exists('filters', $data)) {
+        if (\array_key_exists('filters', $data) && $data['filters'] !== null) {
             $values = array();
             foreach ($data['filters'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\ReplicationFilter', 'json', $context);
             }
             $object->setFilters($values);
+        } elseif (\array_key_exists('filters', $data) && $data['filters'] === null) {
+            $object->setFilters(null);
         }
-        if (\array_key_exists('dest_registry', $data)) {
+        if (\array_key_exists('dest_registry', $data) && $data['dest_registry'] !== null) {
             $object->setDestRegistry($this->denormalizer->denormalize($data['dest_registry'], 'Gyroscops\\Harbor\\Api\\Model\\Registry', 'json', $context));
+        } elseif (\array_key_exists('dest_registry', $data) && $data['dest_registry'] === null) {
+            $object->setDestRegistry(null);
         }
-        if (\array_key_exists('creation_time', $data)) {
+        if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
             $object->setCreationTime($data['creation_time']);
+        } elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
+            $object->setCreationTime(null);
         }
-        if (\array_key_exists('src_registry', $data)) {
+        if (\array_key_exists('src_registry', $data) && $data['src_registry'] !== null) {
             $object->setSrcRegistry($this->denormalizer->denormalize($data['src_registry'], 'Gyroscops\\Harbor\\Api\\Model\\Registry', 'json', $context));
+        } elseif (\array_key_exists('src_registry', $data) && $data['src_registry'] === null) {
+            $object->setSrcRegistry(null);
         }
-        if (\array_key_exists('dest_namespace', $data)) {
+        if (\array_key_exists('dest_namespace', $data) && $data['dest_namespace'] !== null) {
             $object->setDestNamespace($data['dest_namespace']);
+        } elseif (\array_key_exists('dest_namespace', $data) && $data['dest_namespace'] === null) {
+            $object->setDestNamespace(null);
         }
-        if (\array_key_exists('trigger', $data)) {
+        if (\array_key_exists('trigger', $data) && $data['trigger'] !== null) {
             $object->setTrigger($this->denormalizer->denormalize($data['trigger'], 'Gyroscops\\Harbor\\Api\\Model\\ReplicationTrigger', 'json', $context));
+        } elseif (\array_key_exists('trigger', $data) && $data['trigger'] === null) {
+            $object->setTrigger(null);
         }
-        if (\array_key_exists('deletion', $data)) {
+        if (\array_key_exists('deletion', $data) && $data['deletion'] !== null) {
             $object->setDeletion($data['deletion']);
+        } elseif (\array_key_exists('deletion', $data) && $data['deletion'] === null) {
+            $object->setDeletion(null);
         }
-        if (\array_key_exists('override', $data)) {
+        if (\array_key_exists('override', $data) && $data['override'] !== null) {
             $object->setOverride($data['override']);
+        } elseif (\array_key_exists('override', $data) && $data['override'] === null) {
+            $object->setOverride(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
         return $object;
     }

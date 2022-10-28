@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class WebhookPolicyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,43 +43,63 @@ class WebhookPolicyNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('update_time', $data)) {
+        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
             $object->setUpdateTime($data['update_time']);
+        } elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
+            $object->setUpdateTime(null);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (\array_key_exists('creator', $data)) {
+        if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
             $object->setCreator($data['creator']);
+        } elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
+            $object->setCreator(null);
         }
-        if (\array_key_exists('creation_time', $data)) {
+        if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
             $object->setCreationTime($data['creation_time']);
+        } elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
+            $object->setCreationTime(null);
         }
-        if (\array_key_exists('enabled', $data)) {
+        if (\array_key_exists('enabled', $data) && $data['enabled'] !== null) {
             $object->setEnabled($data['enabled']);
+        } elseif (\array_key_exists('enabled', $data) && $data['enabled'] === null) {
+            $object->setEnabled(null);
         }
-        if (\array_key_exists('targets', $data)) {
+        if (\array_key_exists('targets', $data) && $data['targets'] !== null) {
             $values = array();
             foreach ($data['targets'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\WebhookTargetObject', 'json', $context);
             }
             $object->setTargets($values);
+        } elseif (\array_key_exists('targets', $data) && $data['targets'] === null) {
+            $object->setTargets(null);
         }
-        if (\array_key_exists('event_types', $data)) {
+        if (\array_key_exists('event_types', $data) && $data['event_types'] !== null) {
             $values_1 = array();
             foreach ($data['event_types'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setEventTypes($values_1);
+        } elseif (\array_key_exists('event_types', $data) && $data['event_types'] === null) {
+            $object->setEventTypes(null);
         }
-        if (\array_key_exists('project_id', $data)) {
+        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
             $object->setProjectId($data['project_id']);
+        } elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
+            $object->setProjectId(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
         return $object;
     }

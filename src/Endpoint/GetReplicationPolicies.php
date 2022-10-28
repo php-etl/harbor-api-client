@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class GetReplicationPolicies extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
      * This endpoint let user list replication policies
      *
@@ -17,24 +18,23 @@ class GetReplicationPolicies extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEn
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/replication/policies';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(array('name', 'page', 'page_size'));
@@ -48,10 +48,10 @@ class GetReplicationPolicies extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEn
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesInternalServerErrorException
      * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ReplicationPolicy[]
      */
@@ -60,20 +60,20 @@ class GetReplicationPolicies extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEn
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ReplicationPolicy[]', 'json');
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesUnauthorizedException();
         }
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesForbiddenException();
+        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesInternalServerErrorException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetReplicationPoliciesBadRequestException();
-        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

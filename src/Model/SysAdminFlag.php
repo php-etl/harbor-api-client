@@ -7,26 +7,26 @@ class SysAdminFlag
     /**
      * true-admin, false-not admin.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $sysadminFlag;
     /**
      * true-admin, false-not admin.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getSysadminFlag() : bool
+    public function getSysadminFlag(): ?bool
     {
         return $this->sysadminFlag;
     }
     /**
      * true-admin, false-not admin.
      *
-     * @param bool $sysadminFlag
+     * @param bool|null $sysadminFlag
      *
      * @return self
      */
-    public function setSysadminFlag(bool $sysadminFlag) : self
+    public function setSysadminFlag(?bool $sysadminFlag): self
     {
         $this->sysadminFlag = $sysadminFlag;
         return $this;

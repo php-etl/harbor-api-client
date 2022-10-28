@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PostUser extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
      * This endpoint is to create a user if the user does not already exist.
      *
@@ -13,30 +14,29 @@ class PostUser extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impleme
     {
         $this->body = $user;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/users';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUserUnsupportedMediaTypeException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUserForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostUserInternalServerErrorException
      * @throws \Gyroscops\Harbor\Api\Exception\PostUserBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUserForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUserUnsupportedMediaTypeException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostUserInternalServerErrorException
      *
      * @return null
      */
@@ -45,20 +45,20 @@ class PostUser extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impleme
         if (201 === $status) {
             return null;
         }
-        if (415 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostUserUnsupportedMediaTypeException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostUserBadRequestException();
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostUserForbiddenException();
         }
+        if (415 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostUserUnsupportedMediaTypeException();
+        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostUserInternalServerErrorException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostUserBadRequestException();
-        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RetentionRuleMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,21 +43,29 @@ class RetentionRuleMetadataNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('display_text', $data)) {
+        if (\array_key_exists('display_text', $data) && $data['display_text'] !== null) {
             $object->setDisplayText($data['display_text']);
+        } elseif (\array_key_exists('display_text', $data) && $data['display_text'] === null) {
+            $object->setDisplayText(null);
         }
-        if (\array_key_exists('action', $data)) {
+        if (\array_key_exists('action', $data) && $data['action'] !== null) {
             $object->setAction($data['action']);
+        } elseif (\array_key_exists('action', $data) && $data['action'] === null) {
+            $object->setAction(null);
         }
-        if (\array_key_exists('params', $data)) {
+        if (\array_key_exists('params', $data) && $data['params'] !== null) {
             $values = array();
             foreach ($data['params'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\RetentionRuleParamMetadata', 'json', $context);
             }
             $object->setParams($values);
+        } elseif (\array_key_exists('params', $data) && $data['params'] === null) {
+            $object->setParams(null);
         }
-        if (\array_key_exists('rule_template', $data)) {
+        if (\array_key_exists('rule_template', $data) && $data['rule_template'] !== null) {
             $object->setRuleTemplate($data['rule_template']);
+        } elseif (\array_key_exists('rule_template', $data) && $data['rule_template'] === null) {
+            $object->setRuleTemplate(null);
         }
         return $object;
     }

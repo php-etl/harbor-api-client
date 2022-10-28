@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class GetChartrepoByRepoChartsByNameByVersionLabel extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $repo;
     protected $name;
     protected $version;
@@ -20,29 +21,28 @@ class GetChartrepoByRepoChartsByNameByVersionLabel extends \Gyroscops\Harbor\Api
         $this->name = $name;
         $this->version = $version;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{repo}', '{name}', '{version}'), array($this->repo, $this->name, $this->version), '/chartrepo/{repo}/charts/{name}/{version}/labels');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelInternalServerErrorException
      *
      * @return null
@@ -52,20 +52,20 @@ class GetChartrepoByRepoChartsByNameByVersionLabel extends \Gyroscops\Harbor\Api
         if (200 === $status) {
             return null;
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\NotFoundChartAPIError', 'json'));
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UnauthorizedChartAPIError', 'json'));
         }
         if (403 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelForbiddenException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ForbiddenChartAPIError', 'json'));
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UnauthorizedChartAPIError', 'json'));
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\NotFoundChartAPIError', 'json'));
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetChartrepoByRepoChartsByNameByVersionLabelInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\InternalChartAPIError', 'json'));
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

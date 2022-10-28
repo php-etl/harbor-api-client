@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class GetProjectsByProjectIdMemberByMid extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $project_id;
     protected $mid;
     /**
@@ -17,30 +18,29 @@ class GetProjectsByProjectIdMemberByMid extends \Gyroscops\Harbor\Api\Runtime\Cl
         $this->project_id = $projectId;
         $this->mid = $mid;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{project_id}', '{mid}'), array($this->project_id, $this->mid), '/projects/{project_id}/members/{mid}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\ProjectMemberEntity
@@ -50,23 +50,23 @@ class GetProjectsByProjectIdMemberByMid extends \Gyroscops\Harbor\Api\Runtime\Cl
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\ProjectMemberEntity', 'json');
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidNotFoundException();
-        }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidUnauthorizedException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidForbiddenException();
+        }
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidNotFoundException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectsByProjectIdMemberByMidInternalServerErrorException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

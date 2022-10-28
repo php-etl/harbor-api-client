@@ -7,116 +7,116 @@ class ChartVersion
     /**
      * A list of label
      *
-     * @var Label[]
+     * @var Label[]|null
      */
     protected $labels;
     /**
      * The name of template engine
      *
-     * @var string
+     * @var string|null
      */
     protected $engine;
     /**
      * A one-sentence description of chart
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * Whether or not this chart is deprecated
      *
-     * @var bool
+     * @var bool|null
      */
     protected $deprecated;
     /**
      * The version of the application enclosed in the chart
      *
-     * @var string
+     * @var string|null
      */
     protected $appVersion;
     /**
      * The API version of this chart
      *
-     * @var string
+     * @var string|null
      */
     protected $apiVersion;
     /**
      * The name of the chart
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The URL to the source code of chart
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $sources;
     /**
      * A SemVer 2 version of chart
      *
-     * @var string
+     * @var string|null
      */
     protected $version;
     /**
      * A list of string keywords
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $keywords;
     /**
      * The URL to the relevant project page
      *
-     * @var string
+     * @var string|null
      */
     protected $home;
     /**
      * The URL to an icon file
      *
-     * @var string
+     * @var string|null
      */
     protected $icon;
     /**
      * A flag to indicate if the chart entry is removed
      *
-     * @var bool
+     * @var bool|null
      */
     protected $removed;
     /**
      * The digest value of the chart entry
      *
-     * @var string
+     * @var string|null
      */
     protected $digest;
     /**
      * The urls of the chart entry
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $urls;
     /**
      * The created time of the chart entry
      *
-     * @var string
+     * @var string|null
      */
     protected $created;
     /**
      * A list of label
      *
-     * @return Label[]
+     * @return Label[]|null
      */
-    public function getLabels() : array
+    public function getLabels(): ?array
     {
         return $this->labels;
     }
     /**
      * A list of label
      *
-     * @param Label[] $labels
+     * @param Label[]|null $labels
      *
      * @return self
      */
-    public function setLabels(array $labels) : self
+    public function setLabels(?array $labels): self
     {
         $this->labels = $labels;
         return $this;
@@ -124,20 +124,20 @@ class ChartVersion
     /**
      * The name of template engine
      *
-     * @return string
+     * @return string|null
      */
-    public function getEngine() : string
+    public function getEngine(): ?string
     {
         return $this->engine;
     }
     /**
      * The name of template engine
      *
-     * @param string $engine
+     * @param string|null $engine
      *
      * @return self
      */
-    public function setEngine(string $engine) : self
+    public function setEngine(?string $engine): self
     {
         $this->engine = $engine;
         return $this;
@@ -145,20 +145,20 @@ class ChartVersion
     /**
      * A one-sentence description of chart
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
      * A one-sentence description of chart
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
         return $this;
@@ -166,20 +166,20 @@ class ChartVersion
     /**
      * Whether or not this chart is deprecated
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getDeprecated() : bool
+    public function getDeprecated(): ?bool
     {
         return $this->deprecated;
     }
     /**
      * Whether or not this chart is deprecated
      *
-     * @param bool $deprecated
+     * @param bool|null $deprecated
      *
      * @return self
      */
-    public function setDeprecated(bool $deprecated) : self
+    public function setDeprecated(?bool $deprecated): self
     {
         $this->deprecated = $deprecated;
         return $this;
@@ -187,20 +187,20 @@ class ChartVersion
     /**
      * The version of the application enclosed in the chart
      *
-     * @return string
+     * @return string|null
      */
-    public function getAppVersion() : string
+    public function getAppVersion(): ?string
     {
         return $this->appVersion;
     }
     /**
      * The version of the application enclosed in the chart
      *
-     * @param string $appVersion
+     * @param string|null $appVersion
      *
      * @return self
      */
-    public function setAppVersion(string $appVersion) : self
+    public function setAppVersion(?string $appVersion): self
     {
         $this->appVersion = $appVersion;
         return $this;
@@ -208,20 +208,20 @@ class ChartVersion
     /**
      * The API version of this chart
      *
-     * @return string
+     * @return string|null
      */
-    public function getApiVersion() : string
+    public function getApiVersion(): ?string
     {
         return $this->apiVersion;
     }
     /**
      * The API version of this chart
      *
-     * @param string $apiVersion
+     * @param string|null $apiVersion
      *
      * @return self
      */
-    public function setApiVersion(string $apiVersion) : self
+    public function setApiVersion(?string $apiVersion): self
     {
         $this->apiVersion = $apiVersion;
         return $this;
@@ -229,20 +229,20 @@ class ChartVersion
     /**
      * The name of the chart
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The name of the chart
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -250,20 +250,20 @@ class ChartVersion
     /**
      * The URL to the source code of chart
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getSources() : array
+    public function getSources(): ?array
     {
         return $this->sources;
     }
     /**
      * The URL to the source code of chart
      *
-     * @param string[] $sources
+     * @param string[]|null $sources
      *
      * @return self
      */
-    public function setSources(array $sources) : self
+    public function setSources(?array $sources): self
     {
         $this->sources = $sources;
         return $this;
@@ -271,20 +271,20 @@ class ChartVersion
     /**
      * A SemVer 2 version of chart
      *
-     * @return string
+     * @return string|null
      */
-    public function getVersion() : string
+    public function getVersion(): ?string
     {
         return $this->version;
     }
     /**
      * A SemVer 2 version of chart
      *
-     * @param string $version
+     * @param string|null $version
      *
      * @return self
      */
-    public function setVersion(string $version) : self
+    public function setVersion(?string $version): self
     {
         $this->version = $version;
         return $this;
@@ -292,20 +292,20 @@ class ChartVersion
     /**
      * A list of string keywords
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getKeywords() : array
+    public function getKeywords(): ?array
     {
         return $this->keywords;
     }
     /**
      * A list of string keywords
      *
-     * @param string[] $keywords
+     * @param string[]|null $keywords
      *
      * @return self
      */
-    public function setKeywords(array $keywords) : self
+    public function setKeywords(?array $keywords): self
     {
         $this->keywords = $keywords;
         return $this;
@@ -313,20 +313,20 @@ class ChartVersion
     /**
      * The URL to the relevant project page
      *
-     * @return string
+     * @return string|null
      */
-    public function getHome() : string
+    public function getHome(): ?string
     {
         return $this->home;
     }
     /**
      * The URL to the relevant project page
      *
-     * @param string $home
+     * @param string|null $home
      *
      * @return self
      */
-    public function setHome(string $home) : self
+    public function setHome(?string $home): self
     {
         $this->home = $home;
         return $this;
@@ -334,20 +334,20 @@ class ChartVersion
     /**
      * The URL to an icon file
      *
-     * @return string
+     * @return string|null
      */
-    public function getIcon() : string
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
     /**
      * The URL to an icon file
      *
-     * @param string $icon
+     * @param string|null $icon
      *
      * @return self
      */
-    public function setIcon(string $icon) : self
+    public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
         return $this;
@@ -355,20 +355,20 @@ class ChartVersion
     /**
      * A flag to indicate if the chart entry is removed
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getRemoved() : bool
+    public function getRemoved(): ?bool
     {
         return $this->removed;
     }
     /**
      * A flag to indicate if the chart entry is removed
      *
-     * @param bool $removed
+     * @param bool|null $removed
      *
      * @return self
      */
-    public function setRemoved(bool $removed) : self
+    public function setRemoved(?bool $removed): self
     {
         $this->removed = $removed;
         return $this;
@@ -376,20 +376,20 @@ class ChartVersion
     /**
      * The digest value of the chart entry
      *
-     * @return string
+     * @return string|null
      */
-    public function getDigest() : string
+    public function getDigest(): ?string
     {
         return $this->digest;
     }
     /**
      * The digest value of the chart entry
      *
-     * @param string $digest
+     * @param string|null $digest
      *
      * @return self
      */
-    public function setDigest(string $digest) : self
+    public function setDigest(?string $digest): self
     {
         $this->digest = $digest;
         return $this;
@@ -397,20 +397,20 @@ class ChartVersion
     /**
      * The urls of the chart entry
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getUrls() : array
+    public function getUrls(): ?array
     {
         return $this->urls;
     }
     /**
      * The urls of the chart entry
      *
-     * @param string[] $urls
+     * @param string[]|null $urls
      *
      * @return self
      */
-    public function setUrls(array $urls) : self
+    public function setUrls(?array $urls): self
     {
         $this->urls = $urls;
         return $this;
@@ -418,20 +418,20 @@ class ChartVersion
     /**
      * The created time of the chart entry
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreated() : string
+    public function getCreated(): ?string
     {
         return $this->created;
     }
     /**
      * The created time of the chart entry
      *
-     * @param string $created
+     * @param string|null $created
      *
      * @return self
      */
-    public function setCreated(string $created) : self
+    public function setCreated(?string $created): self
     {
         $this->created = $created;
         return $this;

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class CVEWhitelistItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,8 +43,10 @@ class CVEWhitelistItemNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('cve_id', $data)) {
+        if (\array_key_exists('cve_id', $data) && $data['cve_id'] !== null) {
             $object->setCveId($data['cve_id']);
+        } elseif (\array_key_exists('cve_id', $data) && $data['cve_id'] === null) {
+            $object->setCveId(null);
         }
         return $object;
     }

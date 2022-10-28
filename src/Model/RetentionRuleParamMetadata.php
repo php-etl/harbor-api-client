@@ -5,82 +5,82 @@ namespace Gyroscops\Harbor\Api\Model;
 class RetentionRuleParamMetadata
 {
     /**
-     * 
      *
-     * @var bool
+     *
+     * @var bool|null
      */
     protected $required;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $type;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $unit;
     /**
-     * 
      *
-     * @return bool
+     *
+     * @return bool|null
      */
-    public function getRequired() : bool
+    public function getRequired(): ?bool
     {
         return $this->required;
     }
     /**
-     * 
      *
-     * @param bool $required
+     *
+     * @param bool|null $required
      *
      * @return self
      */
-    public function setRequired(bool $required) : self
+    public function setRequired(?bool $required): self
     {
         $this->required = $required;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getType() : string
+    public function getType(): ?string
     {
         return $this->type;
     }
     /**
-     * 
      *
-     * @param string $type
+     *
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type): self
     {
         $this->type = $type;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getUnit() : string
+    public function getUnit(): ?string
     {
         return $this->unit;
     }
     /**
-     * 
      *
-     * @param string $unit
+     *
+     * @param string|null $unit
      *
      * @return self
      */
-    public function setUnit(string $unit) : self
+    public function setUnit(?string $unit): self
     {
         $this->unit = $unit;
         return $this;

@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PostLabel extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
      * This endpoint let user creates a label.
      *
@@ -13,31 +14,30 @@ class PostLabel extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
     {
         $this->body = $label;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/labels';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnsupportedMediaTypeException
      * @throws \Gyroscops\Harbor\Api\Exception\PostLabelInternalServerErrorException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostLabelConflictException
      *
      * @return null
      */
@@ -46,23 +46,23 @@ class PostLabel extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
         if (201 === $status) {
             return null;
         }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException();
+        }
+        if (401 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException();
+        }
+        if (409 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostLabelConflictException();
+        }
         if (415 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostLabelUnsupportedMediaTypeException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostLabelInternalServerErrorException();
         }
-        if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostLabelUnauthorizedException();
-        }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostLabelBadRequestException();
-        }
-        if (409 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostLabelConflictException();
-        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

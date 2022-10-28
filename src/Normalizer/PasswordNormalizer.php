@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class PasswordNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,11 +43,15 @@ class PasswordNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('new_password', $data)) {
+        if (\array_key_exists('new_password', $data) && $data['new_password'] !== null) {
             $object->setNewPassword($data['new_password']);
+        } elseif (\array_key_exists('new_password', $data) && $data['new_password'] === null) {
+            $object->setNewPassword(null);
         }
-        if (\array_key_exists('old_password', $data)) {
+        if (\array_key_exists('old_password', $data) && $data['old_password'] !== null) {
             $object->setOldPassword($data['old_password']);
+        } elseif (\array_key_exists('old_password', $data) && $data['old_password'] === null) {
+            $object->setOldPassword(null);
         }
         return $object;
     }

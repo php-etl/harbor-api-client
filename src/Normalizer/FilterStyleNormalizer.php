@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class FilterStyleNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,18 +43,24 @@ class FilterStyleNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('type', $data)) {
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
         }
-        if (\array_key_exists('style', $data)) {
+        if (\array_key_exists('style', $data) && $data['style'] !== null) {
             $object->setStyle($data['style']);
+        } elseif (\array_key_exists('style', $data) && $data['style'] === null) {
+            $object->setStyle(null);
         }
-        if (\array_key_exists('values', $data)) {
+        if (\array_key_exists('values', $data) && $data['values'] !== null) {
             $values = array();
             foreach ($data['values'] as $value) {
                 $values[] = $value;
             }
             $object->setValues($values);
+        } elseif (\array_key_exists('values', $data) && $data['values'] === null) {
+            $object->setValues(null);
         }
         return $object;
     }

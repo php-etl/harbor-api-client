@@ -5,82 +5,82 @@ namespace Gyroscops\Harbor\Api\Model;
 class ScannerAdapterMetadata
 {
     /**
-     * 
      *
-     * @var Scanner
+     *
+     * @var Scanner|null
      */
     protected $name;
     /**
-     * 
      *
-     * @var ScannerCapability[]
+     *
+     * @var ScannerCapability[]|null
      */
     protected $capabilities;
     /**
-     * 
      *
-     * @var string[]
+     *
+     * @var string[]|null
      */
     protected $properties;
     /**
-     * 
      *
-     * @return Scanner
+     *
+     * @return Scanner|null
      */
-    public function getName() : Scanner
+    public function getName(): ?Scanner
     {
         return $this->name;
     }
     /**
-     * 
      *
-     * @param Scanner $name
+     *
+     * @param Scanner|null $name
      *
      * @return self
      */
-    public function setName(Scanner $name) : self
+    public function setName(?Scanner $name): self
     {
         $this->name = $name;
         return $this;
     }
     /**
-     * 
      *
-     * @return ScannerCapability[]
+     *
+     * @return ScannerCapability[]|null
      */
-    public function getCapabilities() : array
+    public function getCapabilities(): ?array
     {
         return $this->capabilities;
     }
     /**
-     * 
      *
-     * @param ScannerCapability[] $capabilities
+     *
+     * @param ScannerCapability[]|null $capabilities
      *
      * @return self
      */
-    public function setCapabilities(array $capabilities) : self
+    public function setCapabilities(?array $capabilities): self
     {
         $this->capabilities = $capabilities;
         return $this;
     }
     /**
-     * 
      *
-     * @return string[]
+     *
+     * @return string[]|null
      */
-    public function getProperties() : iterable
+    public function getProperties(): ?iterable
     {
         return $this->properties;
     }
     /**
-     * 
      *
-     * @param string[] $properties
+     *
+     * @param string[]|null $properties
      *
      * @return self
      */
-    public function setProperties(iterable $properties) : self
+    public function setProperties(?iterable $properties): self
     {
         $this->properties = $properties;
         return $this;

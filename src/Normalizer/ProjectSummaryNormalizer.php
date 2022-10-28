@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ProjectSummaryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,26 +43,40 @@ class ProjectSummaryNormalizer implements DenormalizerInterface, NormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('master_count', $data)) {
+        if (\array_key_exists('master_count', $data) && $data['master_count'] !== null) {
             $object->setMasterCount($data['master_count']);
+        } elseif (\array_key_exists('master_count', $data) && $data['master_count'] === null) {
+            $object->setMasterCount(null);
         }
-        if (\array_key_exists('project_admin_count', $data)) {
+        if (\array_key_exists('project_admin_count', $data) && $data['project_admin_count'] !== null) {
             $object->setProjectAdminCount($data['project_admin_count']);
+        } elseif (\array_key_exists('project_admin_count', $data) && $data['project_admin_count'] === null) {
+            $object->setProjectAdminCount(null);
         }
-        if (\array_key_exists('developer_count', $data)) {
+        if (\array_key_exists('developer_count', $data) && $data['developer_count'] !== null) {
             $object->setDeveloperCount($data['developer_count']);
+        } elseif (\array_key_exists('developer_count', $data) && $data['developer_count'] === null) {
+            $object->setDeveloperCount(null);
         }
-        if (\array_key_exists('chart_count', $data)) {
+        if (\array_key_exists('chart_count', $data) && $data['chart_count'] !== null) {
             $object->setChartCount($data['chart_count']);
+        } elseif (\array_key_exists('chart_count', $data) && $data['chart_count'] === null) {
+            $object->setChartCount(null);
         }
-        if (\array_key_exists('repo_count', $data)) {
+        if (\array_key_exists('repo_count', $data) && $data['repo_count'] !== null) {
             $object->setRepoCount($data['repo_count']);
+        } elseif (\array_key_exists('repo_count', $data) && $data['repo_count'] === null) {
+            $object->setRepoCount(null);
         }
-        if (\array_key_exists('quota', $data)) {
+        if (\array_key_exists('quota', $data) && $data['quota'] !== null) {
             $object->setQuota($this->denormalizer->denormalize($data['quota'], 'Gyroscops\\Harbor\\Api\\Model\\ProjectSummaryQuota', 'json', $context));
+        } elseif (\array_key_exists('quota', $data) && $data['quota'] === null) {
+            $object->setQuota(null);
         }
-        if (\array_key_exists('guest_count', $data)) {
+        if (\array_key_exists('guest_count', $data) && $data['guest_count'] !== null) {
             $object->setGuestCount($data['guest_count']);
+        } elseif (\array_key_exists('guest_count', $data) && $data['guest_count'] === null) {
+            $object->setGuestCount(null);
         }
         return $object;
     }

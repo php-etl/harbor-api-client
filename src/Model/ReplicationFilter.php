@@ -7,32 +7,32 @@ class ReplicationFilter
     /**
      * The replication policy filter type.
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * The value of replication policy filter.
      *
-     * @var string
+     * @var string|null
      */
     protected $value;
     /**
      * The replication policy filter type.
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType(): ?string
     {
         return $this->type;
     }
     /**
      * The replication policy filter type.
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type): self
     {
         $this->type = $type;
         return $this;
@@ -40,20 +40,20 @@ class ReplicationFilter
     /**
      * The value of replication policy filter.
      *
-     * @return string
+     * @return string|null
      */
-    public function getValue() : string
+    public function getValue(): ?string
     {
         return $this->value;
     }
     /**
      * The value of replication policy filter.
      *
-     * @param string $value
+     * @param string|null $value
      *
      * @return self
      */
-    public function setValue(string $value) : self
+    public function setValue(?string $value): self
     {
         $this->value = $value;
         return $this;

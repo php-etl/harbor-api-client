@@ -7,38 +7,38 @@ class UserProfile
     /**
      * The new comment.
      *
-     * @var string
+     * @var string|null
      */
     protected $comment;
     /**
      * The new email.
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
      * The new realname.
      *
-     * @var string
+     * @var string|null
      */
     protected $realname;
     /**
      * The new comment.
      *
-     * @return string
+     * @return string|null
      */
-    public function getComment() : string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
     /**
      * The new comment.
      *
-     * @param string $comment
+     * @param string|null $comment
      *
      * @return self
      */
-    public function setComment(string $comment) : self
+    public function setComment(?string $comment): self
     {
         $this->comment = $comment;
         return $this;
@@ -46,20 +46,20 @@ class UserProfile
     /**
      * The new email.
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
     /**
      * The new email.
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
         return $this;
@@ -67,20 +67,20 @@ class UserProfile
     /**
      * The new realname.
      *
-     * @return string
+     * @return string|null
      */
-    public function getRealname() : string
+    public function getRealname(): ?string
     {
         return $this->realname;
     }
     /**
      * The new realname.
      *
-     * @param string $realname
+     * @param string|null $realname
      *
      * @return self
      */
-    public function setRealname(string $realname) : self
+    public function setRealname(?string $realname): self
     {
         $this->realname = $realname;
         return $this;

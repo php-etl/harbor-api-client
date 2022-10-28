@@ -7,56 +7,56 @@ class ProjectMetadata
     /**
      * Whether content trust is enabled or not. If it is enabled, user can't pull unsigned images from this project. The valid values are "true", "false".
      *
-     * @var string
+     * @var string|null
      */
     protected $enableContentTrust;
     /**
      * Whether scan images automatically when pushing. The valid values are "true", "false".
      *
-     * @var string
+     * @var string|null
      */
     protected $autoScan;
     /**
      * If the vulnerability is high than severity defined here, the images can't be pulled. The valid values are "none", "low", "medium", "high", "critical".
      *
-     * @var string
+     * @var string|null
      */
     protected $severity;
     /**
      * Whether this project reuse the system level CVE whitelist as the whitelist of its own.  The valid values are "true", "false". If it is set to "true" the actual whitelist associate with this project, if any, will be ignored.
      *
-     * @var string
+     * @var string|null
      */
     protected $reuseSysCveWhitelist;
     /**
      * The public status of the project. The valid values are "true", "false".
      *
-     * @var string
+     * @var string|null
      */
     protected $public;
     /**
      * Whether prevent the vulnerable images from running. The valid values are "true", "false".
      *
-     * @var string
+     * @var string|null
      */
     protected $preventVul;
     /**
      * Whether content trust is enabled or not. If it is enabled, user can't pull unsigned images from this project. The valid values are "true", "false".
      *
-     * @return string
+     * @return string|null
      */
-    public function getEnableContentTrust() : string
+    public function getEnableContentTrust(): ?string
     {
         return $this->enableContentTrust;
     }
     /**
      * Whether content trust is enabled or not. If it is enabled, user can't pull unsigned images from this project. The valid values are "true", "false".
      *
-     * @param string $enableContentTrust
+     * @param string|null $enableContentTrust
      *
      * @return self
      */
-    public function setEnableContentTrust(string $enableContentTrust) : self
+    public function setEnableContentTrust(?string $enableContentTrust): self
     {
         $this->enableContentTrust = $enableContentTrust;
         return $this;
@@ -64,20 +64,20 @@ class ProjectMetadata
     /**
      * Whether scan images automatically when pushing. The valid values are "true", "false".
      *
-     * @return string
+     * @return string|null
      */
-    public function getAutoScan() : string
+    public function getAutoScan(): ?string
     {
         return $this->autoScan;
     }
     /**
      * Whether scan images automatically when pushing. The valid values are "true", "false".
      *
-     * @param string $autoScan
+     * @param string|null $autoScan
      *
      * @return self
      */
-    public function setAutoScan(string $autoScan) : self
+    public function setAutoScan(?string $autoScan): self
     {
         $this->autoScan = $autoScan;
         return $this;
@@ -85,20 +85,20 @@ class ProjectMetadata
     /**
      * If the vulnerability is high than severity defined here, the images can't be pulled. The valid values are "none", "low", "medium", "high", "critical".
      *
-     * @return string
+     * @return string|null
      */
-    public function getSeverity() : string
+    public function getSeverity(): ?string
     {
         return $this->severity;
     }
     /**
      * If the vulnerability is high than severity defined here, the images can't be pulled. The valid values are "none", "low", "medium", "high", "critical".
      *
-     * @param string $severity
+     * @param string|null $severity
      *
      * @return self
      */
-    public function setSeverity(string $severity) : self
+    public function setSeverity(?string $severity): self
     {
         $this->severity = $severity;
         return $this;
@@ -106,20 +106,20 @@ class ProjectMetadata
     /**
      * Whether this project reuse the system level CVE whitelist as the whitelist of its own.  The valid values are "true", "false". If it is set to "true" the actual whitelist associate with this project, if any, will be ignored.
      *
-     * @return string
+     * @return string|null
      */
-    public function getReuseSysCveWhitelist() : string
+    public function getReuseSysCveWhitelist(): ?string
     {
         return $this->reuseSysCveWhitelist;
     }
     /**
      * Whether this project reuse the system level CVE whitelist as the whitelist of its own.  The valid values are "true", "false". If it is set to "true" the actual whitelist associate with this project, if any, will be ignored.
      *
-     * @param string $reuseSysCveWhitelist
+     * @param string|null $reuseSysCveWhitelist
      *
      * @return self
      */
-    public function setReuseSysCveWhitelist(string $reuseSysCveWhitelist) : self
+    public function setReuseSysCveWhitelist(?string $reuseSysCveWhitelist): self
     {
         $this->reuseSysCveWhitelist = $reuseSysCveWhitelist;
         return $this;
@@ -127,20 +127,20 @@ class ProjectMetadata
     /**
      * The public status of the project. The valid values are "true", "false".
      *
-     * @return string
+     * @return string|null
      */
-    public function getPublic() : string
+    public function getPublic(): ?string
     {
         return $this->public;
     }
     /**
      * The public status of the project. The valid values are "true", "false".
      *
-     * @param string $public
+     * @param string|null $public
      *
      * @return self
      */
-    public function setPublic(string $public) : self
+    public function setPublic(?string $public): self
     {
         $this->public = $public;
         return $this;
@@ -148,20 +148,20 @@ class ProjectMetadata
     /**
      * Whether prevent the vulnerable images from running. The valid values are "true", "false".
      *
-     * @return string
+     * @return string|null
      */
-    public function getPreventVul() : string
+    public function getPreventVul(): ?string
     {
         return $this->preventVul;
     }
     /**
      * Whether prevent the vulnerable images from running. The valid values are "true", "false".
      *
-     * @param string $preventVul
+     * @param string|null $preventVul
      *
      * @return self
      */
-    public function setPreventVul(string $preventVul) : self
+    public function setPreventVul(?string $preventVul): self
     {
         $this->preventVul = $preventVul;
         return $this;

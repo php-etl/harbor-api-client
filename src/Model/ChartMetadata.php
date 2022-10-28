@@ -7,86 +7,86 @@ class ChartMetadata
     /**
      * The name of template engine
      *
-     * @var string
+     * @var string|null
      */
     protected $engine;
     /**
      * A one-sentence description of chart
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * Whether or not this chart is deprecated
      *
-     * @var bool
+     * @var bool|null
      */
     protected $deprecated;
     /**
      * The version of the application enclosed in the chart
      *
-     * @var string
+     * @var string|null
      */
     protected $appVersion;
     /**
      * The API version of this chart
      *
-     * @var string
+     * @var string|null
      */
     protected $apiVersion;
     /**
      * The name of the chart
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The URL to the source code of chart
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $sources;
     /**
      * A SemVer 2 version of chart
      *
-     * @var string
+     * @var string|null
      */
     protected $version;
     /**
      * A list of string keywords
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $keywords;
     /**
      * The URL to the relevant project page
      *
-     * @var string
+     * @var string|null
      */
     protected $home;
     /**
      * The URL to an icon file
      *
-     * @var string
+     * @var string|null
      */
     protected $icon;
     /**
      * The name of template engine
      *
-     * @return string
+     * @return string|null
      */
-    public function getEngine() : string
+    public function getEngine(): ?string
     {
         return $this->engine;
     }
     /**
      * The name of template engine
      *
-     * @param string $engine
+     * @param string|null $engine
      *
      * @return self
      */
-    public function setEngine(string $engine) : self
+    public function setEngine(?string $engine): self
     {
         $this->engine = $engine;
         return $this;
@@ -94,20 +94,20 @@ class ChartMetadata
     /**
      * A one-sentence description of chart
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
      * A one-sentence description of chart
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
         return $this;
@@ -115,20 +115,20 @@ class ChartMetadata
     /**
      * Whether or not this chart is deprecated
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getDeprecated() : bool
+    public function getDeprecated(): ?bool
     {
         return $this->deprecated;
     }
     /**
      * Whether or not this chart is deprecated
      *
-     * @param bool $deprecated
+     * @param bool|null $deprecated
      *
      * @return self
      */
-    public function setDeprecated(bool $deprecated) : self
+    public function setDeprecated(?bool $deprecated): self
     {
         $this->deprecated = $deprecated;
         return $this;
@@ -136,20 +136,20 @@ class ChartMetadata
     /**
      * The version of the application enclosed in the chart
      *
-     * @return string
+     * @return string|null
      */
-    public function getAppVersion() : string
+    public function getAppVersion(): ?string
     {
         return $this->appVersion;
     }
     /**
      * The version of the application enclosed in the chart
      *
-     * @param string $appVersion
+     * @param string|null $appVersion
      *
      * @return self
      */
-    public function setAppVersion(string $appVersion) : self
+    public function setAppVersion(?string $appVersion): self
     {
         $this->appVersion = $appVersion;
         return $this;
@@ -157,20 +157,20 @@ class ChartMetadata
     /**
      * The API version of this chart
      *
-     * @return string
+     * @return string|null
      */
-    public function getApiVersion() : string
+    public function getApiVersion(): ?string
     {
         return $this->apiVersion;
     }
     /**
      * The API version of this chart
      *
-     * @param string $apiVersion
+     * @param string|null $apiVersion
      *
      * @return self
      */
-    public function setApiVersion(string $apiVersion) : self
+    public function setApiVersion(?string $apiVersion): self
     {
         $this->apiVersion = $apiVersion;
         return $this;
@@ -178,20 +178,20 @@ class ChartMetadata
     /**
      * The name of the chart
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The name of the chart
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -199,20 +199,20 @@ class ChartMetadata
     /**
      * The URL to the source code of chart
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getSources() : array
+    public function getSources(): ?array
     {
         return $this->sources;
     }
     /**
      * The URL to the source code of chart
      *
-     * @param string[] $sources
+     * @param string[]|null $sources
      *
      * @return self
      */
-    public function setSources(array $sources) : self
+    public function setSources(?array $sources): self
     {
         $this->sources = $sources;
         return $this;
@@ -220,20 +220,20 @@ class ChartMetadata
     /**
      * A SemVer 2 version of chart
      *
-     * @return string
+     * @return string|null
      */
-    public function getVersion() : string
+    public function getVersion(): ?string
     {
         return $this->version;
     }
     /**
      * A SemVer 2 version of chart
      *
-     * @param string $version
+     * @param string|null $version
      *
      * @return self
      */
-    public function setVersion(string $version) : self
+    public function setVersion(?string $version): self
     {
         $this->version = $version;
         return $this;
@@ -241,20 +241,20 @@ class ChartMetadata
     /**
      * A list of string keywords
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getKeywords() : array
+    public function getKeywords(): ?array
     {
         return $this->keywords;
     }
     /**
      * A list of string keywords
      *
-     * @param string[] $keywords
+     * @param string[]|null $keywords
      *
      * @return self
      */
-    public function setKeywords(array $keywords) : self
+    public function setKeywords(?array $keywords): self
     {
         $this->keywords = $keywords;
         return $this;
@@ -262,20 +262,20 @@ class ChartMetadata
     /**
      * The URL to the relevant project page
      *
-     * @return string
+     * @return string|null
      */
-    public function getHome() : string
+    public function getHome(): ?string
     {
         return $this->home;
     }
     /**
      * The URL to the relevant project page
      *
-     * @param string $home
+     * @param string|null $home
      *
      * @return self
      */
-    public function setHome(string $home) : self
+    public function setHome(?string $home): self
     {
         $this->home = $home;
         return $this;
@@ -283,20 +283,20 @@ class ChartMetadata
     /**
      * The URL to an icon file
      *
-     * @return string
+     * @return string|null
      */
-    public function getIcon() : string
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
     /**
      * The URL to an icon file
      *
-     * @param string $icon
+     * @param string|null $icon
      *
      * @return self
      */
-    public function setIcon(string $icon) : self
+    public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
         return $this;

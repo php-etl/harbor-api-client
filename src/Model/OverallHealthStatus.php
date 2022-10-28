@@ -7,53 +7,53 @@ class OverallHealthStatus
     /**
      * The overall health status. It is "healthy" only when all the components' status are "healthy"
      *
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
-     * 
      *
-     * @var ComponentHealthStatus[]
+     *
+     * @var ComponentHealthStatus[]|null
      */
     protected $components;
     /**
      * The overall health status. It is "healthy" only when all the components' status are "healthy"
      *
-     * @return string
+     * @return string|null
      */
-    public function getStatus() : string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
     /**
      * The overall health status. It is "healthy" only when all the components' status are "healthy"
      *
-     * @param string $status
+     * @param string|null $status
      *
      * @return self
      */
-    public function setStatus(string $status) : self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
         return $this;
     }
     /**
-     * 
      *
-     * @return ComponentHealthStatus[]
+     *
+     * @return ComponentHealthStatus[]|null
      */
-    public function getComponents() : array
+    public function getComponents(): ?array
     {
         return $this->components;
     }
     /**
-     * 
      *
-     * @param ComponentHealthStatus[] $components
+     *
+     * @param ComponentHealthStatus[]|null $components
      *
      * @return self
      */
-    public function setComponents(array $components) : self
+    public function setComponents(?array $components): self
     {
         $this->components = $components;
         return $this;

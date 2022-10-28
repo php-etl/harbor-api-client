@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class NamespaceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,11 +43,15 @@ class NamespaceNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (\array_key_exists('metadata', $data)) {
+        if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
             $object->setMetadata($data['metadata']);
+        } elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
+            $object->setMetadata(null);
         }
         return $object;
     }

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class CVEWhitelistNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,21 +43,29 @@ class CVEWhitelistNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('items', $data)) {
+        if (\array_key_exists('items', $data) && $data['items'] !== null) {
             $values = array();
             foreach ($data['items'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\CVEWhitelistItem', 'json', $context);
             }
             $object->setItems($values);
+        } elseif (\array_key_exists('items', $data) && $data['items'] === null) {
+            $object->setItems(null);
         }
-        if (\array_key_exists('project_id', $data)) {
+        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
             $object->setProjectId($data['project_id']);
+        } elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
+            $object->setProjectId(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
-        if (\array_key_exists('expires_at', $data)) {
+        if (\array_key_exists('expires_at', $data) && $data['expires_at'] !== null) {
             $object->setExpiresAt($data['expires_at']);
+        } elseif (\array_key_exists('expires_at', $data) && $data['expires_at'] === null) {
+            $object->setExpiresAt(null);
         }
         return $object;
     }

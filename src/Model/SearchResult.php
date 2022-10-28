@@ -7,38 +7,38 @@ class SearchResult
     /**
      * The matched level
      *
-     * @var int
+     * @var int|null
      */
     protected $score;
     /**
      * The chart name with repo name
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * A specified chart entry
      *
-     * @var ChartVersion
+     * @var ChartVersion|null
      */
     protected $chart;
     /**
      * The matched level
      *
-     * @return int
+     * @return int|null
      */
-    public function getScore() : int
+    public function getScore(): ?int
     {
         return $this->score;
     }
     /**
      * The matched level
      *
-     * @param int $score
+     * @param int|null $score
      *
      * @return self
      */
-    public function setScore(int $score) : self
+    public function setScore(?int $score): self
     {
         $this->score = $score;
         return $this;
@@ -46,20 +46,20 @@ class SearchResult
     /**
      * The chart name with repo name
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The chart name with repo name
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -67,20 +67,20 @@ class SearchResult
     /**
      * A specified chart entry
      *
-     * @return ChartVersion
+     * @return ChartVersion|null
      */
-    public function getChart() : ChartVersion
+    public function getChart(): ?ChartVersion
     {
         return $this->chart;
     }
     /**
      * A specified chart entry
      *
-     * @param ChartVersion $chart
+     * @param ChartVersion|null $chart
      *
      * @return self
      */
-    public function setChart(ChartVersion $chart) : self
+    public function setChart(?ChartVersion $chart): self
     {
         $this->chart = $chart;
         return $this;

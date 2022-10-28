@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RobotAccountUpdateNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,8 +43,10 @@ class RobotAccountUpdateNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('disabled', $data)) {
+        if (\array_key_exists('disabled', $data) && $data['disabled'] !== null) {
             $object->setDisabled($data['disabled']);
+        } elseif (\array_key_exists('disabled', $data) && $data['disabled'] === null) {
+            $object->setDisabled(null);
         }
         return $object;
     }

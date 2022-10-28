@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ProjectSummaryQuotaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,19 +43,23 @@ class ProjectSummaryQuotaNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('hard', $data)) {
+        if (\array_key_exists('hard', $data) && $data['hard'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['hard'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setHard($values);
+        } elseif (\array_key_exists('hard', $data) && $data['hard'] === null) {
+            $object->setHard(null);
         }
-        if (\array_key_exists('used', $data)) {
+        if (\array_key_exists('used', $data) && $data['used'] !== null) {
             $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['used'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $object->setUsed($values_1);
+        } elseif (\array_key_exists('used', $data) && $data['used'] === null) {
+            $object->setUsed(null);
         }
         return $object;
     }

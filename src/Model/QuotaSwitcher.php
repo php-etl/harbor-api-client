@@ -7,26 +7,26 @@ class QuotaSwitcher
     /**
      * The quota is enable or disable
      *
-     * @var bool
+     * @var bool|null
      */
     protected $enabled;
     /**
      * The quota is enable or disable
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getEnabled() : bool
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
     /**
      * The quota is enable or disable
      *
-     * @param bool $enabled
+     * @param bool|null $enabled
      *
      * @return self
      */
-    public function setEnabled(bool $enabled) : self
+    public function setEnabled(?bool $enabled): self
     {
         $this->enabled = $enabled;
         return $this;

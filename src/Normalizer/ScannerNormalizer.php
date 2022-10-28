@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ScannerNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,14 +43,20 @@ class ScannerNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('version', $data)) {
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
+        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
         }
-        if (\array_key_exists('vendor', $data)) {
+        if (\array_key_exists('vendor', $data) && $data['vendor'] !== null) {
             $object->setVendor($data['vendor']);
+        } elseif (\array_key_exists('vendor', $data) && $data['vendor'] === null) {
+            $object->setVendor(null);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
         return $object;
     }

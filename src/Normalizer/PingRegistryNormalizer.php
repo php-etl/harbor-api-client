@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class PingRegistryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,26 +43,40 @@ class PingRegistryNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('access_key', $data)) {
+        if (\array_key_exists('access_key', $data) && $data['access_key'] !== null) {
             $object->setAccessKey($data['access_key']);
+        } elseif (\array_key_exists('access_key', $data) && $data['access_key'] === null) {
+            $object->setAccessKey(null);
         }
-        if (\array_key_exists('credential_type', $data)) {
+        if (\array_key_exists('credential_type', $data) && $data['credential_type'] !== null) {
             $object->setCredentialType($data['credential_type']);
+        } elseif (\array_key_exists('credential_type', $data) && $data['credential_type'] === null) {
+            $object->setCredentialType(null);
         }
-        if (\array_key_exists('access_secret', $data)) {
+        if (\array_key_exists('access_secret', $data) && $data['access_secret'] !== null) {
             $object->setAccessSecret($data['access_secret']);
+        } elseif (\array_key_exists('access_secret', $data) && $data['access_secret'] === null) {
+            $object->setAccessSecret(null);
         }
-        if (\array_key_exists('url', $data)) {
+        if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
+        } elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+            $object->setUrl(null);
         }
-        if (\array_key_exists('insecure', $data)) {
+        if (\array_key_exists('insecure', $data) && $data['insecure'] !== null) {
             $object->setInsecure($data['insecure']);
+        } elseif (\array_key_exists('insecure', $data) && $data['insecure'] === null) {
+            $object->setInsecure(null);
         }
-        if (\array_key_exists('type', $data)) {
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
         return $object;
     }

@@ -7,50 +7,50 @@ class ProjectReq
     /**
      * The count quota of the project.
      *
-     * @var int
+     * @var int|null
      */
     protected $countLimit;
     /**
      * The name of the project.
      *
-     * @var string
+     * @var string|null
      */
     protected $projectName;
     /**
      * The CVE Whitelist for system or project
      *
-     * @var CVEWhitelist
+     * @var CVEWhitelist|null
      */
     protected $cveWhitelist;
     /**
      * The storage quota of the project.
      *
-     * @var int
+     * @var int|null
      */
     protected $storageLimit;
     /**
-     * 
      *
-     * @var ProjectMetadata
+     *
+     * @var ProjectMetadata|null
      */
     protected $metadata;
     /**
      * The count quota of the project.
      *
-     * @return int
+     * @return int|null
      */
-    public function getCountLimit() : int
+    public function getCountLimit(): ?int
     {
         return $this->countLimit;
     }
     /**
      * The count quota of the project.
      *
-     * @param int $countLimit
+     * @param int|null $countLimit
      *
      * @return self
      */
-    public function setCountLimit(int $countLimit) : self
+    public function setCountLimit(?int $countLimit): self
     {
         $this->countLimit = $countLimit;
         return $this;
@@ -58,20 +58,20 @@ class ProjectReq
     /**
      * The name of the project.
      *
-     * @return string
+     * @return string|null
      */
-    public function getProjectName() : string
+    public function getProjectName(): ?string
     {
         return $this->projectName;
     }
     /**
      * The name of the project.
      *
-     * @param string $projectName
+     * @param string|null $projectName
      *
      * @return self
      */
-    public function setProjectName(string $projectName) : self
+    public function setProjectName(?string $projectName): self
     {
         $this->projectName = $projectName;
         return $this;
@@ -79,20 +79,20 @@ class ProjectReq
     /**
      * The CVE Whitelist for system or project
      *
-     * @return CVEWhitelist
+     * @return CVEWhitelist|null
      */
-    public function getCveWhitelist() : CVEWhitelist
+    public function getCveWhitelist(): ?CVEWhitelist
     {
         return $this->cveWhitelist;
     }
     /**
      * The CVE Whitelist for system or project
      *
-     * @param CVEWhitelist $cveWhitelist
+     * @param CVEWhitelist|null $cveWhitelist
      *
      * @return self
      */
-    public function setCveWhitelist(CVEWhitelist $cveWhitelist) : self
+    public function setCveWhitelist(?CVEWhitelist $cveWhitelist): self
     {
         $this->cveWhitelist = $cveWhitelist;
         return $this;
@@ -100,41 +100,41 @@ class ProjectReq
     /**
      * The storage quota of the project.
      *
-     * @return int
+     * @return int|null
      */
-    public function getStorageLimit() : int
+    public function getStorageLimit(): ?int
     {
         return $this->storageLimit;
     }
     /**
      * The storage quota of the project.
      *
-     * @param int $storageLimit
+     * @param int|null $storageLimit
      *
      * @return self
      */
-    public function setStorageLimit(int $storageLimit) : self
+    public function setStorageLimit(?int $storageLimit): self
     {
         $this->storageLimit = $storageLimit;
         return $this;
     }
     /**
-     * 
      *
-     * @return ProjectMetadata
+     *
+     * @return ProjectMetadata|null
      */
-    public function getMetadata() : ProjectMetadata
+    public function getMetadata(): ?ProjectMetadata
     {
         return $this->metadata;
     }
     /**
-     * 
      *
-     * @param ProjectMetadata $metadata
+     *
+     * @param ProjectMetadata|null $metadata
      *
      * @return self
      */
-    public function setMetadata(ProjectMetadata $metadata) : self
+    public function setMetadata(?ProjectMetadata $metadata): self
     {
         $this->metadata = $metadata;
         return $this;

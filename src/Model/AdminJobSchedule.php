@@ -7,53 +7,53 @@ class AdminJobSchedule
     /**
      * The parameters of admin job
      *
-     * @var bool[]
+     * @var bool[]|null
      */
     protected $parameters;
     /**
-     * 
      *
-     * @var AdminJobScheduleObj
+     *
+     * @var AdminJobScheduleObj|null
      */
     protected $schedule;
     /**
      * The parameters of admin job
      *
-     * @return bool[]
+     * @return bool[]|null
      */
-    public function getParameters() : iterable
+    public function getParameters(): ?iterable
     {
         return $this->parameters;
     }
     /**
      * The parameters of admin job
      *
-     * @param bool[] $parameters
+     * @param bool[]|null $parameters
      *
      * @return self
      */
-    public function setParameters(iterable $parameters) : self
+    public function setParameters(?iterable $parameters): self
     {
         $this->parameters = $parameters;
         return $this;
     }
     /**
-     * 
      *
-     * @return AdminJobScheduleObj
+     *
+     * @return AdminJobScheduleObj|null
      */
-    public function getSchedule() : AdminJobScheduleObj
+    public function getSchedule(): ?AdminJobScheduleObj
     {
         return $this->schedule;
     }
     /**
-     * 
      *
-     * @param AdminJobScheduleObj $schedule
+     *
+     * @param AdminJobScheduleObj|null $schedule
      *
      * @return self
      */
-    public function setSchedule(AdminJobScheduleObj $schedule) : self
+    public function setSchedule(?AdminJobScheduleObj $schedule): self
     {
         $this->schedule = $schedule;
         return $this;

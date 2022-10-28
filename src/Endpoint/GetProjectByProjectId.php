@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class GetProjectByProjectId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $project_id;
     /**
      * This endpoint returns specific project information by project ID.
@@ -14,20 +15,19 @@ class GetProjectByProjectId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
     {
         $this->project_id = $projectId;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{project_id}'), array($this->project_id), '/projects/{project_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
@@ -51,7 +51,7 @@ class GetProjectByProjectId extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEnd
             throw new \Gyroscops\Harbor\Api\Exception\GetProjectByProjectIdInternalServerErrorException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RobotAccountNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,29 +43,45 @@ class RobotAccountNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('update_time', $data)) {
+        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
             $object->setUpdateTime($data['update_time']);
+        } elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
+            $object->setUpdateTime(null);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (\array_key_exists('creation_time', $data)) {
+        if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
             $object->setCreationTime($data['creation_time']);
+        } elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
+            $object->setCreationTime(null);
         }
-        if (\array_key_exists('expires_at', $data)) {
+        if (\array_key_exists('expires_at', $data) && $data['expires_at'] !== null) {
             $object->setExpiresAt($data['expires_at']);
+        } elseif (\array_key_exists('expires_at', $data) && $data['expires_at'] === null) {
+            $object->setExpiresAt(null);
         }
-        if (\array_key_exists('disabled', $data)) {
+        if (\array_key_exists('disabled', $data) && $data['disabled'] !== null) {
             $object->setDisabled($data['disabled']);
+        } elseif (\array_key_exists('disabled', $data) && $data['disabled'] === null) {
+            $object->setDisabled(null);
         }
-        if (\array_key_exists('project_id', $data)) {
+        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
             $object->setProjectId($data['project_id']);
+        } elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
+            $object->setProjectId(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
         return $object;
     }

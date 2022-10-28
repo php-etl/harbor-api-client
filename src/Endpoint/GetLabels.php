@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class GetLabels extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
      * This endpoint let user list labels by name, scope and project_id
      *
@@ -19,24 +20,23 @@ class GetLabels extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/labels';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(array('name', 'scope', 'project_id', 'page', 'page_size'));
@@ -52,9 +52,9 @@ class GetLabels extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
+     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsInternalServerErrorException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Label[]
      */
@@ -63,17 +63,17 @@ class GetLabels extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Label[]', 'json');
         }
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException();
+        }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetLabelsUnauthorizedException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetLabelsInternalServerErrorException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetLabelsBadRequestException();
-        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

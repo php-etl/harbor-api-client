@@ -7,44 +7,44 @@ class UserGroup
     /**
      * The name of the user group
      *
-     * @var string
+     * @var string|null
      */
     protected $groupName;
     /**
      * The DN of the LDAP group if group type is 1 (LDAP group).
      *
-     * @var string
+     * @var string|null
      */
     protected $ldapGroupDn;
     /**
      * The group type, 1 for LDAP group, 2 for HTTP group.
      *
-     * @var int
+     * @var int|null
      */
     protected $groupType;
     /**
      * The ID of the user group
      *
-     * @var int
+     * @var int|null
      */
     protected $id;
     /**
      * The name of the user group
      *
-     * @return string
+     * @return string|null
      */
-    public function getGroupName() : string
+    public function getGroupName(): ?string
     {
         return $this->groupName;
     }
     /**
      * The name of the user group
      *
-     * @param string $groupName
+     * @param string|null $groupName
      *
      * @return self
      */
-    public function setGroupName(string $groupName) : self
+    public function setGroupName(?string $groupName): self
     {
         $this->groupName = $groupName;
         return $this;
@@ -52,20 +52,20 @@ class UserGroup
     /**
      * The DN of the LDAP group if group type is 1 (LDAP group).
      *
-     * @return string
+     * @return string|null
      */
-    public function getLdapGroupDn() : string
+    public function getLdapGroupDn(): ?string
     {
         return $this->ldapGroupDn;
     }
     /**
      * The DN of the LDAP group if group type is 1 (LDAP group).
      *
-     * @param string $ldapGroupDn
+     * @param string|null $ldapGroupDn
      *
      * @return self
      */
-    public function setLdapGroupDn(string $ldapGroupDn) : self
+    public function setLdapGroupDn(?string $ldapGroupDn): self
     {
         $this->ldapGroupDn = $ldapGroupDn;
         return $this;
@@ -73,20 +73,20 @@ class UserGroup
     /**
      * The group type, 1 for LDAP group, 2 for HTTP group.
      *
-     * @return int
+     * @return int|null
      */
-    public function getGroupType() : int
+    public function getGroupType(): ?int
     {
         return $this->groupType;
     }
     /**
      * The group type, 1 for LDAP group, 2 for HTTP group.
      *
-     * @param int $groupType
+     * @param int|null $groupType
      *
      * @return self
      */
-    public function setGroupType(int $groupType) : self
+    public function setGroupType(?int $groupType): self
     {
         $this->groupType = $groupType;
         return $this;
@@ -94,20 +94,20 @@ class UserGroup
     /**
      * The ID of the user group
      *
-     * @return int
+     * @return int|null
      */
-    public function getId() : int
+    public function getId(): ?int
     {
         return $this->id;
     }
     /**
      * The ID of the user group
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
-    public function setId(int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;

@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PutSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
      * This endpoint is for updating the schedule of scan all job, which scans all of images in Harbor.
      *
@@ -13,30 +14,29 @@ class PutSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\Base
     {
         $this->body = $schedule;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'PUT';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/system/scanAll/schedule';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleInternalServerErrorException
      * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleInternalServerErrorException
      *
      * @return null
      */
@@ -45,20 +45,20 @@ class PutSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\Base
         if (200 === $status) {
             return null;
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleUnauthorizedException();
         }
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleForbiddenException();
+        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleInternalServerErrorException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutSystemScanAllScheduleBadRequestException();
-        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

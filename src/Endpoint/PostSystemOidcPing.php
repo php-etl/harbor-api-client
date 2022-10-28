@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PostSystemOidcPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
      * Test the OIDC endpoint, the setting of the endpoint is provided in the request.  This API can only be called by system admin.
      *
@@ -13,29 +14,28 @@ class PostSystemOidcPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
     {
         $this->body = $endpoint;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/system/oidc/ping';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingForbiddenException
      *
      * @return null
      */
@@ -44,17 +44,17 @@ class PostSystemOidcPing extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
         if (200 === $status) {
             return null;
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingUnauthorizedException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemOidcPingForbiddenException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

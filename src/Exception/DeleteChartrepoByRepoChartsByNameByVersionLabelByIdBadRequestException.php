@@ -13,7 +13,7 @@ class DeleteChartrepoByRepoChartsByNameByVersionLabelByIdBadRequestException ext
         parent::__construct('Bad request');
         $this->badRequestFormatedError = $badRequestFormatedError;
     }
-    public function getBadRequestFormatedError() : \Gyroscops\Harbor\Api\Model\BadRequestFormatedError
+    public function getBadRequestFormatedError(): \Gyroscops\Harbor\Api\Model\BadRequestFormatedError
     {
         return $this->badRequestFormatedError;
     }

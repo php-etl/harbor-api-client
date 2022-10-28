@@ -7,32 +7,32 @@ class StringConfigItem
     /**
      * The configure item can be updated or not
      *
-     * @var bool
+     * @var bool|null
      */
     protected $editable;
     /**
      * The string value of current config item
      *
-     * @var string
+     * @var string|null
      */
     protected $value;
     /**
      * The configure item can be updated or not
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getEditable() : bool
+    public function getEditable(): ?bool
     {
         return $this->editable;
     }
     /**
      * The configure item can be updated or not
      *
-     * @param bool $editable
+     * @param bool|null $editable
      *
      * @return self
      */
-    public function setEditable(bool $editable) : self
+    public function setEditable(?bool $editable): self
     {
         $this->editable = $editable;
         return $this;
@@ -40,20 +40,20 @@ class StringConfigItem
     /**
      * The string value of current config item
      *
-     * @return string
+     * @return string|null
      */
-    public function getValue() : string
+    public function getValue(): ?string
     {
         return $this->value;
     }
     /**
      * The string value of current config item
      *
-     * @param string $value
+     * @param string|null $value
      *
      * @return self
      */
-    public function setValue(string $value) : self
+    public function setValue(?string $value): self
     {
         $this->value = $value;
         return $this;

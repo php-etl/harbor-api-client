@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RetentionMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,26 +43,32 @@ class RetentionMetadataNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('templates', $data)) {
+        if (\array_key_exists('templates', $data) && $data['templates'] !== null) {
             $values = array();
             foreach ($data['templates'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\RetentionRuleMetadata', 'json', $context);
             }
             $object->setTemplates($values);
+        } elseif (\array_key_exists('templates', $data) && $data['templates'] === null) {
+            $object->setTemplates(null);
         }
-        if (\array_key_exists('tag_selectors', $data)) {
+        if (\array_key_exists('tag_selectors', $data) && $data['tag_selectors'] !== null) {
             $values_1 = array();
             foreach ($data['tag_selectors'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Gyroscops\\Harbor\\Api\\Model\\RetentionSelectorMetadata', 'json', $context);
             }
             $object->setTagSelectors($values_1);
+        } elseif (\array_key_exists('tag_selectors', $data) && $data['tag_selectors'] === null) {
+            $object->setTagSelectors(null);
         }
-        if (\array_key_exists('scope_selectors', $data)) {
+        if (\array_key_exists('scope_selectors', $data) && $data['scope_selectors'] !== null) {
             $values_2 = array();
             foreach ($data['scope_selectors'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'Gyroscops\\Harbor\\Api\\Model\\RetentionSelectorMetadata', 'json', $context);
             }
             $object->setScopeSelectors($values_2);
+        } elseif (\array_key_exists('scope_selectors', $data) && $data['scope_selectors'] === null) {
+            $object->setScopeSelectors(null);
         }
         return $object;
     }

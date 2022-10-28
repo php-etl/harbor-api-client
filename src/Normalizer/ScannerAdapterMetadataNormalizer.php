@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ScannerAdapterMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,22 +43,28 @@ class ScannerAdapterMetadataNormalizer implements DenormalizerInterface, Normali
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($this->denormalizer->denormalize($data['name'], 'Gyroscops\\Harbor\\Api\\Model\\Scanner', 'json', $context));
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (\array_key_exists('capabilities', $data)) {
+        if (\array_key_exists('capabilities', $data) && $data['capabilities'] !== null) {
             $values = array();
             foreach ($data['capabilities'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\ScannerCapability', 'json', $context);
             }
             $object->setCapabilities($values);
+        } elseif (\array_key_exists('capabilities', $data) && $data['capabilities'] === null) {
+            $object->setCapabilities(null);
         }
-        if (\array_key_exists('properties', $data)) {
+        if (\array_key_exists('properties', $data) && $data['properties'] !== null) {
             $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['properties'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $object->setProperties($values_1);
+        } elseif (\array_key_exists('properties', $data) && $data['properties'] === null) {
+            $object->setProperties(null);
         }
         return $object;
     }

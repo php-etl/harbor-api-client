@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PutQuotaById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $id;
     /**
      * Update hard limits of the specified quota
@@ -16,30 +17,29 @@ class PutQuotaById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
         $this->id = $id;
         $this->body = $hard;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'PUT';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{id}'), array($this->id), '/quotas/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\PutQuotaByIdInternalServerErrorException
      *
      * @return null
@@ -49,23 +49,23 @@ class PutQuotaById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
         if (200 === $status) {
             return null;
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdNotFoundException();
-        }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdUnauthorizedException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdForbiddenException();
+        }
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdNotFoundException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PutQuotaByIdInternalServerErrorException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

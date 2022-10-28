@@ -5,28 +5,28 @@ namespace Gyroscops\Harbor\Api\Model;
 class QuotaUpdateReq
 {
     /**
-     * 
      *
-     * @var int[]
+     *
+     * @var int[]|null
      */
     protected $hard;
     /**
-     * 
      *
-     * @return int[]
+     *
+     * @return int[]|null
      */
-    public function getHard() : iterable
+    public function getHard(): ?iterable
     {
         return $this->hard;
     }
     /**
-     * 
      *
-     * @param int[] $hard
+     *
+     * @param int[]|null $hard
      *
      * @return self
      */
-    public function setHard(iterable $hard) : self
+    public function setHard(?iterable $hard): self
     {
         $this->hard = $hard;
         return $this;

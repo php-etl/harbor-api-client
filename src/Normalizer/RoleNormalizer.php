@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RoleNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,17 +43,25 @@ class RoleNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('role_mask', $data)) {
+        if (\array_key_exists('role_mask', $data) && $data['role_mask'] !== null) {
             $object->setRoleMask($data['role_mask']);
+        } elseif (\array_key_exists('role_mask', $data) && $data['role_mask'] === null) {
+            $object->setRoleMask(null);
         }
-        if (\array_key_exists('role_name', $data)) {
+        if (\array_key_exists('role_name', $data) && $data['role_name'] !== null) {
             $object->setRoleName($data['role_name']);
+        } elseif (\array_key_exists('role_name', $data) && $data['role_name'] === null) {
+            $object->setRoleName(null);
         }
-        if (\array_key_exists('role_code', $data)) {
+        if (\array_key_exists('role_code', $data) && $data['role_code'] !== null) {
             $object->setRoleCode($data['role_code']);
+        } elseif (\array_key_exists('role_code', $data) && $data['role_code'] === null) {
+            $object->setRoleCode(null);
         }
-        if (\array_key_exists('role_id', $data)) {
+        if (\array_key_exists('role_id', $data) && $data['role_id'] !== null) {
             $object->setRoleId($data['role_id']);
+        } elseif (\array_key_exists('role_id', $data) && $data['role_id'] === null) {
+            $object->setRoleId(null);
         }
         return $object;
     }

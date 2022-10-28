@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RetentionPolicyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,24 +43,34 @@ class RetentionPolicyNormalizer implements DenormalizerInterface, NormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('rules', $data)) {
+        if (\array_key_exists('rules', $data) && $data['rules'] !== null) {
             $values = array();
             foreach ($data['rules'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\RetentionRule', 'json', $context);
             }
             $object->setRules($values);
+        } elseif (\array_key_exists('rules', $data) && $data['rules'] === null) {
+            $object->setRules(null);
         }
-        if (\array_key_exists('scope', $data)) {
+        if (\array_key_exists('scope', $data) && $data['scope'] !== null) {
             $object->setScope($this->denormalizer->denormalize($data['scope'], 'Gyroscops\\Harbor\\Api\\Model\\RetentionPolicyScope', 'json', $context));
+        } elseif (\array_key_exists('scope', $data) && $data['scope'] === null) {
+            $object->setScope(null);
         }
-        if (\array_key_exists('trigger', $data)) {
+        if (\array_key_exists('trigger', $data) && $data['trigger'] !== null) {
             $object->setTrigger($this->denormalizer->denormalize($data['trigger'], 'Gyroscops\\Harbor\\Api\\Model\\RetentionRuleTrigger', 'json', $context));
+        } elseif (\array_key_exists('trigger', $data) && $data['trigger'] === null) {
+            $object->setTrigger(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
-        if (\array_key_exists('algorithm', $data)) {
+        if (\array_key_exists('algorithm', $data) && $data['algorithm'] !== null) {
             $object->setAlgorithm($data['algorithm']);
+        } elseif (\array_key_exists('algorithm', $data) && $data['algorithm'] === null) {
+            $object->setAlgorithm(null);
         }
         return $object;
     }

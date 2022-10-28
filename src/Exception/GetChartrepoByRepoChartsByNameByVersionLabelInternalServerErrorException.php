@@ -13,7 +13,7 @@ class GetChartrepoByRepoChartsByNameByVersionLabelInternalServerErrorException e
         parent::__construct('Internal server error occurred');
         $this->internalChartAPIError = $internalChartAPIError;
     }
-    public function getInternalChartAPIError() : \Gyroscops\Harbor\Api\Model\InternalChartAPIError
+    public function getInternalChartAPIError(): \Gyroscops\Harbor\Api\Model\InternalChartAPIError
     {
         return $this->internalChartAPIError;
     }

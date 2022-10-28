@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class SupportedWebhookEventTypesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,19 +43,23 @@ class SupportedWebhookEventTypesNormalizer implements DenormalizerInterface, Nor
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('event_type', $data)) {
+        if (\array_key_exists('event_type', $data) && $data['event_type'] !== null) {
             $values = array();
             foreach ($data['event_type'] as $value) {
                 $values[] = $value;
             }
             $object->setEventType($values);
+        } elseif (\array_key_exists('event_type', $data) && $data['event_type'] === null) {
+            $object->setEventType(null);
         }
-        if (\array_key_exists('notify_type', $data)) {
+        if (\array_key_exists('notify_type', $data) && $data['notify_type'] !== null) {
             $values_1 = array();
             foreach ($data['notify_type'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setNotifyType($values_1);
+        } elseif (\array_key_exists('notify_type', $data) && $data['notify_type'] === null) {
+            $object->setNotifyType(null);
         }
         return $object;
     }

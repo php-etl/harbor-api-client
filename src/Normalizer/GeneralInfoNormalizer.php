@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class GeneralInfoNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,32 +43,50 @@ class GeneralInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('harbor_version', $data)) {
+        if (\array_key_exists('harbor_version', $data) && $data['harbor_version'] !== null) {
             $object->setHarborVersion($data['harbor_version']);
+        } elseif (\array_key_exists('harbor_version', $data) && $data['harbor_version'] === null) {
+            $object->setHarborVersion(null);
         }
-        if (\array_key_exists('auth_mode', $data)) {
+        if (\array_key_exists('auth_mode', $data) && $data['auth_mode'] !== null) {
             $object->setAuthMode($data['auth_mode']);
+        } elseif (\array_key_exists('auth_mode', $data) && $data['auth_mode'] === null) {
+            $object->setAuthMode(null);
         }
-        if (\array_key_exists('self_registration', $data)) {
+        if (\array_key_exists('self_registration', $data) && $data['self_registration'] !== null) {
             $object->setSelfRegistration($data['self_registration']);
+        } elseif (\array_key_exists('self_registration', $data) && $data['self_registration'] === null) {
+            $object->setSelfRegistration(null);
         }
-        if (\array_key_exists('external_url', $data)) {
+        if (\array_key_exists('external_url', $data) && $data['external_url'] !== null) {
             $object->setExternalUrl($data['external_url']);
+        } elseif (\array_key_exists('external_url', $data) && $data['external_url'] === null) {
+            $object->setExternalUrl(null);
         }
-        if (\array_key_exists('project_creation_restriction', $data)) {
+        if (\array_key_exists('project_creation_restriction', $data) && $data['project_creation_restriction'] !== null) {
             $object->setProjectCreationRestriction($data['project_creation_restriction']);
+        } elseif (\array_key_exists('project_creation_restriction', $data) && $data['project_creation_restriction'] === null) {
+            $object->setProjectCreationRestriction(null);
         }
-        if (\array_key_exists('has_ca_root', $data)) {
+        if (\array_key_exists('has_ca_root', $data) && $data['has_ca_root'] !== null) {
             $object->setHasCaRoot($data['has_ca_root']);
+        } elseif (\array_key_exists('has_ca_root', $data) && $data['has_ca_root'] === null) {
+            $object->setHasCaRoot(null);
         }
-        if (\array_key_exists('with_notary', $data)) {
+        if (\array_key_exists('with_notary', $data) && $data['with_notary'] !== null) {
             $object->setWithNotary($data['with_notary']);
+        } elseif (\array_key_exists('with_notary', $data) && $data['with_notary'] === null) {
+            $object->setWithNotary(null);
         }
-        if (\array_key_exists('with_chartmuseum', $data)) {
+        if (\array_key_exists('with_chartmuseum', $data) && $data['with_chartmuseum'] !== null) {
             $object->setWithChartmuseum($data['with_chartmuseum']);
+        } elseif (\array_key_exists('with_chartmuseum', $data) && $data['with_chartmuseum'] === null) {
+            $object->setWithChartmuseum(null);
         }
-        if (\array_key_exists('registry_url', $data)) {
+        if (\array_key_exists('registry_url', $data) && $data['registry_url'] !== null) {
             $object->setRegistryUrl($data['registry_url']);
+        } elseif (\array_key_exists('registry_url', $data) && $data['registry_url'] === null) {
+            $object->setRegistryUrl(null);
         }
         return $object;
     }

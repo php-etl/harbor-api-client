@@ -13,7 +13,7 @@ class PostChartrepoByRepoChartsByNameByVersionLabelNotFoundException extends Not
         parent::__construct('Not found');
         $this->notFoundChartAPIError = $notFoundChartAPIError;
     }
-    public function getNotFoundChartAPIError() : \Gyroscops\Harbor\Api\Model\NotFoundChartAPIError
+    public function getNotFoundChartAPIError(): \Gyroscops\Harbor\Api\Model\NotFoundChartAPIError
     {
         return $this->notFoundChartAPIError;
     }

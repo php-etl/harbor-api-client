@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ProjectScannerNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,8 +43,10 @@ class ProjectScannerNormalizer implements DenormalizerInterface, NormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('uuid', $data)) {
+        if (\array_key_exists('uuid', $data) && $data['uuid'] !== null) {
             $object->setUuid($data['uuid']);
+        } elseif (\array_key_exists('uuid', $data) && $data['uuid'] === null) {
+            $object->setUuid(null);
         }
         return $object;
     }

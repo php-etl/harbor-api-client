@@ -4,39 +4,39 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class GetUsersCurrentPermissions extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
     * This endpoint is to get the current user permissions.
-    
+
     *
     * @param array $queryParameters {
     *     @var string $scope Get permissions of the scope
     *     @var bool $relative If true, the resources in the response are relative to the scope,
     eg for resource '/project/1/repository' if relative is 'true' then the resource in response will be 'repository'.
-    
+
     * }
     */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/users/current/permissions';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(array('scope', 'relative'));
@@ -66,7 +66,7 @@ class GetUsersCurrentPermissions extends \Gyroscops\Harbor\Api\Runtime\Client\Ba
             throw new \Gyroscops\Harbor\Api\Exception\GetUsersCurrentPermissionsInternalServerErrorException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

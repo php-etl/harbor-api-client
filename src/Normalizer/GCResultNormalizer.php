@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class GCResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,32 +43,50 @@ class GCResultNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('job_status', $data)) {
+        if (\array_key_exists('job_status', $data) && $data['job_status'] !== null) {
             $object->setJobStatus($data['job_status']);
+        } elseif (\array_key_exists('job_status', $data) && $data['job_status'] === null) {
+            $object->setJobStatus(null);
         }
-        if (\array_key_exists('update_time', $data)) {
+        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
             $object->setUpdateTime($data['update_time']);
+        } elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
+            $object->setUpdateTime(null);
         }
-        if (\array_key_exists('job_parameters', $data)) {
+        if (\array_key_exists('job_parameters', $data) && $data['job_parameters'] !== null) {
             $object->setJobParameters($data['job_parameters']);
+        } elseif (\array_key_exists('job_parameters', $data) && $data['job_parameters'] === null) {
+            $object->setJobParameters(null);
         }
-        if (\array_key_exists('schedule', $data)) {
+        if (\array_key_exists('schedule', $data) && $data['schedule'] !== null) {
             $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Gyroscops\\Harbor\\Api\\Model\\AdminJobScheduleObj', 'json', $context));
+        } elseif (\array_key_exists('schedule', $data) && $data['schedule'] === null) {
+            $object->setSchedule(null);
         }
-        if (\array_key_exists('deleted', $data)) {
+        if (\array_key_exists('deleted', $data) && $data['deleted'] !== null) {
             $object->setDeleted($data['deleted']);
+        } elseif (\array_key_exists('deleted', $data) && $data['deleted'] === null) {
+            $object->setDeleted(null);
         }
-        if (\array_key_exists('job_kind', $data)) {
+        if (\array_key_exists('job_kind', $data) && $data['job_kind'] !== null) {
             $object->setJobKind($data['job_kind']);
+        } elseif (\array_key_exists('job_kind', $data) && $data['job_kind'] === null) {
+            $object->setJobKind(null);
         }
-        if (\array_key_exists('creation_time', $data)) {
+        if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
             $object->setCreationTime($data['creation_time']);
+        } elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
+            $object->setCreationTime(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
-        if (\array_key_exists('job_name', $data)) {
+        if (\array_key_exists('job_name', $data) && $data['job_name'] !== null) {
             $object->setJobName($data['job_name']);
+        } elseif (\array_key_exists('job_name', $data) && $data['job_name'] === null) {
+            $object->setJobName(null);
         }
         return $object;
     }

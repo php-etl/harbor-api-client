@@ -7,38 +7,38 @@ class ComponentHealthStatus
     /**
      * The health status of component
      *
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
      * The component name
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * (optional) The error message when the status is "unhealthy"
      *
-     * @var string
+     * @var string|null
      */
     protected $error;
     /**
      * The health status of component
      *
-     * @return string
+     * @return string|null
      */
-    public function getStatus() : string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
     /**
      * The health status of component
      *
-     * @param string $status
+     * @param string|null $status
      *
      * @return self
      */
-    public function setStatus(string $status) : self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
         return $this;
@@ -46,20 +46,20 @@ class ComponentHealthStatus
     /**
      * The component name
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The component name
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -67,20 +67,20 @@ class ComponentHealthStatus
     /**
      * (optional) The error message when the status is "unhealthy"
      *
-     * @return string
+     * @return string|null
      */
-    public function getError() : string
+    public function getError(): ?string
     {
         return $this->error;
     }
     /**
      * (optional) The error message when the status is "unhealthy"
      *
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
-    public function setError(string $error) : self
+    public function setError(?string $error): self
     {
         $this->error = $error;
         return $this;

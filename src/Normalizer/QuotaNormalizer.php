@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class QuotaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,35 +43,47 @@ class QuotaNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('update_time', $data)) {
+        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
             $object->setUpdateTime($data['update_time']);
+        } elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
+            $object->setUpdateTime(null);
         }
-        if (\array_key_exists('used', $data)) {
+        if (\array_key_exists('used', $data) && $data['used'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['used'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setUsed($values);
+        } elseif (\array_key_exists('used', $data) && $data['used'] === null) {
+            $object->setUsed(null);
         }
-        if (\array_key_exists('ref', $data)) {
+        if (\array_key_exists('ref', $data) && $data['ref'] !== null) {
             $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['ref'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $object->setRef($values_1);
+        } elseif (\array_key_exists('ref', $data) && $data['ref'] === null) {
+            $object->setRef(null);
         }
-        if (\array_key_exists('hard', $data)) {
+        if (\array_key_exists('hard', $data) && $data['hard'] !== null) {
             $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['hard'] as $key_2 => $value_2) {
                 $values_2[$key_2] = $value_2;
             }
             $object->setHard($values_2);
+        } elseif (\array_key_exists('hard', $data) && $data['hard'] === null) {
+            $object->setHard(null);
         }
-        if (\array_key_exists('creation_time', $data)) {
+        if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
             $object->setCreationTime($data['creation_time']);
+        } elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
+            $object->setCreationTime(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
         return $object;
     }

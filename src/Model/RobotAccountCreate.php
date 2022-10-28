@@ -7,44 +7,44 @@ class RobotAccountCreate
     /**
      * The permission of robot account
      *
-     * @var RobotAccountAccess[]
+     * @var RobotAccountAccess[]|null
      */
     protected $access;
     /**
      * The name of robot account
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      *
-     * @var int
+     * @var int|null
      */
     protected $expiresAt;
     /**
      * The description of robot account
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * The permission of robot account
      *
-     * @return RobotAccountAccess[]
+     * @return RobotAccountAccess[]|null
      */
-    public function getAccess() : array
+    public function getAccess(): ?array
     {
         return $this->access;
     }
     /**
      * The permission of robot account
      *
-     * @param RobotAccountAccess[] $access
+     * @param RobotAccountAccess[]|null $access
      *
      * @return self
      */
-    public function setAccess(array $access) : self
+    public function setAccess(?array $access): self
     {
         $this->access = $access;
         return $this;
@@ -52,20 +52,20 @@ class RobotAccountCreate
     /**
      * The name of robot account
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The name of robot account
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -73,20 +73,20 @@ class RobotAccountCreate
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      *
-     * @return int
+     * @return int|null
      */
-    public function getExpiresAt() : int
+    public function getExpiresAt(): ?int
     {
         return $this->expiresAt;
     }
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      *
-     * @param int $expiresAt
+     * @param int|null $expiresAt
      *
      * @return self
      */
-    public function setExpiresAt(int $expiresAt) : self
+    public function setExpiresAt(?int $expiresAt): self
     {
         $this->expiresAt = $expiresAt;
         return $this;
@@ -94,20 +94,20 @@ class RobotAccountCreate
     /**
      * The description of robot account
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
      * The description of robot account
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
         return $this;

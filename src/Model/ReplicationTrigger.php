@@ -7,53 +7,53 @@ class ReplicationTrigger
     /**
      * The replication policy trigger type. The valid values are manual, event_based and scheduled.
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * 
      *
-     * @var TriggerSettings
+     *
+     * @var TriggerSettings|null
      */
     protected $triggerSettings;
     /**
      * The replication policy trigger type. The valid values are manual, event_based and scheduled.
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType(): ?string
     {
         return $this->type;
     }
     /**
      * The replication policy trigger type. The valid values are manual, event_based and scheduled.
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type): self
     {
         $this->type = $type;
         return $this;
     }
     /**
-     * 
      *
-     * @return TriggerSettings
+     *
+     * @return TriggerSettings|null
      */
-    public function getTriggerSettings() : TriggerSettings
+    public function getTriggerSettings(): ?TriggerSettings
     {
         return $this->triggerSettings;
     }
     /**
-     * 
      *
-     * @param TriggerSettings $triggerSettings
+     *
+     * @param TriggerSettings|null $triggerSettings
      *
      * @return self
      */
-    public function setTriggerSettings(TriggerSettings $triggerSettings) : self
+    public function setTriggerSettings(?TriggerSettings $triggerSettings): self
     {
         $this->triggerSettings = $triggerSettings;
         return $this;

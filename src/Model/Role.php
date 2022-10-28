@@ -5,46 +5,46 @@ namespace Gyroscops\Harbor\Api\Model;
 class Role
 {
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $roleMask;
     /**
      * Name the the role.
      *
-     * @var string
+     * @var string|null
      */
     protected $roleName;
     /**
      * Description of permissions for the role.
      *
-     * @var string
+     * @var string|null
      */
     protected $roleCode;
     /**
      * ID in table.
      *
-     * @var int
+     * @var int|null
      */
     protected $roleId;
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getRoleMask() : string
+    public function getRoleMask(): ?string
     {
         return $this->roleMask;
     }
     /**
-     * 
      *
-     * @param string $roleMask
+     *
+     * @param string|null $roleMask
      *
      * @return self
      */
-    public function setRoleMask(string $roleMask) : self
+    public function setRoleMask(?string $roleMask): self
     {
         $this->roleMask = $roleMask;
         return $this;
@@ -52,20 +52,20 @@ class Role
     /**
      * Name the the role.
      *
-     * @return string
+     * @return string|null
      */
-    public function getRoleName() : string
+    public function getRoleName(): ?string
     {
         return $this->roleName;
     }
     /**
      * Name the the role.
      *
-     * @param string $roleName
+     * @param string|null $roleName
      *
      * @return self
      */
-    public function setRoleName(string $roleName) : self
+    public function setRoleName(?string $roleName): self
     {
         $this->roleName = $roleName;
         return $this;
@@ -73,20 +73,20 @@ class Role
     /**
      * Description of permissions for the role.
      *
-     * @return string
+     * @return string|null
      */
-    public function getRoleCode() : string
+    public function getRoleCode(): ?string
     {
         return $this->roleCode;
     }
     /**
      * Description of permissions for the role.
      *
-     * @param string $roleCode
+     * @param string|null $roleCode
      *
      * @return self
      */
-    public function setRoleCode(string $roleCode) : self
+    public function setRoleCode(?string $roleCode): self
     {
         $this->roleCode = $roleCode;
         return $this;
@@ -94,20 +94,20 @@ class Role
     /**
      * ID in table.
      *
-     * @return int
+     * @return int|null
      */
-    public function getRoleId() : int
+    public function getRoleId(): ?int
     {
         return $this->roleId;
     }
     /**
      * ID in table.
      *
-     * @param int $roleId
+     * @param int|null $roleId
      *
      * @return self
      */
-    public function setRoleId(int $roleId) : self
+    public function setRoleId(?int $roleId): self
     {
         $this->roleId = $roleId;
         return $this;

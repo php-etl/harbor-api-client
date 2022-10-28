@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RetentionPolicyScopeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,11 +43,15 @@ class RetentionPolicyScopeNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ref', $data)) {
+        if (\array_key_exists('ref', $data) && $data['ref'] !== null) {
             $object->setRef($data['ref']);
+        } elseif (\array_key_exists('ref', $data) && $data['ref'] === null) {
+            $object->setRef(null);
         }
-        if (\array_key_exists('level', $data)) {
+        if (\array_key_exists('level', $data) && $data['level'] !== null) {
             $object->setLevel($data['level']);
+        } elseif (\array_key_exists('level', $data) && $data['level'] === null) {
+            $object->setLevel(null);
         }
         return $object;
     }

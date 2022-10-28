@@ -7,80 +7,80 @@ class WebhookPolicy
     /**
      * The update time of the webhook policy.
      *
-     * @var string
+     * @var string|null
      */
     protected $updateTime;
     /**
      * The description of webhook policy.
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * The creator of the webhook policy.
      *
-     * @var string
+     * @var string|null
      */
     protected $creator;
     /**
      * The create time of the webhook policy.
      *
-     * @var string
+     * @var string|null
      */
     protected $creationTime;
     /**
      * Whether the webhook policy is enabled or not.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $enabled;
     /**
-     * 
      *
-     * @var WebhookTargetObject[]
+     *
+     * @var WebhookTargetObject[]|null
      */
     protected $targets;
     /**
-     * 
      *
-     * @var string[]
+     *
+     * @var string[]|null
      */
     protected $eventTypes;
     /**
      * The project ID of webhook policy.
      *
-     * @var int
+     * @var int|null
      */
     protected $projectId;
     /**
      * The webhook policy ID.
      *
-     * @var int
+     * @var int|null
      */
     protected $id;
     /**
      * The name of webhook policy.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The update time of the webhook policy.
      *
-     * @return string
+     * @return string|null
      */
-    public function getUpdateTime() : string
+    public function getUpdateTime(): ?string
     {
         return $this->updateTime;
     }
     /**
      * The update time of the webhook policy.
      *
-     * @param string $updateTime
+     * @param string|null $updateTime
      *
      * @return self
      */
-    public function setUpdateTime(string $updateTime) : self
+    public function setUpdateTime(?string $updateTime): self
     {
         $this->updateTime = $updateTime;
         return $this;
@@ -88,20 +88,20 @@ class WebhookPolicy
     /**
      * The description of webhook policy.
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
      * The description of webhook policy.
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
         return $this;
@@ -109,20 +109,20 @@ class WebhookPolicy
     /**
      * The creator of the webhook policy.
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreator() : string
+    public function getCreator(): ?string
     {
         return $this->creator;
     }
     /**
      * The creator of the webhook policy.
      *
-     * @param string $creator
+     * @param string|null $creator
      *
      * @return self
      */
-    public function setCreator(string $creator) : self
+    public function setCreator(?string $creator): self
     {
         $this->creator = $creator;
         return $this;
@@ -130,20 +130,20 @@ class WebhookPolicy
     /**
      * The create time of the webhook policy.
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreationTime() : string
+    public function getCreationTime(): ?string
     {
         return $this->creationTime;
     }
     /**
      * The create time of the webhook policy.
      *
-     * @param string $creationTime
+     * @param string|null $creationTime
      *
      * @return self
      */
-    public function setCreationTime(string $creationTime) : self
+    public function setCreationTime(?string $creationTime): self
     {
         $this->creationTime = $creationTime;
         return $this;
@@ -151,62 +151,62 @@ class WebhookPolicy
     /**
      * Whether the webhook policy is enabled or not.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getEnabled() : bool
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
     /**
      * Whether the webhook policy is enabled or not.
      *
-     * @param bool $enabled
+     * @param bool|null $enabled
      *
      * @return self
      */
-    public function setEnabled(bool $enabled) : self
+    public function setEnabled(?bool $enabled): self
     {
         $this->enabled = $enabled;
         return $this;
     }
     /**
-     * 
      *
-     * @return WebhookTargetObject[]
+     *
+     * @return WebhookTargetObject[]|null
      */
-    public function getTargets() : array
+    public function getTargets(): ?array
     {
         return $this->targets;
     }
     /**
-     * 
      *
-     * @param WebhookTargetObject[] $targets
+     *
+     * @param WebhookTargetObject[]|null $targets
      *
      * @return self
      */
-    public function setTargets(array $targets) : self
+    public function setTargets(?array $targets): self
     {
         $this->targets = $targets;
         return $this;
     }
     /**
-     * 
      *
-     * @return string[]
+     *
+     * @return string[]|null
      */
-    public function getEventTypes() : array
+    public function getEventTypes(): ?array
     {
         return $this->eventTypes;
     }
     /**
-     * 
      *
-     * @param string[] $eventTypes
+     *
+     * @param string[]|null $eventTypes
      *
      * @return self
      */
-    public function setEventTypes(array $eventTypes) : self
+    public function setEventTypes(?array $eventTypes): self
     {
         $this->eventTypes = $eventTypes;
         return $this;
@@ -214,20 +214,20 @@ class WebhookPolicy
     /**
      * The project ID of webhook policy.
      *
-     * @return int
+     * @return int|null
      */
-    public function getProjectId() : int
+    public function getProjectId(): ?int
     {
         return $this->projectId;
     }
     /**
      * The project ID of webhook policy.
      *
-     * @param int $projectId
+     * @param int|null $projectId
      *
      * @return self
      */
-    public function setProjectId(int $projectId) : self
+    public function setProjectId(?int $projectId): self
     {
         $this->projectId = $projectId;
         return $this;
@@ -235,20 +235,20 @@ class WebhookPolicy
     /**
      * The webhook policy ID.
      *
-     * @return int
+     * @return int|null
      */
-    public function getId() : int
+    public function getId(): ?int
     {
         return $this->id;
     }
     /**
      * The webhook policy ID.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
-    public function setId(int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;
@@ -256,20 +256,20 @@ class WebhookPolicy
     /**
      * The name of webhook policy.
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The name of webhook policy.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class UserNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,50 +43,80 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('username', $data)) {
+        if (\array_key_exists('username', $data) && $data['username'] !== null) {
             $object->setUsername($data['username']);
+        } elseif (\array_key_exists('username', $data) && $data['username'] === null) {
+            $object->setUsername(null);
         }
-        if (\array_key_exists('comment', $data)) {
+        if (\array_key_exists('comment', $data) && $data['comment'] !== null) {
             $object->setComment($data['comment']);
+        } elseif (\array_key_exists('comment', $data) && $data['comment'] === null) {
+            $object->setComment(null);
         }
-        if (\array_key_exists('update_time', $data)) {
+        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
             $object->setUpdateTime($data['update_time']);
+        } elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
+            $object->setUpdateTime(null);
         }
-        if (\array_key_exists('password', $data)) {
+        if (\array_key_exists('password', $data) && $data['password'] !== null) {
             $object->setPassword($data['password']);
+        } elseif (\array_key_exists('password', $data) && $data['password'] === null) {
+            $object->setPassword(null);
         }
-        if (\array_key_exists('user_id', $data)) {
+        if (\array_key_exists('user_id', $data) && $data['user_id'] !== null) {
             $object->setUserId($data['user_id']);
+        } elseif (\array_key_exists('user_id', $data) && $data['user_id'] === null) {
+            $object->setUserId(null);
         }
-        if (\array_key_exists('realname', $data)) {
+        if (\array_key_exists('realname', $data) && $data['realname'] !== null) {
             $object->setRealname($data['realname']);
+        } elseif (\array_key_exists('realname', $data) && $data['realname'] === null) {
+            $object->setRealname(null);
         }
-        if (\array_key_exists('deleted', $data)) {
+        if (\array_key_exists('deleted', $data) && $data['deleted'] !== null) {
             $object->setDeleted($data['deleted']);
+        } elseif (\array_key_exists('deleted', $data) && $data['deleted'] === null) {
+            $object->setDeleted(null);
         }
-        if (\array_key_exists('creation_time', $data)) {
+        if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
             $object->setCreationTime($data['creation_time']);
+        } elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
+            $object->setCreationTime(null);
         }
-        if (\array_key_exists('admin_role_in_auth', $data)) {
+        if (\array_key_exists('admin_role_in_auth', $data) && $data['admin_role_in_auth'] !== null) {
             $object->setAdminRoleInAuth($data['admin_role_in_auth']);
+        } elseif (\array_key_exists('admin_role_in_auth', $data) && $data['admin_role_in_auth'] === null) {
+            $object->setAdminRoleInAuth(null);
         }
-        if (\array_key_exists('role_id', $data)) {
+        if (\array_key_exists('role_id', $data) && $data['role_id'] !== null) {
             $object->setRoleId($data['role_id']);
+        } elseif (\array_key_exists('role_id', $data) && $data['role_id'] === null) {
+            $object->setRoleId(null);
         }
-        if (\array_key_exists('sysadmin_flag', $data)) {
+        if (\array_key_exists('sysadmin_flag', $data) && $data['sysadmin_flag'] !== null) {
             $object->setSysadminFlag($data['sysadmin_flag']);
+        } elseif (\array_key_exists('sysadmin_flag', $data) && $data['sysadmin_flag'] === null) {
+            $object->setSysadminFlag(null);
         }
-        if (\array_key_exists('role_name', $data)) {
+        if (\array_key_exists('role_name', $data) && $data['role_name'] !== null) {
             $object->setRoleName($data['role_name']);
+        } elseif (\array_key_exists('role_name', $data) && $data['role_name'] === null) {
+            $object->setRoleName(null);
         }
-        if (\array_key_exists('reset_uuid', $data)) {
+        if (\array_key_exists('reset_uuid', $data) && $data['reset_uuid'] !== null) {
             $object->setResetUuid($data['reset_uuid']);
+        } elseif (\array_key_exists('reset_uuid', $data) && $data['reset_uuid'] === null) {
+            $object->setResetUuid(null);
         }
-        if (\array_key_exists('Salt', $data)) {
+        if (\array_key_exists('Salt', $data) && $data['Salt'] !== null) {
             $object->setSalt($data['Salt']);
+        } elseif (\array_key_exists('Salt', $data) && $data['Salt'] === null) {
+            $object->setSalt(null);
         }
-        if (\array_key_exists('email', $data)) {
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
+        } elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+            $object->setEmail(null);
         }
         return $object;
     }

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RobotAccountAccessNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,11 +43,15 @@ class RobotAccountAccessNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('action', $data)) {
+        if (\array_key_exists('action', $data) && $data['action'] !== null) {
             $object->setAction($data['action']);
+        } elseif (\array_key_exists('action', $data) && $data['action'] === null) {
+            $object->setAction(null);
         }
-        if (\array_key_exists('resource', $data)) {
+        if (\array_key_exists('resource', $data) && $data['resource'] !== null) {
             $object->setResource($data['resource']);
+        } elseif (\array_key_exists('resource', $data) && $data['resource'] === null) {
+            $object->setResource(null);
         }
         return $object;
     }

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class StatsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,24 +43,34 @@ class StatsNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('metrics', $data)) {
+        if (\array_key_exists('metrics', $data) && $data['metrics'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['metrics'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setMetrics($values);
+        } elseif (\array_key_exists('metrics', $data) && $data['metrics'] === null) {
+            $object->setMetrics(null);
         }
-        if (\array_key_exists('completed', $data)) {
+        if (\array_key_exists('completed', $data) && $data['completed'] !== null) {
             $object->setCompleted($data['completed']);
+        } elseif (\array_key_exists('completed', $data) && $data['completed'] === null) {
+            $object->setCompleted(null);
         }
-        if (\array_key_exists('total', $data)) {
+        if (\array_key_exists('total', $data) && $data['total'] !== null) {
             $object->setTotal($data['total']);
+        } elseif (\array_key_exists('total', $data) && $data['total'] === null) {
+            $object->setTotal(null);
         }
-        if (\array_key_exists('ongoing', $data)) {
+        if (\array_key_exists('ongoing', $data) && $data['ongoing'] !== null) {
             $object->setOngoing($data['ongoing']);
+        } elseif (\array_key_exists('ongoing', $data) && $data['ongoing'] === null) {
+            $object->setOngoing(null);
         }
-        if (\array_key_exists('requester', $data)) {
+        if (\array_key_exists('requester', $data) && $data['requester'] !== null) {
             $object->setRequester($data['requester']);
+        } elseif (\array_key_exists('requester', $data) && $data['requester'] === null) {
+            $object->setRequester(null);
         }
         return $object;
     }

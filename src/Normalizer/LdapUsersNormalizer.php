@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class LdapUsersNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,14 +43,20 @@ class LdapUsersNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ldap_email', $data)) {
+        if (\array_key_exists('ldap_email', $data) && $data['ldap_email'] !== null) {
             $object->setLdapEmail($data['ldap_email']);
+        } elseif (\array_key_exists('ldap_email', $data) && $data['ldap_email'] === null) {
+            $object->setLdapEmail(null);
         }
-        if (\array_key_exists('ldap_realname', $data)) {
+        if (\array_key_exists('ldap_realname', $data) && $data['ldap_realname'] !== null) {
             $object->setLdapRealname($data['ldap_realname']);
+        } elseif (\array_key_exists('ldap_realname', $data) && $data['ldap_realname'] === null) {
+            $object->setLdapRealname(null);
         }
-        if (\array_key_exists('ldap_username', $data)) {
+        if (\array_key_exists('ldap_username', $data) && $data['ldap_username'] !== null) {
             $object->setLdapUsername($data['ldap_username']);
+        } elseif (\array_key_exists('ldap_username', $data) && $data['ldap_username'] === null) {
+            $object->setLdapUsername(null);
         }
         return $object;
     }

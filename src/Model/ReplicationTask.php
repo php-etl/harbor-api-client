@@ -7,74 +7,74 @@ class ReplicationTask
     /**
      * The status
      *
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
      * The job ID
      *
-     * @var string
+     * @var string|null
      */
     protected $jobId;
     /**
      * The start time
      *
-     * @var string
+     * @var string|null
      */
     protected $startTime;
     /**
      * The destination resource
      *
-     * @var string
+     * @var string|null
      */
     protected $dstResource;
     /**
      * The source resource
      *
-     * @var string
+     * @var string|null
      */
     protected $srcResource;
     /**
      * The resource type
      *
-     * @var string
+     * @var string|null
      */
     protected $resourceType;
     /**
      * The ID
      *
-     * @var int
+     * @var int|null
      */
     protected $id;
     /**
      * The execution ID
      *
-     * @var int
+     * @var int|null
      */
     protected $executionId;
     /**
      * The end time
      *
-     * @var string
+     * @var string|null
      */
     protected $endTime;
     /**
      * The status
      *
-     * @return string
+     * @return string|null
      */
-    public function getStatus() : string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
     /**
      * The status
      *
-     * @param string $status
+     * @param string|null $status
      *
      * @return self
      */
-    public function setStatus(string $status) : self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
         return $this;
@@ -82,20 +82,20 @@ class ReplicationTask
     /**
      * The job ID
      *
-     * @return string
+     * @return string|null
      */
-    public function getJobId() : string
+    public function getJobId(): ?string
     {
         return $this->jobId;
     }
     /**
      * The job ID
      *
-     * @param string $jobId
+     * @param string|null $jobId
      *
      * @return self
      */
-    public function setJobId(string $jobId) : self
+    public function setJobId(?string $jobId): self
     {
         $this->jobId = $jobId;
         return $this;
@@ -103,20 +103,20 @@ class ReplicationTask
     /**
      * The start time
      *
-     * @return string
+     * @return string|null
      */
-    public function getStartTime() : string
+    public function getStartTime(): ?string
     {
         return $this->startTime;
     }
     /**
      * The start time
      *
-     * @param string $startTime
+     * @param string|null $startTime
      *
      * @return self
      */
-    public function setStartTime(string $startTime) : self
+    public function setStartTime(?string $startTime): self
     {
         $this->startTime = $startTime;
         return $this;
@@ -124,20 +124,20 @@ class ReplicationTask
     /**
      * The destination resource
      *
-     * @return string
+     * @return string|null
      */
-    public function getDstResource() : string
+    public function getDstResource(): ?string
     {
         return $this->dstResource;
     }
     /**
      * The destination resource
      *
-     * @param string $dstResource
+     * @param string|null $dstResource
      *
      * @return self
      */
-    public function setDstResource(string $dstResource) : self
+    public function setDstResource(?string $dstResource): self
     {
         $this->dstResource = $dstResource;
         return $this;
@@ -145,20 +145,20 @@ class ReplicationTask
     /**
      * The source resource
      *
-     * @return string
+     * @return string|null
      */
-    public function getSrcResource() : string
+    public function getSrcResource(): ?string
     {
         return $this->srcResource;
     }
     /**
      * The source resource
      *
-     * @param string $srcResource
+     * @param string|null $srcResource
      *
      * @return self
      */
-    public function setSrcResource(string $srcResource) : self
+    public function setSrcResource(?string $srcResource): self
     {
         $this->srcResource = $srcResource;
         return $this;
@@ -166,20 +166,20 @@ class ReplicationTask
     /**
      * The resource type
      *
-     * @return string
+     * @return string|null
      */
-    public function getResourceType() : string
+    public function getResourceType(): ?string
     {
         return $this->resourceType;
     }
     /**
      * The resource type
      *
-     * @param string $resourceType
+     * @param string|null $resourceType
      *
      * @return self
      */
-    public function setResourceType(string $resourceType) : self
+    public function setResourceType(?string $resourceType): self
     {
         $this->resourceType = $resourceType;
         return $this;
@@ -187,20 +187,20 @@ class ReplicationTask
     /**
      * The ID
      *
-     * @return int
+     * @return int|null
      */
-    public function getId() : int
+    public function getId(): ?int
     {
         return $this->id;
     }
     /**
      * The ID
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
-    public function setId(int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;
@@ -208,20 +208,20 @@ class ReplicationTask
     /**
      * The execution ID
      *
-     * @return int
+     * @return int|null
      */
-    public function getExecutionId() : int
+    public function getExecutionId(): ?int
     {
         return $this->executionId;
     }
     /**
      * The execution ID
      *
-     * @param int $executionId
+     * @param int|null $executionId
      *
      * @return self
      */
-    public function setExecutionId(int $executionId) : self
+    public function setExecutionId(?int $executionId): self
     {
         $this->executionId = $executionId;
         return $this;
@@ -229,20 +229,20 @@ class ReplicationTask
     /**
      * The end time
      *
-     * @return string
+     * @return string|null
      */
-    public function getEndTime() : string
+    public function getEndTime(): ?string
     {
         return $this->endTime;
     }
     /**
      * The end time
      *
-     * @param string $endTime
+     * @param string|null $endTime
      *
      * @return self
      */
-    public function setEndTime(string $endTime) : self
+    public function setEndTime(?string $endTime): self
     {
         $this->endTime = $endTime;
         return $this;

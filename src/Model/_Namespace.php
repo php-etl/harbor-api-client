@@ -7,32 +7,32 @@ class _Namespace
     /**
      * The name of namespace
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The metadata of namespace
      *
-     * @var mixed
+     * @var mixed|null
      */
     protected $metadata;
     /**
      * The name of namespace
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The name of namespace
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -53,7 +53,7 @@ class _Namespace
      *
      * @return self
      */
-    public function setMetadata($metadata) : self
+    public function setMetadata($metadata): self
     {
         $this->metadata = $metadata;
         return $this;

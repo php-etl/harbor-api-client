@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ScannerRegistrationReqNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,29 +43,45 @@ class ScannerRegistrationReqNormalizer implements DenormalizerInterface, Normali
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (\array_key_exists('url', $data)) {
+        if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
+        } elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+            $object->setUrl(null);
         }
-        if (\array_key_exists('access_credential', $data)) {
+        if (\array_key_exists('access_credential', $data) && $data['access_credential'] !== null) {
             $object->setAccessCredential($data['access_credential']);
+        } elseif (\array_key_exists('access_credential', $data) && $data['access_credential'] === null) {
+            $object->setAccessCredential(null);
         }
-        if (\array_key_exists('auth', $data)) {
+        if (\array_key_exists('auth', $data) && $data['auth'] !== null) {
             $object->setAuth($data['auth']);
+        } elseif (\array_key_exists('auth', $data) && $data['auth'] === null) {
+            $object->setAuth(null);
         }
-        if (\array_key_exists('disabled', $data)) {
+        if (\array_key_exists('disabled', $data) && $data['disabled'] !== null) {
             $object->setDisabled($data['disabled']);
+        } elseif (\array_key_exists('disabled', $data) && $data['disabled'] === null) {
+            $object->setDisabled(null);
         }
-        if (\array_key_exists('use_internal_addr', $data)) {
+        if (\array_key_exists('use_internal_addr', $data) && $data['use_internal_addr'] !== null) {
             $object->setUseInternalAddr($data['use_internal_addr']);
+        } elseif (\array_key_exists('use_internal_addr', $data) && $data['use_internal_addr'] === null) {
+            $object->setUseInternalAddr(null);
         }
-        if (\array_key_exists('skip_certVerify', $data)) {
+        if (\array_key_exists('skip_certVerify', $data) && $data['skip_certVerify'] !== null) {
             $object->setSkipCertVerify($data['skip_certVerify']);
+        } elseif (\array_key_exists('skip_certVerify', $data) && $data['skip_certVerify'] === null) {
+            $object->setSkipCertVerify(null);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         return $object;
     }

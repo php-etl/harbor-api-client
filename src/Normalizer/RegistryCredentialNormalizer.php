@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RegistryCredentialNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,14 +43,20 @@ class RegistryCredentialNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('access_key', $data)) {
+        if (\array_key_exists('access_key', $data) && $data['access_key'] !== null) {
             $object->setAccessKey($data['access_key']);
+        } elseif (\array_key_exists('access_key', $data) && $data['access_key'] === null) {
+            $object->setAccessKey(null);
         }
-        if (\array_key_exists('access_secret', $data)) {
+        if (\array_key_exists('access_secret', $data) && $data['access_secret'] !== null) {
             $object->setAccessSecret($data['access_secret']);
+        } elseif (\array_key_exists('access_secret', $data) && $data['access_secret'] === null) {
+            $object->setAccessSecret(null);
         }
-        if (\array_key_exists('type', $data)) {
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
         }
         return $object;
     }

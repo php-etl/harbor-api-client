@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class WebhookLastTriggerNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,17 +43,25 @@ class WebhookLastTriggerNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('enabled', $data)) {
+        if (\array_key_exists('enabled', $data) && $data['enabled'] !== null) {
             $object->setEnabled($data['enabled']);
+        } elseif (\array_key_exists('enabled', $data) && $data['enabled'] === null) {
+            $object->setEnabled(null);
         }
-        if (\array_key_exists('creation_time', $data)) {
+        if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
             $object->setCreationTime($data['creation_time']);
+        } elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
+            $object->setCreationTime(null);
         }
-        if (\array_key_exists('event_type', $data)) {
+        if (\array_key_exists('event_type', $data) && $data['event_type'] !== null) {
             $object->setEventType($data['event_type']);
+        } elseif (\array_key_exists('event_type', $data) && $data['event_type'] === null) {
+            $object->setEventType(null);
         }
-        if (\array_key_exists('last_trigger_time', $data)) {
+        if (\array_key_exists('last_trigger_time', $data) && $data['last_trigger_time'] !== null) {
             $object->setLastTriggerTime($data['last_trigger_time']);
+        } elseif (\array_key_exists('last_trigger_time', $data) && $data['last_trigger_time'] === null) {
+            $object->setLastTriggerTime(null);
         }
         return $object;
     }

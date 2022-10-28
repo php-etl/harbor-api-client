@@ -7,70 +7,70 @@ class ScannerRegistrationReq
     /**
      * The name of this registration
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * A base URL of the scanner adapter.
      *
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
      * An optional value of the HTTP Authorization header sent with each request to the Scanner Adapter API.
      *
-     * @var string
+     * @var string|null
      */
     protected $accessCredential;
     /**
     * Specify what authentication approach is adopted for the HTTP communications.
     Supported types Basic", "Bearer" and api key header "X-ScannerAdapter-API-Key"
-    
+
     *
-    * @var string
+    * @var string|null
     */
     protected $auth = '';
     /**
      * Indicate whether the registration is enabled or not
      *
-     * @var bool
+     * @var bool|null
      */
     protected $disabled = false;
     /**
      * Indicate whether use internal registry addr for the scanner to pull content or not
      *
-     * @var bool
+     * @var bool|null
      */
     protected $useInternalAddr = false;
     /**
      * Indicate if skip the certificate verification when sending HTTP requests
      *
-     * @var bool
+     * @var bool|null
      */
     protected $skipCertVerify = false;
     /**
      * An optional description of this registration.
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * The name of this registration
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The name of this registration
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -78,20 +78,20 @@ class ScannerRegistrationReq
     /**
      * A base URL of the scanner adapter.
      *
-     * @return string
+     * @return string|null
      */
-    public function getUrl() : string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
     /**
      * A base URL of the scanner adapter.
      *
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */
-    public function setUrl(string $url) : self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
         return $this;
@@ -99,20 +99,20 @@ class ScannerRegistrationReq
     /**
      * An optional value of the HTTP Authorization header sent with each request to the Scanner Adapter API.
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccessCredential() : string
+    public function getAccessCredential(): ?string
     {
         return $this->accessCredential;
     }
     /**
      * An optional value of the HTTP Authorization header sent with each request to the Scanner Adapter API.
      *
-     * @param string $accessCredential
+     * @param string|null $accessCredential
      *
      * @return self
      */
-    public function setAccessCredential(string $accessCredential) : self
+    public function setAccessCredential(?string $accessCredential): self
     {
         $this->accessCredential = $accessCredential;
         return $this;
@@ -120,24 +120,24 @@ class ScannerRegistrationReq
     /**
     * Specify what authentication approach is adopted for the HTTP communications.
     Supported types Basic", "Bearer" and api key header "X-ScannerAdapter-API-Key"
-    
+
     *
-    * @return string
+    * @return string|null
     */
-    public function getAuth() : string
+    public function getAuth(): ?string
     {
         return $this->auth;
     }
     /**
     * Specify what authentication approach is adopted for the HTTP communications.
     Supported types Basic", "Bearer" and api key header "X-ScannerAdapter-API-Key"
-    
+
     *
-    * @param string $auth
+    * @param string|null $auth
     *
     * @return self
     */
-    public function setAuth(string $auth) : self
+    public function setAuth(?string $auth): self
     {
         $this->auth = $auth;
         return $this;
@@ -145,20 +145,20 @@ class ScannerRegistrationReq
     /**
      * Indicate whether the registration is enabled or not
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getDisabled() : bool
+    public function getDisabled(): ?bool
     {
         return $this->disabled;
     }
     /**
      * Indicate whether the registration is enabled or not
      *
-     * @param bool $disabled
+     * @param bool|null $disabled
      *
      * @return self
      */
-    public function setDisabled(bool $disabled) : self
+    public function setDisabled(?bool $disabled): self
     {
         $this->disabled = $disabled;
         return $this;
@@ -166,20 +166,20 @@ class ScannerRegistrationReq
     /**
      * Indicate whether use internal registry addr for the scanner to pull content or not
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getUseInternalAddr() : bool
+    public function getUseInternalAddr(): ?bool
     {
         return $this->useInternalAddr;
     }
     /**
      * Indicate whether use internal registry addr for the scanner to pull content or not
      *
-     * @param bool $useInternalAddr
+     * @param bool|null $useInternalAddr
      *
      * @return self
      */
-    public function setUseInternalAddr(bool $useInternalAddr) : self
+    public function setUseInternalAddr(?bool $useInternalAddr): self
     {
         $this->useInternalAddr = $useInternalAddr;
         return $this;
@@ -187,20 +187,20 @@ class ScannerRegistrationReq
     /**
      * Indicate if skip the certificate verification when sending HTTP requests
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getSkipCertVerify() : bool
+    public function getSkipCertVerify(): ?bool
     {
         return $this->skipCertVerify;
     }
     /**
      * Indicate if skip the certificate verification when sending HTTP requests
      *
-     * @param bool $skipCertVerify
+     * @param bool|null $skipCertVerify
      *
      * @return self
      */
-    public function setSkipCertVerify(bool $skipCertVerify) : self
+    public function setSkipCertVerify(?bool $skipCertVerify): self
     {
         $this->skipCertVerify = $skipCertVerify;
         return $this;
@@ -208,20 +208,20 @@ class ScannerRegistrationReq
     /**
      * An optional description of this registration.
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
      * An optional description of this registration.
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
         return $this;

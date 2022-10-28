@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RegistryInfoNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,25 +43,33 @@ class RegistryInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('type', $data)) {
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
         }
-        if (\array_key_exists('supported_resource_filters', $data)) {
+        if (\array_key_exists('supported_resource_filters', $data) && $data['supported_resource_filters'] !== null) {
             $values = array();
             foreach ($data['supported_resource_filters'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\FilterStyle', 'json', $context);
             }
             $object->setSupportedResourceFilters($values);
+        } elseif (\array_key_exists('supported_resource_filters', $data) && $data['supported_resource_filters'] === null) {
+            $object->setSupportedResourceFilters(null);
         }
-        if (\array_key_exists('supported_triggers', $data)) {
+        if (\array_key_exists('supported_triggers', $data) && $data['supported_triggers'] !== null) {
             $values_1 = array();
             foreach ($data['supported_triggers'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setSupportedTriggers($values_1);
+        } elseif (\array_key_exists('supported_triggers', $data) && $data['supported_triggers'] === null) {
+            $object->setSupportedTriggers(null);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         return $object;
     }

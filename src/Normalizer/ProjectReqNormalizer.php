@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ProjectReqNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,20 +43,30 @@ class ProjectReqNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('count_limit', $data)) {
+        if (\array_key_exists('count_limit', $data) && $data['count_limit'] !== null) {
             $object->setCountLimit($data['count_limit']);
+        } elseif (\array_key_exists('count_limit', $data) && $data['count_limit'] === null) {
+            $object->setCountLimit(null);
         }
-        if (\array_key_exists('project_name', $data)) {
+        if (\array_key_exists('project_name', $data) && $data['project_name'] !== null) {
             $object->setProjectName($data['project_name']);
+        } elseif (\array_key_exists('project_name', $data) && $data['project_name'] === null) {
+            $object->setProjectName(null);
         }
-        if (\array_key_exists('cve_whitelist', $data)) {
+        if (\array_key_exists('cve_whitelist', $data) && $data['cve_whitelist'] !== null) {
             $object->setCveWhitelist($this->denormalizer->denormalize($data['cve_whitelist'], 'Gyroscops\\Harbor\\Api\\Model\\CVEWhitelist', 'json', $context));
+        } elseif (\array_key_exists('cve_whitelist', $data) && $data['cve_whitelist'] === null) {
+            $object->setCveWhitelist(null);
         }
-        if (\array_key_exists('storage_limit', $data)) {
+        if (\array_key_exists('storage_limit', $data) && $data['storage_limit'] !== null) {
             $object->setStorageLimit($data['storage_limit']);
+        } elseif (\array_key_exists('storage_limit', $data) && $data['storage_limit'] === null) {
+            $object->setStorageLimit(null);
         }
-        if (\array_key_exists('metadata', $data)) {
+        if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
             $object->setMetadata($this->denormalizer->denormalize($data['metadata'], 'Gyroscops\\Harbor\\Api\\Model\\ProjectMetadata', 'json', $context));
+        } elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
+            $object->setMetadata(null);
         }
         return $object;
     }

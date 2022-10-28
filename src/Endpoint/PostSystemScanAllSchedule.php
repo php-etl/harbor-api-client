@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PostSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
      * This endpoint is for creating a schedule or a manual trigger for the scan all job, which scans all of images in Harbor.
      *
@@ -13,32 +14,31 @@ class PostSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\Bas
     {
         $this->body = $schedule;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/system/scanAll/schedule';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException
      *
      * @return null
      */
@@ -47,26 +47,26 @@ class PostSystemScanAllSchedule extends \Gyroscops\Harbor\Api\Runtime\Client\Bas
         if (200 === $status) {
             return null;
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException();
-        }
-        if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleUnauthorizedException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleBadRequestException();
-        }
-        if (503 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleForbiddenException();
         }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleConflictException();
         }
+        if (500 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleInternalServerErrorException();
+        }
+        if (503 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostSystemScanAllScheduleServiceUnavailableException();
+        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

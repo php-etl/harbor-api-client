@@ -13,7 +13,7 @@ class PostChartrepoByRepoChartsByNameByVersionLabelConflictException extends Con
         parent::__construct('Conflicts');
         $this->conflictFormatedError = $conflictFormatedError;
     }
-    public function getConflictFormatedError() : \Gyroscops\Harbor\Api\Model\ConflictFormatedError
+    public function getConflictFormatedError(): \Gyroscops\Harbor\Api\Model\ConflictFormatedError
     {
         return $this->conflictFormatedError;
     }

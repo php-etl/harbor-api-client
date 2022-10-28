@@ -7,101 +7,101 @@ class Registry
     /**
      * Health status of the registry.
      *
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
-     * 
      *
-     * @var RegistryCredential
+     *
+     * @var RegistryCredential|null
      */
     protected $credential;
     /**
      * The update time of the policy.
      *
-     * @var string
+     * @var string|null
      */
     protected $updateTime;
     /**
      * The registry name.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The registry URL string.
      *
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
      * Whether or not the certificate will be verified when Harbor tries to access the server.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $insecure;
     /**
      * The create time of the policy.
      *
-     * @var string
+     * @var string|null
      */
     protected $creationTime;
     /**
      * Type of the registry, e.g. 'harbor'.
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * The registry ID.
      *
-     * @var int
+     * @var int|null
      */
     protected $id;
     /**
      * Description of the registry.
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * Health status of the registry.
      *
-     * @return string
+     * @return string|null
      */
-    public function getStatus() : string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
     /**
      * Health status of the registry.
      *
-     * @param string $status
+     * @param string|null $status
      *
      * @return self
      */
-    public function setStatus(string $status) : self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
         return $this;
     }
     /**
-     * 
      *
-     * @return RegistryCredential
+     *
+     * @return RegistryCredential|null
      */
-    public function getCredential() : RegistryCredential
+    public function getCredential(): ?RegistryCredential
     {
         return $this->credential;
     }
     /**
-     * 
      *
-     * @param RegistryCredential $credential
+     *
+     * @param RegistryCredential|null $credential
      *
      * @return self
      */
-    public function setCredential(RegistryCredential $credential) : self
+    public function setCredential(?RegistryCredential $credential): self
     {
         $this->credential = $credential;
         return $this;
@@ -109,20 +109,20 @@ class Registry
     /**
      * The update time of the policy.
      *
-     * @return string
+     * @return string|null
      */
-    public function getUpdateTime() : string
+    public function getUpdateTime(): ?string
     {
         return $this->updateTime;
     }
     /**
      * The update time of the policy.
      *
-     * @param string $updateTime
+     * @param string|null $updateTime
      *
      * @return self
      */
-    public function setUpdateTime(string $updateTime) : self
+    public function setUpdateTime(?string $updateTime): self
     {
         $this->updateTime = $updateTime;
         return $this;
@@ -130,20 +130,20 @@ class Registry
     /**
      * The registry name.
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * The registry name.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -151,20 +151,20 @@ class Registry
     /**
      * The registry URL string.
      *
-     * @return string
+     * @return string|null
      */
-    public function getUrl() : string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
     /**
      * The registry URL string.
      *
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */
-    public function setUrl(string $url) : self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
         return $this;
@@ -172,20 +172,20 @@ class Registry
     /**
      * Whether or not the certificate will be verified when Harbor tries to access the server.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getInsecure() : bool
+    public function getInsecure(): ?bool
     {
         return $this->insecure;
     }
     /**
      * Whether or not the certificate will be verified when Harbor tries to access the server.
      *
-     * @param bool $insecure
+     * @param bool|null $insecure
      *
      * @return self
      */
-    public function setInsecure(bool $insecure) : self
+    public function setInsecure(?bool $insecure): self
     {
         $this->insecure = $insecure;
         return $this;
@@ -193,20 +193,20 @@ class Registry
     /**
      * The create time of the policy.
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreationTime() : string
+    public function getCreationTime(): ?string
     {
         return $this->creationTime;
     }
     /**
      * The create time of the policy.
      *
-     * @param string $creationTime
+     * @param string|null $creationTime
      *
      * @return self
      */
-    public function setCreationTime(string $creationTime) : self
+    public function setCreationTime(?string $creationTime): self
     {
         $this->creationTime = $creationTime;
         return $this;
@@ -214,20 +214,20 @@ class Registry
     /**
      * Type of the registry, e.g. 'harbor'.
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType(): ?string
     {
         return $this->type;
     }
     /**
      * Type of the registry, e.g. 'harbor'.
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type): self
     {
         $this->type = $type;
         return $this;
@@ -235,20 +235,20 @@ class Registry
     /**
      * The registry ID.
      *
-     * @return int
+     * @return int|null
      */
-    public function getId() : int
+    public function getId(): ?int
     {
         return $this->id;
     }
     /**
      * The registry ID.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
-    public function setId(int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;
@@ -256,20 +256,20 @@ class Registry
     /**
      * Description of the registry.
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
      * Description of the registry.
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
         return $this;

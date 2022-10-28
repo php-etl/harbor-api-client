@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class WebhookTargetObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,17 +43,25 @@ class WebhookTargetObjectNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('type', $data)) {
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
         }
-        if (\array_key_exists('auth_header', $data)) {
+        if (\array_key_exists('auth_header', $data) && $data['auth_header'] !== null) {
             $object->setAuthHeader($data['auth_header']);
+        } elseif (\array_key_exists('auth_header', $data) && $data['auth_header'] === null) {
+            $object->setAuthHeader(null);
         }
-        if (\array_key_exists('skip_cert_verify', $data)) {
+        if (\array_key_exists('skip_cert_verify', $data) && $data['skip_cert_verify'] !== null) {
             $object->setSkipCertVerify($data['skip_cert_verify']);
+        } elseif (\array_key_exists('skip_cert_verify', $data) && $data['skip_cert_verify'] === null) {
+            $object->setSkipCertVerify(null);
         }
-        if (\array_key_exists('address', $data)) {
+        if (\array_key_exists('address', $data) && $data['address'] !== null) {
             $object->setAddress($data['address']);
+        } elseif (\array_key_exists('address', $data) && $data['address'] === null) {
+            $object->setAddress(null);
         }
         return $object;
     }

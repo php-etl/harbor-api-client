@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class SysAdminFlagNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,8 +43,10 @@ class SysAdminFlagNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('sysadmin_flag', $data)) {
+        if (\array_key_exists('sysadmin_flag', $data) && $data['sysadmin_flag'] !== null) {
             $object->setSysadminFlag($data['sysadmin_flag']);
+        } elseif (\array_key_exists('sysadmin_flag', $data) && $data['sysadmin_flag'] === null) {
+            $object->setSysadminFlag(null);
         }
         return $object;
     }

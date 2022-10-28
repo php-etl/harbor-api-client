@@ -5,82 +5,82 @@ namespace Gyroscops\Harbor\Api\Model;
 class RetentionSelectorMetadata
 {
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $displayText;
     /**
-     * 
      *
-     * @var string
+     *
+     * @var string|null
      */
     protected $kind;
     /**
-     * 
      *
-     * @var string[]
+     *
+     * @var string[]|null
      */
     protected $decorations;
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getDisplayText() : string
+    public function getDisplayText(): ?string
     {
         return $this->displayText;
     }
     /**
-     * 
      *
-     * @param string $displayText
+     *
+     * @param string|null $displayText
      *
      * @return self
      */
-    public function setDisplayText(string $displayText) : self
+    public function setDisplayText(?string $displayText): self
     {
         $this->displayText = $displayText;
         return $this;
     }
     /**
-     * 
      *
-     * @return string
+     *
+     * @return string|null
      */
-    public function getKind() : string
+    public function getKind(): ?string
     {
         return $this->kind;
     }
     /**
-     * 
      *
-     * @param string $kind
+     *
+     * @param string|null $kind
      *
      * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(?string $kind): self
     {
         $this->kind = $kind;
         return $this;
     }
     /**
-     * 
      *
-     * @return string[]
+     *
+     * @return string[]|null
      */
-    public function getDecorations() : array
+    public function getDecorations(): ?array
     {
         return $this->decorations;
     }
     /**
-     * 
      *
-     * @param string[] $decorations
+     *
+     * @param string[]|null $decorations
      *
      * @return self
      */
-    public function setDecorations(array $decorations) : self
+    public function setDecorations(?array $decorations): self
     {
         $this->decorations = $decorations;
         return $this;

@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class UnauthorizedChartAPIErrorNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,8 +43,10 @@ class UnauthorizedChartAPIErrorNormalizer implements DenormalizerInterface, Norm
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('error', $data)) {
+        if (\array_key_exists('error', $data) && $data['error'] !== null) {
             $object->setError($data['error']);
+        } elseif (\array_key_exists('error', $data) && $data['error'] === null) {
+            $object->setError(null);
         }
         return $object;
     }

@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class DeleteRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $id;
     /**
      * This endpoint is for to delete specific registry.
@@ -14,30 +15,29 @@ class DeleteRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
     {
         $this->id = $id;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'DELETE';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{id}'), array($this->id), '/registries/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException
-     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdInternalServerErrorException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdInternalServerErrorException
      *
      * @return null
      */
@@ -46,20 +46,20 @@ class DeleteRegistryById extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
         if (200 === $status) {
             return null;
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdNotFoundException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdUnauthorizedException();
         }
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdNotFoundException();
+        }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdInternalServerErrorException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\DeleteRegistryByIdBadRequestException();
-        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

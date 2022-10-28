@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class GetQuotas extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     /**
     * List quotas
     *
@@ -13,7 +14,7 @@ class GetQuotas extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
     *     @var string $sort Sort method, valid values include:
     'hard.resource_name', '-hard.resource_name', 'used.resource_name', '-used.resource_name'.
     Here '-' stands for descending order, resource_name should be the real resource name of the quota.
-    
+
     *     @var int $page The page number, default is 1.
     *     @var int $page_size The size of per page, default is 10, maximum is 100.
     * }
@@ -22,24 +23,23 @@ class GetQuotas extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/quotas';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(array('reference', 'reference_id', 'sort', 'page', 'page_size'));
@@ -55,8 +55,8 @@ class GetQuotas extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetQuotasInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\Quota[]
@@ -66,17 +66,17 @@ class GetQuotas extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Quota[]', 'json');
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetQuotasForbiddenException();
-        }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetQuotasUnauthorizedException();
+        }
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetQuotasForbiddenException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetQuotasInternalServerErrorException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

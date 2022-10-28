@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class AdminJobScheduleNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,15 +43,19 @@ class AdminJobScheduleNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('parameters', $data)) {
+        if (\array_key_exists('parameters', $data) && $data['parameters'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['parameters'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setParameters($values);
+        } elseif (\array_key_exists('parameters', $data) && $data['parameters'] === null) {
+            $object->setParameters(null);
         }
-        if (\array_key_exists('schedule', $data)) {
+        if (\array_key_exists('schedule', $data) && $data['schedule'] !== null) {
             $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Gyroscops\\Harbor\\Api\\Model\\AdminJobScheduleObj', 'json', $context));
+        } elseif (\array_key_exists('schedule', $data) && $data['schedule'] === null) {
+            $object->setSchedule(null);
         }
         return $object;
     }

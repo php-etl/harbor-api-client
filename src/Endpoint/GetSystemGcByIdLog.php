@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class GetSystemGcByIdLog extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $id;
     /**
      * This endpoint let user get gc job logs filtered by specific ID.
@@ -14,30 +15,29 @@ class GetSystemGcByIdLog extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
     {
         $this->id = $id;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{id}'), array($this->id), '/system/gc/{id}/log');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return array(array(), null);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogInternalServerErrorException
      *
      * @return null
@@ -47,23 +47,23 @@ class GetSystemGcByIdLog extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoi
         if (200 === $status) {
             return json_decode($body);
         }
-        if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException();
-        }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogUnauthorizedException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogForbiddenException();
+        }
+        if (404 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogNotFoundException();
         }
         if (500 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\GetSystemGcByIdLogInternalServerErrorException();
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

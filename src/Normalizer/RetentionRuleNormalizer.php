@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RetentionRuleNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,10 +43,12 @@ class RetentionRuleNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('priority', $data)) {
+        if (\array_key_exists('priority', $data) && $data['priority'] !== null) {
             $object->setPriority($data['priority']);
+        } elseif (\array_key_exists('priority', $data) && $data['priority'] === null) {
+            $object->setPriority(null);
         }
-        if (\array_key_exists('scope_selectors', $data)) {
+        if (\array_key_exists('scope_selectors', $data) && $data['scope_selectors'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['scope_selectors'] as $key => $value) {
                 $values_1 = array();
@@ -55,32 +58,46 @@ class RetentionRuleNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values[$key] = $values_1;
             }
             $object->setScopeSelectors($values);
+        } elseif (\array_key_exists('scope_selectors', $data) && $data['scope_selectors'] === null) {
+            $object->setScopeSelectors(null);
         }
-        if (\array_key_exists('disabled', $data)) {
+        if (\array_key_exists('disabled', $data) && $data['disabled'] !== null) {
             $object->setDisabled($data['disabled']);
+        } elseif (\array_key_exists('disabled', $data) && $data['disabled'] === null) {
+            $object->setDisabled(null);
         }
-        if (\array_key_exists('params', $data)) {
+        if (\array_key_exists('params', $data) && $data['params'] !== null) {
             $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['params'] as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
             $object->setParams($values_2);
+        } elseif (\array_key_exists('params', $data) && $data['params'] === null) {
+            $object->setParams(null);
         }
-        if (\array_key_exists('template', $data)) {
+        if (\array_key_exists('template', $data) && $data['template'] !== null) {
             $object->setTemplate($data['template']);
+        } elseif (\array_key_exists('template', $data) && $data['template'] === null) {
+            $object->setTemplate(null);
         }
-        if (\array_key_exists('action', $data)) {
+        if (\array_key_exists('action', $data) && $data['action'] !== null) {
             $object->setAction($data['action']);
+        } elseif (\array_key_exists('action', $data) && $data['action'] === null) {
+            $object->setAction(null);
         }
-        if (\array_key_exists('tag_selectors', $data)) {
+        if (\array_key_exists('tag_selectors', $data) && $data['tag_selectors'] !== null) {
             $values_3 = array();
             foreach ($data['tag_selectors'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'Gyroscops\\Harbor\\Api\\Model\\RetentionSelector', 'json', $context);
             }
             $object->setTagSelectors($values_3);
+        } elseif (\array_key_exists('tag_selectors', $data) && $data['tag_selectors'] === null) {
+            $object->setTagSelectors(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
         return $object;
     }

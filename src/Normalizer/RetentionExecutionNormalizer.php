@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class RetentionExecutionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,26 +43,40 @@ class RetentionExecutionNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('status', $data)) {
+        if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
+        } elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+            $object->setStatus(null);
         }
-        if (\array_key_exists('trigger', $data)) {
+        if (\array_key_exists('trigger', $data) && $data['trigger'] !== null) {
             $object->setTrigger($data['trigger']);
+        } elseif (\array_key_exists('trigger', $data) && $data['trigger'] === null) {
+            $object->setTrigger(null);
         }
-        if (\array_key_exists('end_time', $data)) {
+        if (\array_key_exists('end_time', $data) && $data['end_time'] !== null) {
             $object->setEndTime($data['end_time']);
+        } elseif (\array_key_exists('end_time', $data) && $data['end_time'] === null) {
+            $object->setEndTime(null);
         }
-        if (\array_key_exists('dry_run', $data)) {
+        if (\array_key_exists('dry_run', $data) && $data['dry_run'] !== null) {
             $object->setDryRun($data['dry_run']);
+        } elseif (\array_key_exists('dry_run', $data) && $data['dry_run'] === null) {
+            $object->setDryRun(null);
         }
-        if (\array_key_exists('start_time', $data)) {
+        if (\array_key_exists('start_time', $data) && $data['start_time'] !== null) {
             $object->setStartTime($data['start_time']);
+        } elseif (\array_key_exists('start_time', $data) && $data['start_time'] === null) {
+            $object->setStartTime(null);
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
-        if (\array_key_exists('policy_id', $data)) {
+        if (\array_key_exists('policy_id', $data) && $data['policy_id'] !== null) {
             $object->setPolicyId($data['policy_id']);
+        } elseif (\array_key_exists('policy_id', $data) && $data['policy_id'] === null) {
+            $object->setPolicyId(null);
         }
         return $object;
     }

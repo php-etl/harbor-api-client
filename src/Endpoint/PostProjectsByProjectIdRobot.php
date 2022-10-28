@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Endpoint;
 
 class PostProjectsByProjectIdRobot extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implements \Gyroscops\Harbor\Api\Runtime\Client\Endpoint
 {
+    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
     protected $project_id;
     /**
      * Create a robot account for project
@@ -16,31 +17,30 @@ class PostProjectsByProjectIdRobot extends \Gyroscops\Harbor\Api\Runtime\Client\
         $this->project_id = $projectId;
         $this->body = $robot;
     }
-    use \Gyroscops\Harbor\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return str_replace(array('{project_id}'), array($this->project_id), '/projects/{project_id}/robots');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotForbiddenException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotInternalServerErrorException
-     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotInternalServerErrorException
      *
      * @return null|\Gyroscops\Harbor\Api\Model\RobotAccountPostRep
      */
@@ -49,23 +49,23 @@ class PostProjectsByProjectIdRobot extends \Gyroscops\Harbor\Api\Runtime\Client\
         if (201 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\RobotAccountPostRep', 'json');
         }
-        if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotForbiddenException();
-        }
-        if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotInternalServerErrorException();
+        if (400 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotBadRequestException();
         }
         if (401 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotUnauthorizedException();
         }
-        if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotBadRequestException();
+        if (403 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotForbiddenException();
         }
         if (409 === $status) {
             throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotConflictException();
         }
+        if (500 === $status) {
+            throw new \Gyroscops\Harbor\Api\Exception\PostProjectsByProjectIdRobotInternalServerErrorException();
+        }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return array('basicAuth');
     }

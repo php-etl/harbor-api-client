@@ -7,26 +7,26 @@ class ProjectScanner
     /**
      * The identifier of the scanner registration
      *
-     * @var string
+     * @var string|null
      */
     protected $uuid;
     /**
      * The identifier of the scanner registration
      *
-     * @return string
+     * @return string|null
      */
-    public function getUuid() : string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
     /**
      * The identifier of the scanner registration
      *
-     * @param string $uuid
+     * @param string|null $uuid
      *
      * @return self
      */
-    public function setUuid(string $uuid) : self
+    public function setUuid(?string $uuid): self
     {
         $this->uuid = $uuid;
         return $this;

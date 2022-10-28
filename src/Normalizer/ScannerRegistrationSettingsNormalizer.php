@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ScannerRegistrationSettingsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,17 +43,25 @@ class ScannerRegistrationSettingsNormalizer implements DenormalizerInterface, No
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('url', $data)) {
+        if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
+        } elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+            $object->setUrl(null);
         }
-        if (\array_key_exists('access_credential', $data)) {
+        if (\array_key_exists('access_credential', $data) && $data['access_credential'] !== null) {
             $object->setAccessCredential($data['access_credential']);
+        } elseif (\array_key_exists('access_credential', $data) && $data['access_credential'] === null) {
+            $object->setAccessCredential(null);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (\array_key_exists('auth', $data)) {
+        if (\array_key_exists('auth', $data) && $data['auth'] !== null) {
             $object->setAuth($data['auth']);
+        } elseif (\array_key_exists('auth', $data) && $data['auth'] === null) {
+            $object->setAuth(null);
         }
         return $object;
     }

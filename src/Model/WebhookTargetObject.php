@@ -7,44 +7,44 @@ class WebhookTargetObject
     /**
      * The webhook target notify type.
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * The webhook auth header.
      *
-     * @var string
+     * @var string|null
      */
     protected $authHeader;
     /**
      * Whether or not to skip cert verify.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $skipCertVerify;
     /**
      * The webhook target address.
      *
-     * @var string
+     * @var string|null
      */
     protected $address;
     /**
      * The webhook target notify type.
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType(): ?string
     {
         return $this->type;
     }
     /**
      * The webhook target notify type.
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type): self
     {
         $this->type = $type;
         return $this;
@@ -52,20 +52,20 @@ class WebhookTargetObject
     /**
      * The webhook auth header.
      *
-     * @return string
+     * @return string|null
      */
-    public function getAuthHeader() : string
+    public function getAuthHeader(): ?string
     {
         return $this->authHeader;
     }
     /**
      * The webhook auth header.
      *
-     * @param string $authHeader
+     * @param string|null $authHeader
      *
      * @return self
      */
-    public function setAuthHeader(string $authHeader) : self
+    public function setAuthHeader(?string $authHeader): self
     {
         $this->authHeader = $authHeader;
         return $this;
@@ -73,20 +73,20 @@ class WebhookTargetObject
     /**
      * Whether or not to skip cert verify.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getSkipCertVerify() : bool
+    public function getSkipCertVerify(): ?bool
     {
         return $this->skipCertVerify;
     }
     /**
      * Whether or not to skip cert verify.
      *
-     * @param bool $skipCertVerify
+     * @param bool|null $skipCertVerify
      *
      * @return self
      */
-    public function setSkipCertVerify(bool $skipCertVerify) : self
+    public function setSkipCertVerify(?bool $skipCertVerify): self
     {
         $this->skipCertVerify = $skipCertVerify;
         return $this;
@@ -94,20 +94,20 @@ class WebhookTargetObject
     /**
      * The webhook target address.
      *
-     * @return string
+     * @return string|null
      */
-    public function getAddress() : string
+    public function getAddress(): ?string
     {
         return $this->address;
     }
     /**
      * The webhook target address.
      *
-     * @param string $address
+     * @param string|null $address
      *
      * @return self
      */
-    public function setAddress(string $address) : self
+    public function setAddress(?string $address): self
     {
         $this->address = $address;
         return $this;

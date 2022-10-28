@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ComponentOverviewEntryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -42,11 +43,15 @@ class ComponentOverviewEntryNormalizer implements DenormalizerInterface, Normali
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('count', $data)) {
+        if (\array_key_exists('count', $data) && $data['count'] !== null) {
             $object->setCount($data['count']);
+        } elseif (\array_key_exists('count', $data) && $data['count'] === null) {
+            $object->setCount(null);
         }
-        if (\array_key_exists('severity', $data)) {
+        if (\array_key_exists('severity', $data) && $data['severity'] !== null) {
             $object->setSeverity($data['severity']);
+        } elseif (\array_key_exists('severity', $data) && $data['severity'] === null) {
+            $object->setSeverity(null);
         }
         return $object;
     }

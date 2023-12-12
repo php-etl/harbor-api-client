@@ -37,13 +37,13 @@ class NativeReportSummary
     /**
      * The start time of the scan process that generating report
      *
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      */
     protected $startTime;
     /**
      * The end time of the scan process that generating report
      *
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      */
     protected $endTime;
     /**
@@ -166,20 +166,20 @@ class NativeReportSummary
     /**
      * The start time of the scan process that generating report
      *
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getStartTime() : ?\DateTime
+    public function getStartTime() : ?\DateTimeInterface
     {
         return $this->startTime;
     }
     /**
      * The start time of the scan process that generating report
      *
-     * @param \DateTime|null $startTime
+     * @param \DateTimeInterface|null $startTime
      *
      * @return self
      */
-    public function setStartTime(?\DateTime $startTime) : self
+    public function setStartTime(?\DateTimeInterface $startTime) : self
     {
         $this->startTime = $startTime;
         return $this;
@@ -187,20 +187,20 @@ class NativeReportSummary
     /**
      * The end time of the scan process that generating report
      *
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEndTime() : ?\DateTime
+    public function getEndTime() : ?\DateTimeInterface
     {
         return $this->endTime;
     }
     /**
      * The end time of the scan process that generating report
      *
-     * @param \DateTime|null $endTime
+     * @param \DateTimeInterface|null $endTime
      *
      * @return self
      */
-    public function setEndTime(?\DateTime $endTime) : self
+    public function setEndTime(?\DateTimeInterface $endTime) : self
     {
         $this->endTime = $endTime;
         return $this;

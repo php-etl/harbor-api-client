@@ -55,13 +55,13 @@ class UserResp
     /**
      * The creation time of the user.
      *
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      */
     protected $creationTime;
     /**
      * The update time of the user.
      *
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      */
     protected $updateTime;
     /**
@@ -235,20 +235,20 @@ class UserResp
     /**
      * The creation time of the user.
      *
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getCreationTime() : ?\DateTime
+    public function getCreationTime() : ?\DateTimeInterface
     {
         return $this->creationTime;
     }
     /**
      * The creation time of the user.
      *
-     * @param \DateTime|null $creationTime
+     * @param \DateTimeInterface|null $creationTime
      *
      * @return self
      */
-    public function setCreationTime(?\DateTime $creationTime) : self
+    public function setCreationTime(?\DateTimeInterface $creationTime) : self
     {
         $this->creationTime = $creationTime;
         return $this;
@@ -256,20 +256,20 @@ class UserResp
     /**
      * The update time of the user.
      *
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getUpdateTime() : ?\DateTime
+    public function getUpdateTime() : ?\DateTimeInterface
     {
         return $this->updateTime;
     }
     /**
      * The update time of the user.
      *
-     * @param \DateTime|null $updateTime
+     * @param \DateTimeInterface|null $updateTime
      *
      * @return self
      */
-    public function setUpdateTime(?\DateTime $updateTime) : self
+    public function setUpdateTime(?\DateTimeInterface $updateTime) : self
     {
         $this->updateTime = $updateTime;
         return $this;

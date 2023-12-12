@@ -61,7 +61,7 @@ class Accessory
     /**
      * The creation time of the accessory
      *
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      */
     protected $creationTime;
     /**
@@ -256,20 +256,20 @@ class Accessory
     /**
      * The creation time of the accessory
      *
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getCreationTime() : ?\DateTime
+    public function getCreationTime() : ?\DateTimeInterface
     {
         return $this->creationTime;
     }
     /**
      * The creation time of the accessory
      *
-     * @param \DateTime|null $creationTime
+     * @param \DateTimeInterface|null $creationTime
      *
      * @return self
      */
-    public function setCreationTime(?\DateTime $creationTime) : self
+    public function setCreationTime(?\DateTimeInterface $creationTime) : self
     {
         $this->creationTime = $creationTime;
         return $this;

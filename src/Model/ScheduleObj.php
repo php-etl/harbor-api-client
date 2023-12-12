@@ -22,7 +22,7 @@ class ScheduleObj
     /**
      * The next time to schedule to run the job.
      *
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      */
     protected $nextScheduledTime;
     /**
@@ -76,20 +76,20 @@ class ScheduleObj
     /**
      * The next time to schedule to run the job.
      *
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getNextScheduledTime() : ?\DateTime
+    public function getNextScheduledTime() : ?\DateTimeInterface
     {
         return $this->nextScheduledTime;
     }
     /**
      * The next time to schedule to run the job.
      *
-     * @param \DateTime|null $nextScheduledTime
+     * @param \DateTimeInterface|null $nextScheduledTime
      *
      * @return self
      */
-    public function setNextScheduledTime(?\DateTime $nextScheduledTime) : self
+    public function setNextScheduledTime(?\DateTimeInterface $nextScheduledTime) : self
     {
         $this->nextScheduledTime = $nextScheduledTime;
         return $this;

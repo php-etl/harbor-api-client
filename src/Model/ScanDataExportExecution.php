@@ -31,13 +31,13 @@ class ScanDataExportExecution
     /**
      * The start time
      *
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      */
     protected $startTime;
     /**
      * The end time
      *
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      */
     protected $endTime;
     /**
@@ -145,20 +145,20 @@ class ScanDataExportExecution
     /**
      * The start time
      *
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getStartTime() : ?\DateTime
+    public function getStartTime() : ?\DateTimeInterface
     {
         return $this->startTime;
     }
     /**
      * The start time
      *
-     * @param \DateTime|null $startTime
+     * @param \DateTimeInterface|null $startTime
      *
      * @return self
      */
-    public function setStartTime(?\DateTime $startTime) : self
+    public function setStartTime(?\DateTimeInterface $startTime) : self
     {
         $this->startTime = $startTime;
         return $this;
@@ -166,20 +166,20 @@ class ScanDataExportExecution
     /**
      * The end time
      *
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEndTime() : ?\DateTime
+    public function getEndTime() : ?\DateTimeInterface
     {
         return $this->endTime;
     }
     /**
      * The end time
      *
-     * @param \DateTime|null $endTime
+     * @param \DateTimeInterface|null $endTime
      *
      * @return self
      */
-    public function setEndTime(?\DateTime $endTime) : self
+    public function setEndTime(?\DateTimeInterface $endTime) : self
     {
         $this->endTime = $endTime;
         return $this;

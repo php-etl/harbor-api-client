@@ -31,13 +31,13 @@ class Tag
     /**
      * The push time of the tag
      *
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      */
     protected $pushTime;
     /**
      * The latest pull time of the tag
      *
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      */
     protected $pullTime;
     /**
@@ -133,20 +133,20 @@ class Tag
     /**
      * The push time of the tag
      *
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getPushTime() : ?\DateTime
+    public function getPushTime() : ?\DateTimeInterface
     {
         return $this->pushTime;
     }
     /**
      * The push time of the tag
      *
-     * @param \DateTime|null $pushTime
+     * @param \DateTimeInterface|null $pushTime
      *
      * @return self
      */
-    public function setPushTime(?\DateTime $pushTime) : self
+    public function setPushTime(?\DateTimeInterface $pushTime) : self
     {
         $this->pushTime = $pushTime;
         return $this;
@@ -154,20 +154,20 @@ class Tag
     /**
      * The latest pull time of the tag
      *
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getPullTime() : ?\DateTime
+    public function getPullTime() : ?\DateTimeInterface
     {
         return $this->pullTime;
     }
     /**
      * The latest pull time of the tag
      *
-     * @param \DateTime|null $pullTime
+     * @param \DateTimeInterface|null $pullTime
      *
      * @return self
      */
-    public function setPullTime(?\DateTime $pullTime) : self
+    public function setPullTime(?\DateTimeInterface $pullTime) : self
     {
         $this->pullTime = $pullTime;
         return $this;

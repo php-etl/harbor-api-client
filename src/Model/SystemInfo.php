@@ -15,7 +15,7 @@ class SystemInfo
      *
      * @return Storage[]|null
      */
-    public function getStorage(): ?array
+    public function getStorage() : ?array
     {
         return $this->storage;
     }
@@ -26,7 +26,7 @@ class SystemInfo
      *
      * @return self
      */
-    public function setStorage(?array $storage): self
+    public function setStorage(?array $storage) : self
     {
         $this->storage = $storage;
         return $this;

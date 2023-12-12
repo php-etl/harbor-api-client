@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ScannerCapabilityNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,23 +42,25 @@ class ScannerCapabilityNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('produces_mime_types', $data) && $data['produces_mime_types'] !== null) {
+        if (\array_key_exists('consumes_mime_types', $data) && $data['consumes_mime_types'] !== null) {
             $values = array();
-            foreach ($data['produces_mime_types'] as $value) {
+            foreach ($data['consumes_mime_types'] as $value) {
                 $values[] = $value;
             }
-            $object->setProducesMimeTypes($values);
-        } elseif (\array_key_exists('produces_mime_types', $data) && $data['produces_mime_types'] === null) {
-            $object->setProducesMimeTypes(null);
+            $object->setConsumesMimeTypes($values);
         }
-        if (\array_key_exists('consumes_mime_types', $data) && $data['consumes_mime_types'] !== null) {
+        elseif (\array_key_exists('consumes_mime_types', $data) && $data['consumes_mime_types'] === null) {
+            $object->setConsumesMimeTypes(null);
+        }
+        if (\array_key_exists('produces_mime_types', $data) && $data['produces_mime_types'] !== null) {
             $values_1 = array();
-            foreach ($data['consumes_mime_types'] as $value_1) {
+            foreach ($data['produces_mime_types'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setConsumesMimeTypes($values_1);
-        } elseif (\array_key_exists('consumes_mime_types', $data) && $data['consumes_mime_types'] === null) {
-            $object->setConsumesMimeTypes(null);
+            $object->setProducesMimeTypes($values_1);
+        }
+        elseif (\array_key_exists('produces_mime_types', $data) && $data['produces_mime_types'] === null) {
+            $object->setProducesMimeTypes(null);
         }
         return $object;
     }
@@ -69,19 +70,19 @@ class ScannerCapabilityNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getProducesMimeTypes()) {
+        if (null !== $object->getConsumesMimeTypes()) {
             $values = array();
-            foreach ($object->getProducesMimeTypes() as $value) {
+            foreach ($object->getConsumesMimeTypes() as $value) {
                 $values[] = $value;
             }
-            $data['produces_mime_types'] = $values;
+            $data['consumes_mime_types'] = $values;
         }
-        if (null !== $object->getConsumesMimeTypes()) {
+        if (null !== $object->getProducesMimeTypes()) {
             $values_1 = array();
-            foreach ($object->getConsumesMimeTypes() as $value_1) {
+            foreach ($object->getProducesMimeTypes() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data['consumes_mime_types'] = $values_1;
+            $data['produces_mime_types'] = $values_1;
         }
         return $data;
     }

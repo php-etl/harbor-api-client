@@ -5,29 +5,11 @@ namespace Gyroscops\Harbor\Api\Model;
 class ProjectMemberEntity
 {
     /**
-     * the id of entity, if the member is a user, it is user_id in user table. if the member is a user group, it is the user group's ID in user_group table.
+     * the project member id
      *
      * @var int|null
      */
-    protected $entityId;
-    /**
-     * the name of the role
-     *
-     * @var string|null
-     */
-    protected $roleName;
-    /**
-     * the name of the group member.
-     *
-     * @var string|null
-     */
-    protected $entityName;
-    /**
-     * the entity's type, u for user entity, g for group entity.
-     *
-     * @var string|null
-     */
-    protected $entityType;
+    protected $id;
     /**
      * the project id
      *
@@ -35,11 +17,17 @@ class ProjectMemberEntity
      */
     protected $projectId;
     /**
-     * the project member id
+     * the name of the group member.
      *
-     * @var int|null
+     * @var string|null
      */
-    protected $id;
+    protected $entityName;
+    /**
+     * the name of the role
+     *
+     * @var string|null
+     */
+    protected $roleName;
     /**
      * the role id
      *
@@ -49,114 +37,21 @@ class ProjectMemberEntity
     /**
      * the id of entity, if the member is a user, it is user_id in user table. if the member is a user group, it is the user group's ID in user_group table.
      *
-     * @return int|null
+     * @var int|null
      */
-    public function getEntityId(): ?int
-    {
-        return $this->entityId;
-    }
-    /**
-     * the id of entity, if the member is a user, it is user_id in user table. if the member is a user group, it is the user group's ID in user_group table.
-     *
-     * @param int|null $entityId
-     *
-     * @return self
-     */
-    public function setEntityId(?int $entityId): self
-    {
-        $this->entityId = $entityId;
-        return $this;
-    }
-    /**
-     * the name of the role
-     *
-     * @return string|null
-     */
-    public function getRoleName(): ?string
-    {
-        return $this->roleName;
-    }
-    /**
-     * the name of the role
-     *
-     * @param string|null $roleName
-     *
-     * @return self
-     */
-    public function setRoleName(?string $roleName): self
-    {
-        $this->roleName = $roleName;
-        return $this;
-    }
-    /**
-     * the name of the group member.
-     *
-     * @return string|null
-     */
-    public function getEntityName(): ?string
-    {
-        return $this->entityName;
-    }
-    /**
-     * the name of the group member.
-     *
-     * @param string|null $entityName
-     *
-     * @return self
-     */
-    public function setEntityName(?string $entityName): self
-    {
-        $this->entityName = $entityName;
-        return $this;
-    }
+    protected $entityId;
     /**
      * the entity's type, u for user entity, g for group entity.
      *
-     * @return string|null
+     * @var string|null
      */
-    public function getEntityType(): ?string
-    {
-        return $this->entityType;
-    }
-    /**
-     * the entity's type, u for user entity, g for group entity.
-     *
-     * @param string|null $entityType
-     *
-     * @return self
-     */
-    public function setEntityType(?string $entityType): self
-    {
-        $this->entityType = $entityType;
-        return $this;
-    }
-    /**
-     * the project id
-     *
-     * @return int|null
-     */
-    public function getProjectId(): ?int
-    {
-        return $this->projectId;
-    }
-    /**
-     * the project id
-     *
-     * @param int|null $projectId
-     *
-     * @return self
-     */
-    public function setProjectId(?int $projectId): self
-    {
-        $this->projectId = $projectId;
-        return $this;
-    }
+    protected $entityType;
     /**
      * the project member id
      *
      * @return int|null
      */
-    public function getId(): ?int
+    public function getId() : ?int
     {
         return $this->id;
     }
@@ -167,9 +62,72 @@ class ProjectMemberEntity
      *
      * @return self
      */
-    public function setId(?int $id): self
+    public function setId(?int $id) : self
     {
         $this->id = $id;
+        return $this;
+    }
+    /**
+     * the project id
+     *
+     * @return int|null
+     */
+    public function getProjectId() : ?int
+    {
+        return $this->projectId;
+    }
+    /**
+     * the project id
+     *
+     * @param int|null $projectId
+     *
+     * @return self
+     */
+    public function setProjectId(?int $projectId) : self
+    {
+        $this->projectId = $projectId;
+        return $this;
+    }
+    /**
+     * the name of the group member.
+     *
+     * @return string|null
+     */
+    public function getEntityName() : ?string
+    {
+        return $this->entityName;
+    }
+    /**
+     * the name of the group member.
+     *
+     * @param string|null $entityName
+     *
+     * @return self
+     */
+    public function setEntityName(?string $entityName) : self
+    {
+        $this->entityName = $entityName;
+        return $this;
+    }
+    /**
+     * the name of the role
+     *
+     * @return string|null
+     */
+    public function getRoleName() : ?string
+    {
+        return $this->roleName;
+    }
+    /**
+     * the name of the role
+     *
+     * @param string|null $roleName
+     *
+     * @return self
+     */
+    public function setRoleName(?string $roleName) : self
+    {
+        $this->roleName = $roleName;
         return $this;
     }
     /**
@@ -177,7 +135,7 @@ class ProjectMemberEntity
      *
      * @return int|null
      */
-    public function getRoleId(): ?int
+    public function getRoleId() : ?int
     {
         return $this->roleId;
     }
@@ -188,9 +146,51 @@ class ProjectMemberEntity
      *
      * @return self
      */
-    public function setRoleId(?int $roleId): self
+    public function setRoleId(?int $roleId) : self
     {
         $this->roleId = $roleId;
+        return $this;
+    }
+    /**
+     * the id of entity, if the member is a user, it is user_id in user table. if the member is a user group, it is the user group's ID in user_group table.
+     *
+     * @return int|null
+     */
+    public function getEntityId() : ?int
+    {
+        return $this->entityId;
+    }
+    /**
+     * the id of entity, if the member is a user, it is user_id in user table. if the member is a user group, it is the user group's ID in user_group table.
+     *
+     * @param int|null $entityId
+     *
+     * @return self
+     */
+    public function setEntityId(?int $entityId) : self
+    {
+        $this->entityId = $entityId;
+        return $this;
+    }
+    /**
+     * the entity's type, u for user entity, g for group entity.
+     *
+     * @return string|null
+     */
+    public function getEntityType() : ?string
+    {
+        return $this->entityType;
+    }
+    /**
+     * the entity's type, u for user entity, g for group entity.
+     *
+     * @param string|null $entityType
+     *
+     * @return self
+     */
+    public function setEntityType(?string $entityType) : self
+    {
+        $this->entityType = $entityType;
         return $this;
     }
 }

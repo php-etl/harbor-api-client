@@ -5,24 +5,6 @@ namespace Gyroscops\Harbor\Api\Model;
 class UserGroup
 {
     /**
-     * The name of the user group
-     *
-     * @var string|null
-     */
-    protected $groupName;
-    /**
-     * The DN of the LDAP group if group type is 1 (LDAP group).
-     *
-     * @var string|null
-     */
-    protected $ldapGroupDn;
-    /**
-     * The group type, 1 for LDAP group, 2 for HTTP group.
-     *
-     * @var int|null
-     */
-    protected $groupType;
-    /**
      * The ID of the user group
      *
      * @var int|null
@@ -31,72 +13,27 @@ class UserGroup
     /**
      * The name of the user group
      *
-     * @return string|null
+     * @var string|null
      */
-    public function getGroupName(): ?string
-    {
-        return $this->groupName;
-    }
+    protected $groupName;
     /**
-     * The name of the user group
+     * The group type, 1 for LDAP group, 2 for HTTP group, 3 for OIDC group.
      *
-     * @param string|null $groupName
-     *
-     * @return self
+     * @var int|null
      */
-    public function setGroupName(?string $groupName): self
-    {
-        $this->groupName = $groupName;
-        return $this;
-    }
+    protected $groupType;
     /**
      * The DN of the LDAP group if group type is 1 (LDAP group).
      *
-     * @return string|null
+     * @var string|null
      */
-    public function getLdapGroupDn(): ?string
-    {
-        return $this->ldapGroupDn;
-    }
-    /**
-     * The DN of the LDAP group if group type is 1 (LDAP group).
-     *
-     * @param string|null $ldapGroupDn
-     *
-     * @return self
-     */
-    public function setLdapGroupDn(?string $ldapGroupDn): self
-    {
-        $this->ldapGroupDn = $ldapGroupDn;
-        return $this;
-    }
-    /**
-     * The group type, 1 for LDAP group, 2 for HTTP group.
-     *
-     * @return int|null
-     */
-    public function getGroupType(): ?int
-    {
-        return $this->groupType;
-    }
-    /**
-     * The group type, 1 for LDAP group, 2 for HTTP group.
-     *
-     * @param int|null $groupType
-     *
-     * @return self
-     */
-    public function setGroupType(?int $groupType): self
-    {
-        $this->groupType = $groupType;
-        return $this;
-    }
+    protected $ldapGroupDn;
     /**
      * The ID of the user group
      *
      * @return int|null
      */
-    public function getId(): ?int
+    public function getId() : ?int
     {
         return $this->id;
     }
@@ -107,9 +44,72 @@ class UserGroup
      *
      * @return self
      */
-    public function setId(?int $id): self
+    public function setId(?int $id) : self
     {
         $this->id = $id;
+        return $this;
+    }
+    /**
+     * The name of the user group
+     *
+     * @return string|null
+     */
+    public function getGroupName() : ?string
+    {
+        return $this->groupName;
+    }
+    /**
+     * The name of the user group
+     *
+     * @param string|null $groupName
+     *
+     * @return self
+     */
+    public function setGroupName(?string $groupName) : self
+    {
+        $this->groupName = $groupName;
+        return $this;
+    }
+    /**
+     * The group type, 1 for LDAP group, 2 for HTTP group, 3 for OIDC group.
+     *
+     * @return int|null
+     */
+    public function getGroupType() : ?int
+    {
+        return $this->groupType;
+    }
+    /**
+     * The group type, 1 for LDAP group, 2 for HTTP group, 3 for OIDC group.
+     *
+     * @param int|null $groupType
+     *
+     * @return self
+     */
+    public function setGroupType(?int $groupType) : self
+    {
+        $this->groupType = $groupType;
+        return $this;
+    }
+    /**
+     * The DN of the LDAP group if group type is 1 (LDAP group).
+     *
+     * @return string|null
+     */
+    public function getLdapGroupDn() : ?string
+    {
+        return $this->ldapGroupDn;
+    }
+    /**
+     * The DN of the LDAP group if group type is 1 (LDAP group).
+     *
+     * @param string|null $ldapGroupDn
+     *
+     * @return self
+     */
+    public function setLdapGroupDn(?string $ldapGroupDn) : self
+    {
+        $this->ldapGroupDn = $ldapGroupDn;
         return $this;
     }
 }

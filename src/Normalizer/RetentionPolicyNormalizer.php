@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class RetentionPolicyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,34 +42,39 @@ class RetentionPolicyNormalizer implements DenormalizerInterface, NormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('algorithm', $data) && $data['algorithm'] !== null) {
+            $object->setAlgorithm($data['algorithm']);
+        }
+        elseif (\array_key_exists('algorithm', $data) && $data['algorithm'] === null) {
+            $object->setAlgorithm(null);
+        }
         if (\array_key_exists('rules', $data) && $data['rules'] !== null) {
             $values = array();
             foreach ($data['rules'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\RetentionRule', 'json', $context);
             }
             $object->setRules($values);
-        } elseif (\array_key_exists('rules', $data) && $data['rules'] === null) {
-            $object->setRules(null);
         }
-        if (\array_key_exists('scope', $data) && $data['scope'] !== null) {
-            $object->setScope($this->denormalizer->denormalize($data['scope'], 'Gyroscops\\Harbor\\Api\\Model\\RetentionPolicyScope', 'json', $context));
-        } elseif (\array_key_exists('scope', $data) && $data['scope'] === null) {
-            $object->setScope(null);
+        elseif (\array_key_exists('rules', $data) && $data['rules'] === null) {
+            $object->setRules(null);
         }
         if (\array_key_exists('trigger', $data) && $data['trigger'] !== null) {
             $object->setTrigger($this->denormalizer->denormalize($data['trigger'], 'Gyroscops\\Harbor\\Api\\Model\\RetentionRuleTrigger', 'json', $context));
-        } elseif (\array_key_exists('trigger', $data) && $data['trigger'] === null) {
+        }
+        elseif (\array_key_exists('trigger', $data) && $data['trigger'] === null) {
             $object->setTrigger(null);
         }
-        if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+        if (\array_key_exists('scope', $data) && $data['scope'] !== null) {
+            $object->setScope($this->denormalizer->denormalize($data['scope'], 'Gyroscops\\Harbor\\Api\\Model\\RetentionPolicyScope', 'json', $context));
         }
-        if (\array_key_exists('algorithm', $data) && $data['algorithm'] !== null) {
-            $object->setAlgorithm($data['algorithm']);
-        } elseif (\array_key_exists('algorithm', $data) && $data['algorithm'] === null) {
-            $object->setAlgorithm(null);
+        elseif (\array_key_exists('scope', $data) && $data['scope'] === null) {
+            $object->setScope(null);
         }
         return $object;
     }
@@ -80,6 +84,12 @@ class RetentionPolicyNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getId()) {
+            $data['id'] = $object->getId();
+        }
+        if (null !== $object->getAlgorithm()) {
+            $data['algorithm'] = $object->getAlgorithm();
+        }
         if (null !== $object->getRules()) {
             $values = array();
             foreach ($object->getRules() as $value) {
@@ -87,17 +97,11 @@ class RetentionPolicyNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $data['rules'] = $values;
         }
-        if (null !== $object->getScope()) {
-            $data['scope'] = $this->normalizer->normalize($object->getScope(), 'json', $context);
-        }
         if (null !== $object->getTrigger()) {
             $data['trigger'] = $this->normalizer->normalize($object->getTrigger(), 'json', $context);
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getAlgorithm()) {
-            $data['algorithm'] = $object->getAlgorithm();
+        if (null !== $object->getScope()) {
+            $data['scope'] = $this->normalizer->normalize($object->getScope(), 'json', $context);
         }
         return $data;
     }

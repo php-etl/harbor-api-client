@@ -21,7 +21,7 @@ class SystemOidcPingPostBody
      *
      * @return string|null
      */
-    public function getUrl(): ?string
+    public function getUrl() : ?string
     {
         return $this->url;
     }
@@ -32,7 +32,7 @@ class SystemOidcPingPostBody
      *
      * @return self
      */
-    public function setUrl(?string $url): self
+    public function setUrl(?string $url) : self
     {
         $this->url = $url;
         return $this;
@@ -42,7 +42,7 @@ class SystemOidcPingPostBody
      *
      * @return bool|null
      */
-    public function getVerifyCert(): ?bool
+    public function getVerifyCert() : ?bool
     {
         return $this->verifyCert;
     }
@@ -53,7 +53,7 @@ class SystemOidcPingPostBody
      *
      * @return self
      */
-    public function setVerifyCert(?bool $verifyCert): self
+    public function setVerifyCert(?bool $verifyCert) : self
     {
         $this->verifyCert = $verifyCert;
         return $this;

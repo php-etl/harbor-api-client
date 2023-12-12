@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ProjectMemberNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,18 +44,21 @@ class ProjectMemberNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('role_id', $data) && $data['role_id'] !== null) {
             $object->setRoleId($data['role_id']);
-        } elseif (\array_key_exists('role_id', $data) && $data['role_id'] === null) {
-            $object->setRoleId(null);
         }
-        if (\array_key_exists('member_group', $data) && $data['member_group'] !== null) {
-            $object->setMemberGroup($this->denormalizer->denormalize($data['member_group'], 'Gyroscops\\Harbor\\Api\\Model\\UserGroup', 'json', $context));
-        } elseif (\array_key_exists('member_group', $data) && $data['member_group'] === null) {
-            $object->setMemberGroup(null);
+        elseif (\array_key_exists('role_id', $data) && $data['role_id'] === null) {
+            $object->setRoleId(null);
         }
         if (\array_key_exists('member_user', $data) && $data['member_user'] !== null) {
             $object->setMemberUser($this->denormalizer->denormalize($data['member_user'], 'Gyroscops\\Harbor\\Api\\Model\\UserEntity', 'json', $context));
-        } elseif (\array_key_exists('member_user', $data) && $data['member_user'] === null) {
+        }
+        elseif (\array_key_exists('member_user', $data) && $data['member_user'] === null) {
             $object->setMemberUser(null);
+        }
+        if (\array_key_exists('member_group', $data) && $data['member_group'] !== null) {
+            $object->setMemberGroup($this->denormalizer->denormalize($data['member_group'], 'Gyroscops\\Harbor\\Api\\Model\\UserGroup', 'json', $context));
+        }
+        elseif (\array_key_exists('member_group', $data) && $data['member_group'] === null) {
+            $object->setMemberGroup(null);
         }
         return $object;
     }
@@ -69,11 +71,11 @@ class ProjectMemberNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getRoleId()) {
             $data['role_id'] = $object->getRoleId();
         }
-        if (null !== $object->getMemberGroup()) {
-            $data['member_group'] = $this->normalizer->normalize($object->getMemberGroup(), 'json', $context);
-        }
         if (null !== $object->getMemberUser()) {
             $data['member_user'] = $this->normalizer->normalize($object->getMemberUser(), 'json', $context);
+        }
+        if (null !== $object->getMemberGroup()) {
+            $data['member_group'] = $this->normalizer->normalize($object->getMemberGroup(), 'json', $context);
         }
         return $data;
     }

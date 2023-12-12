@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,54 +42,64 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
-            $object->setUpdateTime($data['update_time']);
-        } elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
-            $object->setUpdateTime(null);
+        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
+            $object->setProjectId($data['project_id']);
         }
-        if (\array_key_exists('owner_name', $data) && $data['owner_name'] !== null) {
-            $object->setOwnerName($data['owner_name']);
-        } elseif (\array_key_exists('owner_name', $data) && $data['owner_name'] === null) {
-            $object->setOwnerName(null);
-        }
-        if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
-        }
-        if (\array_key_exists('deleted', $data) && $data['deleted'] !== null) {
-            $object->setDeleted($data['deleted']);
-        } elseif (\array_key_exists('deleted', $data) && $data['deleted'] === null) {
-            $object->setDeleted(null);
+        elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
+            $object->setProjectId(null);
         }
         if (\array_key_exists('owner_id', $data) && $data['owner_id'] !== null) {
             $object->setOwnerId($data['owner_id']);
-        } elseif (\array_key_exists('owner_id', $data) && $data['owner_id'] === null) {
+        }
+        elseif (\array_key_exists('owner_id', $data) && $data['owner_id'] === null) {
             $object->setOwnerId(null);
         }
-        if (\array_key_exists('repo_count', $data) && $data['repo_count'] !== null) {
-            $object->setRepoCount($data['repo_count']);
-        } elseif (\array_key_exists('repo_count', $data) && $data['repo_count'] === null) {
-            $object->setRepoCount(null);
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+        }
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('registry_id', $data) && $data['registry_id'] !== null) {
+            $object->setRegistryId($data['registry_id']);
+        }
+        elseif (\array_key_exists('registry_id', $data) && $data['registry_id'] === null) {
+            $object->setRegistryId(null);
         }
         if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
-            $object->setCreationTime($data['creation_time']);
-        } elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
+            $object->setCreationTime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['creation_time']));
+        }
+        elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
             $object->setCreationTime(null);
+        }
+        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
+            $object->setUpdateTime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['update_time']));
+        }
+        elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
+            $object->setUpdateTime(null);
+        }
+        if (\array_key_exists('deleted', $data) && $data['deleted'] !== null) {
+            $object->setDeleted($data['deleted']);
+        }
+        elseif (\array_key_exists('deleted', $data) && $data['deleted'] === null) {
+            $object->setDeleted(null);
+        }
+        if (\array_key_exists('owner_name', $data) && $data['owner_name'] !== null) {
+            $object->setOwnerName($data['owner_name']);
+        }
+        elseif (\array_key_exists('owner_name', $data) && $data['owner_name'] === null) {
+            $object->setOwnerName(null);
         }
         if (\array_key_exists('togglable', $data) && $data['togglable'] !== null) {
             $object->setTogglable($data['togglable']);
-        } elseif (\array_key_exists('togglable', $data) && $data['togglable'] === null) {
-            $object->setTogglable(null);
         }
-        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
-            $object->setProjectId($data['project_id']);
-        } elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
-            $object->setProjectId(null);
+        elseif (\array_key_exists('togglable', $data) && $data['togglable'] === null) {
+            $object->setTogglable(null);
         }
         if (\array_key_exists('current_user_role_id', $data) && $data['current_user_role_id'] !== null) {
             $object->setCurrentUserRoleId($data['current_user_role_id']);
-        } elseif (\array_key_exists('current_user_role_id', $data) && $data['current_user_role_id'] === null) {
+        }
+        elseif (\array_key_exists('current_user_role_id', $data) && $data['current_user_role_id'] === null) {
             $object->setCurrentUserRoleId(null);
         }
         if (\array_key_exists('current_user_role_ids', $data) && $data['current_user_role_ids'] !== null) {
@@ -99,23 +108,27 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values[] = $value;
             }
             $object->setCurrentUserRoleIds($values);
-        } elseif (\array_key_exists('current_user_role_ids', $data) && $data['current_user_role_ids'] === null) {
+        }
+        elseif (\array_key_exists('current_user_role_ids', $data) && $data['current_user_role_ids'] === null) {
             $object->setCurrentUserRoleIds(null);
         }
-        if (\array_key_exists('chart_count', $data) && $data['chart_count'] !== null) {
-            $object->setChartCount($data['chart_count']);
-        } elseif (\array_key_exists('chart_count', $data) && $data['chart_count'] === null) {
-            $object->setChartCount(null);
+        if (\array_key_exists('repo_count', $data) && $data['repo_count'] !== null) {
+            $object->setRepoCount($data['repo_count']);
         }
-        if (\array_key_exists('cve_whitelist', $data) && $data['cve_whitelist'] !== null) {
-            $object->setCveWhitelist($this->denormalizer->denormalize($data['cve_whitelist'], 'Gyroscops\\Harbor\\Api\\Model\\CVEWhitelist', 'json', $context));
-        } elseif (\array_key_exists('cve_whitelist', $data) && $data['cve_whitelist'] === null) {
-            $object->setCveWhitelist(null);
+        elseif (\array_key_exists('repo_count', $data) && $data['repo_count'] === null) {
+            $object->setRepoCount(null);
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
             $object->setMetadata($this->denormalizer->denormalize($data['metadata'], 'Gyroscops\\Harbor\\Api\\Model\\ProjectMetadata', 'json', $context));
-        } elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
+        }
+        elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
             $object->setMetadata(null);
+        }
+        if (\array_key_exists('cve_allowlist', $data) && $data['cve_allowlist'] !== null) {
+            $object->setCveAllowlist($this->denormalizer->denormalize($data['cve_allowlist'], 'Gyroscops\\Harbor\\Api\\Model\\CVEAllowlist', 'json', $context));
+        }
+        elseif (\array_key_exists('cve_allowlist', $data) && $data['cve_allowlist'] === null) {
+            $object->setCveAllowlist(null);
         }
         return $object;
     }
@@ -125,32 +138,32 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUpdateTime()) {
-            $data['update_time'] = $object->getUpdateTime();
-        }
-        if (null !== $object->getOwnerName()) {
-            $data['owner_name'] = $object->getOwnerName();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getDeleted()) {
-            $data['deleted'] = $object->getDeleted();
+        if (null !== $object->getProjectId()) {
+            $data['project_id'] = $object->getProjectId();
         }
         if (null !== $object->getOwnerId()) {
             $data['owner_id'] = $object->getOwnerId();
         }
-        if (null !== $object->getRepoCount()) {
-            $data['repo_count'] = $object->getRepoCount();
+        if (null !== $object->getName()) {
+            $data['name'] = $object->getName();
+        }
+        if (null !== $object->getRegistryId()) {
+            $data['registry_id'] = $object->getRegistryId();
         }
         if (null !== $object->getCreationTime()) {
-            $data['creation_time'] = $object->getCreationTime();
+            $data['creation_time'] = $object->getCreationTime()->format('Y-m-d\\TH:i:sP');
+        }
+        if (null !== $object->getUpdateTime()) {
+            $data['update_time'] = $object->getUpdateTime()->format('Y-m-d\\TH:i:sP');
+        }
+        if (null !== $object->getDeleted()) {
+            $data['deleted'] = $object->getDeleted();
+        }
+        if (null !== $object->getOwnerName()) {
+            $data['owner_name'] = $object->getOwnerName();
         }
         if (null !== $object->getTogglable()) {
             $data['togglable'] = $object->getTogglable();
-        }
-        if (null !== $object->getProjectId()) {
-            $data['project_id'] = $object->getProjectId();
         }
         if (null !== $object->getCurrentUserRoleId()) {
             $data['current_user_role_id'] = $object->getCurrentUserRoleId();
@@ -162,14 +175,14 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $data['current_user_role_ids'] = $values;
         }
-        if (null !== $object->getChartCount()) {
-            $data['chart_count'] = $object->getChartCount();
-        }
-        if (null !== $object->getCveWhitelist()) {
-            $data['cve_whitelist'] = $this->normalizer->normalize($object->getCveWhitelist(), 'json', $context);
+        if (null !== $object->getRepoCount()) {
+            $data['repo_count'] = $object->getRepoCount();
         }
         if (null !== $object->getMetadata()) {
             $data['metadata'] = $this->normalizer->normalize($object->getMetadata(), 'json', $context);
+        }
+        if (null !== $object->getCveAllowlist()) {
+            $data['cve_allowlist'] = $this->normalizer->normalize($object->getCveAllowlist(), 'json', $context);
         }
         return $data;
     }

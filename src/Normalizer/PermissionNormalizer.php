@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class PermissionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,15 +42,17 @@ class PermissionNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('action', $data) && $data['action'] !== null) {
-            $object->setAction($data['action']);
-        } elseif (\array_key_exists('action', $data) && $data['action'] === null) {
-            $object->setAction(null);
-        }
         if (\array_key_exists('resource', $data) && $data['resource'] !== null) {
             $object->setResource($data['resource']);
-        } elseif (\array_key_exists('resource', $data) && $data['resource'] === null) {
+        }
+        elseif (\array_key_exists('resource', $data) && $data['resource'] === null) {
             $object->setResource(null);
+        }
+        if (\array_key_exists('action', $data) && $data['action'] !== null) {
+            $object->setAction($data['action']);
+        }
+        elseif (\array_key_exists('action', $data) && $data['action'] === null) {
+            $object->setAction(null);
         }
         return $object;
     }
@@ -61,11 +62,11 @@ class PermissionNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAction()) {
-            $data['action'] = $object->getAction();
-        }
         if (null !== $object->getResource()) {
             $data['resource'] = $object->getResource();
+        }
+        if (null !== $object->getAction()) {
+            $data['action'] = $object->getAction();
         }
         return $data;
     }

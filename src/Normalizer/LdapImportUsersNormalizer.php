@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class LdapImportUsersNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -49,7 +48,8 @@ class LdapImportUsersNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $value;
             }
             $object->setLdapUidList($values);
-        } elseif (\array_key_exists('ldap_uid_list', $data) && $data['ldap_uid_list'] === null) {
+        }
+        elseif (\array_key_exists('ldap_uid_list', $data) && $data['ldap_uid_list'] === null) {
             $object->setLdapUidList(null);
         }
         return $object;

@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class UserGroupNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,25 +42,29 @@ class UserGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
         if (\array_key_exists('group_name', $data) && $data['group_name'] !== null) {
             $object->setGroupName($data['group_name']);
-        } elseif (\array_key_exists('group_name', $data) && $data['group_name'] === null) {
-            $object->setGroupName(null);
         }
-        if (\array_key_exists('ldap_group_dn', $data) && $data['ldap_group_dn'] !== null) {
-            $object->setLdapGroupDn($data['ldap_group_dn']);
-        } elseif (\array_key_exists('ldap_group_dn', $data) && $data['ldap_group_dn'] === null) {
-            $object->setLdapGroupDn(null);
+        elseif (\array_key_exists('group_name', $data) && $data['group_name'] === null) {
+            $object->setGroupName(null);
         }
         if (\array_key_exists('group_type', $data) && $data['group_type'] !== null) {
             $object->setGroupType($data['group_type']);
-        } elseif (\array_key_exists('group_type', $data) && $data['group_type'] === null) {
+        }
+        elseif (\array_key_exists('group_type', $data) && $data['group_type'] === null) {
             $object->setGroupType(null);
         }
-        if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+        if (\array_key_exists('ldap_group_dn', $data) && $data['ldap_group_dn'] !== null) {
+            $object->setLdapGroupDn($data['ldap_group_dn']);
+        }
+        elseif (\array_key_exists('ldap_group_dn', $data) && $data['ldap_group_dn'] === null) {
+            $object->setLdapGroupDn(null);
         }
         return $object;
     }
@@ -71,17 +74,17 @@ class UserGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getId()) {
+            $data['id'] = $object->getId();
+        }
         if (null !== $object->getGroupName()) {
             $data['group_name'] = $object->getGroupName();
-        }
-        if (null !== $object->getLdapGroupDn()) {
-            $data['ldap_group_dn'] = $object->getLdapGroupDn();
         }
         if (null !== $object->getGroupType()) {
             $data['group_type'] = $object->getGroupType();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        if (null !== $object->getLdapGroupDn()) {
+            $data['ldap_group_dn'] = $object->getLdapGroupDn();
         }
         return $data;
     }

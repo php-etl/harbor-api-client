@@ -5,17 +5,17 @@ namespace Gyroscops\Harbor\Api\Model;
 class ComponentHealthStatus
 {
     /**
-     * The health status of component
-     *
-     * @var string|null
-     */
-    protected $status;
-    /**
      * The component name
      *
      * @var string|null
      */
     protected $name;
+    /**
+     * The health status of component. Is either "healthy" or "unhealthy".
+     *
+     * @var string|null
+     */
+    protected $status;
     /**
      * (optional) The error message when the status is "unhealthy"
      *
@@ -23,32 +23,11 @@ class ComponentHealthStatus
      */
     protected $error;
     /**
-     * The health status of component
-     *
-     * @return string|null
-     */
-    public function getStatus(): ?string
-    {
-        return $this->status;
-    }
-    /**
-     * The health status of component
-     *
-     * @param string|null $status
-     *
-     * @return self
-     */
-    public function setStatus(?string $status): self
-    {
-        $this->status = $status;
-        return $this;
-    }
-    /**
      * The component name
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -59,9 +38,30 @@ class ComponentHealthStatus
      *
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name) : self
     {
         $this->name = $name;
+        return $this;
+    }
+    /**
+     * The health status of component. Is either "healthy" or "unhealthy".
+     *
+     * @return string|null
+     */
+    public function getStatus() : ?string
+    {
+        return $this->status;
+    }
+    /**
+     * The health status of component. Is either "healthy" or "unhealthy".
+     *
+     * @param string|null $status
+     *
+     * @return self
+     */
+    public function setStatus(?string $status) : self
+    {
+        $this->status = $status;
         return $this;
     }
     /**
@@ -69,7 +69,7 @@ class ComponentHealthStatus
      *
      * @return string|null
      */
-    public function getError(): ?string
+    public function getError() : ?string
     {
         return $this->error;
     }
@@ -80,7 +80,7 @@ class ComponentHealthStatus
      *
      * @return self
      */
-    public function setError(?string $error): self
+    public function setError(?string $error) : self
     {
         $this->error = $error;
         return $this;

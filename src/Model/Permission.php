@@ -5,12 +5,6 @@ namespace Gyroscops\Harbor\Api\Model;
 class Permission
 {
     /**
-     * The permission action
-     *
-     * @var string|null
-     */
-    protected $action;
-    /**
      * The permission resoruce
      *
      * @var string|null
@@ -19,30 +13,15 @@ class Permission
     /**
      * The permission action
      *
-     * @return string|null
+     * @var string|null
      */
-    public function getAction(): ?string
-    {
-        return $this->action;
-    }
-    /**
-     * The permission action
-     *
-     * @param string|null $action
-     *
-     * @return self
-     */
-    public function setAction(?string $action): self
-    {
-        $this->action = $action;
-        return $this;
-    }
+    protected $action;
     /**
      * The permission resoruce
      *
      * @return string|null
      */
-    public function getResource(): ?string
+    public function getResource() : ?string
     {
         return $this->resource;
     }
@@ -53,9 +32,30 @@ class Permission
      *
      * @return self
      */
-    public function setResource(?string $resource): self
+    public function setResource(?string $resource) : self
     {
         $this->resource = $resource;
+        return $this;
+    }
+    /**
+     * The permission action
+     *
+     * @return string|null
+     */
+    public function getAction() : ?string
+    {
+        return $this->action;
+    }
+    /**
+     * The permission action
+     *
+     * @param string|null $action
+     *
+     * @return self
+     */
+    public function setAction(?string $action) : self
+    {
+        $this->action = $action;
         return $this;
     }
 }

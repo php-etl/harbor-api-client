@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ProjectMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,35 +42,53 @@ class ProjectMetadataNormalizer implements DenormalizerInterface, NormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('enable_content_trust', $data) && $data['enable_content_trust'] !== null) {
-            $object->setEnableContentTrust($data['enable_content_trust']);
-        } elseif (\array_key_exists('enable_content_trust', $data) && $data['enable_content_trust'] === null) {
-            $object->setEnableContentTrust(null);
-        }
-        if (\array_key_exists('auto_scan', $data) && $data['auto_scan'] !== null) {
-            $object->setAutoScan($data['auto_scan']);
-        } elseif (\array_key_exists('auto_scan', $data) && $data['auto_scan'] === null) {
-            $object->setAutoScan(null);
-        }
-        if (\array_key_exists('severity', $data) && $data['severity'] !== null) {
-            $object->setSeverity($data['severity']);
-        } elseif (\array_key_exists('severity', $data) && $data['severity'] === null) {
-            $object->setSeverity(null);
-        }
-        if (\array_key_exists('reuse_sys_cve_whitelist', $data) && $data['reuse_sys_cve_whitelist'] !== null) {
-            $object->setReuseSysCveWhitelist($data['reuse_sys_cve_whitelist']);
-        } elseif (\array_key_exists('reuse_sys_cve_whitelist', $data) && $data['reuse_sys_cve_whitelist'] === null) {
-            $object->setReuseSysCveWhitelist(null);
-        }
         if (\array_key_exists('public', $data) && $data['public'] !== null) {
             $object->setPublic($data['public']);
-        } elseif (\array_key_exists('public', $data) && $data['public'] === null) {
+        }
+        elseif (\array_key_exists('public', $data) && $data['public'] === null) {
             $object->setPublic(null);
+        }
+        if (\array_key_exists('enable_content_trust', $data) && $data['enable_content_trust'] !== null) {
+            $object->setEnableContentTrust($data['enable_content_trust']);
+        }
+        elseif (\array_key_exists('enable_content_trust', $data) && $data['enable_content_trust'] === null) {
+            $object->setEnableContentTrust(null);
+        }
+        if (\array_key_exists('enable_content_trust_cosign', $data) && $data['enable_content_trust_cosign'] !== null) {
+            $object->setEnableContentTrustCosign($data['enable_content_trust_cosign']);
+        }
+        elseif (\array_key_exists('enable_content_trust_cosign', $data) && $data['enable_content_trust_cosign'] === null) {
+            $object->setEnableContentTrustCosign(null);
         }
         if (\array_key_exists('prevent_vul', $data) && $data['prevent_vul'] !== null) {
             $object->setPreventVul($data['prevent_vul']);
-        } elseif (\array_key_exists('prevent_vul', $data) && $data['prevent_vul'] === null) {
+        }
+        elseif (\array_key_exists('prevent_vul', $data) && $data['prevent_vul'] === null) {
             $object->setPreventVul(null);
+        }
+        if (\array_key_exists('severity', $data) && $data['severity'] !== null) {
+            $object->setSeverity($data['severity']);
+        }
+        elseif (\array_key_exists('severity', $data) && $data['severity'] === null) {
+            $object->setSeverity(null);
+        }
+        if (\array_key_exists('auto_scan', $data) && $data['auto_scan'] !== null) {
+            $object->setAutoScan($data['auto_scan']);
+        }
+        elseif (\array_key_exists('auto_scan', $data) && $data['auto_scan'] === null) {
+            $object->setAutoScan(null);
+        }
+        if (\array_key_exists('reuse_sys_cve_allowlist', $data) && $data['reuse_sys_cve_allowlist'] !== null) {
+            $object->setReuseSysCveAllowlist($data['reuse_sys_cve_allowlist']);
+        }
+        elseif (\array_key_exists('reuse_sys_cve_allowlist', $data) && $data['reuse_sys_cve_allowlist'] === null) {
+            $object->setReuseSysCveAllowlist(null);
+        }
+        if (\array_key_exists('retention_id', $data) && $data['retention_id'] !== null) {
+            $object->setRetentionId($data['retention_id']);
+        }
+        elseif (\array_key_exists('retention_id', $data) && $data['retention_id'] === null) {
+            $object->setRetentionId(null);
         }
         return $object;
     }
@@ -81,23 +98,29 @@ class ProjectMetadataNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getPublic()) {
+            $data['public'] = $object->getPublic();
+        }
         if (null !== $object->getEnableContentTrust()) {
             $data['enable_content_trust'] = $object->getEnableContentTrust();
         }
-        if (null !== $object->getAutoScan()) {
-            $data['auto_scan'] = $object->getAutoScan();
+        if (null !== $object->getEnableContentTrustCosign()) {
+            $data['enable_content_trust_cosign'] = $object->getEnableContentTrustCosign();
+        }
+        if (null !== $object->getPreventVul()) {
+            $data['prevent_vul'] = $object->getPreventVul();
         }
         if (null !== $object->getSeverity()) {
             $data['severity'] = $object->getSeverity();
         }
-        if (null !== $object->getReuseSysCveWhitelist()) {
-            $data['reuse_sys_cve_whitelist'] = $object->getReuseSysCveWhitelist();
+        if (null !== $object->getAutoScan()) {
+            $data['auto_scan'] = $object->getAutoScan();
         }
-        if (null !== $object->getPublic()) {
-            $data['public'] = $object->getPublic();
+        if (null !== $object->getReuseSysCveAllowlist()) {
+            $data['reuse_sys_cve_allowlist'] = $object->getReuseSysCveAllowlist();
         }
-        if (null !== $object->getPreventVul()) {
-            $data['prevent_vul'] = $object->getPreventVul();
+        if (null !== $object->getRetentionId()) {
+            $data['retention_id'] = $object->getRetentionId();
         }
         return $data;
     }

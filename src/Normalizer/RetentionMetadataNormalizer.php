@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class RetentionMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -49,26 +48,29 @@ class RetentionMetadataNormalizer implements DenormalizerInterface, NormalizerIn
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\RetentionRuleMetadata', 'json', $context);
             }
             $object->setTemplates($values);
-        } elseif (\array_key_exists('templates', $data) && $data['templates'] === null) {
+        }
+        elseif (\array_key_exists('templates', $data) && $data['templates'] === null) {
             $object->setTemplates(null);
         }
-        if (\array_key_exists('tag_selectors', $data) && $data['tag_selectors'] !== null) {
+        if (\array_key_exists('scope_selectors', $data) && $data['scope_selectors'] !== null) {
             $values_1 = array();
-            foreach ($data['tag_selectors'] as $value_1) {
+            foreach ($data['scope_selectors'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Gyroscops\\Harbor\\Api\\Model\\RetentionSelectorMetadata', 'json', $context);
             }
-            $object->setTagSelectors($values_1);
-        } elseif (\array_key_exists('tag_selectors', $data) && $data['tag_selectors'] === null) {
-            $object->setTagSelectors(null);
+            $object->setScopeSelectors($values_1);
         }
-        if (\array_key_exists('scope_selectors', $data) && $data['scope_selectors'] !== null) {
+        elseif (\array_key_exists('scope_selectors', $data) && $data['scope_selectors'] === null) {
+            $object->setScopeSelectors(null);
+        }
+        if (\array_key_exists('tag_selectors', $data) && $data['tag_selectors'] !== null) {
             $values_2 = array();
-            foreach ($data['scope_selectors'] as $value_2) {
+            foreach ($data['tag_selectors'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'Gyroscops\\Harbor\\Api\\Model\\RetentionSelectorMetadata', 'json', $context);
             }
-            $object->setScopeSelectors($values_2);
-        } elseif (\array_key_exists('scope_selectors', $data) && $data['scope_selectors'] === null) {
-            $object->setScopeSelectors(null);
+            $object->setTagSelectors($values_2);
+        }
+        elseif (\array_key_exists('tag_selectors', $data) && $data['tag_selectors'] === null) {
+            $object->setTagSelectors(null);
         }
         return $object;
     }
@@ -85,19 +87,19 @@ class RetentionMetadataNormalizer implements DenormalizerInterface, NormalizerIn
             }
             $data['templates'] = $values;
         }
-        if (null !== $object->getTagSelectors()) {
+        if (null !== $object->getScopeSelectors()) {
             $values_1 = array();
-            foreach ($object->getTagSelectors() as $value_1) {
+            foreach ($object->getScopeSelectors() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data['tag_selectors'] = $values_1;
+            $data['scope_selectors'] = $values_1;
         }
-        if (null !== $object->getScopeSelectors()) {
+        if (null !== $object->getTagSelectors()) {
             $values_2 = array();
-            foreach ($object->getScopeSelectors() as $value_2) {
+            foreach ($object->getTagSelectors() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $data['scope_selectors'] = $values_2;
+            $data['tag_selectors'] = $values_2;
         }
         return $data;
     }

@@ -27,7 +27,7 @@ class FilterStyle
      *
      * @return string|null
      */
-    public function getType(): ?string
+    public function getType() : ?string
     {
         return $this->type;
     }
@@ -38,7 +38,7 @@ class FilterStyle
      *
      * @return self
      */
-    public function setType(?string $type): self
+    public function setType(?string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -48,7 +48,7 @@ class FilterStyle
      *
      * @return string|null
      */
-    public function getStyle(): ?string
+    public function getStyle() : ?string
     {
         return $this->style;
     }
@@ -59,7 +59,7 @@ class FilterStyle
      *
      * @return self
      */
-    public function setStyle(?string $style): self
+    public function setStyle(?string $style) : self
     {
         $this->style = $style;
         return $this;
@@ -69,7 +69,7 @@ class FilterStyle
      *
      * @return string[]|null
      */
-    public function getValues(): ?array
+    public function getValues() : ?array
     {
         return $this->values;
     }
@@ -80,7 +80,7 @@ class FilterStyle
      *
      * @return self
      */
-    public function setValues(?array $values): self
+    public function setValues(?array $values) : self
     {
         $this->values = $values;
         return $this;

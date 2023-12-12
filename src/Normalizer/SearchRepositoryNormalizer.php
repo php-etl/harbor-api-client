@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class SearchRepositoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,35 +42,41 @@ class SearchRepositoryNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('repository_name', $data) && $data['repository_name'] !== null) {
-            $object->setRepositoryName($data['repository_name']);
-        } elseif (\array_key_exists('repository_name', $data) && $data['repository_name'] === null) {
-            $object->setRepositoryName(null);
+        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
+            $object->setProjectId($data['project_id']);
+        }
+        elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
+            $object->setProjectId(null);
         }
         if (\array_key_exists('project_name', $data) && $data['project_name'] !== null) {
             $object->setProjectName($data['project_name']);
-        } elseif (\array_key_exists('project_name', $data) && $data['project_name'] === null) {
-            $object->setProjectName(null);
         }
-        if (\array_key_exists('artifact_count', $data) && $data['artifact_count'] !== null) {
-            $object->setArtifactCount($data['artifact_count']);
-        } elseif (\array_key_exists('artifact_count', $data) && $data['artifact_count'] === null) {
-            $object->setArtifactCount(null);
+        elseif (\array_key_exists('project_name', $data) && $data['project_name'] === null) {
+            $object->setProjectName(null);
         }
         if (\array_key_exists('project_public', $data) && $data['project_public'] !== null) {
             $object->setProjectPublic($data['project_public']);
-        } elseif (\array_key_exists('project_public', $data) && $data['project_public'] === null) {
+        }
+        elseif (\array_key_exists('project_public', $data) && $data['project_public'] === null) {
             $object->setProjectPublic(null);
         }
-        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
-            $object->setProjectId($data['project_id']);
-        } elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
-            $object->setProjectId(null);
+        if (\array_key_exists('repository_name', $data) && $data['repository_name'] !== null) {
+            $object->setRepositoryName($data['repository_name']);
+        }
+        elseif (\array_key_exists('repository_name', $data) && $data['repository_name'] === null) {
+            $object->setRepositoryName(null);
         }
         if (\array_key_exists('pull_count', $data) && $data['pull_count'] !== null) {
             $object->setPullCount($data['pull_count']);
-        } elseif (\array_key_exists('pull_count', $data) && $data['pull_count'] === null) {
+        }
+        elseif (\array_key_exists('pull_count', $data) && $data['pull_count'] === null) {
             $object->setPullCount(null);
+        }
+        if (\array_key_exists('artifact_count', $data) && $data['artifact_count'] !== null) {
+            $object->setArtifactCount($data['artifact_count']);
+        }
+        elseif (\array_key_exists('artifact_count', $data) && $data['artifact_count'] === null) {
+            $object->setArtifactCount(null);
         }
         return $object;
     }
@@ -81,23 +86,23 @@ class SearchRepositoryNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRepositoryName()) {
-            $data['repository_name'] = $object->getRepositoryName();
+        if (null !== $object->getProjectId()) {
+            $data['project_id'] = $object->getProjectId();
         }
         if (null !== $object->getProjectName()) {
             $data['project_name'] = $object->getProjectName();
         }
-        if (null !== $object->getArtifactCount()) {
-            $data['artifact_count'] = $object->getArtifactCount();
-        }
         if (null !== $object->getProjectPublic()) {
             $data['project_public'] = $object->getProjectPublic();
         }
-        if (null !== $object->getProjectId()) {
-            $data['project_id'] = $object->getProjectId();
+        if (null !== $object->getRepositoryName()) {
+            $data['repository_name'] = $object->getRepositoryName();
         }
         if (null !== $object->getPullCount()) {
             $data['pull_count'] = $object->getPullCount();
+        }
+        if (null !== $object->getArtifactCount()) {
+            $data['artifact_count'] = $object->getArtifactCount();
         }
         return $data;
     }

@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class RetentionSelectorMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,12 +44,14 @@ class RetentionSelectorMetadataNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('display_text', $data) && $data['display_text'] !== null) {
             $object->setDisplayText($data['display_text']);
-        } elseif (\array_key_exists('display_text', $data) && $data['display_text'] === null) {
+        }
+        elseif (\array_key_exists('display_text', $data) && $data['display_text'] === null) {
             $object->setDisplayText(null);
         }
         if (\array_key_exists('kind', $data) && $data['kind'] !== null) {
             $object->setKind($data['kind']);
-        } elseif (\array_key_exists('kind', $data) && $data['kind'] === null) {
+        }
+        elseif (\array_key_exists('kind', $data) && $data['kind'] === null) {
             $object->setKind(null);
         }
         if (\array_key_exists('decorations', $data) && $data['decorations'] !== null) {
@@ -59,7 +60,8 @@ class RetentionSelectorMetadataNormalizer implements DenormalizerInterface, Norm
                 $values[] = $value;
             }
             $object->setDecorations($values);
-        } elseif (\array_key_exists('decorations', $data) && $data['decorations'] === null) {
+        }
+        elseif (\array_key_exists('decorations', $data) && $data['decorations'] === null) {
             $object->setDecorations(null);
         }
         return $object;

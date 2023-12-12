@@ -11,23 +11,23 @@ class RetentionMetadata
      */
     protected $templates;
     /**
-     * supported tag selectors
-     *
-     * @var RetentionSelectorMetadata[]|null
-     */
-    protected $tagSelectors;
-    /**
      * supported scope selectors
      *
      * @var RetentionSelectorMetadata[]|null
      */
     protected $scopeSelectors;
     /**
+     * supported tag selectors
+     *
+     * @var RetentionSelectorMetadata[]|null
+     */
+    protected $tagSelectors;
+    /**
      * templates
      *
      * @return RetentionRuleMetadata[]|null
      */
-    public function getTemplates(): ?array
+    public function getTemplates() : ?array
     {
         return $this->templates;
     }
@@ -38,30 +38,9 @@ class RetentionMetadata
      *
      * @return self
      */
-    public function setTemplates(?array $templates): self
+    public function setTemplates(?array $templates) : self
     {
         $this->templates = $templates;
-        return $this;
-    }
-    /**
-     * supported tag selectors
-     *
-     * @return RetentionSelectorMetadata[]|null
-     */
-    public function getTagSelectors(): ?array
-    {
-        return $this->tagSelectors;
-    }
-    /**
-     * supported tag selectors
-     *
-     * @param RetentionSelectorMetadata[]|null $tagSelectors
-     *
-     * @return self
-     */
-    public function setTagSelectors(?array $tagSelectors): self
-    {
-        $this->tagSelectors = $tagSelectors;
         return $this;
     }
     /**
@@ -69,7 +48,7 @@ class RetentionMetadata
      *
      * @return RetentionSelectorMetadata[]|null
      */
-    public function getScopeSelectors(): ?array
+    public function getScopeSelectors() : ?array
     {
         return $this->scopeSelectors;
     }
@@ -80,9 +59,30 @@ class RetentionMetadata
      *
      * @return self
      */
-    public function setScopeSelectors(?array $scopeSelectors): self
+    public function setScopeSelectors(?array $scopeSelectors) : self
     {
         $this->scopeSelectors = $scopeSelectors;
+        return $this;
+    }
+    /**
+     * supported tag selectors
+     *
+     * @return RetentionSelectorMetadata[]|null
+     */
+    public function getTagSelectors() : ?array
+    {
+        return $this->tagSelectors;
+    }
+    /**
+     * supported tag selectors
+     *
+     * @param RetentionSelectorMetadata[]|null $tagSelectors
+     *
+     * @return self
+     */
+    public function setTagSelectors(?array $tagSelectors) : self
+    {
+        $this->tagSelectors = $tagSelectors;
         return $this;
     }
 }

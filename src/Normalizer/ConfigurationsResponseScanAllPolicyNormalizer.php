@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ConfigurationsResponseScanAllPolicyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,12 +44,14 @@ class ConfigurationsResponseScanAllPolicyNormalizer implements DenormalizerInter
         }
         if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+        }
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
             $object->setType(null);
         }
         if (\array_key_exists('parameter', $data) && $data['parameter'] !== null) {
             $object->setParameter($this->denormalizer->denormalize($data['parameter'], 'Gyroscops\\Harbor\\Api\\Model\\ConfigurationsResponseScanAllPolicyParameter', 'json', $context));
-        } elseif (\array_key_exists('parameter', $data) && $data['parameter'] === null) {
+        }
+        elseif (\array_key_exists('parameter', $data) && $data['parameter'] === null) {
             $object->setParameter(null);
         }
         return $object;

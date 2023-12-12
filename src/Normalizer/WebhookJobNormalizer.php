@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class WebhookJobNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,45 +42,53 @@ class WebhookJobNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('status', $data) && $data['status'] !== null) {
-            $object->setStatus($data['status']);
-        } elseif (\array_key_exists('status', $data) && $data['status'] === null) {
-            $object->setStatus(null);
-        }
-        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
-            $object->setUpdateTime($data['update_time']);
-        } elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
-            $object->setUpdateTime(null);
-        }
-        if (\array_key_exists('event_type', $data) && $data['event_type'] !== null) {
-            $object->setEventType($data['event_type']);
-        } elseif (\array_key_exists('event_type', $data) && $data['event_type'] === null) {
-            $object->setEventType(null);
-        }
-        if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
-            $object->setCreationTime($data['creation_time']);
-        } elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
-            $object->setCreationTime(null);
-        }
-        if (\array_key_exists('job_detail', $data) && $data['job_detail'] !== null) {
-            $object->setJobDetail($data['job_detail']);
-        } elseif (\array_key_exists('job_detail', $data) && $data['job_detail'] === null) {
-            $object->setJobDetail(null);
-        }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
         }
-        if (\array_key_exists('notify_type', $data) && $data['notify_type'] !== null) {
-            $object->setNotifyType($data['notify_type']);
-        } elseif (\array_key_exists('notify_type', $data) && $data['notify_type'] === null) {
-            $object->setNotifyType(null);
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
         if (\array_key_exists('policy_id', $data) && $data['policy_id'] !== null) {
             $object->setPolicyId($data['policy_id']);
-        } elseif (\array_key_exists('policy_id', $data) && $data['policy_id'] === null) {
+        }
+        elseif (\array_key_exists('policy_id', $data) && $data['policy_id'] === null) {
             $object->setPolicyId(null);
+        }
+        if (\array_key_exists('event_type', $data) && $data['event_type'] !== null) {
+            $object->setEventType($data['event_type']);
+        }
+        elseif (\array_key_exists('event_type', $data) && $data['event_type'] === null) {
+            $object->setEventType(null);
+        }
+        if (\array_key_exists('notify_type', $data) && $data['notify_type'] !== null) {
+            $object->setNotifyType($data['notify_type']);
+        }
+        elseif (\array_key_exists('notify_type', $data) && $data['notify_type'] === null) {
+            $object->setNotifyType(null);
+        }
+        if (\array_key_exists('status', $data) && $data['status'] !== null) {
+            $object->setStatus($data['status']);
+        }
+        elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+            $object->setStatus(null);
+        }
+        if (\array_key_exists('job_detail', $data) && $data['job_detail'] !== null) {
+            $object->setJobDetail($data['job_detail']);
+        }
+        elseif (\array_key_exists('job_detail', $data) && $data['job_detail'] === null) {
+            $object->setJobDetail(null);
+        }
+        if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
+            $object->setCreationTime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['creation_time']));
+        }
+        elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
+            $object->setCreationTime(null);
+        }
+        if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
+            $object->setUpdateTime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['update_time']));
+        }
+        elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
+            $object->setUpdateTime(null);
         }
         return $object;
     }
@@ -91,29 +98,29 @@ class WebhookJobNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
+        if (null !== $object->getId()) {
+            $data['id'] = $object->getId();
         }
-        if (null !== $object->getUpdateTime()) {
-            $data['update_time'] = $object->getUpdateTime();
+        if (null !== $object->getPolicyId()) {
+            $data['policy_id'] = $object->getPolicyId();
         }
         if (null !== $object->getEventType()) {
             $data['event_type'] = $object->getEventType();
         }
-        if (null !== $object->getCreationTime()) {
-            $data['creation_time'] = $object->getCreationTime();
+        if (null !== $object->getNotifyType()) {
+            $data['notify_type'] = $object->getNotifyType();
+        }
+        if (null !== $object->getStatus()) {
+            $data['status'] = $object->getStatus();
         }
         if (null !== $object->getJobDetail()) {
             $data['job_detail'] = $object->getJobDetail();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        if (null !== $object->getCreationTime()) {
+            $data['creation_time'] = $object->getCreationTime()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getNotifyType()) {
-            $data['notify_type'] = $object->getNotifyType();
-        }
-        if (null !== $object->getPolicyId()) {
-            $data['policy_id'] = $object->getPolicyId();
+        if (null !== $object->getUpdateTime()) {
+            $data['update_time'] = $object->getUpdateTime()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
     }

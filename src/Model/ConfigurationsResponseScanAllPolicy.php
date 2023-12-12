@@ -11,7 +11,7 @@ class ConfigurationsResponseScanAllPolicy
      */
     protected $type;
     /**
-     * The parameters of the policy, the values are dependant on the type of the policy.
+     * The parameters of the policy, the values are dependent on the type of the policy.
      *
      * @var ConfigurationsResponseScanAllPolicyParameter|null
      */
@@ -21,7 +21,7 @@ class ConfigurationsResponseScanAllPolicy
      *
      * @return string|null
      */
-    public function getType(): ?string
+    public function getType() : ?string
     {
         return $this->type;
     }
@@ -32,28 +32,28 @@ class ConfigurationsResponseScanAllPolicy
      *
      * @return self
      */
-    public function setType(?string $type): self
+    public function setType(?string $type) : self
     {
         $this->type = $type;
         return $this;
     }
     /**
-     * The parameters of the policy, the values are dependant on the type of the policy.
+     * The parameters of the policy, the values are dependent on the type of the policy.
      *
      * @return ConfigurationsResponseScanAllPolicyParameter|null
      */
-    public function getParameter(): ?ConfigurationsResponseScanAllPolicyParameter
+    public function getParameter() : ?ConfigurationsResponseScanAllPolicyParameter
     {
         return $this->parameter;
     }
     /**
-     * The parameters of the policy, the values are dependant on the type of the policy.
+     * The parameters of the policy, the values are dependent on the type of the policy.
      *
      * @param ConfigurationsResponseScanAllPolicyParameter|null $parameter
      *
      * @return self
      */
-    public function setParameter(?ConfigurationsResponseScanAllPolicyParameter $parameter): self
+    public function setParameter(?ConfigurationsResponseScanAllPolicyParameter $parameter) : self
     {
         $this->parameter = $parameter;
         return $this;

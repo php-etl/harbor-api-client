@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class OverallHealthStatusNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,7 +44,8 @@ class OverallHealthStatusNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
-        } elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+        }
+        elseif (\array_key_exists('status', $data) && $data['status'] === null) {
             $object->setStatus(null);
         }
         if (\array_key_exists('components', $data) && $data['components'] !== null) {
@@ -54,7 +54,8 @@ class OverallHealthStatusNormalizer implements DenormalizerInterface, Normalizer
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\ComponentHealthStatus', 'json', $context);
             }
             $object->setComponents($values);
-        } elseif (\array_key_exists('components', $data) && $data['components'] === null) {
+        }
+        elseif (\array_key_exists('components', $data) && $data['components'] === null) {
             $object->setComponents(null);
         }
         return $object;

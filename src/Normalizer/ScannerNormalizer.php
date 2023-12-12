@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ScannerNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,20 +42,23 @@ class ScannerNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('version', $data) && $data['version'] !== null) {
-            $object->setVersion($data['version']);
-        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
-            $object->setVersion(null);
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+        }
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
         if (\array_key_exists('vendor', $data) && $data['vendor'] !== null) {
             $object->setVendor($data['vendor']);
-        } elseif (\array_key_exists('vendor', $data) && $data['vendor'] === null) {
+        }
+        elseif (\array_key_exists('vendor', $data) && $data['vendor'] === null) {
             $object->setVendor(null);
         }
-        if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
+            $object->setVersion($data['version']);
+        }
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
         }
         return $object;
     }
@@ -66,14 +68,14 @@ class ScannerNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getVersion()) {
-            $data['version'] = $object->getVersion();
+        if (null !== $object->getName()) {
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getVendor()) {
             $data['vendor'] = $object->getVendor();
         }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
+        if (null !== $object->getVersion()) {
+            $data['version'] = $object->getVersion();
         }
         return $data;
     }

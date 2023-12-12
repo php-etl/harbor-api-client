@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class RegistryInfoNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,8 +44,15 @@ class RegistryInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+        }
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
             $object->setType(null);
+        }
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+        }
+        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         if (\array_key_exists('supported_resource_filters', $data) && $data['supported_resource_filters'] !== null) {
             $values = array();
@@ -54,7 +60,8 @@ class RegistryInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\FilterStyle', 'json', $context);
             }
             $object->setSupportedResourceFilters($values);
-        } elseif (\array_key_exists('supported_resource_filters', $data) && $data['supported_resource_filters'] === null) {
+        }
+        elseif (\array_key_exists('supported_resource_filters', $data) && $data['supported_resource_filters'] === null) {
             $object->setSupportedResourceFilters(null);
         }
         if (\array_key_exists('supported_triggers', $data) && $data['supported_triggers'] !== null) {
@@ -63,13 +70,15 @@ class RegistryInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values_1[] = $value_1;
             }
             $object->setSupportedTriggers($values_1);
-        } elseif (\array_key_exists('supported_triggers', $data) && $data['supported_triggers'] === null) {
+        }
+        elseif (\array_key_exists('supported_triggers', $data) && $data['supported_triggers'] === null) {
             $object->setSupportedTriggers(null);
         }
-        if (\array_key_exists('description', $data) && $data['description'] !== null) {
-            $object->setDescription($data['description']);
-        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
-            $object->setDescription(null);
+        if (\array_key_exists('supported_copy_by_chunk', $data) && $data['supported_copy_by_chunk'] !== null) {
+            $object->setSupportedCopyByChunk($data['supported_copy_by_chunk']);
+        }
+        elseif (\array_key_exists('supported_copy_by_chunk', $data) && $data['supported_copy_by_chunk'] === null) {
+            $object->setSupportedCopyByChunk(null);
         }
         return $object;
     }
@@ -81,6 +90,9 @@ class RegistryInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data = array();
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
+        }
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
         }
         if (null !== $object->getSupportedResourceFilters()) {
             $values = array();
@@ -96,8 +108,8 @@ class RegistryInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $data['supported_triggers'] = $values_1;
         }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
+        if (null !== $object->getSupportedCopyByChunk()) {
+            $data['supported_copy_by_chunk'] = $object->getSupportedCopyByChunk();
         }
         return $data;
     }

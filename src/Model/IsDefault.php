@@ -15,7 +15,7 @@ class IsDefault
      *
      * @return bool|null
      */
-    public function getIsDefault(): ?bool
+    public function getIsDefault() : ?bool
     {
         return $this->isDefault;
     }
@@ -26,7 +26,7 @@ class IsDefault
      *
      * @return self
      */
-    public function setIsDefault(?bool $isDefault): self
+    public function setIsDefault(?bool $isDefault) : self
     {
         $this->isDefault = $isDefault;
         return $this;

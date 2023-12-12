@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ScannerAdapterMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,10 +42,11 @@ class ScannerAdapterMetadataNormalizer implements DenormalizerInterface, Normali
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($this->denormalizer->denormalize($data['name'], 'Gyroscops\\Harbor\\Api\\Model\\Scanner', 'json', $context));
-        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+        if (\array_key_exists('scanner', $data) && $data['scanner'] !== null) {
+            $object->setScanner($this->denormalizer->denormalize($data['scanner'], 'Gyroscops\\Harbor\\Api\\Model\\Scanner', 'json', $context));
+        }
+        elseif (\array_key_exists('scanner', $data) && $data['scanner'] === null) {
+            $object->setScanner(null);
         }
         if (\array_key_exists('capabilities', $data) && $data['capabilities'] !== null) {
             $values = array();
@@ -54,7 +54,8 @@ class ScannerAdapterMetadataNormalizer implements DenormalizerInterface, Normali
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\ScannerCapability', 'json', $context);
             }
             $object->setCapabilities($values);
-        } elseif (\array_key_exists('capabilities', $data) && $data['capabilities'] === null) {
+        }
+        elseif (\array_key_exists('capabilities', $data) && $data['capabilities'] === null) {
             $object->setCapabilities(null);
         }
         if (\array_key_exists('properties', $data) && $data['properties'] !== null) {
@@ -63,7 +64,8 @@ class ScannerAdapterMetadataNormalizer implements DenormalizerInterface, Normali
                 $values_1[$key] = $value_1;
             }
             $object->setProperties($values_1);
-        } elseif (\array_key_exists('properties', $data) && $data['properties'] === null) {
+        }
+        elseif (\array_key_exists('properties', $data) && $data['properties'] === null) {
             $object->setProperties(null);
         }
         return $object;
@@ -74,8 +76,8 @@ class ScannerAdapterMetadataNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+        if (null !== $object->getScanner()) {
+            $data['scanner'] = $this->normalizer->normalize($object->getScanner(), 'json', $context);
         }
         if (null !== $object->getCapabilities()) {
             $values = array();

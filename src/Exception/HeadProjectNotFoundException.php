@@ -4,8 +4,17 @@ namespace Gyroscops\Harbor\Api\Exception;
 
 class HeadProjectNotFoundException extends NotFoundException
 {
-    public function __construct()
+    /**
+     * @var \Gyroscops\Harbor\Api\Model\Errors
+     */
+    private $errors;
+    public function __construct(\Gyroscops\Harbor\Api\Model\Errors $errors)
     {
-        parent::__construct('Project name does not exist.');
+        parent::__construct('Not found');
+        $this->errors = $errors;
+    }
+    public function getErrors() : \Gyroscops\Harbor\Api\Model\Errors
+    {
+        return $this->errors;
     }
 }

@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class RetentionsIdExecutionsEidPatchBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,7 +44,8 @@ class RetentionsIdExecutionsEidPatchBodyNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('action', $data) && $data['action'] !== null) {
             $object->setAction($data['action']);
-        } elseif (\array_key_exists('action', $data) && $data['action'] === null) {
+        }
+        elseif (\array_key_exists('action', $data) && $data['action'] === null) {
             $object->setAction(null);
         }
         return $object;

@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ConfigurationsResponseScanAllPolicyParameterNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,7 +44,8 @@ class ConfigurationsResponseScanAllPolicyParameterNormalizer implements Denormal
         }
         if (\array_key_exists('daily_time', $data) && $data['daily_time'] !== null) {
             $object->setDailyTime($data['daily_time']);
-        } elseif (\array_key_exists('daily_time', $data) && $data['daily_time'] === null) {
+        }
+        elseif (\array_key_exists('daily_time', $data) && $data['daily_time'] === null) {
             $object->setDailyTime(null);
         }
         return $object;

@@ -5,152 +5,47 @@ namespace Gyroscops\Harbor\Api\Model;
 class Quota
 {
     /**
-     * the update time of the quota
-     *
-     * @var string|null
-     */
-    protected $updateTime;
-    /**
-     *
-     *
-     * @var int[]|null
-     */
-    protected $used;
-    /**
-     *
-     *
-     * @var mixed[]|null
-     */
-    protected $ref;
-    /**
-     *
-     *
-     * @var int[]|null
-     */
-    protected $hard;
-    /**
-     * the creation time of the quota
-     *
-     * @var string|null
-     */
-    protected $creationTime;
-    /**
      * ID of the quota
      *
      * @var int|null
      */
     protected $id;
     /**
-     * the update time of the quota
+     * 
      *
-     * @return string|null
+     * @var mixed[]|null
      */
-    public function getUpdateTime(): ?string
-    {
-        return $this->updateTime;
-    }
+    protected $ref;
     /**
-     * the update time of the quota
+     * 
      *
-     * @param string|null $updateTime
-     *
-     * @return self
+     * @var int[]|null
      */
-    public function setUpdateTime(?string $updateTime): self
-    {
-        $this->updateTime = $updateTime;
-        return $this;
-    }
+    protected $hard;
     /**
+     * 
      *
-     *
-     * @return int[]|null
+     * @var int[]|null
      */
-    public function getUsed(): ?iterable
-    {
-        return $this->used;
-    }
-    /**
-     *
-     *
-     * @param int[]|null $used
-     *
-     * @return self
-     */
-    public function setUsed(?iterable $used): self
-    {
-        $this->used = $used;
-        return $this;
-    }
-    /**
-     *
-     *
-     * @return mixed[]|null
-     */
-    public function getRef(): ?iterable
-    {
-        return $this->ref;
-    }
-    /**
-     *
-     *
-     * @param mixed[]|null $ref
-     *
-     * @return self
-     */
-    public function setRef(?iterable $ref): self
-    {
-        $this->ref = $ref;
-        return $this;
-    }
-    /**
-     *
-     *
-     * @return int[]|null
-     */
-    public function getHard(): ?iterable
-    {
-        return $this->hard;
-    }
-    /**
-     *
-     *
-     * @param int[]|null $hard
-     *
-     * @return self
-     */
-    public function setHard(?iterable $hard): self
-    {
-        $this->hard = $hard;
-        return $this;
-    }
+    protected $used;
     /**
      * the creation time of the quota
      *
-     * @return string|null
+     * @var \DateTime|null
      */
-    public function getCreationTime(): ?string
-    {
-        return $this->creationTime;
-    }
+    protected $creationTime;
     /**
-     * the creation time of the quota
+     * the update time of the quota
      *
-     * @param string|null $creationTime
-     *
-     * @return self
+     * @var \DateTime|null
      */
-    public function setCreationTime(?string $creationTime): self
-    {
-        $this->creationTime = $creationTime;
-        return $this;
-    }
+    protected $updateTime;
     /**
      * ID of the quota
      *
      * @return int|null
      */
-    public function getId(): ?int
+    public function getId() : ?int
     {
         return $this->id;
     }
@@ -161,9 +56,114 @@ class Quota
      *
      * @return self
      */
-    public function setId(?int $id): self
+    public function setId(?int $id) : self
     {
         $this->id = $id;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return mixed[]|null
+     */
+    public function getRef() : ?iterable
+    {
+        return $this->ref;
+    }
+    /**
+     * 
+     *
+     * @param mixed[]|null $ref
+     *
+     * @return self
+     */
+    public function setRef(?iterable $ref) : self
+    {
+        $this->ref = $ref;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return int[]|null
+     */
+    public function getHard() : ?iterable
+    {
+        return $this->hard;
+    }
+    /**
+     * 
+     *
+     * @param int[]|null $hard
+     *
+     * @return self
+     */
+    public function setHard(?iterable $hard) : self
+    {
+        $this->hard = $hard;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return int[]|null
+     */
+    public function getUsed() : ?iterable
+    {
+        return $this->used;
+    }
+    /**
+     * 
+     *
+     * @param int[]|null $used
+     *
+     * @return self
+     */
+    public function setUsed(?iterable $used) : self
+    {
+        $this->used = $used;
+        return $this;
+    }
+    /**
+     * the creation time of the quota
+     *
+     * @return \DateTime|null
+     */
+    public function getCreationTime() : ?\DateTime
+    {
+        return $this->creationTime;
+    }
+    /**
+     * the creation time of the quota
+     *
+     * @param \DateTime|null $creationTime
+     *
+     * @return self
+     */
+    public function setCreationTime(?\DateTime $creationTime) : self
+    {
+        $this->creationTime = $creationTime;
+        return $this;
+    }
+    /**
+     * the update time of the quota
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdateTime() : ?\DateTime
+    {
+        return $this->updateTime;
+    }
+    /**
+     * the update time of the quota
+     *
+     * @param \DateTime|null $updateTime
+     *
+     * @return self
+     */
+    public function setUpdateTime(?\DateTime $updateTime) : self
+    {
+        $this->updateTime = $updateTime;
         return $this;
     }
 }

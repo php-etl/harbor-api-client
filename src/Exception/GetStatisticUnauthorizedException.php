@@ -4,8 +4,17 @@ namespace Gyroscops\Harbor\Api\Exception;
 
 class GetStatisticUnauthorizedException extends UnauthorizedException
 {
-    public function __construct()
+    /**
+     * @var \Gyroscops\Harbor\Api\Model\Errors
+     */
+    private $errors;
+    public function __construct(\Gyroscops\Harbor\Api\Model\Errors $errors)
     {
-        parent::__construct('User need to log in first.');
+        parent::__construct('Unauthorized');
+        $this->errors = $errors;
+    }
+    public function getErrors() : \Gyroscops\Harbor\Api\Model\Errors
+    {
+        return $this->errors;
     }
 }

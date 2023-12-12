@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class SupportedWebhookEventTypesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -49,7 +48,8 @@ class SupportedWebhookEventTypesNormalizer implements DenormalizerInterface, Nor
                 $values[] = $value;
             }
             $object->setEventType($values);
-        } elseif (\array_key_exists('event_type', $data) && $data['event_type'] === null) {
+        }
+        elseif (\array_key_exists('event_type', $data) && $data['event_type'] === null) {
             $object->setEventType(null);
         }
         if (\array_key_exists('notify_type', $data) && $data['notify_type'] !== null) {
@@ -58,8 +58,19 @@ class SupportedWebhookEventTypesNormalizer implements DenormalizerInterface, Nor
                 $values_1[] = $value_1;
             }
             $object->setNotifyType($values_1);
-        } elseif (\array_key_exists('notify_type', $data) && $data['notify_type'] === null) {
+        }
+        elseif (\array_key_exists('notify_type', $data) && $data['notify_type'] === null) {
             $object->setNotifyType(null);
+        }
+        if (\array_key_exists('payload_formats', $data) && $data['payload_formats'] !== null) {
+            $values_2 = array();
+            foreach ($data['payload_formats'] as $value_2) {
+                $values_2[] = $this->denormalizer->denormalize($value_2, 'Gyroscops\\Harbor\\Api\\Model\\PayloadFormat', 'json', $context);
+            }
+            $object->setPayloadFormats($values_2);
+        }
+        elseif (\array_key_exists('payload_formats', $data) && $data['payload_formats'] === null) {
+            $object->setPayloadFormats(null);
         }
         return $object;
     }
@@ -82,6 +93,13 @@ class SupportedWebhookEventTypesNormalizer implements DenormalizerInterface, Nor
                 $values_1[] = $value_1;
             }
             $data['notify_type'] = $values_1;
+        }
+        if (null !== $object->getPayloadFormats()) {
+            $values_2 = array();
+            foreach ($object->getPayloadFormats() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            }
+            $data['payload_formats'] = $values_2;
         }
         return $data;
     }

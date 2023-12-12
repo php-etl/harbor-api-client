@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class UserEntityNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,15 +42,17 @@ class UserEntityNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('username', $data) && $data['username'] !== null) {
-            $object->setUsername($data['username']);
-        } elseif (\array_key_exists('username', $data) && $data['username'] === null) {
-            $object->setUsername(null);
-        }
         if (\array_key_exists('user_id', $data) && $data['user_id'] !== null) {
             $object->setUserId($data['user_id']);
-        } elseif (\array_key_exists('user_id', $data) && $data['user_id'] === null) {
+        }
+        elseif (\array_key_exists('user_id', $data) && $data['user_id'] === null) {
             $object->setUserId(null);
+        }
+        if (\array_key_exists('username', $data) && $data['username'] !== null) {
+            $object->setUsername($data['username']);
+        }
+        elseif (\array_key_exists('username', $data) && $data['username'] === null) {
+            $object->setUsername(null);
         }
         return $object;
     }
@@ -61,11 +62,11 @@ class UserEntityNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUsername()) {
-            $data['username'] = $object->getUsername();
-        }
         if (null !== $object->getUserId()) {
             $data['user_id'] = $object->getUserId();
+        }
+        if (null !== $object->getUsername()) {
+            $data['username'] = $object->getUsername();
         }
         return $data;
     }

@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class RegistryCredentialNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,20 +42,23 @@ class RegistryCredentialNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
+            $object->setType($data['type']);
+        }
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
+        }
         if (\array_key_exists('access_key', $data) && $data['access_key'] !== null) {
             $object->setAccessKey($data['access_key']);
-        } elseif (\array_key_exists('access_key', $data) && $data['access_key'] === null) {
+        }
+        elseif (\array_key_exists('access_key', $data) && $data['access_key'] === null) {
             $object->setAccessKey(null);
         }
         if (\array_key_exists('access_secret', $data) && $data['access_secret'] !== null) {
             $object->setAccessSecret($data['access_secret']);
-        } elseif (\array_key_exists('access_secret', $data) && $data['access_secret'] === null) {
-            $object->setAccessSecret(null);
         }
-        if (\array_key_exists('type', $data) && $data['type'] !== null) {
-            $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
-            $object->setType(null);
+        elseif (\array_key_exists('access_secret', $data) && $data['access_secret'] === null) {
+            $object->setAccessSecret(null);
         }
         return $object;
     }
@@ -66,14 +68,14 @@ class RegistryCredentialNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getType()) {
+            $data['type'] = $object->getType();
+        }
         if (null !== $object->getAccessKey()) {
             $data['access_key'] = $object->getAccessKey();
         }
         if (null !== $object->getAccessSecret()) {
             $data['access_secret'] = $object->getAccessSecret();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
         }
         return $data;
     }

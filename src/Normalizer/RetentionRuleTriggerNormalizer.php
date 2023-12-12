@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class RetentionRuleTriggerNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,18 +44,21 @@ class RetentionRuleTriggerNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('kind', $data) && $data['kind'] !== null) {
             $object->setKind($data['kind']);
-        } elseif (\array_key_exists('kind', $data) && $data['kind'] === null) {
-            $object->setKind(null);
         }
-        if (\array_key_exists('references', $data) && $data['references'] !== null) {
-            $object->setReferences($data['references']);
-        } elseif (\array_key_exists('references', $data) && $data['references'] === null) {
-            $object->setReferences(null);
+        elseif (\array_key_exists('kind', $data) && $data['kind'] === null) {
+            $object->setKind(null);
         }
         if (\array_key_exists('settings', $data) && $data['settings'] !== null) {
             $object->setSettings($data['settings']);
-        } elseif (\array_key_exists('settings', $data) && $data['settings'] === null) {
+        }
+        elseif (\array_key_exists('settings', $data) && $data['settings'] === null) {
             $object->setSettings(null);
+        }
+        if (\array_key_exists('references', $data) && $data['references'] !== null) {
+            $object->setReferences($data['references']);
+        }
+        elseif (\array_key_exists('references', $data) && $data['references'] === null) {
+            $object->setReferences(null);
         }
         return $object;
     }
@@ -69,11 +71,11 @@ class RetentionRuleTriggerNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getKind()) {
             $data['kind'] = $object->getKind();
         }
-        if (null !== $object->getReferences()) {
-            $data['references'] = $object->getReferences();
-        }
         if (null !== $object->getSettings()) {
             $data['settings'] = $object->getSettings();
+        }
+        if (null !== $object->getReferences()) {
+            $data['references'] = $object->getReferences();
         }
         return $data;
     }

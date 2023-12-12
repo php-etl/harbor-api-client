@@ -13,15 +13,21 @@ class ReplicationFilter
     /**
      * The value of replication policy filter.
      *
-     * @var string|null
+     * @var mixed|null
      */
     protected $value;
+    /**
+     * matches or excludes the result
+     *
+     * @var string|null
+     */
+    protected $decoration;
     /**
      * The replication policy filter type.
      *
      * @return string|null
      */
-    public function getType(): ?string
+    public function getType() : ?string
     {
         return $this->type;
     }
@@ -32,7 +38,7 @@ class ReplicationFilter
      *
      * @return self
      */
-    public function setType(?string $type): self
+    public function setType(?string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -40,22 +46,43 @@ class ReplicationFilter
     /**
      * The value of replication policy filter.
      *
-     * @return string|null
+     * @return mixed
      */
-    public function getValue(): ?string
+    public function getValue()
     {
         return $this->value;
     }
     /**
      * The value of replication policy filter.
      *
-     * @param string|null $value
+     * @param mixed $value
      *
      * @return self
      */
-    public function setValue(?string $value): self
+    public function setValue($value) : self
     {
         $this->value = $value;
+        return $this;
+    }
+    /**
+     * matches or excludes the result
+     *
+     * @return string|null
+     */
+    public function getDecoration() : ?string
+    {
+        return $this->decoration;
+    }
+    /**
+     * matches or excludes the result
+     *
+     * @param string|null $decoration
+     *
+     * @return self
+     */
+    public function setDecoration(?string $decoration) : self
+    {
+        $this->decoration = $decoration;
         return $this;
     }
 }

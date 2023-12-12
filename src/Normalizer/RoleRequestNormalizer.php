@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class RoleRequestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,7 +44,8 @@ class RoleRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('role_id', $data) && $data['role_id'] !== null) {
             $object->setRoleId($data['role_id']);
-        } elseif (\array_key_exists('role_id', $data) && $data['role_id'] === null) {
+        }
+        elseif (\array_key_exists('role_id', $data) && $data['role_id'] === null) {
             $object->setRoleId(null);
         }
         return $object;

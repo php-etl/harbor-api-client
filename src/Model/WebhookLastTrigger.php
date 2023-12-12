@@ -5,6 +5,18 @@ namespace Gyroscops\Harbor\Api\Model;
 class WebhookLastTrigger
 {
     /**
+     * The webhook policy name.
+     *
+     * @var string|null
+     */
+    protected $policyName;
+    /**
+     * The webhook event type.
+     *
+     * @var string|null
+     */
+    protected $eventType;
+    /**
      * Whether or not the webhook policy enabled.
      *
      * @var bool|null
@@ -13,61 +25,34 @@ class WebhookLastTrigger
     /**
      * The creation time of webhook policy.
      *
-     * @var string|null
+     * @var \DateTime|null
      */
     protected $creationTime;
     /**
-     * The webhook event type.
-     *
-     * @var string|null
-     */
-    protected $eventType;
-    /**
      * The last trigger time of webhook policy.
      *
-     * @var string|null
+     * @var \DateTime|null
      */
     protected $lastTriggerTime;
     /**
-     * Whether or not the webhook policy enabled.
-     *
-     * @return bool|null
-     */
-    public function getEnabled(): ?bool
-    {
-        return $this->enabled;
-    }
-    /**
-     * Whether or not the webhook policy enabled.
-     *
-     * @param bool|null $enabled
-     *
-     * @return self
-     */
-    public function setEnabled(?bool $enabled): self
-    {
-        $this->enabled = $enabled;
-        return $this;
-    }
-    /**
-     * The creation time of webhook policy.
+     * The webhook policy name.
      *
      * @return string|null
      */
-    public function getCreationTime(): ?string
+    public function getPolicyName() : ?string
     {
-        return $this->creationTime;
+        return $this->policyName;
     }
     /**
-     * The creation time of webhook policy.
+     * The webhook policy name.
      *
-     * @param string|null $creationTime
+     * @param string|null $policyName
      *
      * @return self
      */
-    public function setCreationTime(?string $creationTime): self
+    public function setPolicyName(?string $policyName) : self
     {
-        $this->creationTime = $creationTime;
+        $this->policyName = $policyName;
         return $this;
     }
     /**
@@ -75,7 +60,7 @@ class WebhookLastTrigger
      *
      * @return string|null
      */
-    public function getEventType(): ?string
+    public function getEventType() : ?string
     {
         return $this->eventType;
     }
@@ -86,28 +71,70 @@ class WebhookLastTrigger
      *
      * @return self
      */
-    public function setEventType(?string $eventType): self
+    public function setEventType(?string $eventType) : self
     {
         $this->eventType = $eventType;
         return $this;
     }
     /**
+     * Whether or not the webhook policy enabled.
+     *
+     * @return bool|null
+     */
+    public function getEnabled() : ?bool
+    {
+        return $this->enabled;
+    }
+    /**
+     * Whether or not the webhook policy enabled.
+     *
+     * @param bool|null $enabled
+     *
+     * @return self
+     */
+    public function setEnabled(?bool $enabled) : self
+    {
+        $this->enabled = $enabled;
+        return $this;
+    }
+    /**
+     * The creation time of webhook policy.
+     *
+     * @return \DateTime|null
+     */
+    public function getCreationTime() : ?\DateTime
+    {
+        return $this->creationTime;
+    }
+    /**
+     * The creation time of webhook policy.
+     *
+     * @param \DateTime|null $creationTime
+     *
+     * @return self
+     */
+    public function setCreationTime(?\DateTime $creationTime) : self
+    {
+        $this->creationTime = $creationTime;
+        return $this;
+    }
+    /**
      * The last trigger time of webhook policy.
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getLastTriggerTime(): ?string
+    public function getLastTriggerTime() : ?\DateTime
     {
         return $this->lastTriggerTime;
     }
     /**
      * The last trigger time of webhook policy.
      *
-     * @param string|null $lastTriggerTime
+     * @param \DateTime|null $lastTriggerTime
      *
      * @return self
      */
-    public function setLastTriggerTime(?string $lastTriggerTime): self
+    public function setLastTriggerTime(?\DateTime $lastTriggerTime) : self
     {
         $this->lastTriggerTime = $lastTriggerTime;
         return $this;

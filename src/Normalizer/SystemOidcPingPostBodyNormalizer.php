@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class SystemOidcPingPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,12 +44,14 @@ class SystemOidcPingPostBodyNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
-        } elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+        }
+        elseif (\array_key_exists('url', $data) && $data['url'] === null) {
             $object->setUrl(null);
         }
         if (\array_key_exists('verify_cert', $data) && $data['verify_cert'] !== null) {
             $object->setVerifyCert($data['verify_cert']);
-        } elseif (\array_key_exists('verify_cert', $data) && $data['verify_cert'] === null) {
+        }
+        elseif (\array_key_exists('verify_cert', $data) && $data['verify_cert'] === null) {
             $object->setVerifyCert(null);
         }
         return $object;

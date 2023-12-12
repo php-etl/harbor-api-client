@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class RetentionSelectorNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,24 +42,28 @@ class RetentionSelectorNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('kind', $data) && $data['kind'] !== null) {
+            $object->setKind($data['kind']);
+        }
+        elseif (\array_key_exists('kind', $data) && $data['kind'] === null) {
+            $object->setKind(null);
+        }
         if (\array_key_exists('decoration', $data) && $data['decoration'] !== null) {
             $object->setDecoration($data['decoration']);
-        } elseif (\array_key_exists('decoration', $data) && $data['decoration'] === null) {
+        }
+        elseif (\array_key_exists('decoration', $data) && $data['decoration'] === null) {
             $object->setDecoration(null);
         }
         if (\array_key_exists('pattern', $data) && $data['pattern'] !== null) {
             $object->setPattern($data['pattern']);
-        } elseif (\array_key_exists('pattern', $data) && $data['pattern'] === null) {
-            $object->setPattern(null);
         }
-        if (\array_key_exists('kind', $data) && $data['kind'] !== null) {
-            $object->setKind($data['kind']);
-        } elseif (\array_key_exists('kind', $data) && $data['kind'] === null) {
-            $object->setKind(null);
+        elseif (\array_key_exists('pattern', $data) && $data['pattern'] === null) {
+            $object->setPattern(null);
         }
         if (\array_key_exists('extras', $data) && $data['extras'] !== null) {
             $object->setExtras($data['extras']);
-        } elseif (\array_key_exists('extras', $data) && $data['extras'] === null) {
+        }
+        elseif (\array_key_exists('extras', $data) && $data['extras'] === null) {
             $object->setExtras(null);
         }
         return $object;
@@ -71,14 +74,14 @@ class RetentionSelectorNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind()) {
+            $data['kind'] = $object->getKind();
+        }
         if (null !== $object->getDecoration()) {
             $data['decoration'] = $object->getDecoration();
         }
         if (null !== $object->getPattern()) {
             $data['pattern'] = $object->getPattern();
-        }
-        if (null !== $object->getKind()) {
-            $data['kind'] = $object->getKind();
         }
         if (null !== $object->getExtras()) {
             $data['extras'] = $object->getExtras();

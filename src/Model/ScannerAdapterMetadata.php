@@ -5,82 +5,82 @@ namespace Gyroscops\Harbor\Api\Model;
 class ScannerAdapterMetadata
 {
     /**
-     *
+     * 
      *
      * @var Scanner|null
      */
-    protected $name;
+    protected $scanner;
     /**
-     *
+     * 
      *
      * @var ScannerCapability[]|null
      */
     protected $capabilities;
     /**
-     *
+     * 
      *
      * @var string[]|null
      */
     protected $properties;
     /**
-     *
+     * 
      *
      * @return Scanner|null
      */
-    public function getName(): ?Scanner
+    public function getScanner() : ?Scanner
     {
-        return $this->name;
+        return $this->scanner;
     }
     /**
+     * 
      *
-     *
-     * @param Scanner|null $name
+     * @param Scanner|null $scanner
      *
      * @return self
      */
-    public function setName(?Scanner $name): self
+    public function setScanner(?Scanner $scanner) : self
     {
-        $this->name = $name;
+        $this->scanner = $scanner;
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return ScannerCapability[]|null
      */
-    public function getCapabilities(): ?array
+    public function getCapabilities() : ?array
     {
         return $this->capabilities;
     }
     /**
-     *
+     * 
      *
      * @param ScannerCapability[]|null $capabilities
      *
      * @return self
      */
-    public function setCapabilities(?array $capabilities): self
+    public function setCapabilities(?array $capabilities) : self
     {
         $this->capabilities = $capabilities;
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return string[]|null
      */
-    public function getProperties(): ?iterable
+    public function getProperties() : ?iterable
     {
         return $this->properties;
     }
     /**
-     *
+     * 
      *
      * @param string[]|null $properties
      *
      * @return self
      */
-    public function setProperties(?iterable $properties): self
+    public function setProperties(?iterable $properties) : self
     {
         $this->properties = $properties;
         return $this;

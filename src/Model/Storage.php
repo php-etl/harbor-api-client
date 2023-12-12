@@ -21,7 +21,7 @@ class Storage
      *
      * @return int|null
      */
-    public function getTotal(): ?int
+    public function getTotal() : ?int
     {
         return $this->total;
     }
@@ -32,7 +32,7 @@ class Storage
      *
      * @return self
      */
-    public function setTotal(?int $total): self
+    public function setTotal(?int $total) : self
     {
         $this->total = $total;
         return $this;
@@ -42,7 +42,7 @@ class Storage
      *
      * @return int|null
      */
-    public function getFree(): ?int
+    public function getFree() : ?int
     {
         return $this->free;
     }
@@ -53,7 +53,7 @@ class Storage
      *
      * @return self
      */
-    public function setFree(?int $free): self
+    public function setFree(?int $free) : self
     {
         $this->free = $free;
         return $this;

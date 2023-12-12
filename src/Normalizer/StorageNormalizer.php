@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class StorageNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,12 +44,14 @@ class StorageNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('total', $data) && $data['total'] !== null) {
             $object->setTotal($data['total']);
-        } elseif (\array_key_exists('total', $data) && $data['total'] === null) {
+        }
+        elseif (\array_key_exists('total', $data) && $data['total'] === null) {
             $object->setTotal(null);
         }
         if (\array_key_exists('free', $data) && $data['free'] !== null) {
             $object->setFree($data['free']);
-        } elseif (\array_key_exists('free', $data) && $data['free'] === null) {
+        }
+        elseif (\array_key_exists('free', $data) && $data['free'] === null) {
             $object->setFree(null);
         }
         return $object;

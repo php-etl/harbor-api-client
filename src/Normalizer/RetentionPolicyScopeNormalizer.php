@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class RetentionPolicyScopeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,15 +42,17 @@ class RetentionPolicyScopeNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ref', $data) && $data['ref'] !== null) {
-            $object->setRef($data['ref']);
-        } elseif (\array_key_exists('ref', $data) && $data['ref'] === null) {
-            $object->setRef(null);
-        }
         if (\array_key_exists('level', $data) && $data['level'] !== null) {
             $object->setLevel($data['level']);
-        } elseif (\array_key_exists('level', $data) && $data['level'] === null) {
+        }
+        elseif (\array_key_exists('level', $data) && $data['level'] === null) {
             $object->setLevel(null);
+        }
+        if (\array_key_exists('ref', $data) && $data['ref'] !== null) {
+            $object->setRef($data['ref']);
+        }
+        elseif (\array_key_exists('ref', $data) && $data['ref'] === null) {
+            $object->setRef(null);
         }
         return $object;
     }
@@ -61,11 +62,11 @@ class RetentionPolicyScopeNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRef()) {
-            $data['ref'] = $object->getRef();
-        }
         if (null !== $object->getLevel()) {
             $data['level'] = $object->getLevel();
+        }
+        if (null !== $object->getRef()) {
+            $data['ref'] = $object->getRef();
         }
         return $data;
     }

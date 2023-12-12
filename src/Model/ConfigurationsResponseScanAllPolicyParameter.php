@@ -15,7 +15,7 @@ class ConfigurationsResponseScanAllPolicyParameter
      *
      * @return int|null
      */
-    public function getDailyTime(): ?int
+    public function getDailyTime() : ?int
     {
         return $this->dailyTime;
     }
@@ -26,7 +26,7 @@ class ConfigurationsResponseScanAllPolicyParameter
      *
      * @return self
      */
-    public function setDailyTime(?int $dailyTime): self
+    public function setDailyTime(?int $dailyTime) : self
     {
         $this->dailyTime = $dailyTime;
         return $this;

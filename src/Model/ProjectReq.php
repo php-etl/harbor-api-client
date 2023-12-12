@@ -5,23 +5,29 @@ namespace Gyroscops\Harbor\Api\Model;
 class ProjectReq
 {
     /**
-     * The count quota of the project.
-     *
-     * @var int|null
-     */
-    protected $countLimit;
-    /**
      * The name of the project.
      *
      * @var string|null
      */
     protected $projectName;
     /**
-     * The CVE Whitelist for system or project
+     * deprecated, reserved for project creation in replication
      *
-     * @var CVEWhitelist|null
+     * @var bool|null
      */
-    protected $cveWhitelist;
+    protected $public;
+    /**
+     * 
+     *
+     * @var ProjectMetadata|null
+     */
+    protected $metadata;
+    /**
+     * The CVE Allowlist for system or project
+     *
+     * @var CVEAllowlist|null
+     */
+    protected $cveAllowlist;
     /**
      * The storage quota of the project.
      *
@@ -29,38 +35,17 @@ class ProjectReq
      */
     protected $storageLimit;
     /**
+     * The ID of referenced registry when creating the proxy cache project
      *
-     *
-     * @var ProjectMetadata|null
+     * @var int|null
      */
-    protected $metadata;
-    /**
-     * The count quota of the project.
-     *
-     * @return int|null
-     */
-    public function getCountLimit(): ?int
-    {
-        return $this->countLimit;
-    }
-    /**
-     * The count quota of the project.
-     *
-     * @param int|null $countLimit
-     *
-     * @return self
-     */
-    public function setCountLimit(?int $countLimit): self
-    {
-        $this->countLimit = $countLimit;
-        return $this;
-    }
+    protected $registryId;
     /**
      * The name of the project.
      *
      * @return string|null
      */
-    public function getProjectName(): ?string
+    public function getProjectName() : ?string
     {
         return $this->projectName;
     }
@@ -71,30 +56,72 @@ class ProjectReq
      *
      * @return self
      */
-    public function setProjectName(?string $projectName): self
+    public function setProjectName(?string $projectName) : self
     {
         $this->projectName = $projectName;
         return $this;
     }
     /**
-     * The CVE Whitelist for system or project
+     * deprecated, reserved for project creation in replication
      *
-     * @return CVEWhitelist|null
+     * @return bool|null
      */
-    public function getCveWhitelist(): ?CVEWhitelist
+    public function getPublic() : ?bool
     {
-        return $this->cveWhitelist;
+        return $this->public;
     }
     /**
-     * The CVE Whitelist for system or project
+     * deprecated, reserved for project creation in replication
      *
-     * @param CVEWhitelist|null $cveWhitelist
+     * @param bool|null $public
      *
      * @return self
      */
-    public function setCveWhitelist(?CVEWhitelist $cveWhitelist): self
+    public function setPublic(?bool $public) : self
     {
-        $this->cveWhitelist = $cveWhitelist;
+        $this->public = $public;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return ProjectMetadata|null
+     */
+    public function getMetadata() : ?ProjectMetadata
+    {
+        return $this->metadata;
+    }
+    /**
+     * 
+     *
+     * @param ProjectMetadata|null $metadata
+     *
+     * @return self
+     */
+    public function setMetadata(?ProjectMetadata $metadata) : self
+    {
+        $this->metadata = $metadata;
+        return $this;
+    }
+    /**
+     * The CVE Allowlist for system or project
+     *
+     * @return CVEAllowlist|null
+     */
+    public function getCveAllowlist() : ?CVEAllowlist
+    {
+        return $this->cveAllowlist;
+    }
+    /**
+     * The CVE Allowlist for system or project
+     *
+     * @param CVEAllowlist|null $cveAllowlist
+     *
+     * @return self
+     */
+    public function setCveAllowlist(?CVEAllowlist $cveAllowlist) : self
+    {
+        $this->cveAllowlist = $cveAllowlist;
         return $this;
     }
     /**
@@ -102,7 +129,7 @@ class ProjectReq
      *
      * @return int|null
      */
-    public function getStorageLimit(): ?int
+    public function getStorageLimit() : ?int
     {
         return $this->storageLimit;
     }
@@ -113,30 +140,30 @@ class ProjectReq
      *
      * @return self
      */
-    public function setStorageLimit(?int $storageLimit): self
+    public function setStorageLimit(?int $storageLimit) : self
     {
         $this->storageLimit = $storageLimit;
         return $this;
     }
     /**
+     * The ID of referenced registry when creating the proxy cache project
      *
-     *
-     * @return ProjectMetadata|null
+     * @return int|null
      */
-    public function getMetadata(): ?ProjectMetadata
+    public function getRegistryId() : ?int
     {
-        return $this->metadata;
+        return $this->registryId;
     }
     /**
+     * The ID of referenced registry when creating the proxy cache project
      *
-     *
-     * @param ProjectMetadata|null $metadata
+     * @param int|null $registryId
      *
      * @return self
      */
-    public function setMetadata(?ProjectMetadata $metadata): self
+    public function setRegistryId(?int $registryId) : self
     {
-        $this->metadata = $metadata;
+        $this->registryId = $registryId;
         return $this;
     }
 }

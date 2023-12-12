@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ScannerRegistrationSettingsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,25 +42,29 @@ class ScannerRegistrationSettingsNormalizer implements DenormalizerInterface, No
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('url', $data) && $data['url'] !== null) {
-            $object->setUrl($data['url']);
-        } elseif (\array_key_exists('url', $data) && $data['url'] === null) {
-            $object->setUrl(null);
-        }
-        if (\array_key_exists('access_credential', $data) && $data['access_credential'] !== null) {
-            $object->setAccessCredential($data['access_credential']);
-        } elseif (\array_key_exists('access_credential', $data) && $data['access_credential'] === null) {
-            $object->setAccessCredential(null);
-        }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        }
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
+        }
+        if (\array_key_exists('url', $data) && $data['url'] !== null) {
+            $object->setUrl($data['url']);
+        }
+        elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+            $object->setUrl(null);
         }
         if (\array_key_exists('auth', $data) && $data['auth'] !== null) {
             $object->setAuth($data['auth']);
-        } elseif (\array_key_exists('auth', $data) && $data['auth'] === null) {
+        }
+        elseif (\array_key_exists('auth', $data) && $data['auth'] === null) {
             $object->setAuth(null);
+        }
+        if (\array_key_exists('access_credential', $data) && $data['access_credential'] !== null) {
+            $object->setAccessCredential($data['access_credential']);
+        }
+        elseif (\array_key_exists('access_credential', $data) && $data['access_credential'] === null) {
+            $object->setAccessCredential(null);
         }
         return $object;
     }
@@ -71,17 +74,13 @@ class ScannerRegistrationSettingsNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
+        $data['name'] = $object->getName();
+        $data['url'] = $object->getUrl();
+        if (null !== $object->getAuth()) {
+            $data['auth'] = $object->getAuth();
         }
         if (null !== $object->getAccessCredential()) {
             $data['access_credential'] = $object->getAccessCredential();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getAuth()) {
-            $data['auth'] = $object->getAuth();
         }
         return $data;
     }

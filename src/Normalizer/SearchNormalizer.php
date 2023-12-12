@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class SearchNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -49,25 +48,18 @@ class SearchNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values[] = $this->denormalizer->denormalize($value, 'Gyroscops\\Harbor\\Api\\Model\\Project', 'json', $context);
             }
             $object->setProject($values);
-        } elseif (\array_key_exists('project', $data) && $data['project'] === null) {
+        }
+        elseif (\array_key_exists('project', $data) && $data['project'] === null) {
             $object->setProject(null);
         }
-        if (\array_key_exists('chart', $data) && $data['chart'] !== null) {
-            $values_1 = array();
-            foreach ($data['chart'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Gyroscops\\Harbor\\Api\\Model\\SearchResult', 'json', $context);
-            }
-            $object->setChart($values_1);
-        } elseif (\array_key_exists('chart', $data) && $data['chart'] === null) {
-            $object->setChart(null);
-        }
         if (\array_key_exists('repository', $data) && $data['repository'] !== null) {
-            $values_2 = array();
-            foreach ($data['repository'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Gyroscops\\Harbor\\Api\\Model\\SearchRepository', 'json', $context);
+            $values_1 = array();
+            foreach ($data['repository'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Gyroscops\\Harbor\\Api\\Model\\SearchRepository', 'json', $context);
             }
-            $object->setRepository($values_2);
-        } elseif (\array_key_exists('repository', $data) && $data['repository'] === null) {
+            $object->setRepository($values_1);
+        }
+        elseif (\array_key_exists('repository', $data) && $data['repository'] === null) {
             $object->setRepository(null);
         }
         return $object;
@@ -85,19 +77,12 @@ class SearchNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $data['project'] = $values;
         }
-        if (null !== $object->getChart()) {
+        if (null !== $object->getRepository()) {
             $values_1 = array();
-            foreach ($object->getChart() as $value_1) {
+            foreach ($object->getRepository() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data['chart'] = $values_1;
-        }
-        if (null !== $object->getRepository()) {
-            $values_2 = array();
-            foreach ($object->getRepository() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
-            }
-            $data['repository'] = $values_2;
+            $data['repository'] = $values_1;
         }
         return $data;
     }

@@ -11,7 +11,7 @@ class OverallHealthStatus
      */
     protected $status;
     /**
-     *
+     * 
      *
      * @var ComponentHealthStatus[]|null
      */
@@ -21,7 +21,7 @@ class OverallHealthStatus
      *
      * @return string|null
      */
-    public function getStatus(): ?string
+    public function getStatus() : ?string
     {
         return $this->status;
     }
@@ -32,28 +32,28 @@ class OverallHealthStatus
      *
      * @return self
      */
-    public function setStatus(?string $status): self
+    public function setStatus(?string $status) : self
     {
         $this->status = $status;
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return ComponentHealthStatus[]|null
      */
-    public function getComponents(): ?array
+    public function getComponents() : ?array
     {
         return $this->components;
     }
     /**
-     *
+     * 
      *
      * @param ComponentHealthStatus[]|null $components
      *
      * @return self
      */
-    public function setComponents(?array $components): self
+    public function setComponents(?array $components) : self
     {
         $this->components = $components;
         return $this;

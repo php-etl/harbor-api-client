@@ -5,12 +5,6 @@ namespace Gyroscops\Harbor\Api\Model;
 class UserEntity
 {
     /**
-     * The name of the user.
-     *
-     * @var string|null
-     */
-    protected $username;
-    /**
      * The ID of the user.
      *
      * @var int|null
@@ -19,30 +13,15 @@ class UserEntity
     /**
      * The name of the user.
      *
-     * @return string|null
+     * @var string|null
      */
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-    /**
-     * The name of the user.
-     *
-     * @param string|null $username
-     *
-     * @return self
-     */
-    public function setUsername(?string $username): self
-    {
-        $this->username = $username;
-        return $this;
-    }
+    protected $username;
     /**
      * The ID of the user.
      *
      * @return int|null
      */
-    public function getUserId(): ?int
+    public function getUserId() : ?int
     {
         return $this->userId;
     }
@@ -53,9 +32,30 @@ class UserEntity
      *
      * @return self
      */
-    public function setUserId(?int $userId): self
+    public function setUserId(?int $userId) : self
     {
         $this->userId = $userId;
+        return $this;
+    }
+    /**
+     * The name of the user.
+     *
+     * @return string|null
+     */
+    public function getUsername() : ?string
+    {
+        return $this->username;
+    }
+    /**
+     * The name of the user.
+     *
+     * @param string|null $username
+     *
+     * @return self
+     */
+    public function setUsername(?string $username) : self
+    {
+        $this->username = $username;
         return $this;
     }
 }

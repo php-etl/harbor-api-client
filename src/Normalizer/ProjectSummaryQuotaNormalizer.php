@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ProjectSummaryQuotaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -49,7 +48,8 @@ class ProjectSummaryQuotaNormalizer implements DenormalizerInterface, Normalizer
                 $values[$key] = $value;
             }
             $object->setHard($values);
-        } elseif (\array_key_exists('hard', $data) && $data['hard'] === null) {
+        }
+        elseif (\array_key_exists('hard', $data) && $data['hard'] === null) {
             $object->setHard(null);
         }
         if (\array_key_exists('used', $data) && $data['used'] !== null) {
@@ -58,7 +58,8 @@ class ProjectSummaryQuotaNormalizer implements DenormalizerInterface, Normalizer
                 $values_1[$key_1] = $value_1;
             }
             $object->setUsed($values_1);
-        } elseif (\array_key_exists('used', $data) && $data['used'] === null) {
+        }
+        elseif (\array_key_exists('used', $data) && $data['used'] === null) {
             $object->setUsed(null);
         }
         return $object;

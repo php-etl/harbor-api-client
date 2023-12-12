@@ -15,7 +15,7 @@ class LdapImportUsers
      *
      * @return string[]|null
      */
-    public function getLdapUidList(): ?array
+    public function getLdapUidList() : ?array
     {
         return $this->ldapUidList;
     }
@@ -26,7 +26,7 @@ class LdapImportUsers
      *
      * @return self
      */
-    public function setLdapUidList(?array $ldapUidList): self
+    public function setLdapUidList(?array $ldapUidList) : self
     {
         $this->ldapUidList = $ldapUidList;
         return $this;

@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,20 +42,23 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('comment', $data) && $data['comment'] !== null) {
-            $object->setComment($data['comment']);
-        } elseif (\array_key_exists('comment', $data) && $data['comment'] === null) {
-            $object->setComment(null);
-        }
         if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
-        } elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+        }
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
         }
         if (\array_key_exists('realname', $data) && $data['realname'] !== null) {
             $object->setRealname($data['realname']);
-        } elseif (\array_key_exists('realname', $data) && $data['realname'] === null) {
+        }
+        elseif (\array_key_exists('realname', $data) && $data['realname'] === null) {
             $object->setRealname(null);
+        }
+        if (\array_key_exists('comment', $data) && $data['comment'] !== null) {
+            $object->setComment($data['comment']);
+        }
+        elseif (\array_key_exists('comment', $data) && $data['comment'] === null) {
+            $object->setComment(null);
         }
         return $object;
     }
@@ -66,14 +68,14 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getComment()) {
-            $data['comment'] = $object->getComment();
-        }
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
         if (null !== $object->getRealname()) {
             $data['realname'] = $object->getRealname();
+        }
+        if (null !== $object->getComment()) {
+            $data['comment'] = $object->getComment();
         }
         return $data;
     }

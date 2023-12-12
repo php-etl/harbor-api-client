@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ReplicationFilterNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -45,13 +44,21 @@ class ReplicationFilterNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+        }
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
             $object->setType(null);
         }
         if (\array_key_exists('value', $data) && $data['value'] !== null) {
             $object->setValue($data['value']);
-        } elseif (\array_key_exists('value', $data) && $data['value'] === null) {
+        }
+        elseif (\array_key_exists('value', $data) && $data['value'] === null) {
             $object->setValue(null);
+        }
+        if (\array_key_exists('decoration', $data) && $data['decoration'] !== null) {
+            $object->setDecoration($data['decoration']);
+        }
+        elseif (\array_key_exists('decoration', $data) && $data['decoration'] === null) {
+            $object->setDecoration(null);
         }
         return $object;
     }
@@ -66,6 +73,9 @@ class ReplicationFilterNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getValue()) {
             $data['value'] = $object->getValue();
+        }
+        if (null !== $object->getDecoration()) {
+            $data['decoration'] = $object->getDecoration();
         }
         return $data;
     }

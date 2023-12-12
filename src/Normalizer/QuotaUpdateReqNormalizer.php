@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class QuotaUpdateReqNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -49,7 +48,8 @@ class QuotaUpdateReqNormalizer implements DenormalizerInterface, NormalizerInter
                 $values[$key] = $value;
             }
             $object->setHard($values);
-        } elseif (\array_key_exists('hard', $data) && $data['hard'] === null) {
+        }
+        elseif (\array_key_exists('hard', $data) && $data['hard'] === null) {
             $object->setHard(null);
         }
         return $object;

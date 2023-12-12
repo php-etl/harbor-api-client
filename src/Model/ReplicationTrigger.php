@@ -11,9 +11,9 @@ class ReplicationTrigger
      */
     protected $type;
     /**
+     * 
      *
-     *
-     * @var TriggerSettings|null
+     * @var ReplicationTriggerSettings|null
      */
     protected $triggerSettings;
     /**
@@ -21,7 +21,7 @@ class ReplicationTrigger
      *
      * @return string|null
      */
-    public function getType(): ?string
+    public function getType() : ?string
     {
         return $this->type;
     }
@@ -32,28 +32,28 @@ class ReplicationTrigger
      *
      * @return self
      */
-    public function setType(?string $type): self
+    public function setType(?string $type) : self
     {
         $this->type = $type;
         return $this;
     }
     /**
+     * 
      *
-     *
-     * @return TriggerSettings|null
+     * @return ReplicationTriggerSettings|null
      */
-    public function getTriggerSettings(): ?TriggerSettings
+    public function getTriggerSettings() : ?ReplicationTriggerSettings
     {
         return $this->triggerSettings;
     }
     /**
+     * 
      *
-     *
-     * @param TriggerSettings|null $triggerSettings
+     * @param ReplicationTriggerSettings|null $triggerSettings
      *
      * @return self
      */
-    public function setTriggerSettings(?TriggerSettings $triggerSettings): self
+    public function setTriggerSettings(?ReplicationTriggerSettings $triggerSettings) : self
     {
         $this->triggerSettings = $triggerSettings;
         return $this;

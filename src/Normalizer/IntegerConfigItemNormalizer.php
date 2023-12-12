@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class IntegerConfigItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,15 +42,17 @@ class IntegerConfigItemNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('editable', $data) && $data['editable'] !== null) {
-            $object->setEditable($data['editable']);
-        } elseif (\array_key_exists('editable', $data) && $data['editable'] === null) {
-            $object->setEditable(null);
-        }
         if (\array_key_exists('value', $data) && $data['value'] !== null) {
             $object->setValue($data['value']);
-        } elseif (\array_key_exists('value', $data) && $data['value'] === null) {
+        }
+        elseif (\array_key_exists('value', $data) && $data['value'] === null) {
             $object->setValue(null);
+        }
+        if (\array_key_exists('editable', $data) && $data['editable'] !== null) {
+            $object->setEditable($data['editable']);
+        }
+        elseif (\array_key_exists('editable', $data) && $data['editable'] === null) {
+            $object->setEditable(null);
         }
         return $object;
     }
@@ -61,11 +62,11 @@ class IntegerConfigItemNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEditable()) {
-            $data['editable'] = $object->getEditable();
-        }
         if (null !== $object->getValue()) {
             $data['value'] = $object->getValue();
+        }
+        if (null !== $object->getEditable()) {
+            $data['editable'] = $object->getEditable();
         }
         return $data;
     }

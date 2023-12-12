@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ComponentHealthStatusNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -43,19 +42,22 @@ class ComponentHealthStatusNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('status', $data) && $data['status'] !== null) {
-            $object->setStatus($data['status']);
-        } elseif (\array_key_exists('status', $data) && $data['status'] === null) {
-            $object->setStatus(null);
-        }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        }
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
+        }
+        if (\array_key_exists('status', $data) && $data['status'] !== null) {
+            $object->setStatus($data['status']);
+        }
+        elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+            $object->setStatus(null);
         }
         if (\array_key_exists('error', $data) && $data['error'] !== null) {
             $object->setError($data['error']);
-        } elseif (\array_key_exists('error', $data) && $data['error'] === null) {
+        }
+        elseif (\array_key_exists('error', $data) && $data['error'] === null) {
             $object->setError(null);
         }
         return $object;
@@ -66,11 +68,11 @@ class ComponentHealthStatusNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
+        }
+        if (null !== $object->getStatus()) {
+            $data['status'] = $object->getStatus();
         }
         if (null !== $object->getError()) {
             $data['error'] = $object->getError();

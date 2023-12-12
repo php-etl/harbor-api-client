@@ -5,10 +5,9 @@ namespace Gyroscops\Harbor\Api\Runtime\Client;
 use Jane\Component\OpenApiRuntime\Client\Exception\InvalidFetchModeException;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Serializer\SerializerInterface;
-
 trait EndpointTrait
 {
-    abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
+    protected abstract function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
     public function parseResponse(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)
     {
         if ($fetchMode === Client::FETCH_OBJECT) {

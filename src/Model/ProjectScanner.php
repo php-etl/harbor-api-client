@@ -15,7 +15,7 @@ class ProjectScanner
      *
      * @return string|null
      */
-    public function getUuid(): ?string
+    public function getUuid() : ?string
     {
         return $this->uuid;
     }
@@ -26,7 +26,7 @@ class ProjectScanner
      *
      * @return self
      */
-    public function setUuid(?string $uuid): self
+    public function setUuid(?string $uuid) : self
     {
         $this->uuid = $uuid;
         return $this;

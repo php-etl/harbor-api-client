@@ -9,11 +9,11 @@ return [
     'whitelisted-paths' => [
         ['^\/users$', ['GET', 'POST']],
         ['^\/users/search$', ['GET']],
-        ['^\/users/\d+$', ['GET', 'PUT', 'DELETE']],
-        ['^\/users/\d+/password$', ['PUT']],
+        ['^\/users/\{user_id\}$', ['GET', 'PUT', 'DELETE']],
+        ['^\/users/\{user_id\}/password$', ['PUT']],
         ['^\/projects$', ['HEAD', 'GET', 'POST']],
-        ['^\/project/(\d+|[\w-]+)$', ['GET', 'PUT', 'DELETE']],
-        ['^\/project/(\d+|[\w-]+)/members$', ['GET', 'POST']],
-        ['^\/project/(\d+|[\w-]+)/members/\d+$', ['GET', 'PUT', 'DELETE']],
+        ['^\/projects/\{project_name_or_id\}$', ['GET', 'PUT', 'DELETE']],
+        ['^\/projects/\{project_name_or_id\}/members$', ['GET', 'POST']],
+        ['^\/projects/\{project_name_or_id\}/members/\{mid\}$', ['GET', 'PUT', 'DELETE']],
     ]
 ];

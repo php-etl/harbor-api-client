@@ -70,6 +70,181 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\CreateProject($project, $headerParameters), $fetch);
     }
     /**
+     * This endpoint is aimed to delete project by project ID.
+     *
+     * @param string $projectNameOrId The name or id of the project
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     *     @var bool $X-Is-Resource-Name The flag to indicate whether the parameter which supports both name and id in the path is the name of the resource. When the X-Is-Resource-Name is false and the parameter can be converted to an integer, the parameter will be as an id, otherwise, it will be as a name.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectPreconditionFailedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteProject(string $projectNameOrId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\DeleteProject($projectNameOrId, $headerParameters), $fetch);
+    }
+    /**
+     * This endpoint returns specific project information by project ID.
+     *
+     * @param string $projectNameOrId The name or id of the project
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     *     @var bool $X-Is-Resource-Name The flag to indicate whether the parameter which supports both name and id in the path is the name of the resource. When the X-Is-Resource-Name is false and the parameter can be converted to an integer, the parameter will be as an id, otherwise, it will be as a name.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectInternalServerErrorException
+     *
+     * @return null|\Gyroscops\Harbor\Api\Model\Project|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProject(string $projectNameOrId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\GetProject($projectNameOrId, $headerParameters), $fetch);
+    }
+    /**
+     * This endpoint is aimed to update the properties of a project.
+     *
+     * @param string $projectNameOrId The name or id of the project
+     * @param \Gyroscops\Harbor\Api\Model\ProjectReq $project Updates of project.
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     *     @var bool $X-Is-Resource-Name The flag to indicate whether the parameter which supports both name and id in the path is the name of the resource. When the X-Is-Resource-Name is false and the parameter can be converted to an integer, the parameter will be as an id, otherwise, it will be as a name.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateProject(string $projectNameOrId, \Gyroscops\Harbor\Api\Model\ProjectReq $project, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\UpdateProject($projectNameOrId, $project, $headerParameters), $fetch);
+    }
+    /**
+     * Get all project member information
+     *
+     * @param string $projectNameOrId The name or id of the project
+     * @param array $queryParameters {
+     *     @var int $page The page number
+     *     @var int $page_size The size of per page
+     *     @var string $entityname The entity name to search.
+     * }
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     *     @var bool $X-Is-Resource-Name The flag to indicate whether the parameter which supports both name and id in the path is the name of the resource. When the X-Is-Resource-Name is false and the parameter can be converted to an integer, the parameter will be as an id, otherwise, it will be as a name.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\ListProjectMembersBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\ListProjectMembersUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\ListProjectMembersForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\ListProjectMembersNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\ListProjectMembersInternalServerErrorException
+     *
+     * @return null|\Gyroscops\Harbor\Api\Model\ProjectMemberEntity[]|\Psr\Http\Message\ResponseInterface
+     */
+    public function listProjectMembers(string $projectNameOrId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\ListProjectMembers($projectNameOrId, $queryParameters, $headerParameters), $fetch);
+    }
+    /**
+     * Create project member relationship, the member can be one of the user_member and group_member,  The user_member need to specify user_id or username. If the user already exist in harbor DB, specify the user_id,  If does not exist in harbor DB, it will SearchAndOnBoard the user. The group_member need to specify id or ldap_group_dn. If the group already exist in harbor DB. specify the user group's id,  If does not exist, it will SearchAndOnBoard the group. 
+     *
+     * @param string $projectNameOrId The name or id of the project
+     * @param \Gyroscops\Harbor\Api\Model\ProjectMember $projectMember 
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     *     @var bool $X-Is-Resource-Name The flag to indicate whether the parameter which supports both name and id in the path is the name of the resource. When the X-Is-Resource-Name is false and the parameter can be converted to an integer, the parameter will be as an id, otherwise, it will be as a name.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectMemberBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectMemberUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectMemberForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectMemberConflictException
+     * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectMemberInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function createProjectMember(string $projectNameOrId, \Gyroscops\Harbor\Api\Model\ProjectMember $projectMember, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\CreateProjectMember($projectNameOrId, $projectMember, $headerParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $projectNameOrId The name or id of the project
+     * @param int $mid Member ID.
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     *     @var bool $X-Is-Resource-Name The flag to indicate whether the parameter which supports both name and id in the path is the name of the resource. When the X-Is-Resource-Name is false and the parameter can be converted to an integer, the parameter will be as an id, otherwise, it will be as a name.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectMemberBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectMemberUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectMemberForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectMemberInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteProjectMember(string $projectNameOrId, int $mid, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\DeleteProjectMember($projectNameOrId, $mid, $headerParameters), $fetch);
+    }
+    /**
+     * Get the project member information
+     *
+     * @param string $projectNameOrId The name or id of the project
+     * @param int $mid The member ID
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     *     @var bool $X-Is-Resource-Name The flag to indicate whether the parameter which supports both name and id in the path is the name of the resource. When the X-Is-Resource-Name is false and the parameter can be converted to an integer, the parameter will be as an id, otherwise, it will be as a name.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectMemberBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectMemberUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectMemberForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectMemberNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetProjectMemberInternalServerErrorException
+     *
+     * @return null|\Gyroscops\Harbor\Api\Model\ProjectMemberEntity|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProjectMember(string $projectNameOrId, int $mid, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\GetProjectMember($projectNameOrId, $mid, $headerParameters), $fetch);
+    }
+    /**
+     * Update project member relationship
+     *
+     * @param string $projectNameOrId The name or id of the project
+     * @param int $mid Member ID.
+     * @param \Gyroscops\Harbor\Api\Model\RoleRequest $role 
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     *     @var bool $X-Is-Resource-Name The flag to indicate whether the parameter which supports both name and id in the path is the name of the resource. When the X-Is-Resource-Name is false and the parameter can be converted to an integer, the parameter will be as an id, otherwise, it will be as a name.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateProjectMember(string $projectNameOrId, int $mid, \Gyroscops\Harbor\Api\Model\RoleRequest $role, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\UpdateProjectMember($projectNameOrId, $mid, $role, $headerParameters), $fetch);
+    }
+    /**
      * 
      *
      * @param array $queryParameters {
@@ -132,6 +307,84 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
     public function searchUsers(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\SearchUsers($queryParameters, $headerParameters), $fetch);
+    }
+    /**
+     * This endpoint let administrator of Harbor mark a registered user as removed.It actually won't be deleted from DB.
+     *
+     * @param int $userId User ID for marking as to be removed.
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteUser(int $userId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\DeleteUser($userId, $headerParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param int $userId 
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\GetUserInternalServerErrorException
+     *
+     * @return null|\Gyroscops\Harbor\Api\Model\UserResp|\Psr\Http\Message\ResponseInterface
+     */
+    public function getUser(int $userId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\GetUser($userId, $headerParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param int $userId Registered user ID
+     * @param \Gyroscops\Harbor\Api\Model\UserProfile $profile Only email, realname and comment can be modified.
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserProfileUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserProfileForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserProfileNotFoundException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserProfileInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateUserProfile(int $userId, \Gyroscops\Harbor\Api\Model\UserProfile $profile, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\UpdateUserProfile($userId, $profile, $headerParameters), $fetch);
+    }
+    /**
+     * This endpoint is for user to update password. Users with the admin role can change any user's password. Regular users can change only their own password.
+     *
+     * @param int $userId 
+     * @param \Gyroscops\Harbor\Api\Model\PasswordReq $password Password to be updated, the attribute 'old_password' is optional when the API is called by the system administrator.
+     * @param array $headerParameters {
+     *     @var string $X-Request-Id An unique ID for the request
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserPasswordBadRequestException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserPasswordUnauthorizedException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserPasswordForbiddenException
+     * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserPasswordInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateUserPassword(int $userId, \Gyroscops\Harbor\Api\Model\PasswordReq $password, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\UpdateUserPassword($userId, $password, $headerParameters), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
     {

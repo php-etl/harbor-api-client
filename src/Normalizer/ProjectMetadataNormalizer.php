@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,14 +17,12 @@ class ProjectMetadataNormalizer implements DenormalizerInterface, NormalizerInte
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Gyroscops\\Harbor\\Api\\Model\\ProjectMetadata';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\ProjectMetadata';
     }
@@ -98,30 +97,34 @@ class ProjectMetadataNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPublic()) {
+        if ($object->isInitialized('public') && null !== $object->getPublic()) {
             $data['public'] = $object->getPublic();
         }
-        if (null !== $object->getEnableContentTrust()) {
+        if ($object->isInitialized('enableContentTrust') && null !== $object->getEnableContentTrust()) {
             $data['enable_content_trust'] = $object->getEnableContentTrust();
         }
-        if (null !== $object->getEnableContentTrustCosign()) {
+        if ($object->isInitialized('enableContentTrustCosign') && null !== $object->getEnableContentTrustCosign()) {
             $data['enable_content_trust_cosign'] = $object->getEnableContentTrustCosign();
         }
-        if (null !== $object->getPreventVul()) {
+        if ($object->isInitialized('preventVul') && null !== $object->getPreventVul()) {
             $data['prevent_vul'] = $object->getPreventVul();
         }
-        if (null !== $object->getSeverity()) {
+        if ($object->isInitialized('severity') && null !== $object->getSeverity()) {
             $data['severity'] = $object->getSeverity();
         }
-        if (null !== $object->getAutoScan()) {
+        if ($object->isInitialized('autoScan') && null !== $object->getAutoScan()) {
             $data['auto_scan'] = $object->getAutoScan();
         }
-        if (null !== $object->getReuseSysCveAllowlist()) {
+        if ($object->isInitialized('reuseSysCveAllowlist') && null !== $object->getReuseSysCveAllowlist()) {
             $data['reuse_sys_cve_allowlist'] = $object->getReuseSysCveAllowlist();
         }
-        if (null !== $object->getRetentionId()) {
+        if ($object->isInitialized('retentionId') && null !== $object->getRetentionId()) {
             $data['retention_id'] = $object->getRetentionId();
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Gyroscops\\Harbor\\Api\\Model\\ProjectMetadata' => false);
     }
 }

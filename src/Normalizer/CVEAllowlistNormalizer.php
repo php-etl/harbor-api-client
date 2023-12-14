@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,14 +17,12 @@ class CVEAllowlistNormalizer implements DenormalizerInterface, NormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Gyroscops\\Harbor\\Api\\Model\\CVEAllowlist';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\CVEAllowlist';
     }
@@ -90,28 +89,32 @@ class CVEAllowlistNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getProjectId()) {
+        if ($object->isInitialized('projectId') && null !== $object->getProjectId()) {
             $data['project_id'] = $object->getProjectId();
         }
-        if (null !== $object->getExpiresAt()) {
+        if ($object->isInitialized('expiresAt') && null !== $object->getExpiresAt()) {
             $data['expires_at'] = $object->getExpiresAt();
         }
-        if (null !== $object->getItems()) {
+        if ($object->isInitialized('items') && null !== $object->getItems()) {
             $values = array();
             foreach ($object->getItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['items'] = $values;
         }
-        if (null !== $object->getCreationTime()) {
+        if ($object->isInitialized('creationTime') && null !== $object->getCreationTime()) {
             $data['creation_time'] = $object->getCreationTime()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getUpdateTime()) {
+        if ($object->isInitialized('updateTime') && null !== $object->getUpdateTime()) {
             $data['update_time'] = $object->getUpdateTime()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Gyroscops\\Harbor\\Api\\Model\\CVEAllowlist' => false);
     }
 }

@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class ProjectReq
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the project.
      *
      * @var string|null
@@ -58,6 +66,7 @@ class ProjectReq
      */
     public function setProjectName(?string $projectName) : self
     {
+        $this->initialized['projectName'] = true;
         $this->projectName = $projectName;
         return $this;
     }
@@ -79,6 +88,7 @@ class ProjectReq
      */
     public function setPublic(?bool $public) : self
     {
+        $this->initialized['public'] = true;
         $this->public = $public;
         return $this;
     }
@@ -100,6 +110,7 @@ class ProjectReq
      */
     public function setMetadata(?ProjectMetadata $metadata) : self
     {
+        $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
         return $this;
     }
@@ -121,6 +132,7 @@ class ProjectReq
      */
     public function setCveAllowlist(?CVEAllowlist $cveAllowlist) : self
     {
+        $this->initialized['cveAllowlist'] = true;
         $this->cveAllowlist = $cveAllowlist;
         return $this;
     }
@@ -142,6 +154,7 @@ class ProjectReq
      */
     public function setStorageLimit(?int $storageLimit) : self
     {
+        $this->initialized['storageLimit'] = true;
         $this->storageLimit = $storageLimit;
         return $this;
     }
@@ -163,6 +176,7 @@ class ProjectReq
      */
     public function setRegistryId(?int $registryId) : self
     {
+        $this->initialized['registryId'] = true;
         $this->registryId = $registryId;
         return $this;
     }

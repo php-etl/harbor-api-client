@@ -44,9 +44,9 @@ class SearchUsers extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(array('page', 'page_size', 'username'));
         $optionsResolver->setRequired(array('username'));
         $optionsResolver->setDefaults(array('page' => 1, 'page_size' => 10));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('page_size', array('int'));
-        $optionsResolver->setAllowedTypes('username', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('page_size', array('int'));
+        $optionsResolver->addAllowedTypes('username', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -55,7 +55,7 @@ class SearchUsers extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(array('X-Request-Id'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('X-Request-Id', array('string'));
+        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
         return $optionsResolver;
     }
     /**
@@ -63,20 +63,24 @@ class SearchUsers extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
      *
      * @throws \Gyroscops\Harbor\Api\Exception\SearchUsersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\SearchUsersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Gyroscops\Harbor\Api\Model\UserSearchRespItem[]
+     * @return \Gyroscops\Harbor\Api\Model\UserSearchRespItem[]
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UserSearchRespItem[]', 'json');
         }
         if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\SearchUsersUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\SearchUsersUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\SearchUsersInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\SearchUsersInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
+        throw new \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException($status, $body);
     }
     public function getAuthenticationScopes() : array
     {

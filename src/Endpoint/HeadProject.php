@@ -42,7 +42,7 @@ class HeadProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(array('project_name'));
         $optionsResolver->setRequired(array('project_name'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('project_name', array('string'));
+        $optionsResolver->addAllowedTypes('project_name', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -51,7 +51,7 @@ class HeadProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(array('X-Request-Id'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('X-Request-Id', array('string'));
+        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
         return $optionsResolver;
     }
     /**
@@ -59,20 +59,24 @@ class HeadProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
      *
      * @throws \Gyroscops\Harbor\Api\Exception\HeadProjectNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\HeadProjectInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             return null;
         }
         if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\HeadProjectNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\HeadProjectNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\HeadProjectInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\HeadProjectInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
+        throw new \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException($status, $body);
     }
     public function getAuthenticationScopes() : array
     {

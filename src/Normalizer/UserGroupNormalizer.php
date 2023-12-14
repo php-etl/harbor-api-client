@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,14 +17,12 @@ class UserGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Gyroscops\\Harbor\\Api\\Model\\UserGroup';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\UserGroup';
     }
@@ -74,18 +73,22 @@ class UserGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getGroupName()) {
+        if ($object->isInitialized('groupName') && null !== $object->getGroupName()) {
             $data['group_name'] = $object->getGroupName();
         }
-        if (null !== $object->getGroupType()) {
+        if ($object->isInitialized('groupType') && null !== $object->getGroupType()) {
             $data['group_type'] = $object->getGroupType();
         }
-        if (null !== $object->getLdapGroupDn()) {
+        if ($object->isInitialized('ldapGroupDn') && null !== $object->getLdapGroupDn()) {
             $data['ldap_group_dn'] = $object->getLdapGroupDn();
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Gyroscops\\Harbor\\Api\\Model\\UserGroup' => false);
     }
 }

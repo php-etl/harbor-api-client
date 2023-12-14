@@ -11,6 +11,6 @@ use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\Console\Loader\SchemaLoader;
 
 $command = new GenerateCommand(new ConfigLoader(), new SchemaLoader(), new OpenApiMatcher());
-$inputArray = new ArrayInput(['--config-file' => __DIR__ . '/../jane/open_api.php'], $command->getDefinition());
+$inputArray = new ArrayInput(['--config-file' => __DIR__ . '/../.jane-openapi'], $command->getDefinition());
 
 $command->execute($inputArray, new NullOutput());

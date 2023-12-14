@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,14 +17,12 @@ class UserRespNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Gyroscops\\Harbor\\Api\\Model\\UserResp';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\UserResp';
     }
@@ -110,36 +109,40 @@ class UserRespNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getRealname()) {
+        if ($object->isInitialized('realname') && null !== $object->getRealname()) {
             $data['realname'] = $object->getRealname();
         }
-        if (null !== $object->getComment()) {
+        if ($object->isInitialized('comment') && null !== $object->getComment()) {
             $data['comment'] = $object->getComment();
         }
-        if (null !== $object->getUserId()) {
+        if ($object->isInitialized('userId') && null !== $object->getUserId()) {
             $data['user_id'] = $object->getUserId();
         }
-        if (null !== $object->getUsername()) {
+        if ($object->isInitialized('username') && null !== $object->getUsername()) {
             $data['username'] = $object->getUsername();
         }
-        if (null !== $object->getSysadminFlag()) {
+        if ($object->isInitialized('sysadminFlag') && null !== $object->getSysadminFlag()) {
             $data['sysadmin_flag'] = $object->getSysadminFlag();
         }
-        if (null !== $object->getAdminRoleInAuth()) {
+        if ($object->isInitialized('adminRoleInAuth') && null !== $object->getAdminRoleInAuth()) {
             $data['admin_role_in_auth'] = $object->getAdminRoleInAuth();
         }
-        if (null !== $object->getOidcUserMeta()) {
+        if ($object->isInitialized('oidcUserMeta') && null !== $object->getOidcUserMeta()) {
             $data['oidc_user_meta'] = $this->normalizer->normalize($object->getOidcUserMeta(), 'json', $context);
         }
-        if (null !== $object->getCreationTime()) {
+        if ($object->isInitialized('creationTime') && null !== $object->getCreationTime()) {
             $data['creation_time'] = $object->getCreationTime()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getUpdateTime()) {
+        if ($object->isInitialized('updateTime') && null !== $object->getUpdateTime()) {
             $data['update_time'] = $object->getUpdateTime()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Gyroscops\\Harbor\\Api\\Model\\UserResp' => false);
     }
 }

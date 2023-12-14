@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,14 +17,12 @@ class ProjectReqNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Gyroscops\\Harbor\\Api\\Model\\ProjectReq';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\ProjectReq';
     }
@@ -86,24 +85,28 @@ class ProjectReqNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getProjectName()) {
+        if ($object->isInitialized('projectName') && null !== $object->getProjectName()) {
             $data['project_name'] = $object->getProjectName();
         }
-        if (null !== $object->getPublic()) {
+        if ($object->isInitialized('public') && null !== $object->getPublic()) {
             $data['public'] = $object->getPublic();
         }
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $data['metadata'] = $this->normalizer->normalize($object->getMetadata(), 'json', $context);
         }
-        if (null !== $object->getCveAllowlist()) {
+        if ($object->isInitialized('cveAllowlist') && null !== $object->getCveAllowlist()) {
             $data['cve_allowlist'] = $this->normalizer->normalize($object->getCveAllowlist(), 'json', $context);
         }
-        if (null !== $object->getStorageLimit()) {
+        if ($object->isInitialized('storageLimit') && null !== $object->getStorageLimit()) {
             $data['storage_limit'] = $object->getStorageLimit();
         }
-        if (null !== $object->getRegistryId()) {
+        if ($object->isInitialized('registryId') && null !== $object->getRegistryId()) {
             $data['registry_id'] = $object->getRegistryId();
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Gyroscops\\Harbor\\Api\\Model\\ProjectReq' => false);
     }
 }

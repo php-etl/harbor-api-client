@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class ProjectMemberEntity
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * the project member id
      *
      * @var int|null
@@ -64,6 +72,7 @@ class ProjectMemberEntity
      */
     public function setId(?int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -85,6 +94,7 @@ class ProjectMemberEntity
      */
     public function setProjectId(?int $projectId) : self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
         return $this;
     }
@@ -106,6 +116,7 @@ class ProjectMemberEntity
      */
     public function setEntityName(?string $entityName) : self
     {
+        $this->initialized['entityName'] = true;
         $this->entityName = $entityName;
         return $this;
     }
@@ -127,6 +138,7 @@ class ProjectMemberEntity
      */
     public function setRoleName(?string $roleName) : self
     {
+        $this->initialized['roleName'] = true;
         $this->roleName = $roleName;
         return $this;
     }
@@ -148,6 +160,7 @@ class ProjectMemberEntity
      */
     public function setRoleId(?int $roleId) : self
     {
+        $this->initialized['roleId'] = true;
         $this->roleId = $roleId;
         return $this;
     }
@@ -169,6 +182,7 @@ class ProjectMemberEntity
      */
     public function setEntityId(?int $entityId) : self
     {
+        $this->initialized['entityId'] = true;
         $this->entityId = $entityId;
         return $this;
     }
@@ -190,6 +204,7 @@ class ProjectMemberEntity
      */
     public function setEntityType(?string $entityType) : self
     {
+        $this->initialized['entityType'] = true;
         $this->entityType = $entityType;
         return $this;
     }

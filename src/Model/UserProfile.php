@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class UserProfile
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -40,6 +48,7 @@ class UserProfile
      */
     public function setEmail(?string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -61,6 +70,7 @@ class UserProfile
      */
     public function setRealname(?string $realname) : self
     {
+        $this->initialized['realname'] = true;
         $this->realname = $realname;
         return $this;
     }
@@ -82,6 +92,7 @@ class UserProfile
      */
     public function setComment(?string $comment) : self
     {
+        $this->initialized['comment'] = true;
         $this->comment = $comment;
         return $this;
     }

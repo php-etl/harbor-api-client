@@ -23,8 +23,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Gyroscops\Harbor\Api\Exception\ListProjectsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\ListProjectsInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Gyroscops\Harbor\Api\Model\Project[]|\Psr\Http\Message\ResponseInterface
+     * @return \Gyroscops\Harbor\Api\Model\Project[]|\Psr\Http\Message\ResponseInterface
      */
     public function listProjects(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -42,6 +43,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Gyroscops\Harbor\Api\Exception\HeadProjectNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\HeadProjectInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -62,6 +64,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -83,6 +86,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectPreconditionFailedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -101,8 +105,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Gyroscops\Harbor\Api\Model\Project|\Psr\Http\Message\ResponseInterface
+     * @return \Gyroscops\Harbor\Api\Model\Project|\Psr\Http\Message\ResponseInterface
      */
     public function getProject(string $projectNameOrId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -123,6 +128,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -149,8 +155,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\ListProjectMembersForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\ListProjectMembersNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\ListProjectMembersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Gyroscops\Harbor\Api\Model\ProjectMemberEntity[]|\Psr\Http\Message\ResponseInterface
+     * @return \Gyroscops\Harbor\Api\Model\ProjectMemberEntity[]|\Psr\Http\Message\ResponseInterface
      */
     public function listProjectMembers(string $projectNameOrId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -171,6 +178,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectMemberForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectMemberConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\CreateProjectMemberInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -192,6 +200,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectMemberUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectMemberForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteProjectMemberInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -214,8 +223,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectMemberForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectMemberNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\GetProjectMemberInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Gyroscops\Harbor\Api\Model\ProjectMemberEntity|\Psr\Http\Message\ResponseInterface
+     * @return \Gyroscops\Harbor\Api\Model\ProjectMemberEntity|\Psr\Http\Message\ResponseInterface
      */
     public function getProjectMember(string $projectNameOrId, int $mid, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -237,6 +247,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -260,8 +271,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\ListUsersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\ListUsersForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\ListUsersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Gyroscops\Harbor\Api\Model\UserResp[]|\Psr\Http\Message\ResponseInterface
+     * @return \Gyroscops\Harbor\Api\Model\UserResp[]|\Psr\Http\Message\ResponseInterface
      */
     public function listUsers(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -280,6 +292,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\CreateUserForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\CreateUserConflictException
      * @throws \Gyroscops\Harbor\Api\Exception\CreateUserInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -301,8 +314,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Gyroscops\Harbor\Api\Exception\SearchUsersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\SearchUsersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Gyroscops\Harbor\Api\Model\UserSearchRespItem[]|\Psr\Http\Message\ResponseInterface
+     * @return \Gyroscops\Harbor\Api\Model\UserSearchRespItem[]|\Psr\Http\Message\ResponseInterface
      */
     public function searchUsers(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -320,6 +334,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\DeleteUserInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -339,8 +354,9 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\GetUserForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUserNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\GetUserInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Gyroscops\Harbor\Api\Model\UserResp|\Psr\Http\Message\ResponseInterface
+     * @return \Gyroscops\Harbor\Api\Model\UserResp|\Psr\Http\Message\ResponseInterface
      */
     public function getUser(int $userId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -359,6 +375,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserProfileForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserProfileNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserProfileInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
@@ -379,6 +396,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserPasswordUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserPasswordForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserPasswordInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */

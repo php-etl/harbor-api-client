@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class UserCreationReq
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -52,6 +60,7 @@ class UserCreationReq
      */
     public function setEmail(?string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -73,6 +82,7 @@ class UserCreationReq
      */
     public function setRealname(?string $realname) : self
     {
+        $this->initialized['realname'] = true;
         $this->realname = $realname;
         return $this;
     }
@@ -94,6 +104,7 @@ class UserCreationReq
      */
     public function setComment(?string $comment) : self
     {
+        $this->initialized['comment'] = true;
         $this->comment = $comment;
         return $this;
     }
@@ -115,6 +126,7 @@ class UserCreationReq
      */
     public function setPassword(?string $password) : self
     {
+        $this->initialized['password'] = true;
         $this->password = $password;
         return $this;
     }
@@ -136,6 +148,7 @@ class UserCreationReq
      */
     public function setUsername(?string $username) : self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
         return $this;
     }

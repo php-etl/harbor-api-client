@@ -3,9 +3,10 @@
 return [
     'openapi-file' => __DIR__.'/harbor.json',
     'namespace' => 'Gyroscops\Harbor\Api',
-    'directory' => __DIR__ . '/../src/',
+    'directory' => __DIR__ . '/src/',
     'strict' => false,
     'date-prefer-interface' => true,
+    'clean-generated' => true,
     'whitelisted-paths' => [
         ['^\/users$', ['GET', 'POST']],
         ['^\/users/search$', ['GET']],
@@ -15,5 +16,6 @@ return [
         ['^\/projects/\{project_name_or_id\}$', ['GET', 'PUT', 'DELETE']],
         ['^\/projects/\{project_name_or_id\}/members$', ['GET', 'POST']],
         ['^\/projects/\{project_name_or_id\}/members/\{mid\}$', ['GET', 'PUT', 'DELETE']],
-    ]
+    ],
+    'throw-unexpected-status-code' => true,
 ];

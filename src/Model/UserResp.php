@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class UserResp
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -82,6 +90,7 @@ class UserResp
      */
     public function setEmail(?string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -103,6 +112,7 @@ class UserResp
      */
     public function setRealname(?string $realname) : self
     {
+        $this->initialized['realname'] = true;
         $this->realname = $realname;
         return $this;
     }
@@ -124,6 +134,7 @@ class UserResp
      */
     public function setComment(?string $comment) : self
     {
+        $this->initialized['comment'] = true;
         $this->comment = $comment;
         return $this;
     }
@@ -145,6 +156,7 @@ class UserResp
      */
     public function setUserId(?int $userId) : self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
         return $this;
     }
@@ -166,6 +178,7 @@ class UserResp
      */
     public function setUsername(?string $username) : self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
         return $this;
     }
@@ -187,6 +200,7 @@ class UserResp
      */
     public function setSysadminFlag(?bool $sysadminFlag) : self
     {
+        $this->initialized['sysadminFlag'] = true;
         $this->sysadminFlag = $sysadminFlag;
         return $this;
     }
@@ -208,6 +222,7 @@ class UserResp
      */
     public function setAdminRoleInAuth(?bool $adminRoleInAuth) : self
     {
+        $this->initialized['adminRoleInAuth'] = true;
         $this->adminRoleInAuth = $adminRoleInAuth;
         return $this;
     }
@@ -229,6 +244,7 @@ class UserResp
      */
     public function setOidcUserMeta(?OIDCUserInfo $oidcUserMeta) : self
     {
+        $this->initialized['oidcUserMeta'] = true;
         $this->oidcUserMeta = $oidcUserMeta;
         return $this;
     }
@@ -250,6 +266,7 @@ class UserResp
      */
     public function setCreationTime(?\DateTimeInterface $creationTime) : self
     {
+        $this->initialized['creationTime'] = true;
         $this->creationTime = $creationTime;
         return $this;
     }
@@ -271,6 +288,7 @@ class UserResp
      */
     public function setUpdateTime(?\DateTimeInterface $updateTime) : self
     {
+        $this->initialized['updateTime'] = true;
         $this->updateTime = $updateTime;
         return $this;
     }

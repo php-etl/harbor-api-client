@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class UserSearchRespItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the user.
      *
      * @var int|null
@@ -34,6 +42,7 @@ class UserSearchRespItem
      */
     public function setUserId(?int $userId) : self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
         return $this;
     }
@@ -55,6 +64,7 @@ class UserSearchRespItem
      */
     public function setUsername(?string $username) : self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
         return $this;
     }

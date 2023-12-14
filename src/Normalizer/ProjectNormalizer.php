@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,14 +17,12 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Gyroscops\\Harbor\\Api\\Model\\Project';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\Project';
     }
@@ -138,52 +137,56 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getProjectId()) {
+        if ($object->isInitialized('projectId') && null !== $object->getProjectId()) {
             $data['project_id'] = $object->getProjectId();
         }
-        if (null !== $object->getOwnerId()) {
+        if ($object->isInitialized('ownerId') && null !== $object->getOwnerId()) {
             $data['owner_id'] = $object->getOwnerId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getRegistryId()) {
+        if ($object->isInitialized('registryId') && null !== $object->getRegistryId()) {
             $data['registry_id'] = $object->getRegistryId();
         }
-        if (null !== $object->getCreationTime()) {
+        if ($object->isInitialized('creationTime') && null !== $object->getCreationTime()) {
             $data['creation_time'] = $object->getCreationTime()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getUpdateTime()) {
+        if ($object->isInitialized('updateTime') && null !== $object->getUpdateTime()) {
             $data['update_time'] = $object->getUpdateTime()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getDeleted()) {
+        if ($object->isInitialized('deleted') && null !== $object->getDeleted()) {
             $data['deleted'] = $object->getDeleted();
         }
-        if (null !== $object->getOwnerName()) {
+        if ($object->isInitialized('ownerName') && null !== $object->getOwnerName()) {
             $data['owner_name'] = $object->getOwnerName();
         }
-        if (null !== $object->getTogglable()) {
+        if ($object->isInitialized('togglable') && null !== $object->getTogglable()) {
             $data['togglable'] = $object->getTogglable();
         }
-        if (null !== $object->getCurrentUserRoleId()) {
+        if ($object->isInitialized('currentUserRoleId') && null !== $object->getCurrentUserRoleId()) {
             $data['current_user_role_id'] = $object->getCurrentUserRoleId();
         }
-        if (null !== $object->getCurrentUserRoleIds()) {
+        if ($object->isInitialized('currentUserRoleIds') && null !== $object->getCurrentUserRoleIds()) {
             $values = array();
             foreach ($object->getCurrentUserRoleIds() as $value) {
                 $values[] = $value;
             }
             $data['current_user_role_ids'] = $values;
         }
-        if (null !== $object->getRepoCount()) {
+        if ($object->isInitialized('repoCount') && null !== $object->getRepoCount()) {
             $data['repo_count'] = $object->getRepoCount();
         }
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $data['metadata'] = $this->normalizer->normalize($object->getMetadata(), 'json', $context);
         }
-        if (null !== $object->getCveAllowlist()) {
+        if ($object->isInitialized('cveAllowlist') && null !== $object->getCveAllowlist()) {
             $data['cve_allowlist'] = $this->normalizer->normalize($object->getCveAllowlist(), 'json', $context);
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Gyroscops\\Harbor\\Api\\Model\\Project' => false);
     }
 }

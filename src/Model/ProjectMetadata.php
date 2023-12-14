@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class ProjectMetadata
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The public status of the project. The valid values are "true", "false".
      *
      * @var string|null
@@ -70,6 +78,7 @@ class ProjectMetadata
      */
     public function setPublic(?string $public) : self
     {
+        $this->initialized['public'] = true;
         $this->public = $public;
         return $this;
     }
@@ -91,6 +100,7 @@ class ProjectMetadata
      */
     public function setEnableContentTrust(?string $enableContentTrust) : self
     {
+        $this->initialized['enableContentTrust'] = true;
         $this->enableContentTrust = $enableContentTrust;
         return $this;
     }
@@ -112,6 +122,7 @@ class ProjectMetadata
      */
     public function setEnableContentTrustCosign(?string $enableContentTrustCosign) : self
     {
+        $this->initialized['enableContentTrustCosign'] = true;
         $this->enableContentTrustCosign = $enableContentTrustCosign;
         return $this;
     }
@@ -133,6 +144,7 @@ class ProjectMetadata
      */
     public function setPreventVul(?string $preventVul) : self
     {
+        $this->initialized['preventVul'] = true;
         $this->preventVul = $preventVul;
         return $this;
     }
@@ -154,6 +166,7 @@ class ProjectMetadata
      */
     public function setSeverity(?string $severity) : self
     {
+        $this->initialized['severity'] = true;
         $this->severity = $severity;
         return $this;
     }
@@ -175,6 +188,7 @@ class ProjectMetadata
      */
     public function setAutoScan(?string $autoScan) : self
     {
+        $this->initialized['autoScan'] = true;
         $this->autoScan = $autoScan;
         return $this;
     }
@@ -196,6 +210,7 @@ class ProjectMetadata
      */
     public function setReuseSysCveAllowlist(?string $reuseSysCveAllowlist) : self
     {
+        $this->initialized['reuseSysCveAllowlist'] = true;
         $this->reuseSysCveAllowlist = $reuseSysCveAllowlist;
         return $this;
     }
@@ -217,6 +232,7 @@ class ProjectMetadata
      */
     public function setRetentionId(?string $retentionId) : self
     {
+        $this->initialized['retentionId'] = true;
         $this->retentionId = $retentionId;
         return $this;
     }

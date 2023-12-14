@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,14 +17,12 @@ class OIDCUserInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Gyroscops\\Harbor\\Api\\Model\\OIDCUserInfo';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\OIDCUserInfo';
     }
@@ -86,24 +85,28 @@ class OIDCUserInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getUserId()) {
+        if ($object->isInitialized('userId') && null !== $object->getUserId()) {
             $data['user_id'] = $object->getUserId();
         }
-        if (null !== $object->getSubiss()) {
+        if ($object->isInitialized('subiss') && null !== $object->getSubiss()) {
             $data['subiss'] = $object->getSubiss();
         }
-        if (null !== $object->getSecret()) {
+        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
             $data['secret'] = $object->getSecret();
         }
-        if (null !== $object->getCreationTime()) {
+        if ($object->isInitialized('creationTime') && null !== $object->getCreationTime()) {
             $data['creation_time'] = $object->getCreationTime()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getUpdateTime()) {
+        if ($object->isInitialized('updateTime') && null !== $object->getUpdateTime()) {
             $data['update_time'] = $object->getUpdateTime()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Gyroscops\\Harbor\\Api\\Model\\OIDCUserInfo' => false);
     }
 }

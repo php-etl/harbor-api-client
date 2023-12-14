@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class Project
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Project ID
      *
      * @var int|null
@@ -106,6 +114,7 @@ class Project
      */
     public function setProjectId(?int $projectId) : self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
         return $this;
     }
@@ -127,6 +136,7 @@ class Project
      */
     public function setOwnerId(?int $ownerId) : self
     {
+        $this->initialized['ownerId'] = true;
         $this->ownerId = $ownerId;
         return $this;
     }
@@ -148,6 +158,7 @@ class Project
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -169,6 +180,7 @@ class Project
      */
     public function setRegistryId(?int $registryId) : self
     {
+        $this->initialized['registryId'] = true;
         $this->registryId = $registryId;
         return $this;
     }
@@ -190,6 +202,7 @@ class Project
      */
     public function setCreationTime(?\DateTimeInterface $creationTime) : self
     {
+        $this->initialized['creationTime'] = true;
         $this->creationTime = $creationTime;
         return $this;
     }
@@ -211,6 +224,7 @@ class Project
      */
     public function setUpdateTime(?\DateTimeInterface $updateTime) : self
     {
+        $this->initialized['updateTime'] = true;
         $this->updateTime = $updateTime;
         return $this;
     }
@@ -232,6 +246,7 @@ class Project
      */
     public function setDeleted(?bool $deleted) : self
     {
+        $this->initialized['deleted'] = true;
         $this->deleted = $deleted;
         return $this;
     }
@@ -253,6 +268,7 @@ class Project
      */
     public function setOwnerName(?string $ownerName) : self
     {
+        $this->initialized['ownerName'] = true;
         $this->ownerName = $ownerName;
         return $this;
     }
@@ -274,6 +290,7 @@ class Project
      */
     public function setTogglable(?bool $togglable) : self
     {
+        $this->initialized['togglable'] = true;
         $this->togglable = $togglable;
         return $this;
     }
@@ -295,6 +312,7 @@ class Project
      */
     public function setCurrentUserRoleId(?int $currentUserRoleId) : self
     {
+        $this->initialized['currentUserRoleId'] = true;
         $this->currentUserRoleId = $currentUserRoleId;
         return $this;
     }
@@ -316,6 +334,7 @@ class Project
      */
     public function setCurrentUserRoleIds(?array $currentUserRoleIds) : self
     {
+        $this->initialized['currentUserRoleIds'] = true;
         $this->currentUserRoleIds = $currentUserRoleIds;
         return $this;
     }
@@ -337,6 +356,7 @@ class Project
      */
     public function setRepoCount(?int $repoCount) : self
     {
+        $this->initialized['repoCount'] = true;
         $this->repoCount = $repoCount;
         return $this;
     }
@@ -358,6 +378,7 @@ class Project
      */
     public function setMetadata(?ProjectMetadata $metadata) : self
     {
+        $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
         return $this;
     }
@@ -379,6 +400,7 @@ class Project
      */
     public function setCveAllowlist(?CVEAllowlist $cveAllowlist) : self
     {
+        $this->initialized['cveAllowlist'] = true;
         $this->cveAllowlist = $cveAllowlist;
         return $this;
     }

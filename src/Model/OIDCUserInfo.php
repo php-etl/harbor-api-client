@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class OIDCUserInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * the ID of the OIDC info record
      *
      * @var int|null
@@ -58,6 +66,7 @@ class OIDCUserInfo
      */
     public function setId(?int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class OIDCUserInfo
      */
     public function setUserId(?int $userId) : self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
         return $this;
     }
@@ -100,6 +110,7 @@ class OIDCUserInfo
      */
     public function setSubiss(?string $subiss) : self
     {
+        $this->initialized['subiss'] = true;
         $this->subiss = $subiss;
         return $this;
     }
@@ -121,6 +132,7 @@ class OIDCUserInfo
      */
     public function setSecret(?string $secret) : self
     {
+        $this->initialized['secret'] = true;
         $this->secret = $secret;
         return $this;
     }
@@ -142,6 +154,7 @@ class OIDCUserInfo
      */
     public function setCreationTime(?\DateTimeInterface $creationTime) : self
     {
+        $this->initialized['creationTime'] = true;
         $this->creationTime = $creationTime;
         return $this;
     }
@@ -163,6 +176,7 @@ class OIDCUserInfo
      */
     public function setUpdateTime(?\DateTimeInterface $updateTime) : self
     {
+        $this->initialized['updateTime'] = true;
         $this->updateTime = $updateTime;
         return $this;
     }

@@ -21,13 +21,17 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.0",
-        "jane-php/open-api-runtime": "^7.2"
+        "jane-php/open-api-runtime": "7.4.*"
     },
     "require-dev": {
-        "jane-php/open-api-2": "^7.2"
+        "jane-php/open-api-2": "7.4.*",
+        "friendsofphp/php-cs-fixer": "^3.13"
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
     },
     "extra": {
         "branch-alias": {

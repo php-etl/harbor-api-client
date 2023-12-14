@@ -47,8 +47,8 @@ class UpdateProjectMember extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
         $optionsResolver->setDefined(array('X-Request-Id', 'X-Is-Resource-Name'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('X-Is-Resource-Name' => false));
-        $optionsResolver->setAllowedTypes('X-Request-Id', array('string'));
-        $optionsResolver->setAllowedTypes('X-Is-Resource-Name', array('bool'));
+        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
+        $optionsResolver->addAllowedTypes('X-Is-Resource-Name', array('bool'));
         return $optionsResolver;
     }
     /**
@@ -59,29 +59,33 @@ class UpdateProjectMember extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             return null;
         }
         if (400 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberBadRequestException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberBadRequestException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberForbiddenException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberForbiddenException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\UpdateProjectMemberInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
+        throw new \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException($status, $body);
     }
     public function getAuthenticationScopes() : array
     {

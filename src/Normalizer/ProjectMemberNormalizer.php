@@ -4,6 +4,7 @@ namespace Gyroscops\Harbor\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Gyroscops\Harbor\Api\Runtime\Normalizer\CheckArray;
+use Gyroscops\Harbor\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,14 +17,12 @@ class ProjectMemberNormalizer implements DenormalizerInterface, NormalizerInterf
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Gyroscops\\Harbor\\Api\\Model\\ProjectMember';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Gyroscops\\Harbor\\Api\\Model\\ProjectMember';
     }
@@ -68,15 +67,19 @@ class ProjectMemberNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRoleId()) {
+        if ($object->isInitialized('roleId') && null !== $object->getRoleId()) {
             $data['role_id'] = $object->getRoleId();
         }
-        if (null !== $object->getMemberUser()) {
+        if ($object->isInitialized('memberUser') && null !== $object->getMemberUser()) {
             $data['member_user'] = $this->normalizer->normalize($object->getMemberUser(), 'json', $context);
         }
-        if (null !== $object->getMemberGroup()) {
+        if ($object->isInitialized('memberGroup') && null !== $object->getMemberGroup()) {
             $data['member_group'] = $this->normalizer->normalize($object->getMemberGroup(), 'json', $context);
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Gyroscops\\Harbor\\Api\\Model\\ProjectMember' => false);
     }
 }

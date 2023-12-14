@@ -49,14 +49,14 @@ class ListProjects extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(array('q', 'page', 'page_size', 'sort', 'name', 'public', 'owner', 'with_detail'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 1, 'page_size' => 10, 'with_detail' => true));
-        $optionsResolver->setAllowedTypes('q', array('string'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('page_size', array('int'));
-        $optionsResolver->setAllowedTypes('sort', array('string'));
-        $optionsResolver->setAllowedTypes('name', array('string'));
-        $optionsResolver->setAllowedTypes('public', array('bool'));
-        $optionsResolver->setAllowedTypes('owner', array('string'));
-        $optionsResolver->setAllowedTypes('with_detail', array('bool'));
+        $optionsResolver->addAllowedTypes('q', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('page_size', array('int'));
+        $optionsResolver->addAllowedTypes('sort', array('string'));
+        $optionsResolver->addAllowedTypes('name', array('string'));
+        $optionsResolver->addAllowedTypes('public', array('bool'));
+        $optionsResolver->addAllowedTypes('owner', array('string'));
+        $optionsResolver->addAllowedTypes('with_detail', array('bool'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -65,7 +65,7 @@ class ListProjects extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(array('X-Request-Id'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('X-Request-Id', array('string'));
+        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
         return $optionsResolver;
     }
     /**
@@ -73,20 +73,24 @@ class ListProjects extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
      *
      * @throws \Gyroscops\Harbor\Api\Exception\ListProjectsUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\ListProjectsInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Gyroscops\Harbor\Api\Model\Project[]
+     * @return \Gyroscops\Harbor\Api\Model\Project[]
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Project[]', 'json');
         }
         if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\ListProjectsUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\ListProjectsUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\ListProjectsInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\ListProjectsInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
+        throw new \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException($status, $body);
     }
     public function getAuthenticationScopes() : array
     {

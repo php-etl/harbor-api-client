@@ -45,10 +45,10 @@ class ListUsers extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(array('q', 'sort', 'page', 'page_size'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 1, 'page_size' => 10));
-        $optionsResolver->setAllowedTypes('q', array('string'));
-        $optionsResolver->setAllowedTypes('sort', array('string'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('page_size', array('int'));
+        $optionsResolver->addAllowedTypes('q', array('string'));
+        $optionsResolver->addAllowedTypes('sort', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('page_size', array('int'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -57,7 +57,7 @@ class ListUsers extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(array('X-Request-Id'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('X-Request-Id', array('string'));
+        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
         return $optionsResolver;
     }
     /**
@@ -66,23 +66,27 @@ class ListUsers extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint implem
      * @throws \Gyroscops\Harbor\Api\Exception\ListUsersUnauthorizedException
      * @throws \Gyroscops\Harbor\Api\Exception\ListUsersForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\ListUsersInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Gyroscops\Harbor\Api\Model\UserResp[]
+     * @return \Gyroscops\Harbor\Api\Model\UserResp[]
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             return $serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\UserResp[]', 'json');
         }
         if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\ListUsersUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\ListUsersUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\ListUsersForbiddenException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\ListUsersForbiddenException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\ListUsersInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\ListUsersInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
+        throw new \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException($status, $body);
     }
     public function getAuthenticationScopes() : array
     {

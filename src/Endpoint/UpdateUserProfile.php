@@ -43,7 +43,7 @@ class UpdateUserProfile extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(array('X-Request-Id'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('X-Request-Id', array('string'));
+        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
         return $optionsResolver;
     }
     /**
@@ -53,26 +53,30 @@ class UpdateUserProfile extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoin
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserProfileForbiddenException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserProfileNotFoundException
      * @throws \Gyroscops\Harbor\Api\Exception\UpdateUserProfileInternalServerErrorException
+     * @throws \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             return null;
         }
         if (401 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\UpdateUserProfileUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\UpdateUserProfileUnauthorizedException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (403 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\UpdateUserProfileForbiddenException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\UpdateUserProfileForbiddenException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (404 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\UpdateUserProfileNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\UpdateUserProfileNotFoundException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
         if (500 === $status) {
-            throw new \Gyroscops\Harbor\Api\Exception\UpdateUserProfileInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'));
+            throw new \Gyroscops\Harbor\Api\Exception\UpdateUserProfileInternalServerErrorException($serializer->deserialize($body, 'Gyroscops\\Harbor\\Api\\Model\\Errors', 'json'), $response);
         }
+        throw new \Gyroscops\Harbor\Api\Exception\UnexpectedStatusCodeException($status, $body);
     }
     public function getAuthenticationScopes() : array
     {

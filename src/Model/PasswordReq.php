@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class PasswordReq
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The user's existing password.
      *
      * @var string|null
@@ -34,6 +42,7 @@ class PasswordReq
      */
     public function setOldPassword(?string $oldPassword) : self
     {
+        $this->initialized['oldPassword'] = true;
         $this->oldPassword = $oldPassword;
         return $this;
     }
@@ -55,6 +64,7 @@ class PasswordReq
      */
     public function setNewPassword(?string $newPassword) : self
     {
+        $this->initialized['newPassword'] = true;
         $this->newPassword = $newPassword;
         return $this;
     }

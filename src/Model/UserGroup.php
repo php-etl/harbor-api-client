@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class UserGroup
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the user group
      *
      * @var int|null
@@ -46,6 +54,7 @@ class UserGroup
      */
     public function setId(?int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -67,6 +76,7 @@ class UserGroup
      */
     public function setGroupName(?string $groupName) : self
     {
+        $this->initialized['groupName'] = true;
         $this->groupName = $groupName;
         return $this;
     }
@@ -88,6 +98,7 @@ class UserGroup
      */
     public function setGroupType(?int $groupType) : self
     {
+        $this->initialized['groupType'] = true;
         $this->groupType = $groupType;
         return $this;
     }
@@ -109,6 +120,7 @@ class UserGroup
      */
     public function setLdapGroupDn(?string $ldapGroupDn) : self
     {
+        $this->initialized['ldapGroupDn'] = true;
         $this->ldapGroupDn = $ldapGroupDn;
         return $this;
     }

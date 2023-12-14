@@ -5,6 +5,14 @@ namespace Gyroscops\Harbor\Api\Model;
 class CVEAllowlist
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the allowlist
      *
      * @var int|null
@@ -58,6 +66,7 @@ class CVEAllowlist
      */
     public function setId(?int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class CVEAllowlist
      */
     public function setProjectId(?int $projectId) : self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
         return $this;
     }
@@ -100,6 +110,7 @@ class CVEAllowlist
      */
     public function setExpiresAt(?int $expiresAt) : self
     {
+        $this->initialized['expiresAt'] = true;
         $this->expiresAt = $expiresAt;
         return $this;
     }
@@ -121,6 +132,7 @@ class CVEAllowlist
      */
     public function setItems(?array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }
@@ -142,6 +154,7 @@ class CVEAllowlist
      */
     public function setCreationTime(?\DateTimeInterface $creationTime) : self
     {
+        $this->initialized['creationTime'] = true;
         $this->creationTime = $creationTime;
         return $this;
     }
@@ -163,6 +176,7 @@ class CVEAllowlist
      */
     public function setUpdateTime(?\DateTimeInterface $updateTime) : self
     {
+        $this->initialized['updateTime'] = true;
         $this->updateTime = $updateTime;
         return $this;
     }

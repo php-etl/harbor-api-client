@@ -70,13 +70,13 @@ class CVEAllowlistNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setItems(null);
         }
         if (\array_key_exists('creation_time', $data) && $data['creation_time'] !== null) {
-            $object->setCreationTime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['creation_time']));
+            $object->setCreationTime(\DateTime::createFromFormat('Y-m-d\\TH:i:s.vp', $data['creation_time']));
         }
         elseif (\array_key_exists('creation_time', $data) && $data['creation_time'] === null) {
             $object->setCreationTime(null);
         }
         if (\array_key_exists('update_time', $data) && $data['update_time'] !== null) {
-            $object->setUpdateTime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['update_time']));
+            $object->setUpdateTime(\DateTime::createFromFormat('Y-m-d\\TH:i:s.vp', $data['update_time']));
         }
         elseif (\array_key_exists('update_time', $data) && $data['update_time'] === null) {
             $object->setUpdateTime(null);
@@ -106,10 +106,10 @@ class CVEAllowlistNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['items'] = $values;
         }
         if ($object->isInitialized('creationTime') && null !== $object->getCreationTime()) {
-            $data['creation_time'] = $object->getCreationTime()->format('Y-m-d\\TH:i:sP');
+            $data['creation_time'] = $object->getCreationTime()->format('Y-m-d\\TH:i:s.vp');
         }
         if ($object->isInitialized('updateTime') && null !== $object->getUpdateTime()) {
-            $data['update_time'] = $object->getUpdateTime()->format('Y-m-d\\TH:i:sP');
+            $data['update_time'] = $object->getUpdateTime()->format('Y-m-d\\TH:i:s.vp');
         }
         return $data;
     }

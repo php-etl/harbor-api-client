@@ -6,6 +6,7 @@ return [
     'directory' => __DIR__ . '/src/',
     'strict' => false,
     'date-prefer-interface' => true,
+    'date-format' => 'Y-m-d\\TH:i:s.vp',
     'clean-generated' => true,
     'whitelisted-paths' => [
         ['^\/users$', ['GET', 'POST']],

@@ -14,7 +14,7 @@ class UpdateUserProfile extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoin
      *     @var string $X-Request-Id An unique ID for the request
      * }
      */
-    public function __construct(int $userId, \Gyroscops\Harbor\Api\Model\UserProfile $profile, array $headerParameters = array())
+    public function __construct(int $userId, \Gyroscops\Harbor\Api\Model\UserProfile $profile, array $headerParameters = [])
     {
         $this->user_id = $userId;
         $this->body = $profile;
@@ -27,7 +27,7 @@ class UpdateUserProfile extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoin
     }
     public function getUri() : string
     {
-        return str_replace(array('{user_id}'), array($this->user_id), '/users/{user_id}');
+        return str_replace(['{user_id}'], [$this->user_id], '/users/{user_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -35,15 +35,15 @@ class UpdateUserProfile extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoin
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Request-Id'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
+        $optionsResolver->setDefined(['X-Request-Id']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('X-Request-Id', ['string']);
         return $optionsResolver;
     }
     /**
@@ -80,6 +80,6 @@ class UpdateUserProfile extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoin
     }
     public function getAuthenticationScopes() : array
     {
-        return array('basic');
+        return ['basic'];
     }
 }

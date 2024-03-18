@@ -7,7 +7,7 @@ class CVEAllowlist
     /**
      * @var array
      */
-    protected $initialized = array();
+    protected $initialized = [];
     public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
@@ -33,7 +33,7 @@ class CVEAllowlist
     /**
      * 
      *
-     * @var CVEAllowlistItem[]|null
+     * @var list<CVEAllowlistItem>|null
      */
     protected $items;
     /**
@@ -117,7 +117,7 @@ class CVEAllowlist
     /**
      * 
      *
-     * @return CVEAllowlistItem[]|null
+     * @return list<CVEAllowlistItem>|null
      */
     public function getItems() : ?array
     {
@@ -126,7 +126,7 @@ class CVEAllowlist
     /**
      * 
      *
-     * @param CVEAllowlistItem[]|null $items
+     * @param list<CVEAllowlistItem>|null $items
      *
      * @return self
      */

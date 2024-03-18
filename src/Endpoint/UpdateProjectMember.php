@@ -17,7 +17,7 @@ class UpdateProjectMember extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
      *     @var bool $X-Is-Resource-Name The flag to indicate whether the parameter which supports both name and id in the path is the name of the resource. When the X-Is-Resource-Name is false and the parameter can be converted to an integer, the parameter will be as an id, otherwise, it will be as a name.
      * }
      */
-    public function __construct(string $projectNameOrId, int $mid, \Gyroscops\Harbor\Api\Model\RoleRequest $role, array $headerParameters = array())
+    public function __construct(string $projectNameOrId, int $mid, \Gyroscops\Harbor\Api\Model\RoleRequest $role, array $headerParameters = [])
     {
         $this->project_name_or_id = $projectNameOrId;
         $this->mid = $mid;
@@ -31,7 +31,7 @@ class UpdateProjectMember extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
     }
     public function getUri() : string
     {
-        return str_replace(array('{project_name_or_id}', '{mid}'), array($this->project_name_or_id, $this->mid), '/projects/{project_name_or_id}/members/{mid}');
+        return str_replace(['{project_name_or_id}', '{mid}'], [$this->project_name_or_id, $this->mid], '/projects/{project_name_or_id}/members/{mid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -39,16 +39,16 @@ class UpdateProjectMember extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Request-Id', 'X-Is-Resource-Name'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('X-Is-Resource-Name' => false));
-        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
-        $optionsResolver->addAllowedTypes('X-Is-Resource-Name', array('bool'));
+        $optionsResolver->setDefined(['X-Request-Id', 'X-Is-Resource-Name']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['X-Is-Resource-Name' => false]);
+        $optionsResolver->addAllowedTypes('X-Request-Id', ['string']);
+        $optionsResolver->addAllowedTypes('X-Is-Resource-Name', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -89,6 +89,6 @@ class UpdateProjectMember extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpo
     }
     public function getAuthenticationScopes() : array
     {
-        return array('basic');
+        return ['basic'];
     }
 }

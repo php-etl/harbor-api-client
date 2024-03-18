@@ -14,7 +14,7 @@ class HeadProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
      *     @var string $X-Request-Id An unique ID for the request
      * }
      */
-    public function __construct(array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
@@ -30,28 +30,28 @@ class HeadProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('project_name'));
-        $optionsResolver->setRequired(array('project_name'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('project_name', array('string'));
+        $optionsResolver->setDefined(['project_name']);
+        $optionsResolver->setRequired(['project_name']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('project_name', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Request-Id'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
+        $optionsResolver->setDefined(['X-Request-Id']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('X-Request-Id', ['string']);
         return $optionsResolver;
     }
     /**
@@ -80,6 +80,6 @@ class HeadProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint impl
     }
     public function getAuthenticationScopes() : array
     {
-        return array('basic');
+        return ['basic'];
     }
 }

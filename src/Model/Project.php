@@ -7,7 +7,7 @@ class Project
     /**
      * @var array
      */
-    protected $initialized = array();
+    protected $initialized = [];
     public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
@@ -75,7 +75,7 @@ class Project
     /**
      * The list of role ID of the current user who triggered the API (for UI)
      *
-     * @var int[]|null
+     * @var list<int>|null
      */
     protected $currentUserRoleIds;
     /**
@@ -319,7 +319,7 @@ class Project
     /**
      * The list of role ID of the current user who triggered the API (for UI)
      *
-     * @return int[]|null
+     * @return list<int>|null
      */
     public function getCurrentUserRoleIds() : ?array
     {
@@ -328,7 +328,7 @@ class Project
     /**
      * The list of role ID of the current user who triggered the API (for UI)
      *
-     * @param int[]|null $currentUserRoleIds
+     * @param list<int>|null $currentUserRoleIds
      *
      * @return self
      */

@@ -27,7 +27,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return \Gyroscops\Harbor\Api\Model\Project[]|\Psr\Http\Message\ResponseInterface
      */
-    public function listProjects(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listProjects(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\ListProjects($queryParameters, $headerParameters), $fetch);
     }
@@ -47,7 +47,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function headProject(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function headProject(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\HeadProject($queryParameters, $headerParameters), $fetch);
     }
@@ -68,7 +68,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function createProject(\Gyroscops\Harbor\Api\Model\ProjectReq $project, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function createProject(\Gyroscops\Harbor\Api\Model\ProjectReq $project, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\CreateProject($project, $headerParameters), $fetch);
     }
@@ -90,7 +90,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteProject(string $projectNameOrId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function deleteProject(string $projectNameOrId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\DeleteProject($projectNameOrId, $headerParameters), $fetch);
     }
@@ -109,7 +109,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return \Gyroscops\Harbor\Api\Model\Project|\Psr\Http\Message\ResponseInterface
      */
-    public function getProject(string $projectNameOrId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getProject(string $projectNameOrId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\GetProject($projectNameOrId, $headerParameters), $fetch);
     }
@@ -132,7 +132,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updateProject(string $projectNameOrId, \Gyroscops\Harbor\Api\Model\ProjectReq $project, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updateProject(string $projectNameOrId, \Gyroscops\Harbor\Api\Model\ProjectReq $project, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\UpdateProject($projectNameOrId, $project, $headerParameters), $fetch);
     }
@@ -159,7 +159,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return \Gyroscops\Harbor\Api\Model\ProjectMemberEntity[]|\Psr\Http\Message\ResponseInterface
      */
-    public function listProjectMembers(string $projectNameOrId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listProjectMembers(string $projectNameOrId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\ListProjectMembers($projectNameOrId, $queryParameters, $headerParameters), $fetch);
     }
@@ -182,7 +182,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function createProjectMember(string $projectNameOrId, \Gyroscops\Harbor\Api\Model\ProjectMember $projectMember, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function createProjectMember(string $projectNameOrId, \Gyroscops\Harbor\Api\Model\ProjectMember $projectMember, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\CreateProjectMember($projectNameOrId, $projectMember, $headerParameters), $fetch);
     }
@@ -204,7 +204,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteProjectMember(string $projectNameOrId, int $mid, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function deleteProjectMember(string $projectNameOrId, int $mid, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\DeleteProjectMember($projectNameOrId, $mid, $headerParameters), $fetch);
     }
@@ -227,7 +227,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return \Gyroscops\Harbor\Api\Model\ProjectMemberEntity|\Psr\Http\Message\ResponseInterface
      */
-    public function getProjectMember(string $projectNameOrId, int $mid, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getProjectMember(string $projectNameOrId, int $mid, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\GetProjectMember($projectNameOrId, $mid, $headerParameters), $fetch);
     }
@@ -251,7 +251,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updateProjectMember(string $projectNameOrId, int $mid, \Gyroscops\Harbor\Api\Model\RoleRequest $role, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updateProjectMember(string $projectNameOrId, int $mid, \Gyroscops\Harbor\Api\Model\RoleRequest $role, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\UpdateProjectMember($projectNameOrId, $mid, $role, $headerParameters), $fetch);
     }
@@ -275,7 +275,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return \Gyroscops\Harbor\Api\Model\UserResp[]|\Psr\Http\Message\ResponseInterface
      */
-    public function listUsers(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listUsers(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\ListUsers($queryParameters, $headerParameters), $fetch);
     }
@@ -296,7 +296,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function createUser(\Gyroscops\Harbor\Api\Model\UserCreationReq $userReq, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function createUser(\Gyroscops\Harbor\Api\Model\UserCreationReq $userReq, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\CreateUser($userReq, $headerParameters), $fetch);
     }
@@ -318,7 +318,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return \Gyroscops\Harbor\Api\Model\UserSearchRespItem[]|\Psr\Http\Message\ResponseInterface
      */
-    public function searchUsers(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function searchUsers(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\SearchUsers($queryParameters, $headerParameters), $fetch);
     }
@@ -338,7 +338,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteUser(int $userId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function deleteUser(int $userId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\DeleteUser($userId, $headerParameters), $fetch);
     }
@@ -358,7 +358,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return \Gyroscops\Harbor\Api\Model\UserResp|\Psr\Http\Message\ResponseInterface
      */
-    public function getUser(int $userId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getUser(int $userId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\GetUser($userId, $headerParameters), $fetch);
     }
@@ -379,7 +379,7 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updateUserProfile(int $userId, \Gyroscops\Harbor\Api\Model\UserProfile $profile, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updateUserProfile(int $userId, \Gyroscops\Harbor\Api\Model\UserProfile $profile, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\UpdateUserProfile($userId, $profile, $headerParameters), $fetch);
     }
@@ -400,15 +400,15 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updateUserPassword(int $userId, \Gyroscops\Harbor\Api\Model\PasswordReq $password, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updateUserPassword(int $userId, \Gyroscops\Harbor\Api\Model\PasswordReq $password, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Gyroscops\Harbor\Api\Endpoint\UpdateUserPassword($userId, $password, $headerParameters), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = array();
+            $plugins = [];
             if (count($additionalPlugins) > 0) {
                 $plugins = array_merge($plugins, $additionalPlugins);
             }
@@ -416,11 +416,11 @@ class Client extends \Gyroscops\Harbor\Api\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Gyroscops\Harbor\Api\Normalizer\JaneObjectNormalizer());
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Gyroscops\Harbor\Api\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

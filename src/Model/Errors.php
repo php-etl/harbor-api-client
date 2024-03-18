@@ -7,7 +7,7 @@ class Errors
     /**
      * @var array
      */
-    protected $initialized = array();
+    protected $initialized = [];
     public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
@@ -15,13 +15,13 @@ class Errors
     /**
      * 
      *
-     * @var Error[]|null
+     * @var list<Error>|null
      */
     protected $errors;
     /**
      * 
      *
-     * @return Error[]|null
+     * @return list<Error>|null
      */
     public function getErrors() : ?array
     {
@@ -30,7 +30,7 @@ class Errors
     /**
      * 
      *
-     * @param Error[]|null $errors
+     * @param list<Error>|null $errors
      *
      * @return self
      */

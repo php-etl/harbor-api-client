@@ -13,7 +13,7 @@ class CreateProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
      *     @var bool $X-Resource-Name-In-Location The flag to indicate whether to return the name of the resource in Location. When X-Resource-Name-In-Location is true, the Location will return the name of the resource.
      * }
      */
-    public function __construct(\Gyroscops\Harbor\Api\Model\ProjectReq $project, array $headerParameters = array())
+    public function __construct(\Gyroscops\Harbor\Api\Model\ProjectReq $project, array $headerParameters = [])
     {
         $this->body = $project;
         $this->headerParameters = $headerParameters;
@@ -33,16 +33,16 @@ class CreateProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Request-Id', 'X-Resource-Name-In-Location'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('X-Resource-Name-In-Location' => false));
-        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
-        $optionsResolver->addAllowedTypes('X-Resource-Name-In-Location', array('bool'));
+        $optionsResolver->setDefined(['X-Request-Id', 'X-Resource-Name-In-Location']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['X-Resource-Name-In-Location' => false]);
+        $optionsResolver->addAllowedTypes('X-Request-Id', ['string']);
+        $optionsResolver->addAllowedTypes('X-Resource-Name-In-Location', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -79,6 +79,6 @@ class CreateProject extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint im
     }
     public function getAuthenticationScopes() : array
     {
-        return array('basic');
+        return ['basic'];
     }
 }

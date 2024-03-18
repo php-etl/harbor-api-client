@@ -21,7 +21,7 @@ class ListProjects extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
      *     @var string $X-Request-Id An unique ID for the request
      * }
      */
-    public function __construct(array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
@@ -37,35 +37,35 @@ class ListProjects extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('q', 'page', 'page_size', 'sort', 'name', 'public', 'owner', 'with_detail'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('page' => 1, 'page_size' => 10, 'with_detail' => true));
-        $optionsResolver->addAllowedTypes('q', array('string'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
-        $optionsResolver->addAllowedTypes('page_size', array('int'));
-        $optionsResolver->addAllowedTypes('sort', array('string'));
-        $optionsResolver->addAllowedTypes('name', array('string'));
-        $optionsResolver->addAllowedTypes('public', array('bool'));
-        $optionsResolver->addAllowedTypes('owner', array('string'));
-        $optionsResolver->addAllowedTypes('with_detail', array('bool'));
+        $optionsResolver->setDefined(['q', 'page', 'page_size', 'sort', 'name', 'public', 'owner', 'with_detail']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['page' => 1, 'page_size' => 10, 'with_detail' => true]);
+        $optionsResolver->addAllowedTypes('q', ['string']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('page_size', ['int']);
+        $optionsResolver->addAllowedTypes('sort', ['string']);
+        $optionsResolver->addAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('public', ['bool']);
+        $optionsResolver->addAllowedTypes('owner', ['string']);
+        $optionsResolver->addAllowedTypes('with_detail', ['bool']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Request-Id'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('X-Request-Id', array('string'));
+        $optionsResolver->setDefined(['X-Request-Id']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('X-Request-Id', ['string']);
         return $optionsResolver;
     }
     /**
@@ -94,6 +94,6 @@ class ListProjects extends \Gyroscops\Harbor\Api\Runtime\Client\BaseEndpoint imp
     }
     public function getAuthenticationScopes() : array
     {
-        return array('basic');
+        return ['basic'];
     }
 }
